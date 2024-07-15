@@ -1,0 +1,11 @@
+[
+    {
+        "Used-for": 0,
+        "Feature-of": 1,
+        "Hyponym-of": 2,
+        "Evaluate-for": 3,
+        "Part-of": 4,
+        "Compare": 5,
+        "Conjunction": 6
+    }
+]
