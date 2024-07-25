@@ -1,9 +1,9 @@
 [
     {
-        "Work for": 0,
+        "Work_for": 0,
         "Kill": 1,
-        "Organization based in": 2,
-        "Live in": 3,
-        "Located in": 4
+        "Organization_based_in": 2,
+        "Live_in": 3,
+        "Located_in": 4
     }
 ]

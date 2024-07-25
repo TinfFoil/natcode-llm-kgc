@@ -1,0 +1,43 @@
+[
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.09812108559498957,
+        "Recall": 0.09650924024640657,
+        "F1_Score": 0.09730848861283645,
+        "n_icl_samples": 15,
+        "n_samples_test": 397,
+        "dataset_name": "scierc"
+    },
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.09795918367346938,
+        "Recall": 0.09856262833675565,
+        "F1_Score": 0.09825997952917094,
+        "n_icl_samples": 15,
+        "n_samples_test": 397,
+        "dataset_name": "scierc",
+        "date": "2024-07-22-15-12-51"
+    },
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.10899470899470899,
+        "Recall": 0.10574948665297741,
+        "F1_Score": 0.10734757686294945,
+        "n_icl_samples": 15,
+        "n_samples_test": 397,
+        "dataset_name": "scierc",
+        "date": "2024-07-23-14-18-59",
+        "schema_path": "./data/codekgc-data/scierc/code_expl_prompt"
+    },
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.09455292908530319,
+        "Recall": 0.0944558521560575,
+        "F1_Score": 0.09450436569080638,
+        "n_icl_samples": 15,
+        "n_samples_test": 397,
+        "dataset_name": "scierc",
+        "date": "2024-07-23-14-35-18",
+        "schema_path": "./data/codekgc-data/scierc/code_prompt"
+    }
+]

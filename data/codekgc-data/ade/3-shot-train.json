@@ -3,22 +3,22 @@
         "text": "In rare cases mitomycin C ( MMC ) may induce cancer - associated hemolytic uremic syndrome , which is characterized by hemolytic anemia , thrombocytopenia and progressive renal failure .",
         "triple_list": [
             [
-                "hemolytic anemia", "adverse effect", "mitomycin C"
+                "hemolytic anemia", "Adverse_effect", "mitomycin C"
             ],
             [
-                "hemolytic anemia", "adverse effect", "MMC"
+                "hemolytic anemia", "Adverse_effect", "MMC"
             ],
             [
-                "hemolytic uremic syndrome", "adverse effect", "mitomycin C"
+                "hemolytic uremic syndrome", "Adverse_effect", "mitomycin C"
             ],
             [
-                "hemolytic uremic syndrome", "adverse effect", "MMC"
+                "hemolytic uremic syndrome", "Adverse_effect", "MMC"
             ],
             [
-                "progressive renal failure", "adverse effect", "mitomycin C"
+                "progressive renal failure", "Adverse_effect", "mitomycin C"
             ],
             [
-                "progressive renal failure", "adverse effect", "MMC"
+                "progressive renal failure", "Adverse_effect", "MMC"
             ]
         ]
     },
@@ -27,7 +27,7 @@
         "triple_list": [
             [
                 "angioedema",
-                "adverse effect",
+                "Adverse_effect",
                 "oxcarbazepine"
             ]
         ]
@@ -37,22 +37,22 @@
         "triple_list": [
             [
                 "generalized pustular psoriasis", 
-                "adverse effect", 
+                "Adverse_effect", 
                 "Molipaxin"
             ],
             [
                 "pustular psoriasis", 
-                "adverse effect", 
+                "Adverse_effect", 
                 "trazodone hydrochloride"
             ],
             [
                 "GPP", 
-                "adverse effect", 
+                "Adverse_effect", 
                 "Molipaxin"
             ],
             [
                 "GPP", 
-                "adverse effect", 
+                "Adverse_effect", 
                 "trazodone hydrochloride"
             ]
         ]

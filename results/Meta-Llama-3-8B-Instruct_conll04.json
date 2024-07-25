@@ -1,0 +1,32 @@
+[
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.3515439429928741,
+        "Recall": 0.36363636363636365,
+        "F1_Score": 0.35748792270531404,
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset_name": "conll04"
+    },
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.3847980997624703,
+        "Recall": 0.39803439803439805,
+        "F1_Score": 0.391304347826087,
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset_name": "conll04",
+        "date": "2024-07-22-14-39-34"
+    },
+    {
+        "Model": "meta-llama/Meta-Llama-3-8B-Instruct",
+        "Precision": 0.37531486146095716,
+        "Recall": 0.36609336609336607,
+        "F1_Score": 0.3706467661691542,
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset_name": "conll04",
+        "date": "2024-07-23-14-54-55",
+        "schema_path": "./data/codekgc-data/conll04/code_expl_prompt"
+    }
+]

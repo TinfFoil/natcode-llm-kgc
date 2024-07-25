@@ -4,7 +4,7 @@
         "triple_list": [
             [
                 "Donald W. Riegle Jr.",
-                "Work for",
+                "Work_for",
                 "Senate Banking Committee"
             ]
         ]
@@ -14,7 +14,7 @@
         "triple_list": [
             [
                 "Sohn Ho Young",
-                "Work for",
+                "Work_for",
                 "Korean CIA"
             ]
         ]
@@ -24,7 +24,7 @@
         "triple_list": [
             [
                 "Reynie Ortiz",
-                "Work for",
+                "Work_for",
                 "U S West International"
             ]
         ]
@@ -64,17 +64,17 @@
         "triple_list": [
             [
                 "BELGRADE",
-                "Located in",
+                "Located_in",
                 "Yugoslavia"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "BELGRADE"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Yugoslavia"
             ]
         ]
@@ -84,17 +84,17 @@
         "triple_list": [
             [
                 "Texas Department of Agriculture",
-                "Organization based in",
+                "Organization_based_in",
                 "Texas"
             ],
             [
                 "Jim Hightower",
-                "Work for",
+                "Work_for",
                 "Texas Department of Agriculture"
             ],
             [
                 "Jim Hightower",
-                "Live in",
+                "Live_in",
                 "Texas"
             ]
         ]
@@ -104,7 +104,7 @@
         "triple_list": [
             [
                 "Bradley First Air of Carp",
-                "Organization based in",
+                "Organization_based_in",
                 "Ontario"
             ]
         ]
@@ -114,7 +114,7 @@
         "triple_list": [
             [
                 "George Lucas",
-                "Live in",
+                "Live_in",
                 "Modesto"
             ]
         ]
@@ -124,7 +124,7 @@
         "triple_list": [
             [
                 "Gerald Schwartz.",
-                "Live in",
+                "Live_in",
                 "Miami Beach"
             ]
         ]
@@ -134,7 +134,7 @@
         "triple_list": [
             [
                 "Thomas Woodrow Wilson",
-                "Live in",
+                "Live_in",
                 "Staunton , Va"
             ]
         ]
@@ -144,17 +144,17 @@
         "triple_list": [
             [
                 "Buenos Aires Province",
-                "Located in",
+                "Located_in",
                 "Argentina"
             ],
             [
                 "Antonio Cafiero.",
-                "Live in",
+                "Live_in",
                 "Argentina"
             ],
             [
                 "Antonio Cafiero.",
-                "Live in",
+                "Live_in",
                 "Buenos Aires Province"
             ]
         ]
@@ -164,7 +164,7 @@
         "triple_list": [
             [
                 "HUNTINGTON",
-                "Located in",
+                "Located_in",
                 "Ind ."
             ]
         ]
@@ -174,7 +174,7 @@
         "triple_list": [
             [
                 "Taj Mahal",
-                "Located in",
+                "Located_in",
                 "Atlantic City"
             ]
         ]

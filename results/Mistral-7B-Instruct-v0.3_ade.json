@@ -1,0 +1,1 @@
+[{"Model": "mistralai/Mistral-7B-Instruct-v0.3", "Precision": 0.5620052770448549, "Recall": 0.4819004524886878, "F1_Score": 0.5188794153471377, "n_icl_samples": 15, "n_samples_test": 300, "dataset_name": "ade"}]

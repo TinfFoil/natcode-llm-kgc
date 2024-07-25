@@ -4,22 +4,22 @@
         "triple_list": [
             [
                 "algorithm",
-                "Used-for",
+                "Used_for",
                 "computing optical flow , shape , motion , lighting , and albedo"
             ],
             [
                 "image sequence",
-                "Used-for",
+                "Used_for",
                 "algorithm"
             ],
             [
                 "rigidly-moving Lambertian object",
-                "Feature-of",
+                "Feature_of",
                 "image sequence"
             ],
             [
                 "distant illumination",
-                "Feature-of",
+                "Feature_of",
                 "rigidly-moving Lambertian object"
             ]
         ]
@@ -44,17 +44,17 @@
         "triple_list": [
             [
                 "spatial and temporal intensity variation",
-                "Used-for",
+                "Used_for",
                 "algorithm"
             ],
             [
                 "former",
-                "Hyponym-of",
+                "Hyponym_of",
                 "cues"
             ],
             [
                 "former",
-                "Used-for",
+                "Used_for",
                 "flow"
             ],
             [
@@ -64,17 +64,17 @@
             ],
             [
                 "latter",
-                "Hyponym-of",
+                "Hyponym_of",
                 "cues"
             ],
             [
                 "latter",
-                "Used-for",
+                "Used_for",
                 "surface orientation"
             ],
             [
                 "cues",
-                "Used-for",
+                "Used_for",
                 "dense reconstruction of both textured and texture-less surfaces"
             ]
         ]
@@ -84,7 +84,7 @@
         "triple_list": [
             [
                 "estimating affine camera parameters , illumination , shape , and albedo",
-                "Used-for",
+                "Used_for",
                 "algorithm"
             ]
         ]
@@ -94,7 +94,7 @@
         "triple_list": [
             [
                 "entity-oriented approach",
-                "Used-for",
+                "Used_for",
                 "restricted-domain parsing"
             ]
         ]
@@ -104,7 +104,7 @@
         "triple_list": [
             [
                 "this",
-                "Used-for",
+                "Used_for",
                 "limited domain semantics"
             ]
         ]
@@ -114,17 +114,17 @@
         "triple_list": [
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "fragmentary recognition"
             ],
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "multiple parsing strategies"
             ],
             [
                 "multiple parsing strategies",
-                "Used-for",
+                "Used_for",
                 "recognition of extra-grammatical input"
             ]
         ]
@@ -134,12 +134,12 @@
         "triple_list": [
             [
                 "control structure",
-                "Used-for",
+                "Used_for",
                 "entity-oriented parser"
             ],
             [
                 "control structure",
-                "Used-for",
+                "Used_for",
                 "parsing strategies"
             ]
         ]
@@ -149,7 +149,7 @@
         "triple_list": [
             [
                 "control structure",
-                "Part-of",
+                "Part_of",
                 "parser"
             ]
         ]
@@ -159,7 +159,7 @@
         "triple_list": [
             [
                 "parsing algorithms",
-                "Used-for",
+                "Used_for",
                 "it"
             ]
         ]
@@ -169,7 +169,7 @@
         "triple_list": [
             [
                 "restrictive statements",
-                "Feature-of",
+                "Feature_of",
                 "syntactic descriptions"
             ]
         ]
@@ -179,12 +179,12 @@
         "triple_list": [
             [
                 "algorithms",
-                "Used-for",
+                "Used_for",
                 "CCR formalism"
             ],
             [
                 "context free languages",
-                "Used-for",
+                "Used_for",
                 "algorithms"
             ]
         ]
@@ -194,7 +194,7 @@
         "triple_list": [
             [
                 "logical well-formedness conditions",
-                "Feature-of",
+                "Feature_of",
                 "trees"
             ]
         ]
@@ -204,12 +204,12 @@
         "triple_list": [
             [
                 "text mining method",
-                "Used-for",
+                "Used_for",
                 "synonymous expressions"
             ],
             [
                 "distributional hypothesis",
-                "Used-for",
+                "Used_for",
                 "text mining method"
             ]
         ]
@@ -219,12 +219,12 @@
         "triple_list": [
             [
                 "accuracy",
-                "Evaluate-for",
+                "Evaluate_for",
                 "term aggregation system"
             ],
             [
                 "term aggregation system",
-                "Evaluate-for",
+                "Evaluate_for",
                 "methodology"
             ]
         ]
@@ -234,12 +234,12 @@
         "triple_list": [
             [
                 "accuracy",
-                "Evaluate-for",
+                "Evaluate_for",
                 "term aggregation system"
             ],
             [
                 "term aggregation system",
-                "Evaluate-for",
+                "Evaluate_for",
                 "method"
             ]
         ]
@@ -249,17 +249,17 @@
         "triple_list": [
             [
                 "technique",
-                "Used-for",
+                "Used_for",
                 "robust estimation"
             ],
             [
                 "technique",
-                "Used-for",
+                "Used_for",
                 "efficient robust estimation algorithm"
             ],
             [
                 "inherent uncertainty of the estimation procedure",
-                "Used-for",
+                "Used_for",
                 "technique"
             ]
         ]
@@ -269,7 +269,7 @@
         "triple_list": [
             [
                 "strategies",
-                "Used-for",
+                "Used_for",
                 "robust estimation procedure"
             ],
             [
@@ -294,7 +294,7 @@
         "triple_list": [
             [
                 "geometric estimation problems",
-                "Evaluate-for",
+                "Evaluate_for",
                 "algorithm"
             ]
         ]
@@ -304,7 +304,7 @@
         "triple_list": [
             [
                 "Augmented Transition Network",
-                "Hyponym-of",
+                "Hyponym_of",
                 "dialog model"
             ]
         ]
@@ -314,22 +314,22 @@
         "triple_list": [
             [
                 "dialog schemata",
-                "Used-for",
+                "Used_for",
                 "device"
             ],
             [
                 "dialog schemata",
-                "Used-for",
+                "Used_for",
                 "conversation analysis"
             ],
             [
                 "models",
-                "Used-for",
+                "Used_for",
                 "device"
             ],
             [
                 "models",
-                "Used-for",
+                "Used_for",
                 "verbal interaction"
             ],
             [
@@ -344,12 +344,12 @@
         "triple_list": [
             [
                 "ATN",
-                "Used-for",
+                "Used_for",
                 "verbal interactions"
             ],
             [
                 "verbal interactions",
-                "Feature-of",
+                "Feature_of",
                 "task-oriented dialogs"
             ]
         ]
@@ -359,12 +359,12 @@
         "triple_list": [
             [
                 "unsupervised learning method",
-                "Used-for",
+                "Used_for",
                 "single-snippet answers"
             ],
             [
                 "question answering systems",
-                "Used-for",
+                "Used_for",
                 "Web search engines"
             ]
         ]
@@ -374,17 +374,17 @@
         "triple_list": [
             [
                 "method",
-                "Used-for",
+                "Used_for",
                 "on-line encyclopedias and dictionaries"
             ],
             [
                 "on-line encyclopedias and dictionaries",
-                "Used-for",
+                "Used_for",
                 "positive and negative definition examples"
             ],
             [
                 "positive and negative definition examples",
-                "Used-for",
+                "Used_for",
                 "svm"
             ]
         ]
@@ -399,17 +399,17 @@
             ],
             [
                 "news articles",
-                "Used-for",
+                "Used_for",
                 "system"
             ],
             [
                 "news articles",
-                "Part-of",
+                "Part_of",
                 "trec"
             ],
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "search engine"
             ]
         ]
@@ -419,7 +419,7 @@
         "triple_list": [
             [
                 "statistical learning perspective",
-                "Used-for",
+                "Used_for",
                 "classical decision-theoretic problem of weighted expert voting"
             ]
         ]
@@ -429,7 +429,7 @@
         "triple_list": [
             [
                 "sharp error estimates",
-                "Used-for",
+                "Used_for",
                 "optimal rule"
             ]
         ]
@@ -439,12 +439,12 @@
         "triple_list": [
             [
                 "reweighted version of the Kikuchi approximation",
-                "Used-for",
+                "Used_for",
                 "log partition function of a product distribution"
             ],
             [
                 "log partition function of a product distribution",
-                "Feature-of",
+                "Feature_of",
                 "region graph"
             ]
         ]
@@ -454,17 +454,17 @@
         "triple_list": [
             [
                 "concavity",
-                "Feature-of",
+                "Feature_of",
                 "reweighted objective function"
             ],
             [
                 "reweighted version of the sum product algorithm",
-                "Used-for",
+                "Used_for",
                 "Kikuchi region graph"
             ],
             [
                 "global optima",
-                "Feature-of",
+                "Feature_of",
                 "Kikuchi approximation"
             ]
         ]
@@ -474,7 +474,7 @@
         "triple_list": [
             [
                 "cycle structure",
-                "Feature-of",
+                "Feature_of",
                 "region graph"
             ]
         ]
@@ -484,12 +484,12 @@
         "triple_list": [
             [
                 "decision tree based approach",
-                "Used-for",
+                "Used_for",
                 "pronoun resolution"
             ],
             [
                 "pronoun resolution",
-                "Used-for",
+                "Used_for",
                 "spoken dialogue"
             ]
         ]
@@ -499,12 +499,12 @@
         "triple_list": [
             [
                 "system",
-                "Used-for",
+                "Used_for",
                 "pronouns"
             ],
             [
                 "NP - and non-NP-antecedents",
-                "Used-for",
+                "Used_for",
                 "pronouns"
             ]
         ]
@@ -514,12 +514,12 @@
         "triple_list": [
             [
                 "features",
-                "Used-for",
+                "Used_for",
                 "pronoun resolution"
             ],
             [
                 "pronoun resolution",
-                "Used-for",
+                "Used_for",
                 "spoken dialogue"
             ]
         ]
@@ -529,7 +529,7 @@
         "triple_list": [
             [
                 "Switchboard dialogues",
-                "Evaluate-for",
+                "Evaluate_for",
                 "system"
             ],
             [
@@ -544,12 +544,12 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "classifier"
             ],
             [
                 "classifier",
-                "Used-for",
+                "Used_for",
                 "class problem"
             ]
         ]
@@ -559,7 +559,7 @@
         "triple_list": [
             [
                 "estimation stage",
-                "Part-of",
+                "Part_of",
                 "approach"
             ],
             [
@@ -569,7 +569,7 @@
             ],
             [
                 "classification stage",
-                "Part-of",
+                "Part_of",
                 "approach"
             ]
         ]
@@ -579,7 +579,7 @@
         "triple_list": [
             [
                 "classifier",
-                "Used-for",
+                "Used_for",
                 "object poses"
             ]
         ]
@@ -589,7 +589,7 @@
         "triple_list": [
             [
                 "time complexity",
-                "Evaluate-for",
+                "Evaluate_for",
                 "algorithm"
             ]
         ]
@@ -599,17 +599,17 @@
         "triple_list": [
             [
                 "boosted combination of Random Ferns",
-                "Used-for",
+                "Used_for",
                 "classifier"
             ],
             [
                 "local histograms of oriented gradients ( HOGs )",
-                "Feature-of",
+                "Feature_of",
                 "boosted combination of Random Ferns"
             ],
             [
                 "pre-processing step",
-                "Used-for",
+                "Used_for",
                 "local histograms of oriented gradients ( HOGs )"
             ]
         ]
@@ -619,12 +619,12 @@
         "triple_list": [
             [
                 "supervised learning",
-                "Used-for",
+                "Used_for",
                 "approach"
             ],
             [
                 "gradient space",
-                "Used-for",
+                "Used_for",
                 "approach"
             ]
         ]
@@ -634,17 +634,17 @@
         "triple_list": [
             [
                 "motorbikes under planar rotations",
-                "Feature-of",
+                "Feature_of",
                 "database"
             ],
             [
                 "conditions",
-                "Feature-of",
+                "Feature_of",
                 "database"
             ],
             [
                 "cluttered backgrounds",
-                "Hyponym-of",
+                "Hyponym_of",
                 "conditions"
             ],
             [
@@ -654,7 +654,7 @@
             ],
             [
                 "changing illumination conditions",
-                "Hyponym-of",
+                "Hyponym_of",
                 "conditions"
             ],
             [
@@ -664,7 +664,7 @@
             ],
             [
                 "partial occlusions",
-                "Hyponym-of",
+                "Hyponym_of",
                 "conditions"
             ]
         ]
@@ -674,12 +674,12 @@
         "triple_list": [
             [
                 "duration model",
-                "Used-for",
+                "Used_for",
                 "triphone and semiphone systems"
             ],
             [
                 "error rate",
-                "Evaluate-for",
+                "Evaluate_for",
                 "triphone and semiphone systems"
             ]
         ]
@@ -689,7 +689,7 @@
         "triple_list": [
             [
                 "rapid adaptation technique",
-                "Used-for",
+                "Used_for",
                 "training strategy"
             ]
         ]
@@ -699,7 +699,7 @@
         "triple_list": [
             [
                 "bigram back-off language models",
-                "Used-for",
+                "Used_for",
                 "recognizer"
             ]
         ]
@@ -709,12 +709,12 @@
         "triple_list": [
             [
                 "system",
-                "Used-for",
+                "Used_for",
                 "RM task"
             ],
             [
                 "system",
-                "Used-for",
+                "Used_for",
                 "ATIS CSR task"
             ],
             [
@@ -729,7 +729,7 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "Interactive Machine Translation"
             ]
         ]
@@ -739,7 +739,7 @@
         "triple_list": [
             [
                 "paraphrasing",
-                "Used-for",
+                "Used_for",
                 "interactive disambiguation scheme"
             ]
         ]
@@ -749,12 +749,12 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "statistical machine translation"
             ],
             [
                 "syntactic information",
-                "Part-of",
+                "Part_of",
                 "approach"
             ],
             [
@@ -764,7 +764,7 @@
             ],
             [
                 "phrasal translation",
-                "Part-of",
+                "Part_of",
                 "approach"
             ]
         ]
@@ -774,7 +774,7 @@
         "triple_list": [
             [
                 "source-language dependency parser",
-                "Used-for",
+                "Used_for",
                 "method"
             ],
             [
@@ -784,7 +784,7 @@
             ],
             [
                 "target language word segmentation",
-                "Used-for",
+                "Used_for",
                 "method"
             ],
             [
@@ -794,7 +794,7 @@
             ],
             [
                 "unsupervised word alignment component",
-                "Used-for",
+                "Used_for",
                 "method"
             ]
         ]
@@ -809,12 +809,12 @@
             ],
             [
                 "tree-based models",
-                "Used-for",
+                "Used_for",
                 "approach"
             ],
             [
                 "SMT models",
-                "Used-for",
+                "Used_for",
                 "approach"
             ],
             [
@@ -824,12 +824,12 @@
             ],
             [
                 "phrasal SMT",
-                "Used-for",
+                "Used_for",
                 "parser"
             ],
             [
                 "linguistic generality",
-                "Feature-of",
+                "Feature_of",
                 "parser"
             ]
         ]
@@ -839,12 +839,12 @@
         "triple_list": [
             [
                 "visual cues",
-                "Feature-of",
+                "Feature_of",
                 "Video"
             ],
             [
                 "motion",
-                "Hyponym-of",
+                "Hyponym_of",
                 "visual cues"
             ],
             [
@@ -854,7 +854,7 @@
             ],
             [
                 "appearance",
-                "Hyponym-of",
+                "Hyponym_of",
                 "visual cues"
             ]
         ]
@@ -864,7 +864,7 @@
         "triple_list": [
             [
                 "intermediate-level video representation",
-                "Used-for",
+                "Used_for",
                 "recognition"
             ]
         ]
@@ -874,12 +874,12 @@
         "triple_list": [
             [
                 "long-range motion cues",
-                "Used-for",
+                "Used_for",
                 "spatio-temporal video segmentation algorithm"
             ],
             [
                 "clusters of point tracks",
-                "Used-for",
+                "Used_for",
                 "long-range motion cues"
             ]
         ]
@@ -889,17 +889,17 @@
         "triple_list": [
             [
                 "occlusion reasoning",
-                "Part-of",
+                "Part_of",
                 "track clustering cost function"
             ],
             [
                 "depth ordering constraints",
-                "Feature-of",
+                "Feature_of",
                 "occlusion reasoning"
             ],
             [
                 "motion similarity",
-                "Part-of",
+                "Part_of",
                 "track clustering cost function"
             ]
         ]
@@ -909,7 +909,7 @@
         "triple_list": [
             [
                 "video sequences of office scenes",
-                "Evaluate-for",
+                "Evaluate_for",
                 "approach"
             ]
         ]
@@ -919,12 +919,12 @@
         "triple_list": [
             [
                 "KAZE features",
-                "Hyponym-of",
+                "Hyponym_of",
                 "multiscale 2D feature detection and description algorithm"
             ],
             [
                 "nonlinear scale spaces",
-                "Feature-of",
+                "Feature_of",
                 "multiscale 2D feature detection and description algorithm"
             ]
         ]
@@ -934,12 +934,12 @@
         "triple_list": [
             [
                 "nonlinear scale space",
-                "Feature-of",
+                "Feature_of",
                 "2D features"
             ],
             [
                 "nonlinear diffusion filtering",
-                "Used-for",
+                "Used_for",
                 "2D features"
             ]
         ]
@@ -949,7 +949,7 @@
         "triple_list": [
             [
                 "Additive Operator Splitting ( AOS ) techniques",
-                "Used-for",
+                "Used_for",
                 "nonlinear scale space"
             ],
             [
@@ -959,7 +959,7 @@
             ],
             [
                 "variable con-ductance diffusion",
-                "Used-for",
+                "Used_for",
                 "nonlinear scale space"
             ]
         ]
@@ -984,7 +984,7 @@
             ],
             [
                 "detection",
-                "Evaluate-for",
+                "Evaluate_for",
                 "results"
             ],
             [
@@ -994,17 +994,17 @@
             ],
             [
                 "detection",
-                "Evaluate-for",
+                "Evaluate_for",
                 "state-of-the-art methods"
             ],
             [
                 "description",
-                "Evaluate-for",
+                "Evaluate_for",
                 "results"
             ],
             [
                 "description",
-                "Evaluate-for",
+                "Evaluate_for",
                 "state-of-the-art methods"
             ]
         ]
@@ -1014,12 +1014,12 @@
         "triple_list": [
             [
                 "Creating summaries",
-                "Used-for",
+                "Used_for",
                 "identification of the corresponding entity"
             ],
             [
                 "lengthy Semantic Web documents",
-                "Used-for",
+                "Used_for",
                 "Creating summaries"
             ]
         ]
@@ -1029,7 +1029,7 @@
         "triple_list": [
             [
                 "diversity",
-                "Feature-of",
+                "Feature_of",
                 "diversified ( faceted ) summaries"
             ],
             [
@@ -1039,7 +1039,7 @@
             ],
             [
                 "uniqueness",
-                "Feature-of",
+                "Feature_of",
                 "diversified ( faceted ) summaries"
             ],
             [
@@ -1049,7 +1049,7 @@
             ],
             [
                 "popularity",
-                "Feature-of",
+                "Feature_of",
                 "diversified ( faceted ) summaries"
             ]
         ]
@@ -1059,7 +1059,7 @@
         "triple_list": [
             [
                 "human conceptual clustering techniques",
-                "Used-for",
+                "Used_for",
                 "diversity-aware entity summarization approach"
             ]
         ]
@@ -1069,7 +1069,7 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "entity summarization"
             ],
             [
@@ -1079,17 +1079,17 @@
             ],
             [
                 "state-of-the-art techniques",
-                "Used-for",
+                "Used_for",
                 "entity summarization"
             ],
             [
                 "quality",
-                "Evaluate-for",
+                "Evaluate_for",
                 "entity summarization"
             ],
             [
                 "efficiency",
-                "Evaluate-for",
+                "Evaluate_for",
                 "entity summarization"
             ]
         ]
@@ -1099,7 +1099,7 @@
         "triple_list": [
             [
                 "framework",
-                "Used-for",
+                "Used_for",
                 "fast computation of lexical affinity models"
             ]
         ]
@@ -1109,12 +1109,12 @@
         "triple_list": [
             [
                 "algorithm",
-                "Part-of",
+                "Part_of",
                 "framework"
             ],
             [
                 "algorithm",
-                "Used-for",
+                "Used_for",
                 "co-occurrence distribution"
             ],
             [
@@ -1124,7 +1124,7 @@
             ],
             [
                 "independence model",
-                "Part-of",
+                "Part_of",
                 "framework"
             ],
             [
@@ -1134,7 +1134,7 @@
             ],
             [
                 "parametric affinity model",
-                "Part-of",
+                "Part_of",
                 "framework"
             ]
         ]
@@ -1144,7 +1144,7 @@
         "triple_list": [
             [
                 "lexical affinity",
-                "Used-for",
+                "Used_for",
                 "sequential models"
             ],
             [
@@ -1154,7 +1154,7 @@
             ],
             [
                 "models",
-                "Used-for",
+                "Used_for",
                 "co-occurrence patterns"
             ]
         ]
@@ -1164,12 +1164,12 @@
         "triple_list": [
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "natural language tests"
             ],
             [
                 "terabyte corpus",
-                "Evaluate-for",
+                "Evaluate_for",
                 "it"
             ]
         ]
@@ -1179,7 +1179,7 @@
         "triple_list": [
             [
                 "system",
-                "Used-for",
+                "Used_for",
                 "categorizing unknown words"
             ]
         ]
@@ -1189,17 +1189,17 @@
         "triple_list": [
             [
                 "multi-component architecture",
-                "Used-for",
+                "Used_for",
                 "system"
             ],
             [
                 "component",
-                "Part-of",
+                "Part_of",
                 "multi-component architecture"
             ],
             [
                 "component",
-                "Used-for",
+                "Used_for",
                 "unknown words"
             ]
         ]
@@ -1209,12 +1209,12 @@
         "triple_list": [
             [
                 "components",
-                "Used-for",
+                "Used_for",
                 "names"
             ],
             [
                 "components",
-                "Used-for",
+                "Used_for",
                 "spelling errors"
             ],
             [
@@ -1229,7 +1229,7 @@
         "triple_list": [
             [
                 "decision tree architecture",
-                "Used-for",
+                "Used_for",
                 "component"
             ]
         ]
@@ -1239,7 +1239,7 @@
         "triple_list": [
             [
                 "live closed captions",
-                "Evaluate-for",
+                "Evaluate_for",
                 "system"
             ]
         ]
@@ -1249,7 +1249,7 @@
         "triple_list": [
             [
                 "CCLINC ( Common Coalition Language System at Lincoln Laboratory )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Korean-to-English machine translation system"
             ]
         ]
@@ -1259,17 +1259,17 @@
         "triple_list": [
             [
                 "core modules",
-                "Part-of",
+                "Part_of",
                 "CCLINC Korean-to-English translation system"
             ],
             [
                 "language neutral meaning representation",
-                "Used-for",
+                "Used_for",
                 "language understanding and generation modules"
             ],
             [
                 "semantic frame",
-                "Hyponym-of",
+                "Hyponym_of",
                 "language neutral meaning representation"
             ]
         ]
@@ -1279,12 +1279,12 @@
         "triple_list": [
             [
                 "Korean",
-                "Hyponym-of",
+                "Hyponym_of",
                 "verb final language"
             ],
             [
                 "overt case markers",
-                "Feature-of",
+                "Feature_of",
                 "verb final language"
             ]
         ]
@@ -1294,7 +1294,7 @@
         "triple_list": [
             [
                 "word sense disambiguation",
-                "Used-for",
+                "Used_for",
                 "translation"
             ],
             [
@@ -1304,7 +1304,7 @@
             ],
             [
                 "word order generation",
-                "Used-for",
+                "Used_for",
                 "translation"
             ]
         ]
@@ -1314,12 +1314,12 @@
         "triple_list": [
             [
                 "Korean newspaper articles",
-                "Used-for",
+                "Used_for",
                 "system"
             ],
             [
                 "missiles and chemical biological warfare",
-                "Feature-of",
+                "Feature_of",
                 "Korean newspaper articles"
             ]
         ]
@@ -1329,17 +1329,17 @@
         "triple_list": [
             [
                 "JAVELIN system",
-                "Used-for",
+                "Used_for",
                 "open-domain question answering capability"
             ],
             [
                 "planning-based architecture",
-                "Part-of",
+                "Part_of",
                 "JAVELIN system"
             ],
             [
                 "language processing modules",
-                "Part-of",
+                "Part_of",
                 "JAVELIN system"
             ],
             [
@@ -1354,12 +1354,12 @@
         "triple_list": [
             [
                 "head-driven statistical parsing model",
-                "Used-for",
+                "Used_for",
                 "simultaneous language model"
             ],
             [
                 "head-driven statistical parsing model",
-                "Used-for",
+                "Used_for",
                 "parser"
             ],
             [
@@ -1369,12 +1369,12 @@
             ],
             [
                 "simultaneous language model",
-                "Used-for",
+                "Used_for",
                 "large-vocabulary speech recognition"
             ],
             [
                 "parser",
-                "Used-for",
+                "Used_for",
                 "large-vocabulary speech recognition"
             ]
         ]
@@ -1384,17 +1384,17 @@
         "triple_list": [
             [
                 "model",
-                "Used-for",
+                "Used_for",
                 "online left to right chart-parser"
             ],
             [
                 "online left to right chart-parser",
-                "Used-for",
+                "Used_for",
                 "word lattices"
             ],
             [
                 "acoustic , n-gram , and parser probabilities",
-                "Part-of",
+                "Part_of",
                 "online left to right chart-parser"
             ]
         ]
@@ -1404,7 +1404,7 @@
         "triple_list": [
             [
                 "structural and lexical dependencies",
-                "Used-for",
+                "Used_for",
                 "parser"
             ]
         ]
@@ -1419,22 +1419,22 @@
             ],
             [
                 "Wall Street Journal treebank",
-                "Evaluate-for",
+                "Evaluate_for",
                 "n-gram language model"
             ],
             [
                 "lattice corpora",
-                "Evaluate-for",
+                "Evaluate_for",
                 "n-gram language model"
             ],
             [
                 "word error rates",
-                "Evaluate-for",
+                "Evaluate_for",
                 "n-gram language model"
             ],
             [
                 "structural information",
-                "Used-for",
+                "Used_for",
                 "speech understanding"
             ]
         ]
@@ -1444,7 +1444,7 @@
         "triple_list": [
             [
                 "Image composition ( or mosaicing )",
-                "Part-of",
+                "Part_of",
                 "video analysis and representation"
             ]
         ]
@@ -1464,7 +1464,7 @@
         "triple_list": [
             [
                 "amount of blurring",
-                "Evaluate-for",
+                "Evaluate_for",
                 "mosaic"
             ]
         ]
@@ -1474,12 +1474,12 @@
         "triple_list": [
             [
                 "graph-based technique",
-                "Used-for",
+                "Used_for",
                 "Global registration"
             ],
             [
                 "graph-based technique",
-                "Used-for",
+                "Used_for",
                 "topological structure"
             ],
             [
@@ -1489,12 +1489,12 @@
             ],
             [
                 "bundle adjustment",
-                "Used-for",
+                "Used_for",
                 "Global registration"
             ],
             [
                 "homographies",
-                "Used-for",
+                "Used_for",
                 "bundle adjustment"
             ]
         ]
@@ -1514,7 +1514,7 @@
         "triple_list": [
             [
                 "Polish",
-                "Used-for",
+                "Used_for",
                 "computer-assisted acquisition and morpho-syntactic description of verb-noun collocations"
             ]
         ]
@@ -1524,7 +1524,7 @@
         "triple_list": [
             [
                 "dictionary-based acquisition of collocation lexicon",
-                "Hyponym-of",
+                "Hyponym_of",
                 "phases"
             ],
             [
@@ -1534,17 +1534,17 @@
             ],
             [
                 "feasibility study",
-                "Hyponym-of",
+                "Hyponym_of",
                 "phases"
             ],
             [
                 "feasibility study",
-                "Used-for",
+                "Used_for",
                 "corpus-based lexicon enlargement phase"
             ],
             [
                 "corpus-based lexicon enlargement and collocation description",
-                "Hyponym-of",
+                "Hyponym_of",
                 "phases"
             ],
             [
@@ -1559,12 +1559,12 @@
         "triple_list": [
             [
                 "corpus-based approach",
-                "Used-for",
+                "Used_for",
                 "verb-noun collocation dictionary"
             ],
             [
                 "Polish",
-                "Feature-of",
+                "Feature_of",
                 "verb-noun collocation dictionary"
             ]
         ]
@@ -1574,7 +1574,7 @@
         "triple_list": [
             [
                 "hash-tag recommendation task",
-                "Used-for",
+                "Used_for",
                 "microblogs"
             ]
         ]
@@ -1584,7 +1584,7 @@
         "triple_list": [
             [
                 "convolutional neural networks ( CNNs )",
-                "Used-for",
+                "Used_for",
                 "natural language processing tasks"
             ]
         ]
@@ -1594,12 +1594,12 @@
         "triple_list": [
             [
                 "architecture",
-                "Used-for",
+                "Used_for",
                 "trigger words"
             ],
             [
                 "attention mechanism",
-                "Feature-of",
+                "Feature_of",
                 "architecture"
             ]
         ]
@@ -1609,7 +1609,7 @@
         "triple_list": [
             [
                 "data",
-                "Evaluate-for",
+                "Evaluate_for",
                 "model"
             ],
             [
@@ -1629,7 +1629,7 @@
             ],
             [
                 "F1-score",
-                "Evaluate-for",
+                "Evaluate_for",
                 "state-of-the-art method"
             ]
         ]
@@ -1639,17 +1639,17 @@
         "triple_list": [
             [
                 "Expectation-Maximization ( EM ) algorithm",
-                "Used-for",
+                "Used_for",
                 "unsupervised learning method"
             ],
             [
                 "Expectation-Maximization ( EM ) algorithm",
-                "Used-for",
+                "Used_for",
                 "text classification problems"
             ],
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "word sense disambiguation ( WSD ) problems"
             ]
         ]
@@ -1659,7 +1659,7 @@
         "triple_list": [
             [
                 "Japanese Dictionary Task",
-                "Feature-of",
+                "Feature_of",
                 "SENSEVAL2"
             ]
         ]
@@ -1669,7 +1669,7 @@
         "triple_list": [
             [
                 "methods",
-                "Used-for",
+                "Used_for",
                 "verb WSD problems"
             ]
         ]
@@ -1679,17 +1679,17 @@
         "triple_list": [
             [
                 "Dividing sentences in chunks of words",
-                "Used-for",
+                "Used_for",
                 "parsing"
             ],
             [
                 "Dividing sentences in chunks of words",
-                "Used-for",
+                "Used_for",
                 "information extraction"
             ],
             [
                 "Dividing sentences in chunks of words",
-                "Used-for",
+                "Used_for",
                 "information retrieval"
             ],
             [
@@ -1709,7 +1709,7 @@
         "triple_list": [
             [
                 "data representation",
-                "Used-for",
+                "Used_for",
                 "chunking"
             ]
         ]
@@ -1719,7 +1719,7 @@
         "triple_list": [
             [
                 "data representations",
-                "Used-for",
+                "Used_for",
                 "recognizing noun phrase chunks"
             ]
         ]
@@ -1729,12 +1729,12 @@
         "triple_list": [
             [
                 "data representation",
-                "Used-for",
+                "Used_for",
                 "memory-based learning chunker"
             ],
             [
                 "data set",
-                "Evaluate-for",
+                "Evaluate_for",
                 "memory-based learning chunker"
             ]
         ]
@@ -1744,22 +1744,22 @@
         "triple_list": [
             [
                 "system",
-                "Used-for",
+                "Used_for",
                 "FAQ-like questions and answers"
             ],
             [
                 "noisy-channel architecture",
-                "Used-for",
+                "Used_for",
                 "system"
             ],
             [
                 "noisy-channel architecture",
-                "Used-for",
+                "Used_for",
                 "language model"
             ],
             [
                 "noisy-channel architecture",
-                "Used-for",
+                "Used_for",
                 "transformation model"
             ]
         ]
@@ -1769,17 +1769,17 @@
         "triple_list": [
             [
                 "measures of speech",
-                "Evaluate-for",
+                "Evaluate_for",
                 "intelligibility prediction"
             ],
             [
                 "synthesized speech",
-                "Used-for",
+                "Used_for",
                 "intelligibility prediction"
             ],
             [
                 "diverse noisy situations",
-                "Feature-of",
+                "Feature_of",
                 "synthesized speech"
             ]
         ]
@@ -1794,7 +1794,7 @@
             ],
             [
                 "Dau measure",
-                "Hyponym-of",
+                "Hyponym_of",
                 "intel-ligibility measures"
             ],
             [
@@ -1804,7 +1804,7 @@
             ],
             [
                 "glimpse proportion",
-                "Hyponym-of",
+                "Hyponym_of",
                 "intel-ligibility measures"
             ],
             [
@@ -1814,12 +1814,12 @@
             ],
             [
                 "Speech Intelligibility Index ( SII )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "intel-ligibility measures"
             ],
             [
                 "Perceptual Evaluation of Speech Quality ( PESQ )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "quality measure"
             ]
         ]
@@ -1829,7 +1829,7 @@
         "triple_list": [
             [
                 "HMM-based speech synthesis system",
-                "Used-for",
+                "Used_for",
                 "generation of synthesized speech"
             ]
         ]
@@ -1839,7 +1839,7 @@
         "triple_list": [
             [
                 "additive noises",
-                "Part-of",
+                "Part_of",
                 "noisy conditions"
             ]
         ]
@@ -1864,7 +1864,7 @@
             ],
             [
                 "Dau",
-                "Hyponym-of",
+                "Hyponym_of",
                 "predictors of intelligibility"
             ],
             [
@@ -1874,7 +1874,7 @@
             ],
             [
                 "glimpse measures",
-                "Hyponym-of",
+                "Hyponym_of",
                 "predictors of intelligibility"
             ],
             [
@@ -1884,12 +1884,12 @@
             ],
             [
                 "correlations",
-                "Evaluate-for",
+                "Evaluate_for",
                 "Dau"
             ],
             [
                 "correlations",
-                "Evaluate-for",
+                "Evaluate_for",
                 "glimpse measures"
             ]
         ]
@@ -1899,12 +1899,12 @@
         "triple_list": [
             [
                 "measures",
-                "Evaluate-for",
+                "Evaluate_for",
                 "predictions of intelligibility"
             ],
             [
                 "synthetic speech",
-                "Used-for",
+                "Used_for",
                 "predictions of intelligibility"
             ],
             [
@@ -1914,7 +1914,7 @@
             ],
             [
                 "SII measure",
-                "Hyponym-of",
+                "Hyponym_of",
                 "measures"
             ]
         ]
@@ -1924,7 +1924,7 @@
         "triple_list": [
             [
                 "ideal binary mask",
-                "Used-for",
+                "Used_for",
                 "synthesized speech"
             ]
         ]
@@ -1934,7 +1934,7 @@
         "triple_list": [
             [
                 "Glimpse measure",
-                "Used-for",
+                "Used_for",
                 "intelligibility predictions"
             ]
         ]
@@ -1944,17 +1944,17 @@
         "triple_list": [
             [
                 "'' graphics for vision '' approach",
-                "Used-for",
+                "Used_for",
                 "reconstruction"
             ],
             [
                 "large and imperfect data set",
-                "Used-for",
+                "Used_for",
                 "reconstruction"
             ],
             [
                 "tensor voting",
-                "Used-for",
+                "Used_for",
                 "reconstruction"
             ],
             [
@@ -1964,7 +1964,7 @@
             ],
             [
                 "ROD-TV",
-                "Used-for",
+                "Used_for",
                 "reconstruction"
             ]
         ]
@@ -1974,12 +1974,12 @@
         "triple_list": [
             [
                 "efficiency",
-                "Evaluate-for",
+                "Evaluate_for",
                 "ROD-TV"
             ],
             [
                 "robust-ness",
-                "Evaluate-for",
+                "Evaluate_for",
                 "ROD-TV"
             ],
             [
@@ -2004,7 +2004,7 @@
         "triple_list": [
             [
                 "Locally inferred surface elements",
-                "Used-for",
+                "Used_for",
                 "local shapes"
             ]
         ]
@@ -2014,12 +2014,12 @@
         "triple_list": [
             [
                 "per-vertex normals",
-                "Used-for",
+                "Used_for",
                 "interpolative shading"
             ],
             [
                 "sub-voxel precision",
-                "Feature-of",
+                "Feature_of",
                 "per-vertex normals"
             ]
         ]
@@ -2029,12 +2029,12 @@
         "triple_list": [
             [
                 "mesh connectivity requirement",
-                "Used-for",
+                "Used_for",
                 "multiscale feature extraction algorithm"
             ],
             [
                 "ROD-TV",
-                "Used-for",
+                "Used_for",
                 "multiscale feature extraction algorithm"
             ]
         ]
@@ -2044,7 +2044,7 @@
         "triple_list": [
             [
                 "hierarchical data structure",
-                "Part-of",
+                "Part_of",
                 "ROD-TV"
             ]
         ]
@@ -2054,7 +2054,7 @@
         "triple_list": [
             [
                 "tensor voting",
-                "Hyponym-of",
+                "Hyponym_of",
                 "local reconstruction algorithm"
             ]
         ]
@@ -2064,7 +2064,7 @@
         "triple_list": [
             [
                 "traversing the data hierarchy",
-                "Used-for",
+                "Used_for",
                 "It"
             ],
             [
@@ -2074,7 +2074,7 @@
             ],
             [
                 "collecting tensorial support",
-                "Used-for",
+                "Used_for",
                 "It"
             ]
         ]
@@ -2089,12 +2089,12 @@
             ],
             [
                 "rhetorical structure",
-                "Used-for",
+                "Used_for",
                 "discourse processing"
             ],
             [
                 "punctuation",
-                "Used-for",
+                "Used_for",
                 "discourse processing"
             ]
         ]
@@ -2104,12 +2104,12 @@
         "triple_list": [
             [
                 "Chinese punctuation marks",
-                "Part-of",
+                "Part_of",
                 "news commentary texts"
             ],
             [
                 "Colon",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ],
             [
@@ -2119,7 +2119,7 @@
             ],
             [
                 "Dash",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ],
             [
@@ -2129,7 +2129,7 @@
             ],
             [
                 "Ellipsis",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ],
             [
@@ -2139,7 +2139,7 @@
             ],
             [
                 "Exclamation Mark",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ],
             [
@@ -2149,7 +2149,7 @@
             ],
             [
                 "Question Mark",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ],
             [
@@ -2159,7 +2159,7 @@
             ],
             [
                 "Semicolon",
-                "Hyponym-of",
+                "Hyponym_of",
                 "Chinese punctuation marks"
             ]
         ]
@@ -2169,7 +2169,7 @@
         "triple_list": [
             [
                 "rhetorical patterns",
-                "Feature-of",
+                "Feature_of",
                 "marks"
             ],
             [
@@ -2189,12 +2189,12 @@
             ],
             [
                 "Chinese punctuation marks",
-                "Used-for",
+                "Used_for",
                 "indicators of nuclearity"
             ],
             [
                 "Chinese texts",
-                "Feature-of",
+                "Feature_of",
                 "indicators of nuclearity"
             ]
         ]
@@ -2204,7 +2204,7 @@
         "triple_list": [
             [
                 "Markov random field ( MRF ) models",
-                "Used-for",
+                "Used_for",
                 "features"
             ]
         ]
@@ -2214,12 +2214,12 @@
         "triple_list": [
             [
                 "anisotropic circular Gaussian MRF ( ACGMRF ) model",
-                "Used-for",
+                "Used_for",
                 "modelling rotated image textures"
             ],
             [
                 "anisotropic circular Gaussian MRF ( ACGMRF ) model",
-                "Used-for",
+                "Used_for",
                 "retrieving rotation-invariant texture features"
             ],
             [
@@ -2234,12 +2234,12 @@
         "triple_list": [
             [
                 "singularity problem",
-                "Feature-of",
+                "Feature_of",
                 "least squares estimate ( LSE ) method"
             ],
             [
                 "approximate least squares estimate ( ALSE ) method",
-                "Used-for",
+                "Used_for",
                 "parameters of the ACGMRF model"
             ]
         ]
@@ -2249,12 +2249,12 @@
         "triple_list": [
             [
                 "parameters of the ACGMRF model",
-                "Used-for",
+                "Used_for",
                 "rotation-invariant features"
             ],
             [
                 "one-dimensional ( 1-D ) discrete Fourier transform ( DFT )",
-                "Used-for",
+                "Used_for",
                 "rotation-invariant features"
             ]
         ]
@@ -2264,7 +2264,7 @@
         "triple_list": [
             [
                 "rotation-invariant features",
-                "Used-for",
+                "Used_for",
                 "SAR ( synthetic aperture radar"
             ]
         ]
@@ -2274,7 +2274,7 @@
         "triple_list": [
             [
                 "independent classifiers",
-                "Used-for",
+                "Used_for",
                 "semantic role labeling"
             ],
             [
@@ -2284,7 +2284,7 @@
             ],
             [
                 "Viterbi decoding",
-                "Used-for",
+                "Used_for",
                 "label sequence models"
             ]
         ]
@@ -2294,7 +2294,7 @@
         "triple_list": [
             [
                 "features",
-                "Part-of",
+                "Part_of",
                 "discriminative log-linear models"
             ]
         ]
@@ -2304,12 +2304,12 @@
         "triple_list": [
             [
                 "error reduction",
-                "Evaluate-for",
+                "Evaluate_for",
                 "system"
             ],
             [
                 "error reduction",
-                "Evaluate-for",
+                "Evaluate_for",
                 "independent classifier"
             ],
             [
@@ -2319,17 +2319,17 @@
             ],
             [
                 "gold-standard parse trees",
-                "Evaluate-for",
+                "Evaluate_for",
                 "system"
             ],
             [
                 "gold-standard parse trees",
-                "Evaluate-for",
+                "Evaluate_for",
                 "independent classifier"
             ],
             [
                 "gold-standard parse trees",
-                "Part-of",
+                "Part_of",
                 "PropBank"
             ]
         ]
@@ -2339,27 +2339,27 @@
         "triple_list": [
             [
                 "MORphological PArser MORPA",
-                "Used-for",
+                "Used_for",
                 "ambiguity"
             ],
             [
                 "probabilistic context-free grammar ( PCFG )",
-                "Used-for",
+                "Used_for",
                 "MORphological PArser MORPA"
             ],
             [
                 "`` conventional '' context-free morphological grammar",
-                "Used-for",
+                "Used_for",
                 "it"
             ],
             [
                 "`` conventional '' context-free morphological grammar",
-                "Used-for",
+                "Used_for",
                 "ungrammatical segmentations"
             ],
             [
                 "probability-based scoring function",
-                "Used-for",
+                "Used_for",
                 "it"
             ],
             [
@@ -2369,7 +2369,7 @@
             ],
             [
                 "probability-based scoring function",
-                "Used-for",
+                "Used_for",
                 "parse"
             ]
         ]
@@ -2379,7 +2379,7 @@
         "triple_list": [
             [
                 "PCFG",
-                "Used-for",
+                "Used_for",
                 "morphological parsing"
             ]
         ]
@@ -2389,17 +2389,17 @@
         "triple_list": [
             [
                 "MORPA",
-                "Hyponym-of",
+                "Hyponym_of",
                 "parser"
             ],
             [
                 "MORPA",
-                "Used-for",
+                "Used_for",
                 "text-to-speech conversion system"
             ],
             [
                 "parser",
-                "Used-for",
+                "Used_for",
                 "text-to-speech conversion system"
             ]
         ]
@@ -2409,12 +2409,12 @@
         "triple_list": [
             [
                 "unification-based grammar formalism",
-                "Used-for",
+                "Used_for",
                 "Korean phonological knowledge base system"
             ],
             [
                 "Korean Phonology Structure Grammar ( KPSG )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "unification-based grammar formalism"
             ]
         ]
@@ -2424,12 +2424,12 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "KPSG"
             ],
             [
                 "KPSG",
-                "Used-for",
+                "Used_for",
                 "phonological system"
             ]
         ]
@@ -2444,7 +2444,7 @@
             ],
             [
                 "generative phonological approach",
-                "Used-for",
+                "Used_for",
                 "those"
             ]
         ]
@@ -2454,7 +2454,7 @@
         "triple_list": [
             [
                 "design of core-selecting payment rules",
-                "Used-for",
+                "Used_for",
                 "domains"
             ]
         ]
@@ -2464,7 +2464,7 @@
         "triple_list": [
             [
                 "core-selecting rules",
-                "Used-for",
+                "Used_for",
                 "IR"
             ]
         ]
@@ -2474,7 +2474,7 @@
         "triple_list": [
             [
                 "computational Bayes-Nash equilibrium analysis",
-                "Used-for",
+                "Used_for",
                 "rules"
             ]
         ]
@@ -2489,12 +2489,12 @@
             ],
             [
                 "rate of ex-post IR violations",
-                "Evaluate-for",
+                "Evaluate_for",
                 "rules"
             ],
             [
                 "rate of ex-post IR violations",
-                "Evaluate-for",
+                "Evaluate_for",
                 "core-selecting rules"
             ]
         ]
@@ -2504,7 +2504,7 @@
         "triple_list": [
             [
                 "search tool",
-                "Used-for",
+                "Used_for",
                 "ngrams"
             ]
         ]
@@ -2514,12 +2514,12 @@
         "triple_list": [
             [
                 "tool",
-                "Used-for",
+                "Used_for",
                 "linguistic knowledge discovery"
             ],
             [
                 "tool",
-                "Used-for",
+                "Used_for",
                 "NLP tasks"
             ],
             [
@@ -2534,7 +2534,7 @@
         "triple_list": [
             [
                 "user modeling",
-                "Part-of",
+                "Part_of",
                 "systems"
             ]
         ]
@@ -2544,7 +2544,7 @@
         "triple_list": [
             [
                 "user model",
-                "Used-for",
+                "Used_for",
                 "user modeling"
             ]
         ]
@@ -2554,7 +2554,7 @@
         "triple_list": [
             [
                 "user modeling component",
-                "Part-of",
+                "Part_of",
                 "system"
             ]
         ]
@@ -2564,17 +2564,17 @@
         "triple_list": [
             [
                 "Information extraction techniques",
-                "Used-for",
+                "Used_for",
                 "structured databases"
             ],
             [
                 "unstructured data sources",
-                "Used-for",
+                "Used_for",
                 "Information extraction techniques"
             ],
             [
                 "Web",
-                "Hyponym-of",
+                "Hyponym_of",
                 "unstructured data sources"
             ],
             [
@@ -2584,7 +2584,7 @@
             ],
             [
                 "newswire documents",
-                "Hyponym-of",
+                "Hyponym_of",
                 "unstructured data sources"
             ]
         ]
@@ -2594,7 +2594,7 @@
         "triple_list": [
             [
                 "accuracy",
-                "Evaluate-for",
+                "Evaluate_for",
                 "systems"
             ]
         ]
@@ -2604,32 +2604,32 @@
         "triple_list": [
             [
                 "linear-chain conditional random field ( CRF )",
-                "Used-for",
+                "Used_for",
                 "information extraction system"
             ],
             [
                 "linear-chain conditional random field ( CRF )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "probabilistic model"
             ],
             [
                 "probabilistic model",
-                "Used-for",
+                "Used_for",
                 "information extraction tasks"
             ],
             [
                 "probabilistic model",
-                "Used-for",
+                "Used_for",
                 "arbitrary , overlapping features"
             ],
             [
                 "arbitrary , overlapping features",
-                "Feature-of",
+                "Feature_of",
                 "input"
             ],
             [
                 "arbitrary , overlapping features",
-                "Part-of",
+                "Part_of",
                 "Markov model"
             ]
         ]
@@ -2644,7 +2644,7 @@
             ],
             [
                 "average precision",
-                "Evaluate-for",
+                "Evaluate_for",
                 "techniques"
             ]
         ]
@@ -2654,12 +2654,12 @@
         "triple_list": [
             [
                 "information redundancy in multilingual input",
-                "Used-for",
+                "Used_for",
                 "machine translation"
             ],
             [
                 "information redundancy in multilingual input",
-                "Used-for",
+                "Used_for",
                 "multilingual summaries"
             ]
         ]
@@ -2669,7 +2669,7 @@
         "triple_list": [
             [
                 "Arabic documents",
-                "Used-for",
+                "Used_for",
                 "machine translations"
             ]
         ]
@@ -2679,12 +2679,12 @@
         "triple_list": [
             [
                 "approach",
-                "Used-for",
+                "Used_for",
                 "oriented object proposals ( OOPs )"
             ],
             [
                 "detection error",
-                "Evaluate-for",
+                "Evaluate_for",
                 "oriented object proposals ( OOPs )"
             ]
         ]
@@ -2694,7 +2694,7 @@
         "triple_list": [
             [
                 "pixelwise object probability",
-                "Used-for",
+                "Used_for",
                 "object regions"
             ],
             [
@@ -2709,17 +2709,17 @@
         "triple_list": [
             [
                 "generative proba-bilistic model",
-                "Used-for",
+                "Used_for",
                 "proposal generation problem"
             ],
             [
                 "shapes",
-                "Feature-of",
+                "Feature_of",
                 "object proposals"
             ],
             [
                 "sizes",
-                "Hyponym-of",
+                "Hyponym_of",
                 "shapes"
             ],
             [
@@ -2729,12 +2729,12 @@
             ],
             [
                 "orientations",
-                "Hyponym-of",
+                "Hyponym_of",
                 "shapes"
             ],
             [
                 "local maximum likelihoods",
-                "Used-for",
+                "Used_for",
                 "object proposals"
             ]
         ]
@@ -2744,7 +2744,7 @@
         "triple_list": [
             [
                 "object detector",
-                "Used-for",
+                "Used_for",
                 "orientations"
             ]
         ]
@@ -2754,12 +2754,12 @@
         "triple_list": [
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "number of proposals"
             ],
             [
                 "recall",
-                "Evaluate-for",
+                "Evaluate_for",
                 "it"
             ]
         ]
@@ -2769,7 +2769,7 @@
         "triple_list": [
             [
                 "PASCAL VOC 2007 dataset",
-                "Evaluate-for",
+                "Evaluate_for",
                 "OOP"
             ],
             [
@@ -2784,7 +2784,7 @@
         "triple_list": [
             [
                 "rotation invariant property",
-                "Used-for",
+                "Used_for",
                 "class-specific object detector"
             ],
             [
@@ -2794,12 +2794,12 @@
             ],
             [
                 "object rotation scenarios",
-                "Evaluate-for",
+                "Evaluate_for",
                 "class-specific object detector"
             ],
             [
                 "object rotation scenarios",
-                "Evaluate-for",
+                "Evaluate_for",
                 "proposal generation methods"
             ],
             [
@@ -2809,12 +2809,12 @@
             ],
             [
                 "general scenarios",
-                "Evaluate-for",
+                "Evaluate_for",
                 "class-specific object detector"
             ],
             [
                 "general scenarios",
-                "Evaluate-for",
+                "Evaluate_for",
                 "proposal generation methods"
             ]
         ]
@@ -2824,22 +2824,22 @@
         "triple_list": [
             [
                 "domain-independent capabilities",
-                "Part-of",
+                "Part_of",
                 "Paramax spoken language understanding system"
             ],
             [
                 "non-monotonic reasoning",
-                "Hyponym-of",
+                "Hyponym_of",
                 "domain-independent capabilities"
             ],
             [
                 "implicit reference resolution",
-                "Hyponym-of",
+                "Hyponym_of",
                 "domain-independent capabilities"
             ],
             [
                 "database query paraphrase",
-                "Hyponym-of",
+                "Hyponym_of",
                 "domain-independent capabilities"
             ]
         ]
@@ -2849,7 +2849,7 @@
         "triple_list": [
             [
                 "OCR accuracy",
-                "Evaluate-for",
+                "Evaluate_for",
                 "n-best speech/language integration architecture"
             ]
         ]
@@ -2859,7 +2859,7 @@
         "triple_list": [
             [
                 "free-hand human sketches",
-                "Used-for",
+                "Used_for",
                 "instance-level retrieval of images"
             ]
         ]
@@ -2869,7 +2869,7 @@
         "triple_list": [
             [
                 "annotated cross-domain sketch-photo datasets",
-                "Used-for",
+                "Used_for",
                 "machine learning techniques"
             ]
         ]
@@ -2879,17 +2879,17 @@
         "triple_list": [
             [
                 "deep triplet-ranking model",
-                "Used-for",
+                "Used_for",
                 "instance-level SBIR"
             ],
             [
                 "deep triplet-ranking model",
-                "Used-for",
+                "Used_for",
                 "insufficient fine-grained training data"
             ],
             [
                 "data augmentation",
-                "Used-for",
+                "Used_for",
                 "deep triplet-ranking model"
             ],
             [
@@ -2899,7 +2899,7 @@
             ],
             [
                 "staged pre-training strategy",
-                "Used-for",
+                "Used_for",
                 "deep triplet-ranking model"
             ]
         ]
@@ -2914,7 +2914,7 @@
             ],
             [
                 "deep networks",
-                "Used-for",
+                "Used_for",
                 "fine-grained cross-domain ranking tasks"
             ]
         ]
@@ -2924,7 +2924,7 @@
         "triple_list": [
             [
                 "unconstrained videos",
-                "Used-for",
+                "Used_for",
                 "generic action proposals"
             ]
         ]
@@ -2934,12 +2934,12 @@
         "triple_list": [
             [
                 "spatio-temporal video tube",
-                "Hyponym-of",
+                "Hyponym_of",
                 "temporal series of spatial bounding boxes"
             ],
             [
                 "spatio-temporal video tube",
-                "Used-for",
+                "Used_for",
                 "human action"
             ]
         ]
@@ -2949,12 +2949,12 @@
         "triple_list": [
             [
                 "appearance and motion cues",
-                "Used-for",
+                "Used_for",
                 "ac-tionness"
             ],
             [
                 "ac-tionness",
-                "Evaluate-for",
+                "Evaluate_for",
                 "video tubes"
             ]
         ]
@@ -2964,17 +2964,17 @@
         "triple_list": [
             [
                 "maximum set coverage problem",
-                "Used-for",
+                "Used_for",
                 "action proposal generation"
             ],
             [
                 "greedy search",
-                "Used-for",
+                "Used_for",
                 "action proposals"
             ],
             [
                 "actionness score",
-                "Evaluate-for",
+                "Evaluate_for",
                 "action proposals"
             ]
         ]
@@ -2994,12 +2994,12 @@
         "triple_list": [
             [
                 "datasets",
-                "Evaluate-for",
+                "Evaluate_for",
                 "action proposals"
             ],
             [
                 "MSRII",
-                "Hyponym-of",
+                "Hyponym_of",
                 "datasets"
             ],
             [
@@ -3009,12 +3009,12 @@
             ],
             [
                 "UCF 101",
-                "Hyponym-of",
+                "Hyponym_of",
                 "datasets"
             ],
             [
                 "action detection and search",
-                "Evaluate-for",
+                "Evaluate_for",
                 "action proposals"
             ]
         ]
@@ -3024,7 +3024,7 @@
         "triple_list": [
             [
                 "methods",
-                "Used-for",
+                "Used_for",
                 "creating natural language text"
             ]
         ]
@@ -3034,7 +3034,7 @@
         "triple_list": [
             [
                 "paradigm",
-                "Part-of",
+                "Part_of",
                 "KDS ( Knowledge Delivery System )"
             ]
         ]
@@ -3044,7 +3044,7 @@
         "triple_list": [
             [
                 "computational methods",
-                "Used-for",
+                "Used_for",
                 "KDS"
             ]
         ]
@@ -3054,12 +3054,12 @@
         "triple_list": [
             [
                 "co-occurrence similarities",
-                "Used-for",
+                "Used_for",
                 "query terms"
             ],
             [
                 "query terms",
-                "Used-for",
+                "Used_for",
                 "retrieval"
             ],
             [
@@ -3084,7 +3084,7 @@
         "triple_list": [
             [
                 "first-order and second-order co-occurrence",
-                "Used-for",
+                "Used_for",
                 "similarities"
             ]
         ]
@@ -3114,17 +3114,17 @@
         "triple_list": [
             [
                 "heuristic learning of phrase translations",
-                "Hyponym-of",
+                "Hyponym_of",
                 "means"
             ],
             [
                 "word-based alignments",
-                "Used-for",
+                "Used_for",
                 "heuristic learning of phrase translations"
             ],
             [
                 "lexical weighting of phrase translations",
-                "Hyponym-of",
+                "Hyponym_of",
                 "means"
             ]
         ]
@@ -3134,17 +3134,17 @@
         "triple_list": [
             [
                 "methods",
-                "Used-for",
+                "Used_for",
                 "color constancy"
             ],
             [
                 "methods",
-                "Used-for",
+                "Used_for",
                 "surface re-flectance estimates"
             ],
             [
                 "uncalibrated images",
-                "Used-for",
+                "Used_for",
                 "surface re-flectance estimates"
             ]
         ]
@@ -3154,7 +3154,7 @@
         "triple_list": [
             [
                 "method",
-                "Used-for",
+                "Used_for",
                 "estimates of underlying surface re-flectance"
             ]
         ]
@@ -3164,12 +3164,12 @@
         "triple_list": [
             [
                 "method",
-                "Used-for",
+                "Used_for",
                 "image correspondences"
             ],
             [
                 "alignment techniques",
-                "Used-for",
+                "Used_for",
                 "image correspondences"
             ]
         ]
@@ -3179,7 +3179,7 @@
         "triple_list": [
             [
                 "multi-view constraints",
-                "Used-for",
+                "Used_for",
                 "estimates of both scene illuminants and object color ( surface reflectance )"
             ],
             [
@@ -3194,12 +3194,12 @@
         "triple_list": [
             [
                 "concise , modular architecture",
-                "Used-for",
+                "Used_for",
                 "understanding"
             ],
             [
                 "concise , modular architecture",
-                "Used-for",
+                "Used_for",
                 "generation"
             ],
             [

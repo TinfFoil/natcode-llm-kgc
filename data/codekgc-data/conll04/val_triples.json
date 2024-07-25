@@ -14,7 +14,7 @@
         "triple_list": [
             [
                 "Palace of Fine Arts",
-                "Located in",
+                "Located_in",
                 "San Francisco"
             ]
         ]
@@ -24,7 +24,7 @@
         "triple_list": [
             [
                 "Wang Ziqiang",
-                "Work for",
+                "Work_for",
                 "Institute of Mechanics"
             ]
         ]
@@ -34,7 +34,7 @@
         "triple_list": [
             [
                 "Sun Hung Kai Properties",
-                "Organization based in",
+                "Organization_based_in",
                 "Hong Kong"
             ]
         ]
@@ -44,17 +44,17 @@
         "triple_list": [
             [
                 "Marie Magdefrau Ferraro",
-                "Live in",
+                "Live_in",
                 "Bethany"
             ],
             [
                 "Marie Magdefrau Ferraro",
-                "Live in",
+                "Live_in",
                 "Conn."
             ],
             [
                 "Bethany",
-                "Located in",
+                "Located_in",
                 "Conn."
             ]
         ]
@@ -64,7 +64,7 @@
         "triple_list": [
             [
                 "Morgan City",
-                "Located in",
+                "Located_in",
                 "La."
             ]
         ]
@@ -74,7 +74,7 @@
         "triple_list": [
             [
                 "Lowman",
-                "Located in",
+                "Located_in",
                 "Idaho"
             ]
         ]
@@ -84,7 +84,7 @@
         "triple_list": [
             [
                 "Avihu Bin-Nun",
-                "Work for",
+                "Work_for",
                 "Air Force"
             ]
         ]
@@ -94,17 +94,17 @@
         "triple_list": [
             [
                 "Savannah River Plant",
-                "Located in",
+                "Located_in",
                 "Aiken"
             ],
             [
                 "Savannah River Plant",
-                "Located in",
+                "Located_in",
                 "S.C."
             ],
             [
                 "Aiken",
-                "Located in",
+                "Located_in",
                 "S.C."
             ]
         ]
@@ -114,17 +114,17 @@
         "triple_list": [
             [
                 "Thomas",
-                "Live in",
+                "Live_in",
                 "Chisholm"
             ],
             [
                 "Thomas",
-                "Live in",
+                "Live_in",
                 "Minn ."
             ],
             [
                 "Chisholm",
-                "Located in",
+                "Located_in",
                 "Minn ."
             ]
         ]
@@ -134,7 +134,7 @@
         "triple_list": [
             [
                 "James Thompson",
-                "Live in",
+                "Live_in",
                 "Illinois"
             ]
         ]
@@ -144,7 +144,7 @@
         "triple_list": [
             [
                 "Brian Michaud",
-                "Live in",
+                "Live_in",
                 "Millinocket"
             ]
         ]
@@ -164,7 +164,7 @@
         "triple_list": [
             [
                 "Yang Jianbai",
-                "Work for",
+                "Work_for",
                 "Economic Research"
             ]
         ]
@@ -174,7 +174,7 @@
         "triple_list": [
             [
                 "Daniel Urquhart",
-                "Live in",
+                "Live_in",
                 "Aumsville"
             ]
         ]
@@ -184,7 +184,7 @@
         "triple_list": [
             [
                 "Congress",
-                "Organization based in",
+                "Organization_based_in",
                 "U.S."
             ]
         ]
@@ -204,7 +204,7 @@
         "triple_list": [
             [
                 "Benjamin Harrison",
-                "Live in",
+                "Live_in",
                 "North Bend , Ohio"
             ]
         ]
@@ -214,12 +214,12 @@
         "triple_list": [
             [
                 "Khrushchev",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ],
             [
                 "Roy Medvedev",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ]
         ]
@@ -229,7 +229,7 @@
         "triple_list": [
             [
                 "Walter R. Mears",
-                "Work for",
+                "Work_for",
                 "The Associated Press"
             ]
         ]
@@ -239,7 +239,7 @@
         "triple_list": [
             [
                 "Gerald Przenislawski",
-                "Work for",
+                "Work_for",
                 "La Valette Underground Military Museum."
             ]
         ]
@@ -249,7 +249,7 @@
         "triple_list": [
             [
                 "Jesse Jackson",
-                "Live in",
+                "Live_in",
                 "South Carolina"
             ]
         ]
@@ -269,7 +269,7 @@
         "triple_list": [
             [
                 "Cetin",
-                "Live in",
+                "Live_in",
                 "Turkey"
             ]
         ]
@@ -279,7 +279,7 @@
         "triple_list": [
             [
                 "Vernon A. Walters",
-                "Live in",
+                "Live_in",
                 "U.S."
             ]
         ]
@@ -289,7 +289,7 @@
         "triple_list": [
             [
                 "Mark Moseley",
-                "Work for",
+                "Work_for",
                 "National Football League"
             ]
         ]
@@ -299,7 +299,7 @@
         "triple_list": [
             [
                 "Hernandez Galicia",
-                "Work for",
+                "Work_for",
                 "Mexican Oil Workers Union"
             ]
         ]
@@ -309,7 +309,7 @@
         "triple_list": [
             [
                 "Muddy Waters",
-                "Live in",
+                "Live_in",
                 "Rolling Fork"
             ]
         ]
@@ -319,12 +319,12 @@
         "triple_list": [
             [
                 "NASA",
-                "Organization based in",
+                "Organization_based_in",
                 "U.S."
             ],
             [
                 "National Aeronautics and Space Administration",
-                "Organization based in",
+                "Organization_based_in",
                 "U.S."
             ]
         ]
@@ -334,7 +334,7 @@
         "triple_list": [
             [
                 "Phil Fuhrer",
-                "Work for",
+                "Work_for",
                 "Gannett New Media."
             ]
         ]
@@ -344,7 +344,7 @@
         "triple_list": [
             [
                 "Teleonce Television",
-                "Organization based in",
+                "Organization_based_in",
                 "Guatemala City"
             ]
         ]
@@ -354,17 +354,17 @@
         "triple_list": [
             [
                 "DAYTON",
-                "Located in",
+                "Located_in",
                 "Ohio"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "DAYTON"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Ohio"
             ]
         ]
@@ -384,17 +384,17 @@
         "triple_list": [
             [
                 "San Gabriel River Channel",
-                "Located in",
+                "Located_in",
                 "Azusa"
             ],
             [
                 "San Gabriel River Channel",
-                "Located in",
+                "Located_in",
                 "Calif."
             ],
             [
                 "Azusa",
-                "Located in",
+                "Located_in",
                 "Calif."
             ]
         ]
@@ -404,7 +404,7 @@
         "triple_list": [
             [
                 "Phnom Penh government",
-                "Organization based in",
+                "Organization_based_in",
                 "Cambodia"
             ]
         ]
@@ -414,12 +414,12 @@
         "triple_list": [
             [
                 "Derwinski",
-                "Live in",
+                "Live_in",
                 "Chicago"
             ],
             [
                 "Derwinski",
-                "Work for",
+                "Work_for",
                 "Congress"
             ]
         ]
@@ -429,17 +429,17 @@
         "triple_list": [
             [
                 "BANGKOK",
-                "Located in",
+                "Located_in",
                 "Thailand"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "BANGKOK"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Thailand"
             ]
         ]
@@ -449,22 +449,22 @@
         "triple_list": [
             [
                 "Pramot Pansakun",
-                "Work for",
+                "Work_for",
                 "Region 2 Border Patrol Police"
             ],
             [
                 "Dan Sai District",
-                "Located in",
+                "Located_in",
                 "Loei Province"
             ],
             [
                 "Nakhon Thai District",
-                "Located in",
+                "Located_in",
                 "Phitsanulok Province"
             ],
             [
                 "Lomsak District",
-                "Located in",
+                "Located_in",
                 "Phetchabun Province"
             ]
         ]
@@ -474,17 +474,17 @@
         "triple_list": [
             [
                 "Fred Demler",
-                "Work for",
+                "Work_for",
                 "Drexel Burnham Lambert Inc."
             ],
             [
                 "Fred Demler",
-                "Live in",
+                "Live_in",
                 "New York"
             ],
             [
                 "Drexel Burnham Lambert Inc.",
-                "Organization based in",
+                "Organization_based_in",
                 "New York"
             ]
         ]
@@ -494,7 +494,7 @@
         "triple_list": [
             [
                 "European Community Commission.",
-                "Organization based in",
+                "Organization_based_in",
                 "Brussels"
             ]
         ]
@@ -504,7 +504,7 @@
         "triple_list": [
             [
                 "Addis Ababa",
-                "Located in",
+                "Located_in",
                 "Ethiopia."
             ]
         ]
@@ -524,7 +524,7 @@
         "triple_list": [
             [
                 "Argentina",
-                "Located in",
+                "Located_in",
                 "Latin America"
             ]
         ]
@@ -534,7 +534,7 @@
         "triple_list": [
             [
                 "Virginia Towle",
-                "Live in",
+                "Live_in",
                 "Wallingford"
             ]
         ]
@@ -544,7 +544,7 @@
         "triple_list": [
             [
                 "Prince Norodom Ranariddh",
-                "Live in",
+                "Live_in",
                 "Thailand"
             ]
         ]
@@ -554,7 +554,7 @@
         "triple_list": [
             [
                 "John Wayne",
-                "Live in",
+                "Live_in",
                 "Winterset"
             ]
         ]
@@ -564,7 +564,7 @@
         "triple_list": [
             [
                 "Ranch",
-                "Organization based in",
+                "Organization_based_in",
                 "River North"
             ]
         ]
@@ -574,7 +574,7 @@
         "triple_list": [
             [
                 "AFP",
-                "Organization based in",
+                "Organization_based_in",
                 "Paris"
             ]
         ]
@@ -584,12 +584,12 @@
         "triple_list": [
             [
                 "Tokyo",
-                "Located in",
+                "Located_in",
                 "Japan"
             ],
             [
                 "Kyoto",
-                "Located in",
+                "Located_in",
                 "Japan"
             ]
         ]
@@ -599,7 +599,7 @@
         "triple_list": [
             [
                 "Jonathan Lifa",
-                "Work for",
+                "Work_for",
                 "Chevron"
             ]
         ]
@@ -609,12 +609,12 @@
         "triple_list": [
             [
                 "Jake Garn",
-                "Work for",
+                "Work_for",
                 "NASA"
             ],
             [
                 "Bill Nelson",
-                "Work for",
+                "Work_for",
                 "NASA"
             ]
         ]
@@ -624,7 +624,7 @@
         "triple_list": [
             [
                 "Armenia.",
-                "Located in",
+                "Located_in",
                 "Soviet"
             ]
         ]
@@ -634,17 +634,17 @@
         "triple_list": [
             [
                 "Juppe",
-                "Work for",
+                "Work_for",
                 "French Government"
             ],
             [
                 "Cetin",
-                "Live in",
+                "Live_in",
                 "Turkey"
             ],
             [
                 "Cetin",
-                "Live in",
+                "Live_in",
                 "Turkey"
             ]
         ]
@@ -654,27 +654,27 @@
         "triple_list": [
             [
                 "Andean Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Colombia"
             ],
             [
                 "Andean Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Bolivia"
             ],
             [
                 "Andean Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Ecuador"
             ],
             [
                 "Andean Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Peru"
             ],
             [
                 "Andean Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Venezuela"
             ]
         ]
@@ -684,7 +684,7 @@
         "triple_list": [
             [
                 "Elizabeth",
-                "Live in",
+                "Live_in",
                 "Salisbury , N.C"
             ]
         ]
@@ -694,27 +694,27 @@
         "triple_list": [
             [
                 "BTA",
-                "Organization based in",
+                "Organization_based_in",
                 "Sofia"
             ],
             [
                 "Bulgarian Socialist ( formerly Communist ) Party",
-                "Organization based in",
+                "Organization_based_in",
                 "Bulgaria"
             ],
             [
                 "BSP",
-                "Organization based in",
+                "Organization_based_in",
                 "Bulgaria"
             ],
             [
                 "Union of Democratic Forces",
-                "Organization based in",
+                "Organization_based_in",
                 "Bulgaria"
             ],
             [
                 "SDS",
-                "Organization based in",
+                "Organization_based_in",
                 "Bulgaria"
             ]
         ]
@@ -724,12 +724,12 @@
         "triple_list": [
             [
                 "Supreme Court",
-                "Organization based in",
+                "Organization_based_in",
                 "District of Columbia"
             ],
             [
                 "Senate",
-                "Organization based in",
+                "Organization_based_in",
                 "District of Columbia"
             ]
         ]
@@ -739,7 +739,7 @@
         "triple_list": [
             [
                 "Madagascar",
-                "Located in",
+                "Located_in",
                 "Indian Ocean"
             ]
         ]
@@ -749,7 +749,7 @@
         "triple_list": [
             [
                 "Radio Monte Carlo",
-                "Organization based in",
+                "Organization_based_in",
                 "Paris"
             ]
         ]
@@ -769,7 +769,7 @@
         "triple_list": [
             [
                 "Neil Estes.",
-                "Live in",
+                "Live_in",
                 "Atlanta"
             ]
         ]
@@ -779,7 +779,7 @@
         "triple_list": [
             [
                 "Robert C. Corduwener",
-                "Live in",
+                "Live_in",
                 "Netherlands"
             ]
         ]
@@ -789,7 +789,7 @@
         "triple_list": [
             [
                 "Sahara desert",
-                "Located in",
+                "Located_in",
                 "Africa"
             ]
         ]
@@ -799,7 +799,7 @@
         "triple_list": [
             [
                 "Willi Marx",
-                "Live in",
+                "Live_in",
                 "Heuchelheim"
             ]
         ]
@@ -809,7 +809,7 @@
         "triple_list": [
             [
                 "Jeff Shia",
-                "Work for",
+                "Work_for",
                 "Kiangsu Chekiang Association"
             ]
         ]
@@ -819,7 +819,7 @@
         "triple_list": [
             [
                 "Anzio",
-                "Located in",
+                "Located_in",
                 "Italy"
             ]
         ]
@@ -839,7 +839,7 @@
         "triple_list": [
             [
                 "Tiananmen Square",
-                "Located in",
+                "Located_in",
                 "Beijing"
             ]
         ]
@@ -849,22 +849,22 @@
         "triple_list": [
             [
                 "XINHUA",
-                "Organization based in",
+                "Organization_based_in",
                 "China"
             ],
             [
                 "XINHUA",
-                "Organization based in",
+                "Organization_based_in",
                 "People 's Republic of China"
             ],
             [
                 "Li Peng",
-                "Live in",
+                "Live_in",
                 "China"
             ],
             [
                 "Li Peng",
-                "Live in",
+                "Live_in",
                 "People 's Republic of China"
             ]
         ]
@@ -874,7 +874,7 @@
         "triple_list": [
             [
                 "Herbert Clark Hoover",
-                "Live in",
+                "Live_in",
                 "West Branch , Iowa"
             ]
         ]
@@ -884,7 +884,7 @@
         "triple_list": [
             [
                 "Bugesera",
-                "Located in",
+                "Located_in",
                 "Rwanda"
             ]
         ]
@@ -894,17 +894,17 @@
         "triple_list": [
             [
                 "Andrew Hall",
-                "Live in",
+                "Live_in",
                 "Miami"
             ],
             [
                 "Andrew Hall",
-                "Live in",
+                "Live_in",
                 "Fla."
             ],
             [
                 "Miami",
-                "Located in",
+                "Located_in",
                 "Fla."
             ]
         ]
@@ -914,7 +914,7 @@
         "triple_list": [
             [
                 "GRAND RAPIDS",
-                "Located in",
+                "Located_in",
                 "Mich ."
             ]
         ]
@@ -924,7 +924,7 @@
         "triple_list": [
             [
                 "Thomas Kean",
-                "Live in",
+                "Live_in",
                 "New Jersey"
             ]
         ]
@@ -934,7 +934,7 @@
         "triple_list": [
             [
                 "Marcos Victorica",
-                "Work for",
+                "Work_for",
                 "Institute of Contemporary Studies."
             ]
         ]
@@ -944,7 +944,7 @@
         "triple_list": [
             [
                 "Kanal-6 Television",
-                "Organization based in",
+                "Organization_based_in",
                 "London"
             ]
         ]
@@ -964,7 +964,7 @@
         "triple_list": [
             [
                 "BANGKOK",
-                "Located in",
+                "Located_in",
                 "Thailand"
             ]
         ]
@@ -974,7 +974,7 @@
         "triple_list": [
             [
                 "Joseph Cicippio",
-                "Work for",
+                "Work_for",
                 "American University of Beirut"
             ]
         ]
@@ -984,7 +984,7 @@
         "triple_list": [
             [
                 "Santa Ana",
-                "Located in",
+                "Located_in",
                 "Southern California"
             ]
         ]
@@ -994,7 +994,7 @@
         "triple_list": [
             [
                 "Radio Reloj Network",
-                "Organization based in",
+                "Organization_based_in",
                 "Havana"
             ]
         ]
@@ -1004,7 +1004,7 @@
         "triple_list": [
             [
                 "John A. Georges",
-                "Work for",
+                "Work_for",
                 "International Paper"
             ]
         ]
@@ -1014,7 +1014,7 @@
         "triple_list": [
             [
                 "Pinecastle Electronic Warfare Range",
-                "Located in",
+                "Located_in",
                 "Ocala National Forest"
             ]
         ]
@@ -1024,7 +1024,7 @@
         "triple_list": [
             [
                 "EAST LANSING",
-                "Located in",
+                "Located_in",
                 "Mich."
             ]
         ]
@@ -1034,7 +1034,7 @@
         "triple_list": [
             [
                 "Oberlin College",
-                "Organization based in",
+                "Organization_based_in",
                 "United States"
             ]
         ]
@@ -1059,7 +1059,7 @@
         "triple_list": [
             [
                 "Datuk Abdul Halim Ali",
-                "Work for",
+                "Work_for",
                 "Foreign Ministry"
             ]
         ]
@@ -1089,7 +1089,7 @@
         "triple_list": [
             [
                 "Linda Schmitt",
-                "Work for",
+                "Work_for",
                 "Becton Dickinson"
             ]
         ]
@@ -1109,7 +1109,7 @@
         "triple_list": [
             [
                 "AL-AHALI",
-                "Organization based in",
+                "Organization_based_in",
                 "Cairo"
             ]
         ]
@@ -1119,12 +1119,12 @@
         "triple_list": [
             [
                 "Buddy Holly",
-                "Live in",
+                "Live_in",
                 "Lubbock , Texas"
             ],
             [
                 "Charles Hardin Holley",
-                "Live in",
+                "Live_in",
                 "Lubbock , Texas"
             ]
         ]
@@ -1149,7 +1149,7 @@
         "triple_list": [
             [
                 "Sarajevo",
-                "Located in",
+                "Located_in",
                 "Bosnia"
             ],
             [
@@ -1164,7 +1164,7 @@
         "triple_list": [
             [
                 "Walesa",
-                "Work for",
+                "Work_for",
                 "Solidarity"
             ]
         ]
@@ -1174,7 +1174,7 @@
         "triple_list": [
             [
                 "Henry David Thoreau",
-                "Live in",
+                "Live_in",
                 "Concord , Mass"
             ]
         ]
@@ -1194,7 +1194,7 @@
         "triple_list": [
             [
                 "Hitler",
-                "Live in",
+                "Live_in",
                 "Berlin"
             ]
         ]
@@ -1204,12 +1204,12 @@
         "triple_list": [
             [
                 "Mrs. Higgins",
-                "Work for",
+                "Work_for",
                 "Marine Corps"
             ],
             [
                 "Mrs. Higgins",
-                "Work for",
+                "Work_for",
                 "Pentagon"
             ]
         ]
@@ -1219,7 +1219,7 @@
         "triple_list": [
             [
                 "Sam Kadet",
-                "Work for",
+                "Work_for",
                 "Skadden , Arps"
             ]
         ]
@@ -1229,12 +1229,12 @@
         "triple_list": [
             [
                 "Yisrael Tal",
-                "Live in",
+                "Live_in",
                 "Israel"
             ],
             [
                 "Yisrael Tal",
-                "Live in",
+                "Live_in",
                 "Israel"
             ]
         ]
@@ -1244,12 +1244,12 @@
         "triple_list": [
             [
                 "Clinton",
-                "Live in",
+                "Live_in",
                 "United States"
             ],
             [
                 "Clinton",
-                "Live in",
+                "Live_in",
                 "U.S."
             ]
         ]
@@ -1259,12 +1259,12 @@
         "triple_list": [
             [
                 "Guy M. Struve",
-                "Live in",
+                "Live_in",
                 "New York"
             ],
             [
                 "Guy M. Struve",
-                "Work for",
+                "Work_for",
                 "Church 's"
             ]
         ]
@@ -1274,7 +1274,7 @@
         "triple_list": [
             [
                 "Vladimir Ashkenazy",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ]
         ]
@@ -1284,7 +1284,7 @@
         "triple_list": [
             [
                 "Charlton Heston",
-                "Live in",
+                "Live_in",
                 "Illinois"
             ]
         ]
@@ -1294,7 +1294,7 @@
         "triple_list": [
             [
                 "Johnny Paul Penry",
-                "Live in",
+                "Live_in",
                 "Texas"
             ]
         ]
@@ -1304,7 +1304,7 @@
         "triple_list": [
             [
                 "Tennessee Williams",
-                "Live in",
+                "Live_in",
                 "Columbus , Miss."
             ]
         ]
@@ -1314,17 +1314,17 @@
         "triple_list": [
             [
                 "BRISBANE",
-                "Located in",
+                "Located_in",
                 "Australia"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "BRISBANE"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Australia"
             ]
         ]
@@ -1334,7 +1334,7 @@
         "triple_list": [
             [
                 "Laercio Vinhas",
-                "Work for",
+                "Work_for",
                 "CNEN"
             ]
         ]
@@ -1344,7 +1344,7 @@
         "triple_list": [
             [
                 "Gordon Parks",
-                "Live in",
+                "Live_in",
                 "Fort Scott , Kan."
             ]
         ]
@@ -1354,7 +1354,7 @@
         "triple_list": [
             [
                 "Emily Dickinson",
-                "Live in",
+                "Live_in",
                 "Amherst , Mass."
             ]
         ]
@@ -1364,7 +1364,7 @@
         "triple_list": [
             [
                 "Stephanie Powell",
-                "Work for",
+                "Work_for",
                 "DEM"
             ]
         ]
@@ -1374,22 +1374,22 @@
         "triple_list": [
             [
                 "Nihat",
-                "Work for",
+                "Work_for",
                 "SHP"
             ],
             [
                 "Nihat",
-                "Work for",
+                "Work_for",
                 "Social Democrat Populist Party"
             ],
             [
                 "Marka",
-                "Work for",
+                "Work_for",
                 "SHP"
             ],
             [
                 "Marka",
-                "Work for",
+                "Work_for",
                 "Social Democrat Populist Party"
             ]
         ]
@@ -1399,7 +1399,7 @@
         "triple_list": [
             [
                 "Kassala",
-                "Located in",
+                "Located_in",
                 "Sudan"
             ]
         ]
@@ -1409,22 +1409,22 @@
         "triple_list": [
             [
                 "Harrington",
-                "Work for",
+                "Work_for",
                 "Queens College"
             ],
             [
                 "Harrington",
-                "Work for",
+                "Work_for",
                 "City University of New York"
             ],
             [
                 "Harrington",
-                "Work for",
+                "Work_for",
                 "Socialist International"
             ],
             [
                 "Harrington",
-                "Live in",
+                "Live_in",
                 "Larchmont"
             ]
         ]
@@ -1434,7 +1434,7 @@
         "triple_list": [
             [
                 "Norton Winfred Simon",
-                "Live in",
+                "Live_in",
                 "Portland , Ore."
             ]
         ]
@@ -1444,17 +1444,17 @@
         "triple_list": [
             [
                 "Ulf D. Merbold",
-                "Work for",
+                "Work_for",
                 "European Space Agency"
             ],
             [
                 "Roger K. Crouch",
-                "Work for",
+                "Work_for",
                 "National Aeronautics and Space Administration"
             ],
             [
                 "Roger K. Crouch",
-                "Work for",
+                "Work_for",
                 "NASA"
             ]
         ]
@@ -1464,7 +1464,7 @@
         "triple_list": [
             [
                 "Felipe Gonzalez",
-                "Live in",
+                "Live_in",
                 "Spain"
             ]
         ]
@@ -1474,7 +1474,7 @@
         "triple_list": [
             [
                 "Betsy Ross",
-                "Live in",
+                "Live_in",
                 "Philadelphia"
             ]
         ]
@@ -1484,22 +1484,22 @@
         "triple_list": [
             [
                 "Emile Jonassaint",
-                "Live in",
+                "Live_in",
                 "Haiti"
             ],
             [
                 "Emile Jonassaint",
-                "Live in",
+                "Live_in",
                 "Haiti"
             ],
             [
                 "Haitian Parliament",
-                "Organization based in",
+                "Organization_based_in",
                 "Haiti"
             ],
             [
                 "Haitian Parliament",
-                "Organization based in",
+                "Organization_based_in",
                 "Haiti"
             ]
         ]
@@ -1509,7 +1509,7 @@
         "triple_list": [
             [
                 "Columbia Seafirst Center",
-                "Located in",
+                "Located_in",
                 "West Coast"
             ]
         ]
@@ -1519,22 +1519,22 @@
         "triple_list": [
             [
                 "Mohammadia",
-                "Located in",
+                "Located_in",
                 "Algeria"
             ],
             [
                 "Mohamed Touali",
-                "Work for",
+                "Work_for",
                 "Ettahadi ( Challenge ) political party"
             ],
             [
                 "Ettahadi ( Challenge ) political party",
-                "Organization based in",
+                "Organization_based_in",
                 "Algeria"
             ],
             [
                 "Ettahadi ( Challenge ) political party",
-                "Organization based in",
+                "Organization_based_in",
                 "Algeria"
             ]
         ]
@@ -1554,7 +1554,7 @@
         "triple_list": [
             [
                 "Custer National Forest",
-                "Located in",
+                "Located_in",
                 "Montana"
             ]
         ]
@@ -1564,7 +1564,7 @@
         "triple_list": [
             [
                 "JOHANNESBURG",
-                "Located in",
+                "Located_in",
                 "South Africa"
             ]
         ]
@@ -1574,7 +1574,7 @@
         "triple_list": [
             [
                 "Radovan Karadzic",
-                "Work for",
+                "Work_for",
                 "Union of Serb Writers"
             ]
         ]
@@ -1584,17 +1584,17 @@
         "triple_list": [
             [
                 "The National Central Organization of Panamanian Workers",
-                "Organization based in",
+                "Organization_based_in",
                 "the Republic"
             ],
             [
                 "CNTP",
-                "Organization based in",
+                "Organization_based_in",
                 "the Republic"
             ],
             [
                 "Ernesto Perez Balladares",
-                "Live in",
+                "Live_in",
                 "the Republic"
             ]
         ]
@@ -1604,7 +1604,7 @@
         "triple_list": [
             [
                 "Lazutkin",
-                "Work for",
+                "Work_for",
                 "Russian Federation Federal Service for Television and Radio Broadcasting."
             ]
         ]
@@ -1614,17 +1614,17 @@
         "triple_list": [
             [
                 "Daniel L. Bakst",
-                "Live in",
+                "Live_in",
                 "West Palm Beach"
             ],
             [
                 "Daniel L. Bakst",
-                "Live in",
+                "Live_in",
                 "Fla."
             ],
             [
                 "West Palm Beach",
-                "Located in",
+                "Located_in",
                 "Fla."
             ]
         ]
@@ -1634,7 +1634,7 @@
         "triple_list": [
             [
                 "Serbia",
-                "Located in",
+                "Located_in",
                 "Yugoslavia"
             ]
         ]
@@ -1654,27 +1654,27 @@
         "triple_list": [
             [
                 "21st Brigade of Cerro Muriano",
-                "Organization based in",
+                "Organization_based_in",
                 "Cordoba"
             ],
             [
                 "12th Brigade",
-                "Organization based in",
+                "Organization_based_in",
                 "Botoa"
             ],
             [
                 "12th Brigade",
-                "Organization based in",
+                "Organization_based_in",
                 "Badajoz"
             ],
             [
                 "Special Operations Group",
-                "Organization based in",
+                "Organization_based_in",
                 "Alicante"
             ],
             [
                 "Jarama 1st Cavalry Brigade",
-                "Organization based in",
+                "Organization_based_in",
                 "Salamanca"
             ]
         ]
@@ -1684,7 +1684,7 @@
         "triple_list": [
             [
                 "Howard Beach",
-                "Located in",
+                "Located_in",
                 "Queens"
             ]
         ]
@@ -1694,7 +1694,7 @@
         "triple_list": [
             [
                 "Sohn",
-                "Live in",
+                "Live_in",
                 "New Jersey"
             ]
         ]
@@ -1704,7 +1704,7 @@
         "triple_list": [
             [
                 "Brian Mulroney",
-                "Work for",
+                "Work_for",
                 "Progressive Conservative Party"
             ]
         ]
@@ -1714,7 +1714,7 @@
         "triple_list": [
             [
                 "6th Fleet",
-                "Organization based in",
+                "Organization_based_in",
                 "U.S."
             ]
         ]
@@ -1724,17 +1724,17 @@
         "triple_list": [
             [
                 "BANGKOK",
-                "Located in",
+                "Located_in",
                 "Thailand"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "BANGKOK"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Thailand"
             ]
         ]
@@ -1744,12 +1744,12 @@
         "triple_list": [
             [
                 "General Accounting Office",
-                "Organization based in",
+                "Organization_based_in",
                 "Washington"
             ],
             [
                 "GAO",
-                "Organization based in",
+                "Organization_based_in",
                 "Washington"
             ]
         ]
@@ -1759,12 +1759,12 @@
         "triple_list": [
             [
                 "Duchess of York",
-                "Live in",
+                "Live_in",
                 "Britain"
             ],
             [
                 "Imelda Marcos",
-                "Live in",
+                "Live_in",
                 "Philippines"
             ]
         ]
@@ -1799,7 +1799,7 @@
         "triple_list": [
             [
                 "Russian Defence Ministry",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ]
         ]
@@ -1809,7 +1809,7 @@
         "triple_list": [
             [
                 "Herbert S. Okun",
-                "Live in",
+                "Live_in",
                 "U.S."
             ]
         ]
@@ -1819,32 +1819,32 @@
         "triple_list": [
             [
                 "ITAR-TASS",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ],
             [
                 "ITAR-TASS",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ],
             [
                 "Boris Yeltsin",
-                "Live in",
+                "Live_in",
                 "Moscow"
             ],
             [
                 "Boris Yeltsin",
-                "Live in",
+                "Live_in",
                 "Moscow"
             ],
             [
                 "Viktor Chernomyrdin",
-                "Live in",
+                "Live_in",
                 "Moscow"
             ],
             [
                 "Viktor Chernomyrdin",
-                "Live in",
+                "Live_in",
                 "Moscow"
             ]
         ]
@@ -1854,7 +1854,7 @@
         "triple_list": [
             [
                 "Winter",
-                "Work for",
+                "Work_for",
                 "Yale University"
             ]
         ]
@@ -1864,7 +1864,7 @@
         "triple_list": [
             [
                 "Dr. Lee DeForest",
-                "Live in",
+                "Live_in",
                 "Council Bluffs , Iowa"
             ]
         ]
@@ -1874,17 +1874,17 @@
         "triple_list": [
             [
                 "Cameron Parish",
-                "Located in",
+                "Located_in",
                 "Louisiana"
             ],
             [
                 "Hayes Picou",
-                "Live in",
+                "Live_in",
                 "Louisiana"
             ],
             [
                 "Hayes Picou",
-                "Live in",
+                "Live_in",
                 "Cameron Parish"
             ]
         ]
@@ -1894,7 +1894,7 @@
         "triple_list": [
             [
                 "Manufacturers Hanover Trust Co.",
-                "Organization based in",
+                "Organization_based_in",
                 "New York"
             ]
         ]
@@ -1914,7 +1914,7 @@
         "triple_list": [
             [
                 "ACAN",
-                "Organization based in",
+                "Organization_based_in",
                 "Panama City"
             ]
         ]
@@ -1924,7 +1924,7 @@
         "triple_list": [
             [
                 "Actress Helen Hayes",
-                "Live in",
+                "Live_in",
                 "Washington"
             ]
         ]
@@ -1934,12 +1934,12 @@
         "triple_list": [
             [
                 "Bossi",
-                "Work for",
+                "Work_for",
                 "Freedom Alliance"
             ],
             [
                 "Occhetto",
-                "Work for",
+                "Work_for",
                 "Democratic Party"
             ]
         ]
@@ -1949,7 +1949,7 @@
         "triple_list": [
             [
                 "Fran Sepler",
-                "Work for",
+                "Work_for",
                 "state Crime Victim and Witness Advisory Council."
             ]
         ]
@@ -1959,7 +1959,7 @@
         "triple_list": [
             [
                 "Gary Hess",
-                "Work for",
+                "Work_for",
                 "Emery"
             ]
         ]
@@ -1969,7 +1969,7 @@
         "triple_list": [
             [
                 "Yerevan",
-                "Located in",
+                "Located_in",
                 "Armenia"
             ]
         ]
@@ -1989,12 +1989,12 @@
         "triple_list": [
             [
                 "Jeremy Rifkin",
-                "Work for",
+                "Work_for",
                 "Foundation on Economic Trends"
             ],
             [
                 "Jeremy Rifkin",
-                "Work for",
+                "Work_for",
                 "Global Greenhouse Network"
             ]
         ]
@@ -2014,7 +2014,7 @@
         "triple_list": [
             [
                 "NIHON KEIZAI SHIMBUN",
-                "Organization based in",
+                "Organization_based_in",
                 "Tokyo"
             ]
         ]
@@ -2024,7 +2024,7 @@
         "triple_list": [
             [
                 "Jeffrey Bander",
-                "Work for",
+                "Work_for",
                 "American Express"
             ]
         ]
@@ -2054,7 +2054,7 @@
         "triple_list": [
             [
                 "Bill Clinton",
-                "Live in",
+                "Live_in",
                 "US"
             ]
         ]
@@ -2064,12 +2064,12 @@
         "triple_list": [
             [
                 "Washington",
-                "Located in",
+                "Located_in",
                 "U.S"
             ],
             [
                 "Navy",
-                "Organization based in",
+                "Organization_based_in",
                 "U.S"
             ]
         ]
@@ -2079,12 +2079,12 @@
         "triple_list": [
             [
                 "Mile Akmadzic",
-                "Live in",
+                "Live_in",
                 "Croatian Republic of Herceg-Bosna"
             ],
             [
                 "Nikola Koljevic",
-                "Live in",
+                "Live_in",
                 "Serbian Republic"
             ]
         ]
@@ -2094,7 +2094,7 @@
         "triple_list": [
             [
                 "Tal",
-                "Work for",
+                "Work_for",
                 "Defense Ministry"
             ]
         ]
@@ -2114,7 +2114,7 @@
         "triple_list": [
             [
                 "Dwight D. Eisenhower",
-                "Live in",
+                "Live_in",
                 "Denison , Texas"
             ]
         ]
@@ -2124,7 +2124,7 @@
         "triple_list": [
             [
                 "Virginia Galle",
-                "Work for",
+                "Work_for",
                 "City Council"
             ]
         ]
@@ -2134,12 +2134,12 @@
         "triple_list": [
             [
                 "Harrington",
-                "Work for",
+                "Work_for",
                 "Harvard University"
             ],
             [
                 "Harrington",
-                "Work for",
+                "Work_for",
                 "National War College."
             ]
         ]
@@ -2159,7 +2159,7 @@
         "triple_list": [
             [
                 "Fred Farrar",
-                "Work for",
+                "Work_for",
                 "FAA"
             ]
         ]
@@ -2169,27 +2169,27 @@
         "triple_list": [
             [
                 "Navy",
-                "Organization based in",
+                "Organization_based_in",
                 "Soviet"
             ],
             [
                 "Nikolai Kuznetsov",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ],
             [
                 "Nikolai Kuznetsov",
-                "Work for",
+                "Work_for",
                 "Navy"
             ],
             [
                 "Stalin",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ],
             [
                 "Stalin",
-                "Live in",
+                "Live_in",
                 "Soviet"
             ]
         ]
@@ -2199,7 +2199,7 @@
         "triple_list": [
             [
                 "Vinicio Villar Anleu",
-                "Work for",
+                "Work_for",
                 "National Congress"
             ]
         ]
@@ -2219,7 +2219,7 @@
         "triple_list": [
             [
                 "Eduard Baltin.",
-                "Work for",
+                "Work_for",
                 "Black Sea Fleet"
             ]
         ]
@@ -2229,7 +2229,7 @@
         "triple_list": [
             [
                 "Nashville",
-                "Located in",
+                "Located_in",
                 "Tenn."
             ]
         ]
@@ -2249,7 +2249,7 @@
         "triple_list": [
             [
                 "Chien Fu",
-                "Live in",
+                "Live_in",
                 "Taipei"
             ]
         ]
@@ -2259,7 +2259,7 @@
         "triple_list": [
             [
                 "Jo Ann Emmerich",
-                "Work for",
+                "Work_for",
                 "ABC Entertainment"
             ]
         ]
@@ -2269,7 +2269,7 @@
         "triple_list": [
             [
                 "William McKinley",
-                "Live in",
+                "Live_in",
                 "Niles , Ohio"
             ]
         ]
@@ -2279,7 +2279,7 @@
         "triple_list": [
             [
                 "MOSKOVSKIY KOMSOMOLETS",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ]
         ]
@@ -2289,7 +2289,7 @@
         "triple_list": [
             [
                 "Herbert Clark Hoover",
-                "Live in",
+                "Live_in",
                 "West Branch , Iowa"
             ]
         ]
@@ -2299,7 +2299,7 @@
         "triple_list": [
             [
                 "Bezirksparkasse bank",
-                "Organization based in",
+                "Organization_based_in",
                 "Giessen"
             ]
         ]
@@ -2309,7 +2309,7 @@
         "triple_list": [
             [
                 "Wang Guangyan",
-                "Work for",
+                "Work_for",
                 "Institute of Mathematics"
             ]
         ]
@@ -2319,7 +2319,7 @@
         "triple_list": [
             [
                 "Owen Le Vallee",
-                "Work for",
+                "Work_for",
                 "Liberation Day Committee"
             ]
         ]
@@ -2329,17 +2329,17 @@
         "triple_list": [
             [
                 "KARBALA",
-                "Located in",
+                "Located_in",
                 "Iraq"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "KARBALA"
             ],
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "Iraq"
             ]
         ]
@@ -2349,7 +2349,7 @@
         "triple_list": [
             [
                 "Prateep Ungsongtham",
-                "Live in",
+                "Live_in",
                 "Bangkok."
             ]
         ]
@@ -2369,37 +2369,37 @@
         "triple_list": [
             [
                 "Michael Henley Jr.",
-                "Live in",
+                "Live_in",
                 "Grants"
             ],
             [
                 "Michael Henley Jr.",
-                "Live in",
+                "Live_in",
                 "N.M."
             ],
             [
                 "Grants",
-                "Located in",
+                "Located_in",
                 "N.M."
             ],
             [
                 "Ms. Calico",
-                "Live in",
+                "Live_in",
                 "N.M."
             ],
             [
                 "Ms. Calico",
-                "Live in",
+                "Live_in",
                 "Belen"
             ],
             [
                 "Ms. Calico",
-                "Live in",
+                "Live_in",
                 "N.M."
             ],
             [
                 "Belen",
-                "Located in",
+                "Located_in",
                 "N.M."
             ]
         ]
@@ -2409,7 +2409,7 @@
         "triple_list": [
             [
                 "TASS",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ]
         ]
@@ -2419,7 +2419,7 @@
         "triple_list": [
             [
                 "Jose Antonio Urutigoechea",
-                "Work for",
+                "Work_for",
                 "ETA"
             ]
         ]
@@ -2439,7 +2439,7 @@
         "triple_list": [
             [
                 "Susan Cruzan",
-                "Work for",
+                "Work_for",
                 "FDA"
             ]
         ]
@@ -2449,7 +2449,7 @@
         "triple_list": [
             [
                 "Oxford",
-                "Located in",
+                "Located_in",
                 "Massachusetts."
             ]
         ]
@@ -2469,7 +2469,7 @@
         "triple_list": [
             [
                 "MOSKOVSKIY KOMSOMOLETS",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ]
         ]
@@ -2479,7 +2479,7 @@
         "triple_list": [
             [
                 "Frankfurt",
-                "Located in",
+                "Located_in",
                 "West Germany."
             ]
         ]
@@ -2499,7 +2499,7 @@
         "triple_list": [
             [
                 "Jesse Jackson",
-                "Live in",
+                "Live_in",
                 "South Carolina"
             ]
         ]
@@ -2509,7 +2509,7 @@
         "triple_list": [
             [
                 "AP",
-                "Organization based in",
+                "Organization_based_in",
                 "MEXICO CITY"
             ]
         ]
@@ -2519,17 +2519,17 @@
         "triple_list": [
             [
                 "Jackson",
-                "Located in",
+                "Located_in",
                 "Wyo."
             ],
             [
                 "Gunnison",
-                "Located in",
+                "Located_in",
                 "Colo."
             ],
             [
                 "McAllen",
-                "Located in",
+                "Located_in",
                 "Texas"
             ]
         ]
@@ -2539,7 +2539,7 @@
         "triple_list": [
             [
                 "Craig Martin",
-                "Work for",
+                "Work_for",
                 "Boeing Commercial Airplanes"
             ]
         ]
@@ -2549,7 +2549,7 @@
         "triple_list": [
             [
                 "Adam Urbanski",
-                "Live in",
+                "Live_in",
                 "Rochester"
             ]
         ]
@@ -2559,7 +2559,7 @@
         "triple_list": [
             [
                 "MAINICHI SHIMBUN",
-                "Organization based in",
+                "Organization_based_in",
                 "Tokyo"
             ]
         ]
@@ -2569,7 +2569,7 @@
         "triple_list": [
             [
                 "Fernandez de Cevallos",
-                "Live in",
+                "Live_in",
                 "Mexico"
             ]
         ]
@@ -2589,7 +2589,7 @@
         "triple_list": [
             [
                 "Richardson",
-                "Live in",
+                "Live_in",
                 "Beaumont , Texas"
             ]
         ]
@@ -2599,32 +2599,32 @@
         "triple_list": [
             [
                 "NRC",
-                "Organization based in",
+                "Organization_based_in",
                 "Rockville"
             ],
             [
                 "NRC",
-                "Organization based in",
+                "Organization_based_in",
                 "Md."
             ],
             [
                 "Rockville",
-                "Located in",
+                "Located_in",
                 "Md."
             ],
             [
                 "Bernero",
-                "Work for",
+                "Work_for",
                 "NRC"
             ],
             [
                 "NRC",
-                "Organization based in",
+                "Organization_based_in",
                 "Rockville"
             ],
             [
                 "NRC",
-                "Organization based in",
+                "Organization_based_in",
                 "Md."
             ]
         ]
@@ -2634,17 +2634,17 @@
         "triple_list": [
             [
                 "Saint-Gall",
-                "Located in",
+                "Located_in",
                 "Switzerland"
             ],
             [
                 "AFP",
-                "Organization based in",
+                "Organization_based_in",
                 "Saint-Gall"
             ],
             [
                 "AFP",
-                "Organization based in",
+                "Organization_based_in",
                 "Switzerland"
             ]
         ]
@@ -2654,7 +2654,7 @@
         "triple_list": [
             [
                 "Rancho Nuevo",
-                "Located in",
+                "Located_in",
                 "Chiapas State"
             ]
         ]
@@ -2674,7 +2674,7 @@
         "triple_list": [
             [
                 "Greg Thayer",
-                "Work for",
+                "Work_for",
                 "Forest Service."
             ]
         ]
@@ -2684,7 +2684,7 @@
         "triple_list": [
             [
                 "Luis Cobos R.",
-                "Work for",
+                "Work_for",
                 "CNTP"
             ]
         ]
@@ -2704,7 +2704,7 @@
         "triple_list": [
             [
                 "Brigham Young",
-                "Live in",
+                "Live_in",
                 "Whitingham , Vt"
             ]
         ]
@@ -2724,7 +2724,7 @@
         "triple_list": [
             [
                 "Tom Muri.",
-                "Live in",
+                "Live_in",
                 "Whitefish City"
             ]
         ]
@@ -2734,7 +2734,7 @@
         "triple_list": [
             [
                 "Sierra Nevada",
-                "Located in",
+                "Located_in",
                 "California"
             ]
         ]
@@ -2744,12 +2744,12 @@
         "triple_list": [
             [
                 "James Hackett",
-                "Work for",
+                "Work_for",
                 "Titan Systems"
             ],
             [
                 "James Hackett",
-                "Live in",
+                "Live_in",
                 "U.S ."
             ]
         ]
@@ -2759,7 +2759,7 @@
         "triple_list": [
             [
                 "Leninakan",
-                "Located in",
+                "Located_in",
                 "Armenia"
             ]
         ]
@@ -2769,7 +2769,7 @@
         "triple_list": [
             [
                 "Pittsburgh-Corning Corp.",
-                "Organization based in",
+                "Organization_based_in",
                 "Pittsburgh"
             ]
         ]
@@ -2779,7 +2779,7 @@
         "triple_list": [
             [
                 "Barrett",
-                "Work for",
+                "Work_for",
                 "Illinois Commerce Commission"
             ]
         ]
@@ -2789,7 +2789,7 @@
         "triple_list": [
             [
                 "Sultan Qabus Bin-Sa 'id",
-                "Live in",
+                "Live_in",
                 "Oman"
             ]
         ]
@@ -2819,22 +2819,22 @@
         "triple_list": [
             [
                 "Brazoria",
-                "Located in",
+                "Located_in",
                 "Texas."
             ],
             [
                 "Fort Bend",
-                "Located in",
+                "Located_in",
                 "Texas."
             ],
             [
                 "Galveston",
-                "Located in",
+                "Located_in",
                 "Texas."
             ],
             [
                 "Harris Counties",
-                "Located in",
+                "Located_in",
                 "Texas."
             ]
         ]
@@ -2844,7 +2844,7 @@
         "triple_list": [
             [
                 "INTERFAX",
-                "Organization based in",
+                "Organization_based_in",
                 "Moscow"
             ]
         ]
@@ -2854,7 +2854,7 @@
         "triple_list": [
             [
                 "6th Fleet",
-                "Organization based in",
+                "Organization_based_in",
                 "Mediterranean"
             ]
         ]
@@ -2864,7 +2864,7 @@
         "triple_list": [
             [
                 "Najd plateau",
-                "Located in",
+                "Located_in",
                 "Saudi Arabia"
             ]
         ]

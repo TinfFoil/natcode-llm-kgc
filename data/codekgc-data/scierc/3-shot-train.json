@@ -4,17 +4,17 @@
         "triple_list": [
             [
                 "model",
-                "Hyponym-of",
+                "Hyponym_of",
                 "pushdown automaton"
             ],
             [
                 "stack",
-                "Used-for",
+                "Used_for",
                 "pushdown automaton"
             ],
             [
                 "stack",
-                "Used-for",
+                "Used_for",
                 "reduplication"
             ]
         ]
@@ -24,12 +24,12 @@
         "triple_list": [
             [
                 "image patches",
-                "Used-for",
+                "Used_for",
                 "blur detection"
             ],
             [
                 "region-wise training and classification",
-                "Used-for",
+                "Used_for",
                 "blur detection"
             ]
         ]
@@ -39,7 +39,7 @@
         "triple_list": [
             [
                 "unigram counts",
-                "Used-for",
+                "Used_for",
                 "block selection criteria"
             ],
             [
@@ -49,7 +49,7 @@
             ],
             [
                 "phrase length",
-                "Used-for",
+                "Used_for",
                 "block selection criteria"
             ]
         ]
@@ -59,7 +59,7 @@
         "triple_list": [
             [
                 "clustering framework",
-                "Feature-of",
+                "Feature_of",
                 "probabilistic decision tree"
             ]
         ]
@@ -69,12 +69,12 @@
         "triple_list": [
             [
                 "it",
-                "Used-for",
+                "Used_for",
                 "it"
             ],
             [
                 "image",
-                "Used-for",
+                "Used_for",
                 "it"
             ],
             [
@@ -84,12 +84,12 @@
             ],
             [
                 "dense depth map",
-                "Used-for",
+                "Used_for",
                 "it"
             ],
             [
                 "complementary object information",
-                "Feature-of",
+                "Feature_of",
                 "dense depth map"
             ]
         ]
@@ -99,7 +99,7 @@
         "triple_list": [
             [
                 "character - and word-segmented data",
-                "Used-for",
+                "Used_for",
                 "bag-of-words and segment order-sensitive string comparison methods"
             ],
             [
@@ -109,7 +109,7 @@
             ],
             [
                 "N-grams",
-                "Feature-of",
+                "Feature_of",
                 "local segment contiguity models"
             ]
         ]
@@ -119,7 +119,7 @@
         "triple_list": [
             [
                 "`` critical cycle ''",
-                "Hyponym-of",
+                "Hyponym_of",
                 "non-local configuration"
             ]
         ]
@@ -129,7 +129,7 @@
         "triple_list": [
             [
                 "linear Fukunaga-Koontz Transform ( FKT )",
-                "Hyponym-of",
+                "Hyponym_of",
                 "discriminative subspaces building approach"
             ]
         ]
@@ -139,12 +139,12 @@
         "triple_list": [
             [
                 "classifiers",
-                "Used-for",
+                "Used_for",
                 "language processing tasks"
             ],
             [
                 "maximum entropy classifiers",
-                "Hyponym-of",
+                "Hyponym_of",
                 "classifiers"
             ],
             [
@@ -154,7 +154,7 @@
             ],
             [
                 "boosting",
-                "Hyponym-of",
+                "Hyponym_of",
                 "classifiers"
             ],
             [
@@ -164,7 +164,7 @@
             ],
             [
                 "SVMs",
-                "Hyponym-of",
+                "Hyponym_of",
                 "classifiers"
             ]
         ]
@@ -174,7 +174,7 @@
         "triple_list": [
             [
                 "macro-average F1",
-                "Evaluate-for",
+                "Evaluate_for",
                 "model"
             ],
             [
@@ -184,7 +184,7 @@
             ],
             [
                 "syntactic dependencies LAS",
-                "Evaluate-for",
+                "Evaluate_for",
                 "model"
             ],
             [
@@ -194,7 +194,7 @@
             ],
             [
                 "semantic dependencies F1",
-                "Evaluate-for",
+                "Evaluate_for",
                 "model"
             ]
         ]
@@ -204,7 +204,7 @@
         "triple_list": [
             [
                 "multi-page system",
-                "Evaluate-for",
+                "Evaluate_for",
                 "approach"
             ]
         ]
@@ -214,12 +214,12 @@
         "triple_list": [
             [
                 "cascade of simple classifiers",
-                "Used-for",
+                "Used_for",
                 "detector"
             ],
             [
                 "detection rates",
-                "Evaluate-for",
+                "Evaluate_for",
                 "classifiers"
             ],
             [
@@ -229,12 +229,12 @@
             ],
             [
                 "modest false positive rates",
-                "Evaluate-for",
+                "Evaluate_for",
                 "classifiers"
             ],
             [
                 "features",
-                "Feature-of",
+                "Feature_of",
                 "detector"
             ]
         ]
@@ -244,7 +244,7 @@
         "triple_list": [
             [
                 "transfer phase",
-                "Part-of",
+                "Part_of",
                 "machine translation ( MT ) systems"
             ],
             [
@@ -269,7 +269,7 @@
         "triple_list": [
             [
                 "Background maintenance",
-                "Part-of",
+                "Part_of",
                 "video surveillance systems"
             ]
         ]
@@ -279,12 +279,12 @@
         "triple_list": [
             [
                 "pronominal anaphora resolution module",
-                "Part-of",
+                "Part_of",
                 "Lucy"
             ],
             [
                 "Lucy",
-                "Hyponym-of",
+                "Hyponym_of",
                 "English understanding system"
             ]
         ]
@@ -299,17 +299,17 @@
             ],
             [
                 "genetic search",
-                "Used-for",
+                "Used_for",
                 "entirely data-driven model selection procedure"
             ],
             [
                 "knowledge-based and random selection procedures",
-                "Used-for",
+                "Used_for",
                 "language modeling tasks"
             ],
             [
                 "Arabic",
-                "Hyponym-of",
+                "Hyponym_of",
                 "language modeling tasks"
             ],
             [
@@ -319,7 +319,7 @@
             ],
             [
                 "Turkish",
-                "Hyponym-of",
+                "Hyponym_of",
                 "language modeling tasks"
             ]
         ]
@@ -349,7 +349,7 @@
         "triple_list": [
             [
                 "neural network",
-                "Used-for",
+                "Used_for",
                 "language model"
             ],
             [
@@ -364,12 +364,12 @@
         "triple_list": [
             [
                 "Bayesian learning",
-                "Used-for",
+                "Used_for",
                 "speech recognition applications"
             ],
             [
                 "parameter smoothing",
-                "Hyponym-of",
+                "Hyponym_of",
                 "speech recognition applications"
             ],
             [
@@ -379,7 +379,7 @@
             ],
             [
                 "speaker adaptation",
-                "Hyponym-of",
+                "Hyponym_of",
                 "speech recognition applications"
             ],
             [
@@ -389,7 +389,7 @@
             ],
             [
                 "speaker group modeling",
-                "Hyponym-of",
+                "Hyponym_of",
                 "speech recognition applications"
             ],
             [
@@ -399,7 +399,7 @@
             ],
             [
                 "corrective training",
-                "Hyponym-of",
+                "Hyponym_of",
                 "speech recognition applications"
             ]
         ]
@@ -409,12 +409,12 @@
         "triple_list": [
             [
                 "object category detection datasets",
-                "Used-for",
+                "Used_for",
                 "per-object 3D reconstructions"
             ],
             [
                 "ground truth figure-ground segmentations",
-                "Used-for",
+                "Used_for",
                 "per-object 3D reconstructions"
             ],
             [
@@ -424,7 +424,7 @@
             ],
             [
                 "keypoint annotations",
-                "Used-for",
+                "Used_for",
                 "per-object 3D reconstructions"
             ]
         ]
@@ -434,7 +434,7 @@
         "triple_list": [
             [
                 "transcription errors",
-                "Feature-of",
+                "Feature_of",
                 "ASR output"
             ],
             [
