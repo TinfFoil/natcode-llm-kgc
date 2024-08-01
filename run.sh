@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J food
+#SBATCH -J graphing
 #SBATCH -p local
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8

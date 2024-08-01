@@ -7,69 +7,85 @@ import pandas as pd
 from tqdm.auto import tqdm
 from datetime import datetime
 from utils import *
+import argparse
 
-def main():
+def main(args):
+    print(f'Testing model: {args.model}')
+    print(f'Chat model: {args.chat}')
+    print(f"Language: {'natlang' if args.natlang else 'code'}")
+    print(f'Testing dataset: {args.dataset}')
 
-    dataset_name = 'ade'
-    # dataset_name = 'conll04'
-    # dataset_name = 'scierc'
-
-    # model_name = 'meta-llama/Meta-Llama-3-8B-Instruct'
-
-    model_name = f'./models/llama-3-8b-bnb-4bit_ft_{dataset_name}'
-
-    model_name_simple = model_name.split('/')[-1]   
+    model_name_simple = args.model.split('/')[-1]   
     model = AutoModelForCausalLM.from_pretrained(
-        model_name,
+        args.model,
         torch_dtype='auto',
         device_map='auto'
     )
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(args.model)
 
-    dataset_path = f'./data/codekgc-data/{dataset_name}'
+    dataset_path = f'./data/codekgc-data/{args.dataset}'
 
-    train_json = os.path.join(dataset_path, 'train_triples.json')
-    test_json = os.path.join(dataset_path, 'test_triples.json')
+    train_json = os.path.join(dataset_path, args.train)
+    test_json = os.path.join(dataset_path, args.test)
 
-    # schema_path = os.path.join(dataset_path, 'code_expl_prompt')
-    schema_path = os.path.join(dataset_path, 'code_prompt')
-    
-    schema_prompt = open(schema_path, 'r', encoding='utf8').read()
+    schema_path = os.path.join(dataset_path, args.prompt_filename)
 
     df_test = pd.read_json(test_json)
     n_samples_test = len(df_test)
     df_test = df_test.sample(n=n_samples_test)
     n_icl_samples = 15
 
-    entity2type_json = os.path.join(dataset_path, 'entity2type.json')
+    entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:
         entity2type_dict = json.load(f)
 
-    prompter = Prompter(entity2type_dict,
-                        natlang = False,
+    runner = Runner(entity2type_dict,
+                        natlang=args.natlang,
+                        tokenizer=tokenizer,
+                        chat_model=args.chat,
+                        schema_path=schema_path,
                         )
     df_train = pd.read_json(train_json).sample(n=n_icl_samples)
-    icl_prompt = prompter.make_icl_prompt(df_train)
-    precision, recall, f1_score = evaluate(model, tokenizer, df_test, schema_prompt, icl_prompt, prompter, chat_model=False)
+    icl_prompt = runner.make_icl_prompt(df_train)
+    
+    precision, recall, f1_score = runner.evaluate(model,
+                                tokenizer,
+                                df_test,
+                                icl_prompt,
+                                )
 
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
-    info = [{"Model": model_name,
+    info = [{"Model": args.model,
             "Precision": precision,
             "Recall": recall,
             "F1_Score": f1_score,
             "n_icl_samples": n_icl_samples,
             "n_samples_test": n_samples_test,
-            "dataset_name": dataset_name,
+            "dataset": args.dataset,
             "date": dt_string,
             "schema_path": schema_path,
             }]
     
     print(info)
-    json_path = f'./results/{model_name_simple}_{dataset_name}.json'
+    json_path = f"./results/{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json"
 
     save_json(info, json_path)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="A sample argparse program")
+    parser.add_argument("-m", "--model", help="Model to test")
+    parser.add_argument("-d", "--dataset", help="Name of the testing dataset, options = ['ade', 'conll04', 'scierc']")
+    parser.add_argument("--natlang", help="Type of language", action='store_true')
+    parser.add_argument("--chat", help="Type of model (default = completion model)", action='store_true')
+    parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
+    parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
+    parser.add_argument("--train", help="Filename of the train file to use", default='train_triples.json')
+    parser.add_argument("--test", help="Filename of the test file to use", default='test_triples.json')
+    args = parser.parse_args()
+
+    args.model = "./models/Meta-Llama-3.1-8B_ft_ade_code"
+    args.dataset = "ade"
+
+    main(args)

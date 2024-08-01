@@ -3,49 +3,105 @@ from tqdm.auto import tqdm
 import pandas as pd
 import json
 import re
+import logging
+logging.basicConfig(
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
-class Prompter:
+logger = logging.getLogger(__name__)
+
+class Runner:
     def __init__(self,
                  type_dict,
-                 natlang
+                 natlang,
+                 schema_path = '',
+                 chat_model = False,
+                 tokenizer = None,
                  ) -> None:
         self.type_dict = type_dict
         self.natlang = natlang
+        self.chat_model = chat_model
+        self.tokenizer = tokenizer
+        self.schema_prompt = open(schema_path, 'r', encoding='utf8').read()
 
-    def make_prompt(self, schema_prompt: str, ICL_prompt: str, item_text: str):
-        text_instruct = f'Define an instance of Extract from the text below. Only write the definition line.\n\"\"\" {item_text} \"\"\"'
-        prompt = schema_prompt + '\n' + ICL_prompt + '\n' + text_instruct
+    def format_sample(self, item_text: str, triples: List[List[str]]):
+        if self.natlang:
+            out = f"text: {item_text}\n{self.natlang_triples(triples)}"
+        else:
+            out = f"\"\"\" {item_text} \"\"\"\n{self.pythonize_triples(triples)}"
+        return out
+
+    def make_code_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
+        prompt = self.schema_prompt + '\n'
+        if self.chat_model:
+            text_instruct = f"""Define an instance of Extract from the text below. Only write the definition line.
+                        \n{self.format_sample(sample_text, [])}"""
+            if triples: 
+                text_triples = self.pythonize_triples(triples)
+                prompt +=  ICL_prompt + '\n' + text_instruct
+                prompt = [{"role": "user", "content": prompt},
+                        {"role": "assistant", "content": text_triples},]
+            else:
+                prompt += ICL_prompt + '\n' + text_instruct
+                prompt = [{"role": "user", "content": prompt},]
+            prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
+        else:
+            text = f"""Define an instance of Extract from the text below.
+                        \n{self.format_sample(sample_text, triples)}""" # 
+            prompt += ICL_prompt + '\n' + text
+        return prompt
+    
+    def make_natlang_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
+        prompt = ''
+        if self.chat_model:
+            text_instruct = f"""Extract a list of [entity, relation, entity] triples from the text below. Only write the definition line.
+                        \n{self.format_sample(sample_text, [])}"""
+            if triples: 
+                text_triples = self.natlang_triples(triples)
+                prompt +=  ICL_prompt + '\n' + text_instruct
+                prompt = [{"role": "user", "content": prompt},
+                        {"role": "assistant", "content": text_triples},]
+            else:
+                prompt += ICL_prompt + '\n' + text_instruct
+                prompt = [{"role": "user", "content": prompt},]
+            prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
+        else:
+            text = f"""Extract a list of [entity, relation, entity] triples from the text below.
+                        \n{self.format_sample(sample_text, triples)}""" # 
+            prompt += ICL_prompt + '\n' + text
         return prompt
 
-    def extract_triples(self, code_triples: str) -> List[List[str]]:
-        # Regex pattern to match triples in the format Triple(any alphanumerical head('X'), Rel('Y'), any alphanumerical tail('Z'))
-        pattern = re.compile(r"Triple\(\s*(\w+)\('([^']+)'\),\s*Rel\('([^']+)'\),\s*(\w+)\('([^']+)'\)\)")
+    def extract_triples(self, response: str) -> List[List[str]]:
+        if self.natlang:
+            # Extract triples from natural language response
+            pattern = r"\['([^']+)',\s*'([^']+)',\s*'([^']+)'\]"
+            matches = re.findall(pattern, response)
+            return list(matches)
+        else:
+            # Extract triples from code-like response
+            raw_pattern = re.compile(r"Triple\(\s*(\w+)\('([^']+)'\),\s*Rel\('([^']+)'\),\s*(\w+)\('([^']+)'\)\)?")
+            pattern = re.compile(raw_pattern)
+            matches = pattern.findall(response)
+            return [[match[1], match[2], match[4]] for match in matches]
         
-        # Find all matches in the string
-        matches = pattern.findall(code_triples)
-        
-        # Convert matches to a list of lists
-        triples = [[match[1], match[2], match[4]] for match in matches]
-        
-        return triples
-
     def pythonize_triples(self, triple_list: List[List[str]]) -> str:
-        # out = ''
-        # for triple_list in data:
-        pythonic_triples = "extract = Extract(["
-        for i, triple in enumerate(triple_list):
-            head, edge, tail = triple
-            pythonic_triples += f"Triple({self.type_dict[head]}('{head}'), Rel('{edge}'), {self.type_dict[tail]}('{tail}')"
-            
-            if i < len(triple_list) - 1:
-                pythonic_triples += "), "
-            else:
-                pythonic_triples += ")])"
-            # out += pythonic_triples + '\n'
-        return pythonic_triples
+        if triple_list:
+            pythonic_triples = "extract = Extract(["
+            for i, triple in enumerate(triple_list):
+                head, edge, tail = triple
+                pythonic_triples += f"Triple({self.type_dict[head]}('{head}'), Rel('{edge}'), {self.type_dict[tail]}('{tail}')"
+                
+                if i < len(triple_list) - 1:
+                    pythonic_triples += "), "
+                else:
+                    pythonic_triples += ")])"
+            return pythonic_triples
+        else:
+            return ''
 
     def natlang_triples(self, triple_list: List[List[str]]) -> str:
-        natlang_triples = "["
+        natlang_triples = "triple_list: ["
         for i, triple in enumerate(triple_list):
             head, edge, tail = triple
             natlang_triples += f"['{head}', '{edge}', '{tail}']"
@@ -61,67 +117,89 @@ class Prompter:
         triple_list = data['triple_list'].to_list()
         prompt = ''
         if self.natlang:
-            raise NotImplementedError
+            for text, triples in zip(text_list, triple_list):
+                prompt += f"text: {text}\n{self.natlang_triples(triple_list=triples)}\n"
         else:
             for text, triples in zip(text_list, triple_list):
                 prompt += f"\"\"\" {text} \"\"\"\n {self.pythonize_triples(triple_list=triples)}\n"
         return prompt
 
-def calculate_micro_f1(trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
-    TP = 0
-    FP = 0
-    FN = 0
-    
-    for true_triples, pred_triples in zip(trues, preds):
-        trues_merged = ['-'.join(trues) for trues in true_triples]
-        preds_merged = ['-'.join(preds) for preds in pred_triples]
-        # print('trues:', trues_merged, 'preds:', preds_merged)
-        true_set = set(trues_merged)
-        pred_set = set(preds_merged)
+    def calculate_micro_f1(self, trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
+        TP = 0
+        FP = 0
+        FN = 0
         
-        TP += len(true_set & pred_set)
-        FP += len(pred_set - true_set)
-        FN += len(true_set - pred_set)
-    
-    precision = TP / (TP + FP) if (TP + FP) > 0 else 0
-    recall = TP / (TP + FN) if (TP + FN) > 0 else 0
-    f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-    
-    return [precision, recall, f1_score]
-
-def evaluate(model, tokenizer, df_test, schema_prompt, icl_prompt, prompter, chat_model = True):
-    trues = []
-    preds = []
-    
-    text_test = df_test['text'].to_list()
-    triple_list_test = df_test['triple_list'].to_list()
-
-    for text, triple_list in tqdm(zip(text_test, triple_list_test), total=len(df_test)):
-        prompt = prompter.make_prompt(schema_prompt=schema_prompt, ICL_prompt=icl_prompt, item_text=text)
+        for true_triples, pred_triples in zip(trues, preds):
+            trues_merged = ['-'.join(trues) for trues in true_triples]
+            preds_merged = ['-'.join(preds) for preds in pred_triples]
+            true_set = set(trues_merged)
+            if len(true_set) != len(trues_merged):
+                raise AssertionError('List and set lengths are different')
+            pred_set = set(preds_merged)
+            
+            TP += len(true_set & pred_set)
+            FP += len(pred_set - true_set)
+            FN += len(true_set - pred_set)
         
-        if chat_model:
-            messages = [
-                {"role": "user", "content": prompt}
-            ]
+        precision = TP / (TP + FP) if (TP + FP) > 0 else 0
+        recall = TP / (TP + FN) if (TP + FN) > 0 else 0
+        f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+        
+        return [precision, recall, f1_score]
 
-            inputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors="pt").to(model.device)
-        else:
+    def evaluate(self, model, tokenizer, df_test, icl_prompt):
+        trues = []
+        preds = []
+        
+        text_test = df_test['text'].to_list()
+        triple_list_test = df_test['triple_list'].to_list()
+
+        for text, triple_list in tqdm(zip(text_test, triple_list_test), total=len(df_test)):
+            if self.natlang:
+                prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+            else:
+                prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+            
             inputs = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
+            
+            outputs = model.generate(inputs,
+                                    num_return_sequences=1,
+                                    eos_token_id=tokenizer.eos_token_id,
+                                    pad_token_id=tokenizer.eos_token_id,
+                                    max_new_tokens = 1000,
+                                    )
+            input_len = inputs.shape[1]
+            result = tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
+            trues.append(triple_list)
+            pred = self.extract_triples(result)
+            preds.append(pred)
+            logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}')
+
+        precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
+        return precision, recall, f1_score
+
+    def make_samples(self, tokenizer, df: pd.DataFrame, n_icl_samples: int) -> List[str]:
+        text_list = []
+        EOS_TOKEN = tokenizer.eos_token # add EOS_TOKEN to prevent infinite generation
+        for index in tqdm(df.index, total=len(df)):
+            # Select the specific row
+            sample = df.loc[index]
+            
+            # Exclude the specific row from the DataFrame
+            df_nosample = df.drop(index)
+            sample_text = sample['text']
+            sample_triples = sample['triple_list']
+            
+            # Randomly select N other different rows from the remaining DataFrame
+            icl_rows = df_nosample.sample(n=n_icl_samples)
+            icl_prompt = self.make_icl_prompt(icl_rows)
+            if self.natlang:
+                prompt = self.make_natlang_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
+            else:
+                prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
+            text_list.append(prompt)
         
-        outputs = model.generate(inputs,
-                                # num_return_sequences=1,
-                                # eos_token_id=tokenizer.eos_token_id,
-                                # pad_token_id=tokenizer.eos_token_id,
-                                # max_new_tokens = 1000,
-                                )
-        result = tokenizer.decode(outputs[0])#[len(inputs):], skip_special_tokens=True)
-        print(result)
-
-        trues.append(triple_list)
-        preds.append(prompter.extract_triples(result))
-
-    precision, recall, f1_score = calculate_micro_f1(trues, preds)
-    return precision, recall, f1_score
+        return text_list
 
 def save_json(info, json_path):
     try:
@@ -135,13 +213,3 @@ def save_json(info, json_path):
     with open(json_path, 'w', encoding='utf8') as f:
         json.dump(data, f, ensure_ascii = False)
 
-alpaca_prompt = """Below is an instruction that describes a task, paired with an input that provides further context. Write a response that appropriately completes the request.
-
-### Instruction:
-{}
-
-### Input:
-{}
-
-### Response:
-{}"""

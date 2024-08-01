@@ -1,0 +1,1 @@
+[{"Model": "./models/Meta-Llama-3.1-8B_ft_conll04_natlang", "Precision": 0.6105527638190955, "Recall": 0.597051597051597, "F1_Score": 0.6037267080745341, "n_icl_samples": 15, "n_samples_test": 288, "dataset": "conll04", "date": "2024-07-29-15-41-58", "schema_path": "./data/codekgc-data/conll04/code_prompt"}]

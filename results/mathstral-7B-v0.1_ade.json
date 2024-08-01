@@ -1,1 +1,0 @@
-[{"Model": "mistralai/mathstral-7B-v0.1", "Precision": 0.5635491606714629, "Recall": 0.5316742081447964, "F1_Score": 0.5471478463329453, "n_icl_samples": 15, "n_samples_test": 300, "dataset_name": "ade", "date": "2024-07-23-13-31-27"}]

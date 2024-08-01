@@ -1,1 +1,0 @@
-[{"Model": "Qwen/CodeQwen1.5-7B-Chat", "Precision": 0.2549450549450549, "Recall": 0.26244343891402716, "F1_Score": 0.2586399108138239, "n_icl_samples": 15, "n_samples_test": 300, "dataset_name": "ade"}]
