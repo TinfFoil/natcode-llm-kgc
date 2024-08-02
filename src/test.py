@@ -11,9 +11,10 @@ import argparse
 
 def main(args):
     print(f'Testing model: {args.model}')
-    print(f'Chat model: {args.chat}')
-    print(f"Language: {'natlang' if args.natlang else 'code'}")
     print(f'Testing dataset: {args.dataset}')
+    print(f'Chat model: {args.chat}')
+    print(f'Rationale: {args.rationale}')
+    print(f"Language: {'natlang' if args.natlang else 'code'}")
 
     model_name_simple = args.model.split('/')[-1]   
     model = AutoModelForCausalLM.from_pretrained(
@@ -44,6 +45,7 @@ def main(args):
                         tokenizer=tokenizer,
                         chat_model=args.chat,
                         schema_path=schema_path,
+                        rationale=args.rationale,
                         )
     df_train = pd.read_json(train_json).sample(n=n_icl_samples)
     icl_prompt = runner.make_icl_prompt(df_train)
@@ -78,14 +80,18 @@ if __name__ == "__main__":
     parser.add_argument("-m", "--model", help="Model to test")
     parser.add_argument("-d", "--dataset", help="Name of the testing dataset, options = ['ade', 'conll04', 'scierc']")
     parser.add_argument("--natlang", help="Type of language", action='store_true')
+    parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
     parser.add_argument("--chat", help="Type of model (default = completion model)", action='store_true')
-    parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
+    parser.add_argument("-ent", "--entitytypes", help="Filename of  the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--train", help="Filename of the train file to use", default='train_triples.json')
     parser.add_argument("--test", help="Filename of the test file to use", default='test_triples.json')
     args = parser.parse_args()
 
-    args.model = "./models/Meta-Llama-3.1-8B_ft_ade_code"
-    args.dataset = "ade"
+    args.model = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang"
+    args.dataset = "scierc"
+    args.chat = True
+    args.rationale = False
+    args.natlang = True
 
     main(args)

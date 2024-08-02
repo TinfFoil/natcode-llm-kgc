@@ -24,15 +24,16 @@ def main(args):
     max_seq_length = args.max_seq_length
     dtype = args.dtype
     load_in_4bit = args.load_in_4bit
-    model_name = args.model_name
-    chat_model = args.chat_model
+    model_name = args.model
+    chat_model = args.chat
     natlang = args.natlang
-    dataset_name = args.dataset_name
+    dataset_name = args.dataset
 
     print(f'Training model: {model_name}')
-    print(f'Chat model: {chat_model}')
-    print(f"Language: {'natlang' if natlang else 'code'}")
     print(f"Training data: {dataset_name}")
+    print(f'Chat model: {chat_model}')
+    print(f'Rationale: {args.rationale}')
+    print(f"Language: {'natlang' if natlang else 'code'}")
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = model_name, # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
@@ -58,7 +59,7 @@ def main(args):
 
     dataset_path = f'./data/codekgc-data/{dataset_name}'
 
-    entity2type_json = os.path.join(dataset_path, 'entity2type.json')
+    entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:
         entity2type_dict = json.load(f)
 
@@ -66,8 +67,9 @@ def main(args):
                         natlang=natlang,
                         tokenizer=tokenizer,
                         chat_model=chat_model,
-                        schema_path = os.path.join(dataset_path, 'code_prompt')
-                        )
+                        schema_path=os.path.join(dataset_path, args.prompt_filename),
+                        rationale=args.rationale,
+                        ) 
 
     n_icl_samples = 15
 
@@ -133,15 +135,22 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")
-    parser.add_argument("--model_name", type=str, help="Name of the model to train", default='unsloth/Meta-Llama-3.1-8B')
-    parser.add_argument("--dataset_name", type=str, help="Name of the dataset to use", default='ade')
+    parser.add_argument("--model", type=str, help="Name of the model to train", default='unsloth/Meta-Llama-3.1-8B')
+    parser.add_argument("--dataset", type=str, help="Name of the dataset to use", default='ade')
     parser.add_argument("--max_seq_length", type=int, default=2048, help="Maximum sequence length")
     parser.add_argument("--dtype", type=str, default=None, help="Data type for training")
     parser.add_argument("--load_in_4bit", action="store_true", help="Use 4-bit quantization")
-    parser.add_argument("--chat_model", action="store_true", help="Whether it's a chat model")
+    parser.add_argument("--chat", action="store_true", help="Whether it's a chat model")
     parser.add_argument("--natlang", action="store_true", help="Use natural language prompts")
+    parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
+    parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
+    parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     args = parser.parse_args()
 
-    # args.natlang = True
-    # args.chat_model = True
+    # args.model = "mistralai/Mistral-7B-v0.3"
+    # args.dataset = "scierc"
+    # args.chat = False
+    # args.rationale = False
+    # args.natlang = False
+
     main(args)

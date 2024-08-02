@@ -12,13 +12,13 @@
 declare -A model_list=(
 # ["unsloth/Meta-Llama-3.1-8B"]=false
 # ["mistralai/Mistral-7B-v0.3"]=false
-["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
 # ["Qwen/CodeQwen1.5-7B"]=false
 
-# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
-# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
-# ["Qwen/CodeQwen1.5-7B-Chat"]=true
+["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+["mistralai/Mistral-7B-Instruct-v0.3"]=true
+["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+["Qwen/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=("ade" "conll04" "scierc")
@@ -39,27 +39,27 @@ log_info() {
 
 # Loop through model_list
 for model in "${!model_list[@]}"; do
-    is_chat_model=${model_list[$model]}
+    is_chat=${model_list[$model]}
 
     # Loop through dataset_list
     for dataset in "${dataset_list[@]}"; do
         # Base command
         cmd="python ./src/train.py \
-            --model_name $model \
-            --dataset_name $dataset"
+            --model $model \
+            --dataset $dataset"
 
-        # Add chat_model flag if it's a chat model
-        if $is_chat_model; then
-            cmd+=" --chat_model"
+        # Add chat flag if it's a chat model
+        if $is_chat; then
+            cmd+=" --chat"
         fi
 
         # Log information
-        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat_model: $is_chat_model, language: natlang"
+        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, language: natlang"
         # Run with natlang
         $cmd --natlang
 
         # Log information
-        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat_model: $is_chat_model, language: code"
+        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, language: code"
         # Run without natlang
         $cmd
     done

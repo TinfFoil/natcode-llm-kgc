@@ -21,8 +21,8 @@ declare -A model_list=(
 # ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
 # fine-tuned models
-# ["./models/Meta-Llama-3.1-8B"]=false
-# ["./models/Meta-Llama-3.1-8B-Instruct"]=true
+["./models/Meta-Llama-3.1-8B"]=false
+["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
 ["./models/Mistral-7B-v0.3"]=false
 ["./models/Mistral-7B-Instruct-v0.3"]=true
@@ -56,7 +56,7 @@ log_info() {
 }
 
 langs=(
-    # true
+    true
     false
 )
 
@@ -103,10 +103,10 @@ for natlang in "${langs[@]}"; do
             # echo Language: code
             # echo \*\*\*\*\*\*\*\*\*\*\*\*
             
-            # # Log information
-            # log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model, dataset: $dataset, chat_model: $is_chat_model, language: code"
-            # # Run without natlang
-            # $cmd
+            # Log information
+            log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model, dataset: $dataset, chat_model: $is_chat_model, language: code"
+            # Run without natlang
+            $cmd
         done
     done
 done

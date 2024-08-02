@@ -18,25 +18,36 @@ class Runner:
                  schema_path = '',
                  chat_model = False,
                  tokenizer = None,
+                 rationale = False,
                  ) -> None:
         self.type_dict = type_dict
         self.natlang = natlang
         self.chat_model = chat_model
         self.tokenizer = tokenizer
         self.schema_prompt = open(schema_path, 'r', encoding='utf8').read()
+        self.rationale = rationale
 
-    def format_sample(self, item_text: str, triples: List[List[str]]):
+    def format_sample(self, item_text: str, triples: List[List[str]], rationale_prompt: str):
         if self.natlang:
-            out = f"text: {item_text}\n{self.natlang_triples(triples)}"
+            out = f"""text: {item_text}
+                    \n
+                    {rationale_prompt}
+                    {self.natlang_triples(triples)}
+                    """
         else:
-            out = f"\"\"\" {item_text} \"\"\"\n{self.pythonize_triples(triples)}"
+            out = f"""\"\"\" {item_text} \"\"\"
+                    \n
+                    {rationale_prompt}
+                    {self.pythonize_triples(triples)}
+                    """
         return out
 
     def make_code_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
         prompt = self.schema_prompt + '\n'
+        rationale_prompt = self.make_rationale_prompt(triples) if self.rationale else ''
         if self.chat_model:
             text_instruct = f"""Define an instance of Extract from the text below. Only write the definition line.
-                        \n{self.format_sample(sample_text, [])}"""
+                        \n{self.format_sample(sample_text, [], rationale_prompt)}"""
             if triples: 
                 text_triples = self.pythonize_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
@@ -48,15 +59,16 @@ class Runner:
             prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
         else:
             text = f"""Define an instance of Extract from the text below.
-                        \n{self.format_sample(sample_text, triples)}""" # 
+                        \n{self.format_sample(sample_text, triples, rationale_prompt)}"""
             prompt += ICL_prompt + '\n' + text
         return prompt
     
     def make_natlang_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
         prompt = ''
+        rationale_prompt = self.make_rationale_prompt(triples) if self.rationale else ''
         if self.chat_model:
             text_instruct = f"""Extract a list of [entity, relation, entity] triples from the text below. Only write the definition line.
-                        \n{self.format_sample(sample_text, [])}"""
+                        \n{self.format_sample(sample_text, [], rationale_prompt)}"""
             if triples: 
                 text_triples = self.natlang_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
@@ -68,29 +80,30 @@ class Runner:
             prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
         else:
             text = f"""Extract a list of [entity, relation, entity] triples from the text below.
-                        \n{self.format_sample(sample_text, triples)}""" # 
+                        \n{self.format_sample(sample_text, triples, rationale_prompt)}""" # 
             prompt += ICL_prompt + '\n' + text
         return prompt
 
     def extract_triples(self, response: str) -> List[List[str]]:
         if self.natlang:
             # Extract triples from natural language response
-            pattern = r"\['([^']+)',\s*'([^']+)',\s*'([^']+)'\]"
+            pattern = r'\["([^"]+)",\s*"([^"]+)",\s*"([^"]+)"\]'
             matches = re.findall(pattern, response)
             return list(matches)
         else:
             # Extract triples from code-like response
-            raw_pattern = re.compile(r"Triple\(\s*(\w+)\('([^']+)'\),\s*Rel\('([^']+)'\),\s*(\w+)\('([^']+)'\)\)?")
+            raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
             pattern = re.compile(raw_pattern)
             matches = pattern.findall(response)
             return [[match[1], match[2], match[4]] for match in matches]
+
         
     def pythonize_triples(self, triple_list: List[List[str]]) -> str:
         if triple_list:
             pythonic_triples = "extract = Extract(["
             for i, triple in enumerate(triple_list):
                 head, edge, tail = triple
-                pythonic_triples += f"Triple({self.type_dict[head]}('{head}'), Rel('{edge}'), {self.type_dict[tail]}('{tail}')"
+                pythonic_triples += f'Triple({self.type_dict[head]}("{head}"), Rel("{edge}"), {self.type_dict[tail]}("{tail}")'
                 
                 if i < len(triple_list) - 1:
                     pythonic_triples += "), "
@@ -104,7 +117,7 @@ class Runner:
         natlang_triples = "triple_list: ["
         for i, triple in enumerate(triple_list):
             head, edge, tail = triple
-            natlang_triples += f"['{head}', '{edge}', '{tail}']"
+            natlang_triples += f'["{head}", "{edge}", "{tail}"]'
             
             if i < len(triple_list) - 1:
                 natlang_triples += ", "
@@ -112,16 +125,47 @@ class Runner:
                 natlang_triples += "]"
         return natlang_triples
     
+    def make_rationale_prompt(self, triple_list):
+        if self.natlang:
+            rels = '\n'.join([triple[1] for triple in triple_list])
+            ents = '\n'.join(['\n'.join([triple[0], triple[2]]) for triple in triple_list])
+        else:
+            rels = '\n'.join([f"Rel('{triple[1]}')" for triple in triple_list])
+            ents = '\n'.join([f"{self.type_dict[triple[0]]}('{triple[0]}')\n{self.type_dict[triple[2]]}('{triple[2]}')" for triple in triple_list])
+        rationale_prompt = f'''
+        The candidate relations for this text are:
+        \n
+        {rels}
+        The candidate entities for this text are:
+        \n
+        {ents}
+        \n
+        '''
+        return rationale_prompt
+
     def make_icl_prompt(self, data: pd.DataFrame) -> str:
         text_list = data['text'].to_list()
         triple_list = data['triple_list'].to_list()
         prompt = ''
+        
         if self.natlang:
             for text, triples in zip(text_list, triple_list):
-                prompt += f"text: {text}\n{self.natlang_triples(triple_list=triples)}\n"
+                rationale_prompt = '' if not self.rationale else self.make_rationale_prompt(triples)
+                prompt += f"""text: {text}
+                \n
+                {rationale_prompt}
+                {self.natlang_triples(triple_list=triples)}
+                \n
+                """
         else:
             for text, triples in zip(text_list, triple_list):
-                prompt += f"\"\"\" {text} \"\"\"\n {self.pythonize_triples(triple_list=triples)}\n"
+                rationale_prompt = '' if not self.rationale else self.make_rationale_prompt(triples)
+                prompt += f"""\"\"\" {text} \"\"\"
+                \n
+                {rationale_prompt}
+                {self.pythonize_triples(triple_list=triples)}
+                \n
+                """
         return prompt
 
     def calculate_micro_f1(self, trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
@@ -133,8 +177,8 @@ class Runner:
             trues_merged = ['-'.join(trues) for trues in true_triples]
             preds_merged = ['-'.join(preds) for preds in pred_triples]
             true_set = set(trues_merged)
-            if len(true_set) != len(trues_merged):
-                raise AssertionError('List and set lengths are different')
+            # if len(true_set) != len(trues_merged):
+            #     raise AssertionError('List and set lengths are different')
             pred_set = set(preds_merged)
             
             TP += len(true_set & pred_set)

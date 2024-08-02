@@ -1,1 +1,0 @@
-[{"Model": "./models/Meta-Llama-3.1-8B_ft_scierc_code", "Precision": 0.37356919875130074, "Recall": 0.36858316221765913, "F1_Score": 0.3710594315245478, "n_icl_samples": 15, "n_samples_test": 397, "dataset": "scierc", "date": "2024-07-30-13-32-22", "schema_path": "./data/codekgc-data/scierc/code_prompt"}]
