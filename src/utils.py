@@ -4,6 +4,7 @@ import pandas as pd
 import json
 import re
 import logging
+import uuid
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -27,77 +28,136 @@ class Runner:
         self.schema_prompt = open(schema_path, 'r', encoding='utf8').read()
         self.rationale = rationale
 
-    def format_sample(self, item_text: str, triples: List[List[str]], rationale_prompt: str):
         if self.natlang:
-            out = f"""text: {item_text}
-                    \n
-                    {rationale_prompt}
-                    {self.natlang_triples(triples)}
-                    """
+            self.comment_symbol = ''
+            self.instruction = 'Task: Extract a list of [entity, relation, entity] triples from the text below.'
+            self.sys_prompt = 'You are an AI specialized in the task of extracting entity-relation-entity triples from texts.'
         else:
-            out = f"""\"\"\" {item_text} \"\"\"
-                    \n
-                    {rationale_prompt}
-                    {self.pythonize_triples(triples)}
-                    """
+            self.comment_symbol = '# '
+            self.instruction = f'{self.comment_symbol}Task: Define an instance of Extract from the text below.'
+            self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
+        self.instruction += ' Do not produce any more text samples after you finish extracting triples from the text below.'
+    
+    def check_system_msg(self):
+        psw = str(uuid.uuid4())
+        response = self.tokenizer.apply_chat_template([{"role": "system", "content": psw},], tokenize=False)
+        if psw in response:
+            return True
+        else:
+            return False
+
+    def format_sample(self, item_text: str, triples: List[List[str]], rationale_prompt: str):
+        if not triples and self.rationale:
+            triple_prompt = ''
+        else:
+            triple_prompt = self.natlang_triples(triples) if self.natlang else self.pythonize_triples(triples)
+        if self.natlang:
+            out = f"""text: \"{item_text}\"{rationale_prompt}\n{triple_prompt}"""
+        else:
+            out = f"""text = \"\"\" {item_text} \"\"\"{rationale_prompt}\n{triple_prompt}"""
         return out
 
     def make_code_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
         prompt = self.schema_prompt + '\n'
         rationale_prompt = self.make_rationale_prompt(triples) if self.rationale else ''
         if self.chat_model:
-            text_instruct = f"""Define an instance of Extract from the text below. Only write the definition line.
-                        \n{self.format_sample(sample_text, [], rationale_prompt)}"""
+            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, [], rationale_prompt)}"""
             if triples: 
                 text_triples = self.pythonize_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
-                prompt = [{"role": "user", "content": prompt},
-                        {"role": "assistant", "content": text_triples},]
+                if self.check_system_msg():
+                    prompt = [
+                    {"role": "system", "content": self.sys_prompt},
+                    {"role": "user", "content": prompt},
+                    {"role": "assistant", "content": text_triples},
+                    ]
+                else:
+                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = [
+                    {"role": "user", "content": prompt},
+                    {"role": "assistant", "content": text_triples},
+                    ]
+                add_generation_prompt = False
             else:
-                prompt += ICL_prompt + '\n' + text_instruct
-                prompt = [{"role": "user", "content": prompt},]
-            prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
+                prompt +=  ICL_prompt + '\n' + text_instruct
+                if self.check_system_msg():
+                    prompt = [
+                    {"role": "system", "content": self.sys_prompt},
+                    {"role": "user", "content": prompt},
+                    ]
+                else:
+                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                add_generation_prompt = True
+            prompt = self.tokenizer.apply_chat_template(prompt,
+                                                        tokenize=False,
+                                                        add_generation_prompt=add_generation_prompt
+                                                        )
         else:
-            text = f"""Define an instance of Extract from the text below.
-                        \n{self.format_sample(sample_text, triples, rationale_prompt)}"""
-            prompt += ICL_prompt + '\n' + text
+            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}"""
+            prompt += ICL_prompt + '\n' + text_instruct
+            prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
         return prompt
     
     def make_natlang_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
         prompt = ''
         rationale_prompt = self.make_rationale_prompt(triples) if self.rationale else ''
         if self.chat_model:
-            text_instruct = f"""Extract a list of [entity, relation, entity] triples from the text below. Only write the definition line.
-                        \n{self.format_sample(sample_text, [], rationale_prompt)}"""
+            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, [], rationale_prompt)}"""
             if triples: 
                 text_triples = self.natlang_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
-                prompt = [{"role": "user", "content": prompt},
-                        {"role": "assistant", "content": text_triples},]
+                if self.check_system_msg():
+                    prompt = [
+                    {"role": "system", "content": self.sys_prompt},
+                    {"role": "user", "content": prompt},
+                    {"role": "assistant", "content": text_triples},
+                    ]
+                else:
+                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = [
+                    {"role": "user", "content": prompt},
+                    {"role": "assistant", "content": text_triples},
+                    ]
+                add_generation_prompt = False
             else:
-                prompt += ICL_prompt + '\n' + text_instruct
-                prompt = [{"role": "user", "content": prompt},]
-            prompt = self.tokenizer.apply_chat_template(prompt, tokenize = False)
+                prompt +=  ICL_prompt + '\n' + text_instruct
+                if self.check_system_msg():
+                    prompt = [
+                    {"role": "system", "content": self.sys_prompt},
+                    {"role": "user", "content": prompt},
+                    ]
+                else:
+                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                add_generation_prompt = True
+            prompt = self.tokenizer.apply_chat_template(prompt,
+                                                        tokenize=False,
+                                                        add_generation_prompt=add_generation_prompt
+                                                        )
         else:
-            text = f"""Extract a list of [entity, relation, entity] triples from the text below.
-                        \n{self.format_sample(sample_text, triples, rationale_prompt)}""" # 
-            prompt += ICL_prompt + '\n' + text
+            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}""" # 
+            prompt += ICL_prompt + '\n' + text_instruct
+            prompt = self.sys_prompt + '\n\n' + prompt
         return prompt
 
     def extract_triples(self, response: str) -> List[List[str]]:
+        # Find the position of the instruction in the response
+        # instruction_pos = response.rfind(self.instruction)
+        # if instruction_pos != -1:
+        #     # If instruction is found, start extracting from after it
+        #     response = response[instruction_pos + len(self.instruction):]
+        
         if self.natlang:
             # Extract triples from natural language response
             pattern = r'\["([^"]+)",\s*"([^"]+)",\s*"([^"]+)"\]'
             matches = re.findall(pattern, response)
             return list(matches)
         else:
-            # Extract triples from code-like response
+            # Extract triples from pythonic response
             raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
             pattern = re.compile(raw_pattern)
             matches = pattern.findall(response)
             return [[match[1], match[2], match[4]] for match in matches]
 
-        
     def pythonize_triples(self, triple_list: List[List[str]]) -> str:
         if triple_list:
             pythonic_triples = "extract = Extract(["
@@ -126,46 +186,31 @@ class Runner:
         return natlang_triples
     
     def make_rationale_prompt(self, triple_list):
-        if self.natlang:
-            rels = '\n'.join([triple[1] for triple in triple_list])
-            ents = '\n'.join(['\n'.join([triple[0], triple[2]]) for triple in triple_list])
+        if triple_list:
+            if self.natlang:
+                rels = '\n'.join([triple[1] for triple in triple_list])
+                ents = '\n'.join(['\n'.join([triple[0], triple[2]]) for triple in triple_list])
+            else:
+                rels = '\n'.join([f"{self.comment_symbol}Rel('{triple[1]}')" for triple in triple_list])
+                ents = '\n'.join([f"{self.comment_symbol}{self.type_dict[triple[0]]}('{triple[0]}')\n{self.comment_symbol}{self.type_dict[triple[2]]}('{triple[2]}')" for triple in triple_list])
+            rationale_prompt = f'''\n{self.comment_symbol}The candidate relations for this text are:\n{rels}\n{self.comment_symbol}The candidate entities for this text are:\n{ents}\n'''
         else:
-            rels = '\n'.join([f"Rel('{triple[1]}')" for triple in triple_list])
-            ents = '\n'.join([f"{self.type_dict[triple[0]]}('{triple[0]}')\n{self.type_dict[triple[2]]}('{triple[2]}')" for triple in triple_list])
-        rationale_prompt = f'''
-        The candidate relations for this text are:
-        \n
-        {rels}
-        The candidate entities for this text are:
-        \n
-        {ents}
-        \n
-        '''
+            rationale_prompt = ''
         return rationale_prompt
 
     def make_icl_prompt(self, data: pd.DataFrame) -> str:
         text_list = data['text'].to_list()
         triple_list = data['triple_list'].to_list()
-        prompt = ''
+        prompt = f'{self.comment_symbol}Look at the examples below and then carry out the following indicated task.\n\n'
         
         if self.natlang:
-            for text, triples in zip(text_list, triple_list):
+            for i, (text, triples) in enumerate(zip(text_list, triple_list)):
                 rationale_prompt = '' if not self.rationale else self.make_rationale_prompt(triples)
-                prompt += f"""text: {text}
-                \n
-                {rationale_prompt}
-                {self.natlang_triples(triple_list=triples)}
-                \n
-                """
+                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.natlang_triples(triple_list=triples)}\n\n"""
         else:
-            for text, triples in zip(text_list, triple_list):
+            for i, (text, triples) in enumerate(zip(text_list, triple_list)):
                 rationale_prompt = '' if not self.rationale else self.make_rationale_prompt(triples)
-                prompt += f"""\"\"\" {text} \"\"\"
-                \n
-                {rationale_prompt}
-                {self.pythonize_triples(triple_list=triples)}
-                \n
-                """
+                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.pythonize_triples(triple_list=triples)}\n\n"""
         return prompt
 
     def calculate_micro_f1(self, trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
@@ -213,11 +258,13 @@ class Runner:
                                     max_new_tokens = 1000,
                                     )
             input_len = inputs.shape[1]
+            full_model_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
             result = tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
             trues.append(triple_list)
             pred = self.extract_triples(result)
             preds.append(pred)
-            logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}')
+            metrics_sample = self.calculate_micro_f1([triple_list], [pred])
+            logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}' + '\n' + f'metrics_sample: {metrics_sample}')
 
         precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
         return precision, recall, f1_score
@@ -237,10 +284,12 @@ class Runner:
             # Randomly select N other different rows from the remaining DataFrame
             icl_rows = df_nosample.sample(n=n_icl_samples)
             icl_prompt = self.make_icl_prompt(icl_rows)
+            prompt = ''
             if self.natlang:
                 prompt = self.make_natlang_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
             else:
                 prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
+            # print(prompt)
             text_list.append(prompt)
         
         return text_list

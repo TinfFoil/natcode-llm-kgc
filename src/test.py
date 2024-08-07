@@ -16,12 +16,14 @@ def main(args):
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if args.natlang else 'code'}")
 
-    model_name_simple = args.model.split('/')[-1]   
+    model_name_simple = args.model.split('/')[-1]
+
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
         torch_dtype='auto',
         device_map='auto'
     )
+    
     tokenizer = AutoTokenizer.from_pretrained(args.model)
 
     dataset_path = f'./data/codekgc-data/{args.dataset}'
@@ -68,10 +70,17 @@ def main(args):
             "dataset": args.dataset,
             "date": dt_string,
             "schema_path": schema_path,
+            "split": 'test',
             }]
     
     print(info)
-    json_path = f"./results/{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json"
+
+    results_dir_path = './results'
+
+    if not os.path.exists(results_dir_path):
+        os.makedirs(results_dir_path)
+
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_test.json")
 
     save_json(info, json_path)
 
@@ -88,10 +97,11 @@ if __name__ == "__main__":
     parser.add_argument("--test", help="Filename of the test file to use", default='test_triples.json')
     args = parser.parse_args()
 
-    args.model = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang"
-    args.dataset = "scierc"
-    args.chat = True
-    args.rationale = False
-    args.natlang = True
+    # args.model = "./models/CodeQwen1.5-7B-Chat_ft_ade_code_base"
+    # args.model = "./models/CodeQwen1.5-7B_ft_ade_natlang_base"
+    # args.dataset = "ade"
+    # args.chat = True
+    # args.rationale = False
+    # args.natlang = False
 
     main(args)

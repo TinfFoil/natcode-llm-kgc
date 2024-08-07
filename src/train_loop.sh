@@ -10,15 +10,17 @@
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-# ["unsloth/Meta-Llama-3.1-8B"]=false
-# ["mistralai/Mistral-7B-v0.3"]=false
-# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
-# ["Qwen/CodeQwen1.5-7B"]=false
-
+["unsloth/Meta-Llama-3.1-8B"]=false
 ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-["mistralai/Mistral-7B-Instruct-v0.3"]=true
-["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
-["Qwen/CodeQwen1.5-7B-Chat"]=true
+
+# ["mistralai/Mistral-7B-v0.3"]=false
+# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+
+# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+
+# ["Qwen/CodeQwen1.5-7B"]=false
+# ["Qwen/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=("ade" "conll04" "scierc")
@@ -37,30 +39,46 @@ log_info() {
     echo "$1" >> $log_file
 }
 
+rationale_toggle=(
+    true
+    false
+)
+
+natlang_toggle=(
+    true
+    false
+)
+
 # Loop through model_list
-for model in "${!model_list[@]}"; do
-    is_chat=${model_list[$model]}
+for natlang in ${natlang_toggle[@]}; do
+    for rationale in ${rationale_toggle[@]}; do
+        for model in "${!model_list[@]}"; do
+            is_chat=${model_list[$model]}
 
-    # Loop through dataset_list
-    for dataset in "${dataset_list[@]}"; do
-        # Base command
-        cmd="python ./src/train.py \
-            --model $model \
-            --dataset $dataset"
+            # Loop through dataset_list
+            for dataset in "${dataset_list[@]}"; do
+                # Base command
+                cmd="python ./src/train.py \
+                    --model $model \
+                    --dataset $dataset"
 
-        # Add chat flag if it's a chat model
-        if $is_chat; then
-            cmd+=" --chat"
-        fi
+                # Add chat flag if it's a chat model
+                if $is_chat; then
+                    cmd+=" --chat"
+                fi
 
-        # Log information
-        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, language: natlang"
-        # Run with natlang
-        $cmd --natlang
+                if $rationale_toggle; then
+                    cmd+=" --rationale"
+                fi
 
-        # Log information
-        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, language: code"
-        # Run without natlang
-        $cmd
+                if $natlang_toggle; then
+                    cmd+=" --natlang"
+                fi
+
+                # Log information
+                log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, natlang: $natlang, rationale: $rationale", 
+                $cmd $1
+            done
+        done
     done
 done
