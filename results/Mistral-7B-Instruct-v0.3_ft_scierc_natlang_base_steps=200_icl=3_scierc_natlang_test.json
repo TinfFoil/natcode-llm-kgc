@@ -1,0 +1,1 @@
+[{"Model": "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang_base_steps=200_icl=3", "Precision": 0.38360323886639675, "Recall": 0.3891170431211499, "F1_Score": 0.38634046890927626, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-09-15-21-22", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

@@ -1,0 +1,1 @@
+[{"Model": "./models/Mistral-7B-v0.3_ft_conll04_code_rationale_steps=200_icl=3", "Precision": 0.6918767507002801, "Recall": 0.6068796068796068, "F1_Score": 0.6465968586387434, "n_icl_samples": 3, "n_samples_test": 288, "dataset": "conll04", "date": "2024-08-09-14-17-03", "schema_path": "./data/codekgc-data/conll04/code_prompt", "split": "test"}]

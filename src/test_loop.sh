@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J graphing
+#SBATCH -J test_kgc
 #SBATCH -p local
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -25,13 +25,13 @@ declare -A model_list=(
     # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
     ["./models/Mistral-7B-v0.3"]=false
-    # ["./models/Mistral-7B-Instruct-v0.3"]=true
+    ["./models/Mistral-7B-Instruct-v0.3"]=true
 
     # ["./models/deepseek-coder-7b-base-v1.5"]=false
     # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
 
-    ["./models/CodeQwen1.5-7B"]=false
-    ["./models/CodeQwen1.5-7B-Chat"]=true
+    # ["./models/CodeQwen1.5-7B"]=false
+    # ["./models/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(
@@ -64,6 +64,9 @@ rationale_toggle=(
     false
 )
 
+train_steps=200
+n_icl_samples=3
+
 for rationale in "${rationale_toggle[@]}"; do
     for natlang in "${natlang_toggle[@]}"; do
         for model in "${!model_list[@]}"; do
@@ -95,7 +98,7 @@ for rationale in "${rationale_toggle[@]}"; do
                 
                 # Construct the model name
                 if $is_fine_tuned; then
-                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}"
+                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
                 else
                     model_name="${model}"
                 fi
@@ -113,7 +116,13 @@ for rationale in "${rationale_toggle[@]}"; do
 
                 # Log information
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix fine-tuned: $is_fine_tuned"
-                
+                echo "Testing this model: $model_name"
+                if python ./src/check_results.py -m "$model_name" -d './results'; then
+                    echo "$model_name has already been tested: skipping"
+                    echo '**************'
+                    continue
+                fi
+
                 # Run the command
                 $cmd $natlang_flag $rationale_flag
             done

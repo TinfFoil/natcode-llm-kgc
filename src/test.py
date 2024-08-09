@@ -36,7 +36,6 @@ def main(args):
     df_test = pd.read_json(test_json)
     n_samples_test = len(df_test)
     df_test = df_test.sample(n=n_samples_test)
-    n_icl_samples = 15
 
     entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:
@@ -48,8 +47,10 @@ def main(args):
                         chat_model=args.chat,
                         schema_path=schema_path,
                         rationale=args.rationale,
+                        verbose_test=args.verbose_test,
+                        model_name=args.model,
                         )
-    df_train = pd.read_json(train_json).sample(n=n_icl_samples)
+    df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
     icl_prompt = runner.make_icl_prompt(df_train)
     
     precision, recall, f1_score = runner.evaluate(model,
@@ -65,7 +66,7 @@ def main(args):
             "Precision": precision,
             "Recall": recall,
             "F1_Score": f1_score,
-            "n_icl_samples": n_icl_samples,
+            "n_icl_samples": args.n_icl_samples,
             "n_samples_test": n_samples_test,
             "dataset": args.dataset,
             "date": dt_string,
@@ -95,13 +96,15 @@ if __name__ == "__main__":
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--train", help="Filename of the train file to use", default='train_triples.json')
     parser.add_argument("--test", help="Filename of the test file to use", default='test_triples.json')
+    parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
+    parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
     args = parser.parse_args()
 
-    # args.model = "./models/CodeQwen1.5-7B-Chat_ft_ade_code_base"
-    # args.model = "./models/CodeQwen1.5-7B_ft_ade_natlang_base"
+    # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_rationale_steps=200_icl=3"
     # args.dataset = "ade"
-    # args.chat = True
-    # args.rationale = False
-    # args.natlang = False
+    # args.chat = 1
+    # args.rationale = 1
+    # args.natlang = 1
+    # args.verbose_test = 1
 
     main(args)

@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J graphing
+#SBATCH -J train_kgc
 #SBATCH -p local
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
@@ -10,20 +10,24 @@
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["mistralai/Mistral-7B-v0.3"]=false
 # ["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
-# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
-# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
 
 # ["Qwen/CodeQwen1.5-7B"]=false
 # ["Qwen/CodeQwen1.5-7B-Chat"]=true
 )
 
-dataset_list=("ade" "conll04" "scierc")
+dataset_list=(
+    "ade"
+    "conll04"
+    "scierc"
+    )
 
 # Create a timestamp string
 timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -49,6 +53,9 @@ natlang_toggle=(
     false
 )
 
+train_steps=200
+n_icl_samples=3
+
 # Loop through model_list
 for natlang in ${natlang_toggle[@]}; do
     for rationale in ${rationale_toggle[@]}; do
@@ -67,12 +74,32 @@ for natlang in ${natlang_toggle[@]}; do
                     cmd+=" --chat"
                 fi
 
-                if $rationale_toggle; then
+                if $rationale; then
                     cmd+=" --rationale"
+                    rationale_suffix="rationale"
+                    rationale_flag="--rationale"
+                else
+                    rationale_suffix="base"
+                    rationale_flag=""
                 fi
 
-                if $natlang_toggle; then
+                if $natlang; then
                     cmd+=" --natlang"
+                    natlang_suffix="natlang"
+                    natlang_flag="--natlang"
+                else
+                    natlang_suffix="code"
+                    natlang_flag=""
+                fi
+                
+                # Construct the model name
+                model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
+                echo "Training this model: $model_name"
+                
+                if python ./src/check_models.py -m "$model_name" -d './models'; then
+                    echo "$model_name has already been trained: skipping"
+                    echo '**************'
+                    continue
                 fi
 
                 # Log information

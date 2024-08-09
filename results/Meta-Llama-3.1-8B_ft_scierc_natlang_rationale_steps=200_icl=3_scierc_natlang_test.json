@@ -1,0 +1,1 @@
+[{"Model": "./models/Meta-Llama-3.1-8B_ft_scierc_natlang_rationale_steps=200_icl=3", "Precision": 0.336322869955157, "Recall": 0.3080082135523614, "F1_Score": 0.3215434083601286, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-08-17-43-21", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

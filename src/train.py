@@ -14,6 +14,7 @@ import logging
 import numpy as np
 from datetime import datetime
 from utils import *
+import random
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -72,15 +73,16 @@ def main(args):
                         chat_model=chat_model,
                         schema_path=schema_path,
                         rationale=args.rationale,
+                        verbose_train=args.verbose_train,
+                        max_seq_len=args.max_seq_length,
+                        model_name=args.model,
                         )
     
     print('Model system message:', runner.check_system_msg())
 
-    n_icl_samples = 15
-
     train_json = os.path.join(dataset_path, 'train_triples.json')
     df_train = pd.read_json(train_json)
-    text_list_train = runner.make_samples(tokenizer, df_train, n_icl_samples=n_icl_samples)
+    text_list_train = runner.make_samples(tokenizer, df_train, n_icl_samples=args.n_icl_samples)
     df_train = pd.DataFrame(text_list_train)
     dataset_train = Dataset.from_pandas(df_train.rename(columns={0: "text"}), split="train")
 
@@ -92,12 +94,41 @@ def main(args):
     else:
         val_json = os.path.join(dataset_path, 'val_triples.json')
         df_val = pd.read_json(val_json)
-        text_list_val = runner.make_samples(tokenizer, df_val, n_icl_samples=n_icl_samples)
+        text_list_val = runner.make_samples(tokenizer, df_val, n_icl_samples=args.n_icl_samples)
         n_samples_val = len(df_val) if not args.val_samples else args.val_samples
         df_val = pd.DataFrame(text_list_val).sample(n=n_samples_val)
         dataset_val = Dataset.from_pandas(df_val.rename(columns={0: "text"}), split="val")
         eval_strategy = 'steps'
         load_best_model_at_end=True
+
+    class OutputPrinterCallback(TrainerCallback):
+        def __init__(self, tokenizer, dataset, print_interval=10):
+            self.tokenizer = tokenizer
+            self.dataset = dataset
+            self.print_interval = print_interval
+
+        def on_step_end(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, model, **kwargs):
+            if state.global_step % self.print_interval == 0:
+                # Select a random sample from the dataset
+                sample = random.choice(self.dataset)
+                inputs = self.tokenizer(sample['text'], return_tensors='pt', truncation=True, padding=True, max_length=512)
+                inputs = {k: v.to(model.device) for k, v in inputs.items()}
+
+                # Perform a forward pass instead of generation
+                with torch.no_grad():
+                    outputs = model(**inputs)
+                
+                # Get the most likely token at each step
+                predicted_token_ids = torch.argmax(outputs.logits, dim=-1)
+                
+                # Decode the predicted tokens
+                generated_text = self.tokenizer.decode(predicted_token_ids[0], skip_special_tokens=True)
+                
+                print(f"\nStep {state.global_step} - Sample Output:")
+                print(f"Input: {sample['text'][:100]}...")  # Print first 100 characters of input
+                print(f"Model output: {generated_text}\n")
+
+            return control
 
     class PrinterCallback(TrainerCallback):
         def on_log(self, args, state, control, logs=None, **kwargs):
@@ -125,7 +156,9 @@ def main(args):
         precision, recall, f1_score = runner.calculate_micro_f1(true_triples, predicted_triples)
         
         return {"precision": precision, "recall": recall, "f1": f1_score}
-    
+
+    output_printer = OutputPrinterCallback(tokenizer, dataset_train, print_interval=1)
+
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
@@ -158,7 +191,10 @@ def main(args):
             metric_for_best_model="f1",
             load_best_model_at_end=load_best_model_at_end,
         ),
-        callbacks=[PrinterCallback()],
+        callbacks=[
+            PrinterCallback(),
+            # output_printer
+            ],
     )
 
     trainer_stats = trainer.train()
@@ -186,7 +222,7 @@ def main(args):
             "Precision_val": eval_results['eval_precision'],
             "Recall_val": eval_results['eval_recall'],
             "F1_val": eval_results['eval_f1'],
-            "n_icl_samples": n_icl_samples,
+            "n_icl_samples": args.n_icl_samples,
             "n_samples_val": n_samples_val,
             "dataset": args.dataset,
             "date": dt_string,
@@ -203,14 +239,14 @@ def main(args):
         os.makedirs(results_dir_path)
     
     model_name_simple = model_name.split('/')[-1]
-    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_{args.train_steps}"
+    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}"
     json_path = os.path.join(results_dir_path, f"{model_name_ft}_val.json")
 
-    if args.no_results_save:
-        print('Results were not saved because of --no_results_save flag')
-    else:
-        print(f'Results saved to: {json_path}')
+    if args.save_results:
+        print(f'Training results saved to: {json_path}')
         save_json(info, json_path)
+    else:
+        print('Training results were not saved because of NO --save_results flag')
 
     model_dir = './models'
 
@@ -233,10 +269,11 @@ if __name__ == "__main__":
     parser.add_argument("--batch_size_eval", type=int, help="Number of training samples", default=4)
     parser.add_argument("--grad_acc_steps", type=int, help="Number of training samples", default=1)
     parser.add_argument("--no_model_save", action="store_true", help="Don't save the fine-tuned model")
-    parser.add_argument("--no_results_save", action="store_true", help="Don't save the training results")
+    parser.add_argument("--save_results", action="store_true", help="Don't save the training results")
     parser.add_argument("--val_samples", type=int, help="Number of validation samples", default=0)
     parser.add_argument("--noval", action="store_false", help="Do NOT evaluate on validation split")
-    parser.add_argument("--max_seq_length", type=int, default=2048, help="Maximum sequence length")
+    parser.add_argument("--max_seq_length", type=int, default=4096, help="Maximum sequence length")
+    parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--dtype", type=str, default=None, help="Data type for training")
     parser.add_argument("--load_in_4bit", action="store_true", help="Use 4-bit quantization")
     parser.add_argument("--chat", action="store_true", help="Whether it's a chat model")
@@ -244,6 +281,7 @@ if __name__ == "__main__":
     parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
     parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
+    parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     args = parser.parse_args()
 
     # args.model = "unsloth/Meta-Llama-3.1-8B"
@@ -259,11 +297,12 @@ if __name__ == "__main__":
     # args.model = "Qwen/CodeQwen1.5-7B-Chat"
     
     # args.dataset = "ade"
-    # args.chat = 1
+    # args.chat = 0
     # args.rationale = 1
     # args.natlang = 0
-    # args.train_steps = 3
+    # args.train_steps = 200
     # args.noval = True
     # args.val_samples = 3
+    # args.n_icl_samples = 3
 
     main(args)

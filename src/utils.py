@@ -5,6 +5,7 @@ import json
 import re
 import logging
 import uuid
+import time
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -20,6 +21,10 @@ class Runner:
                  chat_model = False,
                  tokenizer = None,
                  rationale = False,
+                 verbose_train = False,
+                 verbose_test = False,
+                 max_seq_len = 999999,
+                 model_name = '',
                  ) -> None:
         self.type_dict = type_dict
         self.natlang = natlang
@@ -27,16 +32,25 @@ class Runner:
         self.tokenizer = tokenizer
         self.schema_prompt = open(schema_path, 'r', encoding='utf8').read()
         self.rationale = rationale
+        self.verbose_train = verbose_train
+        self.verbose_test = verbose_test
+        self.max_seq_len = max_seq_len
+        self.model_name = model_name
 
         if self.natlang:
             self.comment_symbol = ''
             self.instruction = 'Task: Extract a list of [entity, relation, entity] triples from the text below.'
             self.sys_prompt = 'You are an AI specialized in the task of extracting entity-relation-entity triples from texts.'
+            # self.quitting_prompt = '\n\n' + f'{self.comment_symbol}Task completed!'
         else:
             self.comment_symbol = '# '
             self.instruction = f'{self.comment_symbol}Task: Define an instance of Extract from the text below.'
             self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
+            # self.quitting_prompt = '\n\n' + f'{self.comment_symbol}Task completed!\n\nexit()'
         self.instruction += ' Do not produce any more text samples after you finish extracting triples from the text below.'
+
+        self.quitting_prompt = ''
+        # TODO check if quitting prompt can actually help, but it doesn't seem like it
     
     def check_system_msg(self):
         psw = str(uuid.uuid4())
@@ -65,6 +79,7 @@ class Runner:
             if triples: 
                 text_triples = self.pythonize_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
+                prompt += self.quitting_prompt
                 if self.check_system_msg():
                     prompt = [
                     {"role": "system", "content": self.sys_prompt},
@@ -87,7 +102,10 @@ class Runner:
                     ]
                 else:
                     prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
-                add_generation_prompt = True
+                    prompt = [
+                    {"role": "user", "content": prompt},
+                    ]
+                    add_generation_prompt = True
             prompt = self.tokenizer.apply_chat_template(prompt,
                                                         tokenize=False,
                                                         add_generation_prompt=add_generation_prompt
@@ -96,6 +114,8 @@ class Runner:
             text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}"""
             prompt += ICL_prompt + '\n' + text_instruct
             prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+            if triples:
+                prompt += self.quitting_prompt
         return prompt
     
     def make_natlang_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
@@ -106,6 +126,7 @@ class Runner:
             if triples: 
                 text_triples = self.natlang_triples(triples)
                 prompt +=  ICL_prompt + '\n' + text_instruct
+                prompt += self.quitting_prompt
                 if self.check_system_msg():
                     prompt = [
                     {"role": "system", "content": self.sys_prompt},
@@ -114,6 +135,7 @@ class Runner:
                     ]
                 else:
                     prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt += self.quitting_prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     {"role": "assistant", "content": text_triples},
@@ -128,15 +150,20 @@ class Runner:
                     ]
                 else:
                     prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = [
+                    {"role": "user", "content": prompt},
+                    ]
                 add_generation_prompt = True
             prompt = self.tokenizer.apply_chat_template(prompt,
                                                         tokenize=False,
                                                         add_generation_prompt=add_generation_prompt
                                                         )
         else:
-            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}""" # 
+            text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}"""
             prompt += ICL_prompt + '\n' + text_instruct
             prompt = self.sys_prompt + '\n\n' + prompt
+            if triples:
+                prompt += self.quitting_prompt
         return prompt
 
     def extract_triples(self, response: str) -> List[List[str]]:
@@ -242,8 +269,10 @@ class Runner:
         
         text_test = df_test['text'].to_list()
         triple_list_test = df_test['triple_list'].to_list()
+        
+        t_counter = 0
 
-        for text, triple_list in tqdm(zip(text_test, triple_list_test), total=len(df_test)):
+        for text, triple_list in tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}'):
             if self.natlang:
                 prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
             else:
@@ -251,20 +280,38 @@ class Runner:
             
             inputs = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
             
+            t0 = time.time()
             outputs = model.generate(inputs,
                                     num_return_sequences=1,
                                     eos_token_id=tokenizer.eos_token_id,
                                     pad_token_id=tokenizer.eos_token_id,
                                     max_new_tokens = 1000,
                                     )
+            t1 = time.time()
+            t_diff = t1 - t0
             input_len = inputs.shape[1]
-            full_model_output = tokenizer.decode(outputs[0], skip_special_tokens=True)
-            result = tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
+            full_model_output = tokenizer.decode(outputs[0],
+                                                skip_special_tokens=True
+                                                )
+            result = tokenizer.decode(outputs[0][input_len:],
+                                                skip_special_tokens=True
+                                                )
+            timeout = 30
+            if t_diff > timeout:
+                t_counter += 1
+                if t_counter > 2:
+                    raise TimeoutError(f'Generation for {self.model_name} is taking longer than {timeout} seconds, exiting...')
+            else:
+                t_counter -= 1
+
             trues.append(triple_list)
             pred = self.extract_triples(result)
             preds.append(pred)
-            metrics_sample = self.calculate_micro_f1([triple_list], [pred])
-            logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}' + '\n' + f'metrics_sample: {metrics_sample}')
+            if self.verbose_test:
+                logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}')
+                metrics_sample = self.calculate_micro_f1([triple_list], [pred])
+                metrics_current = self.calculate_micro_f1(trues, preds)
+                logger.info('\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}')
 
         precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
         return precision, recall, f1_score
@@ -289,7 +336,11 @@ class Runner:
                 prompt = self.make_natlang_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
             else:
                 prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
-            # print(prompt)
+            if self.verbose_train:
+                print(prompt)
+            prompt_token_len = len(tokenizer(prompt).input_ids)
+            if prompt_token_len > self.max_seq_len:
+                raise Exception(f'prompt is over {self.max_seq_len} tokens')
             text_list.append(prompt)
         
         return text_list
