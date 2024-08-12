@@ -1,7 +1,5 @@
 models/
 outputs/
 .slurm/
-.old/
-results_old/
 logging/
 .vscode/
