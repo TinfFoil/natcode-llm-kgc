@@ -66,6 +66,16 @@ rationale_toggle=(
 
 train_steps=200
 n_icl_samples=3
+command=$1
+if [[ $command =~ --test_split[[:space:]]+([[:alnum:]_]+) ]]; then
+    test_split=${BASH_REMATCH[1]}
+    echo "User-set test split: $test_split"
+else
+    test_split='test'
+    echo "Defalt test split: $test_split"
+fi
+
+test_split_flag="--test_split ${test_split}"
 
 for rationale in "${rationale_toggle[@]}"; do
     for natlang in "${natlang_toggle[@]}"; do
@@ -117,14 +127,16 @@ for rationale in "${rationale_toggle[@]}"; do
                 # Log information
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix fine-tuned: $is_fine_tuned"
                 echo "Testing this model: $model_name"
-                if python ./src/check_results.py -m "$model_name" -d './results'; then
-                    echo "$model_name has already been tested: skipping"
+                results_name="${model_name}_${test_split}.json"
+                echo "results_name: ${results_name}"
+                if python ./src/check_results.py -m "$results_name" -d './results'; then
+                    echo "${model_name} has already been tested on ${test_split}: skipping"
                     echo '**************'
                     continue
                 fi
 
                 # Run the command
-                $cmd $natlang_flag $rationale_flag '--verbose_test'
+                $cmd $natlang_flag $rationale_flag $test_split_flag
             done
         done
     done

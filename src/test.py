@@ -12,6 +12,7 @@ import argparse
 def main(args):
     print(f'Testing model: {args.model}')
     print(f'Testing dataset: {args.dataset}')
+    print(f'Split: {args.test_split}')
     print(f'Chat model: {args.chat}')
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if args.natlang else 'code'}")
@@ -27,9 +28,11 @@ def main(args):
     tokenizer = AutoTokenizer.from_pretrained(args.model)
 
     dataset_path = f'./data/codekgc-data/{args.dataset}'
-
-    train_json = os.path.join(dataset_path, args.train)
-    test_json = os.path.join(dataset_path, args.test)
+    
+    train_split = f'{args.train_split}_triples.json'
+    train_json = os.path.join(dataset_path, train_split)
+    test_split = f'{args.test_split}_triples.json'
+    test_json = os.path.join(dataset_path, test_split)
 
     schema_path = os.path.join(dataset_path, args.prompt_filename)
 
@@ -81,7 +84,7 @@ def main(args):
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
 
-    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_test.json")
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_{test_split.split('_')[0]}.json")
 
     save_json(info, json_path)
 
@@ -94,8 +97,8 @@ if __name__ == "__main__":
     parser.add_argument("--chat", help="Type of model (default = completion model)", action='store_true')
     parser.add_argument("-ent", "--entitytypes", help="Filename of  the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
-    parser.add_argument("--train", help="Filename of the train file to use", default='train_triples.json')
-    parser.add_argument("--test", help="Filename of the test file to use", default='test_triples.json')
+    parser.add_argument("--train_split", help="Filename of the train file to use", default='train')
+    parser.add_argument("--test_split", help="Filename of the test file to use", default='test')
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
     args = parser.parse_args()
