@@ -105,7 +105,7 @@ class Runner:
                     prompt = [
                     {"role": "user", "content": prompt},
                     ]
-                    add_generation_prompt = True
+                add_generation_prompt = True
             prompt = self.tokenizer.apply_chat_template(prompt,
                                                         tokenize=False,
                                                         add_generation_prompt=add_generation_prompt

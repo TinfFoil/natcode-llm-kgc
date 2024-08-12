@@ -1,0 +1,1 @@
+[{"Model": "./models/deepseek-coder-7b-base-v1.5_ft_scierc_code_base_steps=200_icl=3", "Precision": 0.32401656314699795, "Recall": 0.3213552361396304, "F1_Score": 0.32268041237113404, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-10-14-38-29", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

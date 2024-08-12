@@ -1,0 +1,1 @@
+[{"Model": "./models/CodeQwen1.5-7B-Chat_ft_scierc_natlang_rationale_steps=200_icl=3", "Precision": 0.1759809750297265, "Recall": 0.15195071868583163, "F1_Score": 0.1630853994490358, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-10-06-07-56", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

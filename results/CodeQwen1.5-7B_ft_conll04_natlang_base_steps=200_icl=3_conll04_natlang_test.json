@@ -1,0 +1,1 @@
+[{"Model": "./models/CodeQwen1.5-7B_ft_conll04_natlang_base_steps=200_icl=3", "Precision": 0.5921658986175116, "Recall": 0.6314496314496314, "F1_Score": 0.6111771700356718, "n_icl_samples": 3, "n_samples_test": 288, "dataset": "conll04", "date": "2024-08-10-13-01-37", "schema_path": "./data/codekgc-data/conll04/code_prompt", "split": "test"}]

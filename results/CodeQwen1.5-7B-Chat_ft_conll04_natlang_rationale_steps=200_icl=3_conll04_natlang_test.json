@@ -1,0 +1,1 @@
+[{"Model": "./models/CodeQwen1.5-7B-Chat_ft_conll04_natlang_rationale_steps=200_icl=3", "Precision": 0.422680412371134, "Recall": 0.40294840294840295, "F1_Score": 0.4125786163522012, "n_icl_samples": 3, "n_samples_test": 288, "dataset": "conll04", "date": "2024-08-10-05-55-59", "schema_path": "./data/codekgc-data/conll04/code_prompt", "split": "test"}]

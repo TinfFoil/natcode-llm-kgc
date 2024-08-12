@@ -1,0 +1,1 @@
+[{"Model": "./models/deepseek-coder-7b-instruct-v1.5_ft_conll04_code_base_steps=200_icl=3", "Precision": 0.6631016042780749, "Recall": 0.6093366093366094, "F1_Score": 0.6350832266325224, "n_icl_samples": 3, "n_samples_test": 288, "dataset": "conll04", "date": "2024-08-10-16-12-42", "schema_path": "./data/codekgc-data/conll04/code_prompt", "split": "test"}]

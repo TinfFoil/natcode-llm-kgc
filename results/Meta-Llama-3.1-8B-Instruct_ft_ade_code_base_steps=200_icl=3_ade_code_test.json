@@ -1,0 +1,1 @@
+[{"Model": "./models/Meta-Llama-3.1-8B-Instruct_ft_ade_code_base_steps=200_icl=3", "Precision": 0.7540603248259861, "Recall": 0.7352941176470589, "F1_Score": 0.7445589919816725, "n_icl_samples": 3, "n_samples_test": 300, "dataset": "ade", "date": "2024-08-10-16-39-04", "schema_path": "./data/codekgc-data/ade/code_prompt", "split": "test"}]

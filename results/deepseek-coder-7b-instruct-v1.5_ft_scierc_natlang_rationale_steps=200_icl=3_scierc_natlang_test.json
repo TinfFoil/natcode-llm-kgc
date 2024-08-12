@@ -1,0 +1,1 @@
+[{"Model": "./models/deepseek-coder-7b-instruct-v1.5_ft_scierc_natlang_rationale_steps=200_icl=3", "Precision": 0.18474758324382384, "Recall": 0.17659137577002054, "F1_Score": 0.1805774278215223, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-10-07-18-43", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

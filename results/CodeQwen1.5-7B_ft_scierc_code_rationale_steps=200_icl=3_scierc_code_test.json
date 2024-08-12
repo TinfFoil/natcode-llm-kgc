@@ -1,0 +1,1 @@
+[{"Model": "./models/CodeQwen1.5-7B_ft_scierc_code_rationale_steps=200_icl=3", "Precision": 0.2777242044358727, "Recall": 0.29568788501026694, "F1_Score": 0.2864246643460965, "n_icl_samples": 3, "n_samples_test": 397, "dataset": "scierc", "date": "2024-08-10-10-26-40", "schema_path": "./data/codekgc-data/scierc/code_prompt", "split": "test"}]

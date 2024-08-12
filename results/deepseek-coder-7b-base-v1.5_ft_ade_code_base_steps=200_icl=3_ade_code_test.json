@@ -1,0 +1,1 @@
+[{"Model": "./models/deepseek-coder-7b-base-v1.5_ft_ade_code_base_steps=200_icl=3", "Precision": 0.7345971563981043, "Recall": 0.7013574660633484, "F1_Score": 0.7175925925925926, "n_icl_samples": 3, "n_samples_test": 300, "dataset": "ade", "date": "2024-08-10-14-16-16", "schema_path": "./data/codekgc-data/ade/code_prompt", "split": "test"}]
