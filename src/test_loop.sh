@@ -129,14 +129,14 @@ for rationale in "${rationale_toggle[@]}"; do
                 echo "Testing this model: $model_name"
                 results_name="${model_name}_${test_split}.json"
                 echo "results_name: ${results_name}"
-                if python ./src/check_results.py -m "$results_name" -d './results'; then
+                if python ./src/check_results.py -m "$results_name" -d "./results/${test_split}"; then
                     echo "${model_name} has already been tested on ${test_split}: skipping"
                     echo '**************'
                     continue
                 fi
 
                 # Run the command
-                $cmd $natlang_flag $rationale_flag $test_split_flag
+                $cmd $natlang_flag $rationale_flag $1
             done
         done
     done

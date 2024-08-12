@@ -79,12 +79,12 @@ def main(args):
     
     print(info)
 
-    results_dir_path = './results'
+    results_dir_path = f"./results/{test_split.split('_')[0]}"
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
 
-    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_{test_split.split('_')[0]}.json")
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json")
 
     save_json(info, json_path)
 
