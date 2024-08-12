@@ -15,23 +15,23 @@ declare -A model_list=(
     # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
     # ["Qwen/CodeQwen1.5-7B"]=false
 
-    # ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-    # ["mistralai/Mistral-7B-Instruct-v0.3"]=true
-    # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
-    # ["Qwen/CodeQwen1.5-7B-Chat"]=true
+    ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+    ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+    ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+    ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
     # fine-tuned models
-    ["./models/Meta-Llama-3.1-8B"]=false
-    ["./models/Meta-Llama-3.1-8B-Instruct"]=true
+    # ["./models/Meta-Llama-3.1-8B"]=false
+    # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
-    ["./models/Mistral-7B-v0.3"]=false
-    ["./models/Mistral-7B-Instruct-v0.3"]=true
+    # ["./models/Mistral-7B-v0.3"]=false
+    # ["./models/Mistral-7B-Instruct-v0.3"]=true
 
-    ["./models/deepseek-coder-7b-base-v1.5"]=false
-    ["./models/deepseek-coder-7b-instruct-v1.5"]=true
+    # ["./models/deepseek-coder-7b-base-v1.5"]=false
+    # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
 
-    ["./models/CodeQwen1.5-7B"]=false
-    ["./models/CodeQwen1.5-7B-Chat"]=true
+    # ["./models/CodeQwen1.5-7B"]=false
+    # ["./models/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(
@@ -85,8 +85,12 @@ for rationale in "${rationale_toggle[@]}"; do
             # Check if the model is fine-tuned or not
             if [[ $model == ./models/* ]]; then
                 is_fine_tuned=true
+                fine_tuned_flag='--fine_tuned'
+                model_type_dir='fine-tuned'
             else
                 is_fine_tuned=false
+                fine_tuned_flag=''
+                model_type_dir='base'
             fi
 
             for dataset in "${dataset_list[@]}"; do
@@ -108,7 +112,7 @@ for rationale in "${rationale_toggle[@]}"; do
                 
                 # Construct the model name
                 if $is_fine_tuned; then
-                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
+                    model_name="${model}_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
                 else
                     model_name="${model}"
                 fi
@@ -129,14 +133,14 @@ for rationale in "${rationale_toggle[@]}"; do
                 echo "Testing this model: $model_name"
                 results_name="${model_name}_${test_split}.json"
                 echo "results_name: ${results_name}"
-                if python ./src/check_results.py -m "$results_name" -d "./results/${test_split}"; then
+                if python ./src/check_results.py -m "$results_name" -d "./results/${test_split}/${model_type_dir}"; then
                     echo "${model_name} has already been tested on ${test_split}: skipping"
                     echo '**************'
                     continue
                 fi
 
                 # Run the command
-                $cmd $natlang_flag $rationale_flag $1
+                $cmd $natlang_flag $rationale_flag $fine_tuned_flag $1
             done
         done
     done

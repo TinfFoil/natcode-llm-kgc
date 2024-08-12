@@ -79,7 +79,7 @@ def main(args):
     
     print(info)
 
-    results_dir_path = f"./results/{test_split.split('_')[0]}"
+    results_dir_path = f"./results/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
@@ -101,6 +101,7 @@ if __name__ == "__main__":
     parser.add_argument("--test_split", help="Filename of the test file to use", default='test')
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
+    parser.add_argument("--fine_tuned", action="store_true", help="Whether a fine-tuned LLM is beind tested")
     args = parser.parse_args()
 
     # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_rationale_steps=200_icl=3"
