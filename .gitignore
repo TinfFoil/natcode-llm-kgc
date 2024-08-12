@@ -4,3 +4,4 @@ outputs/
 .old/
 results_old/
 logging/
+.vscode/
