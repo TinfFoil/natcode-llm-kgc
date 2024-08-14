@@ -34,6 +34,15 @@ def main(args):
     test_split = f'{args.test_split}_triples.json'
     test_json = os.path.join(dataset_path, test_split)
 
+    results_dir_path = f"./results/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
+
+    if not os.path.exists(results_dir_path):
+        os.makedirs(results_dir_path)
+
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_{'rationale' if args.rationale else 'base'}.json")
+
+    print(f'Will save results to: {json_path}')
+
     schema_path = os.path.join(dataset_path, args.prompt_filename)
 
     df_test = pd.read_json(test_json)
@@ -74,17 +83,14 @@ def main(args):
             "dataset": args.dataset,
             "date": dt_string,
             "schema_path": schema_path,
-            "split": 'test',
+            "split": args.test_split,
+            "fine-tuned": args.fine_tuned,
+            "rationale": args.rationale,
+            "natlang": args.natlang,
+            "chat_model": args.chat,
             }]
     
     print(info)
-
-    results_dir_path = f"./results/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
-
-    if not os.path.exists(results_dir_path):
-        os.makedirs(results_dir_path)
-
-    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json")
 
     save_json(info, json_path)
 

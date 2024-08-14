@@ -271,8 +271,9 @@ class Runner:
         triple_list_test = df_test['triple_list'].to_list()
         
         t_counter = 0
-
-        for text, triple_list in tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}'):
+        pbar = tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}')
+        # pbar.set_description(f'F1: {0}')
+        for text, triple_list in pbar:
             if self.natlang:
                 prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
             else:
@@ -308,9 +309,10 @@ class Runner:
             pred = self.extract_triples(result)
             preds.append(pred)
             if self.verbose_test:
-                logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}')
                 metrics_sample = self.calculate_micro_f1([triple_list], [pred])
                 metrics_current = self.calculate_micro_f1(trues, preds)
+                pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
+                logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}')
                 logger.info('\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}')
 
         precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
