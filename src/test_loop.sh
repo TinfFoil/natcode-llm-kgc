@@ -21,17 +21,17 @@ declare -A model_list=(
     ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
     # fine-tuned models
-    # ["./models/Meta-Llama-3.1-8B"]=false
-    # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
+    ["./models/Meta-Llama-3.1-8B"]=false
+    ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
-    # ["./models/Mistral-7B-v0.3"]=false
-    # ["./models/Mistral-7B-Instruct-v0.3"]=true
+    ["./models/Mistral-7B-v0.3"]=false
+    ["./models/Mistral-7B-Instruct-v0.3"]=true
 
-    # ["./models/deepseek-coder-7b-base-v1.5"]=false
-    # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
+    ["./models/deepseek-coder-7b-base-v1.5"]=false
+    ["./models/deepseek-coder-7b-instruct-v1.5"]=true
 
-    # ["./models/CodeQwen1.5-7B"]=false
-    # ["./models/CodeQwen1.5-7B-Chat"]=true
+    ["./models/CodeQwen1.5-7B"]=false
+    ["./models/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(

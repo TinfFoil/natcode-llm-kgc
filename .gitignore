@@ -3,3 +3,4 @@ outputs/
 .slurm/
 logging/
 .vscode/
+paper/

@@ -39,7 +39,7 @@ def main(args):
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
 
-    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_{'rationale' if args.rationale else 'base'}.json")
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json")
 
     print(f'Will save results to: {json_path}')
 
@@ -110,11 +110,12 @@ if __name__ == "__main__":
     parser.add_argument("--fine_tuned", action="store_true", help="Whether a fine-tuned LLM is beind tested")
     args = parser.parse_args()
 
-    # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_rationale_steps=200_icl=3"
+    # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
     # args.dataset = "ade"
     # args.chat = 1
-    # args.rationale = 1
-    # args.natlang = 1
+    # args.rationale = 0
+    # args.natlang = 0
     # args.verbose_test = 1
+    # args.fine_tuned = 1
 
     main(args)

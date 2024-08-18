@@ -288,7 +288,7 @@ if __name__ == "__main__":
     # args.model = "unsloth/Meta-Llama-3.1-8B-Instruct"
     
     # args.model = "mistralai/Mistral-7B-v0.3"
-    # args.model = "mistralai/Mistral-7B-Instruct-v0.3"
+    args.model = "mistralai/Mistral-7B-Instruct-v0.3"
     
     # args.model = "deepseek-ai/deepseek-coder-7b-base-v1.5"
     # args.model = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
@@ -296,13 +296,14 @@ if __name__ == "__main__":
     # args.model = "Qwen/CodeQwen1.5-7B"
     # args.model = "Qwen/CodeQwen1.5-7B-Chat"
     
-    # args.dataset = "ade"
-    # args.chat = 0
-    # args.rationale = 1
-    # args.natlang = 0
+    args.dataset = "scierc"
+    args.chat = 1
+    args.rationale = 1
+    args.natlang = 1
     # args.train_steps = 200
     # args.noval = True
     # args.val_samples = 3
     # args.n_icl_samples = 3
+    args.verbose_train = True
 
     main(args)

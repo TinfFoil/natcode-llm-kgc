@@ -1,0 +1,47 @@
+# You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.
+
+from typing import List
+class Rel:
+    def __init__(self, name: str):
+        self.name = name
+class Adverse_effect(Rel):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+
+class Entity:
+    def __init__(self, name: str):
+        self.name = name
+class Drug(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Disease(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+
+class Triple:
+    def __init__(self, head: Entity, relation: Rel, tail: Entity):
+        self.head = head
+        self.relation = relation
+        self.tail = tail
+class Extract:
+    def __init__(self, triples: List[Triple] = []):
+        self.triples = triples
+
+# Look at the examples below and then carry out the following indicated task.
+
+# Example 1:
+text = """ Corneal endothelial deposits associated with rifabutin use . """
+extract = Extract([Triple(disease("Corneal endothelial deposits"), Rel("Adverse_effect"), drug("rifabutin"))])
+
+# Example 2:
+text = """ To our knowledge , drug - induced fever has not been reported with the use of diltiazem hydrochloride , a commonly prescribed calcium channel blocker . """
+extract = Extract([Triple(disease("fever"), Rel("Adverse_effect"), drug("diltiazem hydrochloride"))])
+
+# Example 3:
+text = """ Rhabdomyolysis associated with the use of intravenous vasopressin . """
+extract = Extract([Triple(disease("Rhabdomyolysis"), Rel("Adverse_effect"), drug("vasopressin"))])
+
+
+# Task: Define an instance of Extract from the text below. Do not produce any more text samples after you finish extracting triples from the text below.
+text = """ Prothipendylhydrochloride - induced priapism : case report . """
+extract = Extract([Triple(disease("priapism"), Rel("Adverse_effect"), drug("Prothipendylhydrochloride"))])<|end_of_text|>

@@ -340,6 +340,9 @@ class Runner:
                 prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
             if self.verbose_train:
                 print(prompt)
+                txt_path = f"./prompts/{self.model_name.split('/')[-1]}.txt"
+                with open(txt_path, 'w', encoding='utf8') as f:
+                    f.write(prompt)
             prompt_token_len = len(tokenizer(prompt).input_ids)
             if prompt_token_len > self.max_seq_len:
                 raise Exception(f'prompt is over {self.max_seq_len} tokens')

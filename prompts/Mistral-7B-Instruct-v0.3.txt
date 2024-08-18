@@ -1,0 +1,56 @@
+<s>[INST] You are an AI specialized in the task of extracting entity-relation-entity triples from texts.
+
+Look at the examples below and then carry out the following indicated task.
+
+Example 1:
+text: "The proposed scheme eliminates redundant copying while maintaining the quasi-destructive scheme 's ability to avoid over copying and early copying combined with its ability to handle cyclic structures without algorithmic additions ."
+The candidate relations for this text are:
+Used_for
+Feature_of
+Conjunction
+The candidate entities for this text are:
+scheme
+cyclic structures
+quasi-destructive scheme 's ability
+scheme
+over copying
+early copying
+
+triple_list: [["scheme", "Used_for", "cyclic structures"], ["quasi-destructive scheme 's ability", "Feature_of", "scheme"], ["over copying", "Conjunction", "early copying"]]
+
+Example 2:
+text: "The operations are reduced to functions of a formal language , thus changing the level of abstraction of the operations to be performed on SI-Nets ."
+The candidate relations for this text are:
+Used_for
+The candidate entities for this text are:
+operations
+SI-Nets
+
+triple_list: [["operations", "Used_for", "SI-Nets"]]
+
+Example 3:
+text: "We describe two experiments : one which ignored word-sense distinctions , resulting in 6.3 % accuracy for semantic classification of verbs based on ( Levin , 1993 ) ; and one which exploited word-sense distinctions , resulting in 97.9 % accuracy ."
+The candidate relations for this text are:
+Evaluate_for
+The candidate entities for this text are:
+accuracy
+semantic classification
+
+triple_list: [["accuracy", "Evaluate_for", "semantic classification"]]
+
+
+Task: Extract a list of [entity, relation, entity] triples from the text below. Do not produce any more text samples after you finish extracting triples from the text below.
+text: "The agreement in question involves number in nouns and reflexive pronouns and is syntactic rather than semantic in nature because grammatical number in English , like grammatical gender in languages such as French , is partly arbitrary ."
+The candidate relations for this text are:
+Conjunction
+Feature_of
+Hyponym_of
+The candidate entities for this text are:
+nouns
+reflexive pronouns
+grammatical gender
+languages
+French
+languages
+
+[/INST] triple_list: [["nouns", "Conjunction", "reflexive pronouns"], ["grammatical gender", "Feature_of", "languages"], ["French", "Hyponym_of", "languages"]]</s></s>
