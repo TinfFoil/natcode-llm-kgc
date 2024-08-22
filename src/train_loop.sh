@@ -10,17 +10,17 @@
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
-["mistralai/Mistral-7B-v0.3"]=false
+# ["mistralai/Mistral-7B-v0.3"]=false
 ["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
-["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
-["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
 
-["Qwen/CodeQwen1.5-7B"]=false
-["Qwen/CodeQwen1.5-7B-Chat"]=true
+# ["Qwen/CodeQwen1.5-7B"]=false
+# ["Qwen/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(
@@ -53,7 +53,7 @@ natlang_toggle=(
     false
 )
 
-train_steps=200
+train_steps=500
 n_icl_samples=3
 
 # Loop through model_list
@@ -66,8 +66,8 @@ for natlang in ${natlang_toggle[@]}; do
             for dataset in "${dataset_list[@]}"; do
                 # Base command
                 cmd="python ./src/train.py \
-                    --model $model \
-                    --dataset $dataset"
+                    -m $model \
+                    -d $dataset"
 
                 # Add chat flag if it's a chat model
                 if $is_chat; then
@@ -104,7 +104,7 @@ for natlang in ${natlang_toggle[@]}; do
 
                 # Log information
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, natlang: $natlang, rationale: $rationale", 
-                $cmd $1
+                $cmd --train_steps $train_steps $1
             done
         done
     done

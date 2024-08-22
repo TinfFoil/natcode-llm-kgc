@@ -1,3 +1,5 @@
+import os
+import textwrap
 from typing import List
 from tqdm.auto import tqdm
 import pandas as pd
@@ -6,6 +8,11 @@ import re
 import logging
 import uuid
 import time
+import torch
+import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm, ListedColormap, Normalize
+import numpy as np
+
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO
@@ -15,6 +22,8 @@ logger = logging.getLogger(__name__)
 
 class Runner:
     def __init__(self,
+                 *,
+                 model,
                  type_dict,
                  natlang,
                  schema_path = '',
@@ -25,7 +34,9 @@ class Runner:
                  verbose_test = False,
                  max_seq_len = 999999,
                  model_name = '',
+                 verbose_output_path = '',
                  ) -> None:
+        self.model = model
         self.type_dict = type_dict
         self.natlang = natlang
         self.chat_model = chat_model
@@ -35,7 +46,10 @@ class Runner:
         self.verbose_train = verbose_train
         self.verbose_test = verbose_test
         self.max_seq_len = max_seq_len
-        self.model_name = model_name
+        self.model_name = model_name.split('/')[-1]
+        if verbose_output_path:
+            self.verbose_output_path = os.path.join(verbose_output_path, f'{self.model_name}.txt')
+        self.verbose_output = ''
 
         if self.natlang:
             self.comment_symbol = ''
@@ -262,59 +276,70 @@ class Runner:
         f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
         
         return [precision, recall, f1_score]
+    
+    def run_model(self, text, icl_prompt):
+        if self.natlang:
+            prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+        else:
+            prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+        
+        inputs = self.tokenizer(prompt, return_tensors="pt").input_ids.to(self.model.device)
+        
+        t0 = time.time()
+        outputs = self.model.generate(inputs,
+                                num_return_sequences=1,
+                                eos_token_id=self.tokenizer.eos_token_id,
+                                pad_token_id=self.tokenizer.eos_token_id,
+                                max_new_tokens = 1000,
+                                )
+        t1 = time.time()
+        t_diff = t1 - t0
+        input_len = inputs.shape[1]
+        result = self.tokenizer.decode(outputs[0][input_len:],
+                                            skip_special_tokens=True
+                                            )
+        timeout = 30
+        if t_diff > timeout:
+            self.t_counter += 1
+            if self.t_counter > 2:
+                raise TimeoutError(f'Generation for {self.model_name} is taking longer than {timeout} seconds, exiting...')
+        else:
+            self.t_counter -= 1
+        return result
 
-    def evaluate(self, model, tokenizer, df_test, icl_prompt):
+    def evaluate(self, df_test, icl_prompt):
         trues = []
         preds = []
         
         text_test = df_test['text'].to_list()
         triple_list_test = df_test['triple_list'].to_list()
-        
-        t_counter = 0
+
         pbar = tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}')
-        # pbar.set_description(f'F1: {0}')
+        
+        self.t_counter = 0 # initialize model timeout counter
+        
         for text, triple_list in pbar:
-            if self.natlang:
-                prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
-            else:
-                prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
-            
-            inputs = tokenizer(prompt, return_tensors="pt").input_ids.to(model.device)
-            
-            t0 = time.time()
-            outputs = model.generate(inputs,
-                                    num_return_sequences=1,
-                                    eos_token_id=tokenizer.eos_token_id,
-                                    pad_token_id=tokenizer.eos_token_id,
-                                    max_new_tokens = 1000,
-                                    )
-            t1 = time.time()
-            t_diff = t1 - t0
-            input_len = inputs.shape[1]
-            full_model_output = tokenizer.decode(outputs[0],
-                                                skip_special_tokens=True
-                                                )
-            result = tokenizer.decode(outputs[0][input_len:],
-                                                skip_special_tokens=True
-                                                )
-            timeout = 30
-            if t_diff > timeout:
-                t_counter += 1
-                if t_counter > 2:
-                    raise TimeoutError(f'Generation for {self.model_name} is taking longer than {timeout} seconds, exiting...')
-            else:
-                t_counter -= 1
+
+            result = self.run_model(text, icl_prompt)
 
             trues.append(triple_list)
             pred = self.extract_triples(result)
             preds.append(pred)
+            
             if self.verbose_test:
                 metrics_sample = self.calculate_micro_f1([triple_list], [pred])
                 metrics_current = self.calculate_micro_f1(trues, preds)
                 pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
-                logger.info('\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}')
-                logger.info('\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}')
-
+                output_texts = '\n' + f'text: {text}' + '\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}'
+                output_metrics = '\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}'
+                logger.info(output_texts)
+                logger.info(output_metrics)
+                if self.verbose_output_path:
+                    self.verbose_output += output_texts + output_metrics
+        if self.verbose_output:
+            self.verbose_output = self.verbose_output.lstrip()
+            with open(self.verbose_output_path, 'w', encoding='utf8') as f:
+                f.write(self.verbose_output)
         precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
         return precision, recall, f1_score
 
@@ -340,7 +365,7 @@ class Runner:
                 prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
             if self.verbose_train:
                 print(prompt)
-                txt_path = f"./prompts/{self.model_name.split('/')[-1]}.txt"
+                txt_path = f"./prompts/{self.model_name}.txt"
                 with open(txt_path, 'w', encoding='utf8') as f:
                     f.write(prompt)
             prompt_token_len = len(tokenizer(prompt).input_ids)
@@ -349,6 +374,154 @@ class Runner:
             text_list.append(prompt)
         
         return text_list
+    
+    def get_attn(self, model, tokenizer, sample, icl_prompt):
+        text = sample['text']
+        if self.natlang:
+            prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+        else:
+            prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
+        
+        inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+        # with torch.inference_mode():
+        #     outputs = model(**inputs,
+        #                     output_attentions=True,
+        #                     output_hidden_states=True,
+        #                     )
+        # output_ids = torch.argmax(outputs.logits, dim = -1).squeeze()
+        outputs = model.generate(inputs.input_ids,
+                                num_return_sequences=1,
+                                eos_token_id=tokenizer.eos_token_id,
+                                pad_token_id=tokenizer.eos_token_id,
+                                max_new_tokens = 1000,
+                                return_dict_in_generate=True,
+                                output_attentions = True,
+                                )
+        attn_list = []
+        for i, tokens in enumerate(outputs.attentions[1:]):
+            # for layer in tokens:
+            attn = torch.mean(tokens[-1].squeeze(), dim = 0)
+            attn_list.append(attn)
+
+        input_len = inputs.input_ids.shape[1]
+        
+        full_result = tokenizer.decode(outputs.sequences.squeeze(),#[input_len:],
+                                            skip_special_tokens=True
+                                            )
+        output_no_prompt = outputs.sequences.squeeze()[input_len:]
+
+        result = tokenizer.decode(output_no_prompt,
+                                skip_special_tokens=True
+                                )
+        true = sample['triple_list']        
+        pred = self.extract_triples(result)
+        print('pred', result)
+        stats = self.calculate_micro_f1([true], [pred])
+        print('results:', stats)
+        print('gt', true)
+
+        return attn_list, outputs.sequences.squeeze(), stats
+
+
+    def heatmap(self, attention_scores, token_ids):
+        num_tokens = attention_scores.shape[0]
+        token_ids = token_ids[:num_tokens]
+        labels = [self.tokenizer.decode(token) for token in token_ids]
+        # Reshape the values array into a 2D array (1 row)
+        attention_scores_2d = attention_scores.reshape(1, -1)
+        
+        fig, ax = plt.subplots(figsize=(480, 2))
+        
+        # Create the heatmap
+        im = ax.imshow(attention_scores_2d.float().cpu(), cmap='viridis', aspect='auto')
+        
+        # Set the x-axis ticks and labels
+        ax.set_xticks(np.arange(len(labels)))
+        ax.set_xticklabels(labels, rotation=45, ha='right')
+        
+        # Remove y-axis ticks
+        ax.set_yticks([])
+        
+        # Add a colorbar
+        cbar = ax.figure.colorbar(im, ax=ax)
+        cbar.ax.set_ylabel('Value', rotation=-90, va="bottom")
+        
+        # Add value annotations on each cell
+        for i, value in enumerate(attention_scores):
+            ax.text(i, 0, round(float(value), 2), ha='center', va='center', color='white')
+        
+        plt.tight_layout()
+        plt.savefig('./paper/attn.pdf', format='pdf', bbox_inches='tight')
+
+    def heatmap2d(self, attention_scores, token_ids_full, idx, width=20, height=None, cmap='viridis', norm='log', high_threshold=0.999, savename = ''):
+        attention_scores = attention_scores.float().cpu().numpy()
+        num_tokens = attention_scores.shape[0]
+        next_token = token_ids_full[:num_tokens][-1]
+        token_ids = token_ids_full[:num_tokens]
+        heatmap_token = self.tokenizer.decode(next_token)
+        print('heatmap token:', heatmap_token)
+
+        labels = [self.tokenizer.decode(token) for token in token_ids]
+        assert len(attention_scores) == len(labels)
+        
+        # Calculate the number of rows and columns
+        n_cols = width
+        n_rows = int(np.ceil(num_tokens / n_cols))
+        if height:
+            n_rows = min(n_rows, height)
+        
+        # Pad the attention scores and labels if necessary
+        pad_length = n_rows * n_cols - num_tokens
+        attention_scores_padded = np.pad(attention_scores, (0, pad_length), mode='constant', constant_values=np.nan)
+        labels_padded = labels + [''] * pad_length
+        
+        # Reshape the data into a 2D grid
+        attention_scores_2d = attention_scores_padded.reshape(n_rows, n_cols)
+        labels_2d = np.array(labels_padded).reshape(n_rows, n_cols)
+        
+        # Create the figure and axis
+        fig, ax = plt.subplots(figsize=(n_cols * 1.5, n_rows * 1.5))
+        
+        # Choose the normalization
+        if norm == 'log':
+            norm = LogNorm(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
+        else:
+            norm = Normalize(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
+        
+        # Create the heatmap
+        im = ax.imshow(attention_scores_2d, cmap=cmap, aspect='equal', norm=norm)
+        
+        # Apply black color to high values
+        high_mask = attention_scores_2d > np.nanquantile(attention_scores, high_threshold)
+        im.cmap.set_bad(color='black')
+        attention_scores_2d_masked = np.ma.masked_where(high_mask, attention_scores_2d)
+        im.set_data(attention_scores_2d_masked)
+        
+        # Function to wrap text
+        def wrap_text(text, width=10):
+            return "\n".join(textwrap.wrap(text, width=width))
+        
+        # Add labels to each cell
+        for i in range(n_rows):
+            for j in range(n_cols):
+                text = labels_2d[i, j]
+                score = attention_scores_2d[i, j]
+                if not np.isnan(score):
+                    wrapped_text = wrap_text(text)
+                    ax.text(j, i, wrapped_text, ha='center', va='center', fontsize=20, color='white', fontweight='bold')
+        
+        plt.title(heatmap_token)
+
+        # Remove axis ticks
+        ax.set_xticks([])
+        ax.set_yticks([])
+        
+        plt.tight_layout()
+        save_dir = f"./paper/attn/{savename}"
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+        plt.savefig(os.path.join(save_dir, f'attn_{idx}_{heatmap_token}.pdf'), format='pdf', bbox_inches='tight')
+        plt.close()
 
 def save_json(info, json_path):
     try:

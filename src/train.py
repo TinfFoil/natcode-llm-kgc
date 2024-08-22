@@ -28,7 +28,7 @@ def main(args):
     max_seq_length = args.max_seq_length
     dtype = args.dtype
     load_in_4bit = args.load_in_4bit
-    model_name = args.model
+    model_name = args.model_name
     chat_model = args.chat
     natlang = args.natlang
     dataset_name = args.dataset
@@ -67,16 +67,17 @@ def main(args):
     with open(entity2type_json, 'r', encoding='utf8') as f:
         entity2type_dict = json.load(f)
 
-    runner = Runner(entity2type_dict,
-                        natlang=natlang,
-                        tokenizer=tokenizer,
-                        chat_model=chat_model,
-                        schema_path=schema_path,
-                        rationale=args.rationale,
-                        verbose_train=args.verbose_train,
-                        max_seq_len=args.max_seq_length,
-                        model_name=args.model,
-                        )
+    runner = Runner(model=model,
+                    type_dict=entity2type_dict,
+                    natlang=natlang,
+                    tokenizer=tokenizer,
+                    chat_model=chat_model,
+                    schema_path=schema_path,
+                    rationale=args.rationale,
+                    verbose_train=args.verbose_train,
+                    max_seq_len=args.max_seq_length,
+                    model_name=args.model_name,
+                    )
     
     print('Model system message:', runner.check_system_msg())
 
@@ -216,7 +217,7 @@ def main(args):
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
-    info = [{"Model": args.model,
+    info = [{"Model": args.model_name,
             "Loss_train": trainer_stats.metrics['train_loss'],
             "Loss_val": eval_results['eval_loss'],
             "Precision_val": eval_results['eval_precision'],
@@ -262,8 +263,8 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")
-    parser.add_argument("--model", type=str, help="Name of the model to train", default='unsloth/Meta-Llama-3.1-8B')
-    parser.add_argument("--dataset", type=str, help="Name of the dataset to use", default='ade')
+    parser.add_argument("-m", "--model_name", type=str, help="Name of the model to train", default='unsloth/Meta-Llama-3.1-8B')
+    parser.add_argument("-d", "--dataset", type=str, help="Name of the dataset to use", default='ade')
     parser.add_argument("--train_steps", type=int, help="Number of training samples", default=200)
     parser.add_argument("--batch_size_train", type=int, help="Number of training samples", default=8)
     parser.add_argument("--batch_size_eval", type=int, help="Number of training samples", default=4)
@@ -284,26 +285,26 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     args = parser.parse_args()
 
-    # args.model = "unsloth/Meta-Llama-3.1-8B"
-    # args.model = "unsloth/Meta-Llama-3.1-8B-Instruct"
+    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
+    # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
     
-    # args.model = "mistralai/Mistral-7B-v0.3"
-    args.model = "mistralai/Mistral-7B-Instruct-v0.3"
+    # args.model_name = "mistralai/Mistral-7B-v0.3"
+    # args.model_name = "mistralai/Mistral-7B-Instruct-v0.3"
     
-    # args.model = "deepseek-ai/deepseek-coder-7b-base-v1.5"
-    # args.model = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
+    # args.model_name = "deepseek-ai/deepseek-coder-7b-base-v1.5"
+    # args.model_name = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
     
-    # args.model = "Qwen/CodeQwen1.5-7B"
-    # args.model = "Qwen/CodeQwen1.5-7B-Chat"
+    # args.model_name = "Qwen/CodeQwen1.5-7B"
+    # args.model_name = "Qwen/CodeQwen1.5-7B-Chat"
     
-    args.dataset = "scierc"
-    args.chat = 1
-    args.rationale = 1
-    args.natlang = 1
+    # args.dataset = "scierc"
+    # args.chat = 1
+    # args.rationale = 1
+    # args.natlang = 0
     # args.train_steps = 200
     # args.noval = True
     # args.val_samples = 3
     # args.n_icl_samples = 3
-    args.verbose_train = True
+    # args.verbose_train = True
 
     main(args)

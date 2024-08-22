@@ -1,56 +1,119 @@
-<s>[INST] You are an AI specialized in the task of extracting entity-relation-entity triples from texts.
+<s>[INST] # You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.
 
-Look at the examples below and then carry out the following indicated task.
+from typing import List
+class Rel:
+    def __init__(self, name: str):
+        self.name = name
+class Used_for(Rel):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Feature_of(Rel):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Hyponym_of(Rel):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Part_of(Rel):
+    def __init__(self, name: str):
+        super.__init__(name=name)
 
-Example 1:
-text: "The proposed scheme eliminates redundant copying while maintaining the quasi-destructive scheme 's ability to avoid over copying and early copying combined with its ability to handle cyclic structures without algorithmic additions ."
-The candidate relations for this text are:
-Used_for
-Feature_of
-Conjunction
-The candidate entities for this text are:
-scheme
-cyclic structures
-quasi-destructive scheme 's ability
-scheme
-over copying
-early copying
+class Entity:
+    def __init__(self, name: str):
+        self.name = name
+class Task(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Method(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Metric(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Material(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Other_scientific_term(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
+class Generic(Entity):
+    def __init__(self, name: str):
+        super.__init__(name=name)
 
-triple_list: [["scheme", "Used_for", "cyclic structures"], ["quasi-destructive scheme 's ability", "Feature_of", "scheme"], ["over copying", "Conjunction", "early copying"]]
+class Triple:
+    def __init__(self, head: Entity, relation: Rel, tail: Entity):
+        self.head = head
+        self.relation = relation
+        self.tail = tail
+class Extract:
+    def __init__(self, triples: List[Triple] = []):
+        self.triples = triples
 
-Example 2:
-text: "The operations are reduced to functions of a formal language , thus changing the level of abstraction of the operations to be performed on SI-Nets ."
-The candidate relations for this text are:
-Used_for
-The candidate entities for this text are:
-operations
-SI-Nets
+# Look at the examples below and then carry out the following indicated task.
 
-triple_list: [["operations", "Used_for", "SI-Nets"]]
+# Example 1:
+text = """ Actually , the oracle acts like a dynamic combiner with hard decisions using the reference . """
+# The candidate relations for this text are:
+# Rel('Feature_of')
+# The candidate entities for this text are:
+# Other_scientific_term('hard decisions')
+# Method('dynamic combiner')
 
-Example 3:
-text: "We describe two experiments : one which ignored word-sense distinctions , resulting in 6.3 % accuracy for semantic classification of verbs based on ( Levin , 1993 ) ; and one which exploited word-sense distinctions , resulting in 97.9 % accuracy ."
-The candidate relations for this text are:
-Evaluate_for
-The candidate entities for this text are:
-accuracy
-semantic classification
+extract = Extract([Triple(Other_scientific_term("hard decisions"), Rel("Feature_of"), Method("dynamic combiner"))])
 
-triple_list: [["accuracy", "Evaluate_for", "semantic classification"]]
+# Example 2:
+text = """ Our approach is based on the use of a relational probability model to define a generative model for the domain , including models of author and title corruption and a probabilistic citation grammar . """
+# The candidate relations for this text are:
+# Rel('Used_for')
+# Rel('Used_for')
+# Rel('Used_for')
+# Rel('Part_of')
+# Rel('Conjunction')
+# Rel('Part_of')
+# The candidate entities for this text are:
+# Method('relational probability model')
+# Generic('approach')
+# Method('relational probability model')
+# Method('generative model')
+# Method('generative model')
+# Generic('domain')
+# Method('models of author and title corruption')
+# Method('relational probability model')
+# Method('models of author and title corruption')
+# Method('probabilistic citation grammar')
+# Method('probabilistic citation grammar')
+# Method('relational probability model')
+
+extract = Extract([Triple(Method("relational probability model"), Rel("Used_for"), Generic("approach")), Triple(Method("relational probability model"), Rel("Used_for"), Method("generative model")), Triple(Method("generative model"), Rel("Used_for"), Generic("domain")), Triple(Method("models of author and title corruption"), Rel("Part_of"), Method("relational probability model")), Triple(Method("models of author and title corruption"), Rel("Conjunction"), Method("probabilistic citation grammar")), Triple(Method("probabilistic citation grammar"), Rel("Part_of"), Method("relational probability model"))])
+
+# Example 3:
+text = """ The second type is data-driven attributes , which are learned from data using dictionary learning methods . """
+# The candidate relations for this text are:
+# Rel('Used_for')
+# The candidate entities for this text are:
+# Method('dictionary learning methods')
+# Other_scientific_term('data-driven attributes')
+
+extract = Extract([Triple(Method("dictionary learning methods"), Rel("Used_for"), Other_scientific_term("data-driven attributes"))])
 
 
-Task: Extract a list of [entity, relation, entity] triples from the text below. Do not produce any more text samples after you finish extracting triples from the text below.
-text: "The agreement in question involves number in nouns and reflexive pronouns and is syntactic rather than semantic in nature because grammatical number in English , like grammatical gender in languages such as French , is partly arbitrary ."
-The candidate relations for this text are:
-Conjunction
-Feature_of
-Hyponym_of
-The candidate entities for this text are:
-nouns
-reflexive pronouns
-grammatical gender
-languages
-French
-languages
+# Task: Define an instance of Extract from the text below. Do not produce any more text samples after you finish extracting triples from the text below.
+text = """ This paper presents an algorithm for labeling curvilinear structure at multiple scales in line drawings and edge images Symbolic CURVE-ELEMENT tokens residing in a spatially-indexed and scale-indexed data structure denote circular arcs fit to image data . """
+# The candidate relations for this text are:
+# Rel('Used_for')
+# Rel('Feature_of')
+# Rel('Conjunction')
+# Rel('Feature_of')
+# Rel('Part_of')
+# The candidate entities for this text are:
+# Generic('algorithm')
+# Task('labeling curvilinear structure')
+# Material('line drawings')
+# Task('labeling curvilinear structure')
+# Material('line drawings')
+# Material('edge images')
+# Material('edge images')
+# Task('labeling curvilinear structure')
+# Other_scientific_term('CURVE-ELEMENT tokens')
+# Other_scientific_term('spatially-indexed and scale-indexed data structure')
 
-[/INST] triple_list: [["nouns", "Conjunction", "reflexive pronouns"], ["grammatical gender", "Feature_of", "languages"], ["French", "Hyponym_of", "languages"]]</s></s>
+[/INST] extract = Extract([Triple(Generic("algorithm"), Rel("Used_for"), Task("labeling curvilinear structure")), Triple(Material("line drawings"), Rel("Feature_of"), Task("labeling curvilinear structure")), Triple(Material("line drawings"), Rel("Conjunction"), Material("edge images")), Triple(Material("edge images"), Rel("Feature_of"), Task("labeling curvilinear structure")), Triple(Other_scientific_term("CURVE-ELEMENT tokens"), Rel("Part_of"), Other_scientific_term("spatially-indexed and scale-indexed data structure"))])</s></s>

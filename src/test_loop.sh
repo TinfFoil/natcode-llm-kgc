@@ -15,10 +15,10 @@ declare -A model_list=(
     # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
     # ["Qwen/CodeQwen1.5-7B"]=false
 
-    ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-    ["mistralai/Mistral-7B-Instruct-v0.3"]=true
-    ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
-    ["Qwen/CodeQwen1.5-7B-Chat"]=true
+    # ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+    # ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+    # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+    # ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
     # fine-tuned models
     ["./models/Meta-Llama-3.1-8B"]=false
@@ -66,6 +66,7 @@ rationale_toggle=(
 
 train_steps=200
 n_icl_samples=3
+
 command=$1
 if [[ $command =~ --test_split[[:space:]]+([[:alnum:]_]+) ]]; then
     test_split=${BASH_REMATCH[1]}
@@ -135,7 +136,7 @@ for rationale in "${rationale_toggle[@]}"; do
                 # echo "Testing this model: $model_name"
                 # results_name="${model_name}_${test_split}.json"
                 # echo "results_name: ${results_name}"
-                if python ./src/check_results.py -r "$results_name" -d "./results/${test_split}/${model_type_dir}" --split ${test_split}; then
+                if python ./src/check_results.py -r "$results_name" -d "./results/${test_split}/${model_type_dir}" --split ${test_split} -n 3; then
                     continue
                 fi
 

@@ -10,22 +10,22 @@ from utils import *
 import argparse
 
 def main(args):
-    print(f'Testing model: {args.model}')
+    print(f'Testing model: {args.model_name}')
     print(f'Testing dataset: {args.dataset}')
     print(f'Split: {args.test_split}')
     print(f'Chat model: {args.chat}')
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if args.natlang else 'code'}")
 
-    model_name_simple = args.model.split('/')[-1]
+    model_name_simple = args.model_name.split('/')[-1]
 
     model = AutoModelForCausalLM.from_pretrained(
-        args.model,
+        args.model_name,
         torch_dtype='auto',
         device_map='auto'
     )
     
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
     dataset_path = f'./data/codekgc-data/{args.dataset}'
     
@@ -39,7 +39,7 @@ def main(args):
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
 
-    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}.json")
+    json_path = os.path.join(results_dir_path, f"{model_name_simple}_{args.dataset}_{'natlang' if args.natlang else 'code'}_{'rationale' if args.rationale else 'base'}.json")
 
     print(f'Will save results to: {json_path}')
 
@@ -53,20 +53,22 @@ def main(args):
     with open(entity2type_json, 'r', encoding='utf8') as f:
         entity2type_dict = json.load(f)
 
-    runner = Runner(entity2type_dict,
-                        natlang=args.natlang,
-                        tokenizer=tokenizer,
-                        chat_model=args.chat,
-                        schema_path=schema_path,
-                        rationale=args.rationale,
-                        verbose_test=args.verbose_test,
-                        model_name=args.model,
-                        )
+    runner = Runner(model=model,
+                    type_dict=entity2type_dict,
+                    natlang=args.natlang,
+                    tokenizer=tokenizer,
+                    chat_model=args.chat,
+                    schema_path=schema_path,
+                    rationale=args.rationale,
+                    verbose_test=args.verbose_test,
+                    model_name=args.model_name,
+                    verbose_output_path=args.verbose_output_path,
+                    )
+    
     df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
     icl_prompt = runner.make_icl_prompt(df_train)
     
-    precision, recall, f1_score = runner.evaluate(model,
-                                tokenizer,
+    precision, recall, f1_score = runner.evaluate(
                                 df_test,
                                 icl_prompt,
                                 )
@@ -74,7 +76,7 @@ def main(args):
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
-    info = [{"Model": args.model,
+    info = [{"Model": args.model_name,
             "Precision": precision,
             "Recall": recall,
             "F1_Score": f1_score,
@@ -96,7 +98,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A sample argparse program")
-    parser.add_argument("-m", "--model", help="Model to test")
+    parser.add_argument("-m", "--model_name", help="Model to test")
     parser.add_argument("-d", "--dataset", help="Name of the testing dataset, options = ['ade', 'conll04', 'scierc']")
     parser.add_argument("--natlang", help="Type of language", action='store_true')
     parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
@@ -108,12 +110,29 @@ if __name__ == "__main__":
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
     parser.add_argument("--fine_tuned", action="store_true", help="Whether a fine-tuned LLM is beind tested")
+    parser.add_argument("--verbose_output_path", help="Filename of the test file to use", default='./results/monitor')
     args = parser.parse_args()
 
-    # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
-    # args.dataset = "ade"
-    # args.chat = 1
+    # args.model_name = "./models/Mistral-7B-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
+    # args.dataset = "scierc"
+    # args.chat = 0
     # args.rationale = 0
+    # args.natlang = 1
+    # args.verbose_test = 1
+    # args.fine_tuned = 1
+
+    # args.model_name = "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=3"
+    # args.dataset = "scierc"
+    # args.chat = 0
+    # args.rationale = 1
+    # args.natlang = 1
+    # args.verbose_test = 1
+    # args.fine_tuned = 1
+
+    # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_code_rationale_steps=200_icl=3"
+    # args.dataset = "scierc"
+    # args.chat = 1
+    # args.rationale = 1
     # args.natlang = 0
     # args.verbose_test = 1
     # args.fine_tuned = 1
