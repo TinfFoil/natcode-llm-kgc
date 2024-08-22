@@ -1,1 +1,0 @@
-[{"Model": "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_base_steps=200_icl=3", "Precision": 0.8082191780821918, "Recall": 0.8009049773755657, "F1_Score": 0.8045454545454546, "n_icl_samples": 3, "n_samples_test": 300, "dataset": "ade", "date": "2024-08-09-15-02-31", "schema_path": "./data/codekgc-data/ade/code_prompt", "split": "test"}]
