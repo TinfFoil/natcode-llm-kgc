@@ -53,7 +53,7 @@ natlang_toggle=(
     false
 )
 
-train_steps=500
+train_steps=150
 n_icl_samples=3
 
 # Loop through model_list

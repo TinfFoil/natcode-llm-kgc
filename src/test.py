@@ -113,28 +113,13 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_output_path", help="Filename of the test file to use", default='./results/monitor')
     args = parser.parse_args()
 
-    # args.model_name = "./models/Mistral-7B-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
+    # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
     # args.dataset = "scierc"
-    # args.chat = 0
+    # args.chat = 1
     # args.rationale = 0
     # args.natlang = 1
     # args.verbose_test = 1
     # args.fine_tuned = 1
-
-    # args.model_name = "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=3"
-    # args.dataset = "scierc"
-    # args.chat = 0
-    # args.rationale = 1
-    # args.natlang = 1
-    # args.verbose_test = 1
-    # args.fine_tuned = 1
-
-    # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_code_rationale_steps=200_icl=3"
-    # args.dataset = "scierc"
-    # args.chat = 1
-    # args.rationale = 1
-    # args.natlang = 0
-    # args.verbose_test = 1
-    # args.fine_tuned = 1
+    # args.bfloat16 = 1
 
     main(args)

@@ -13,13 +13,15 @@ def main():
 
     model_name = args.r.split('/')[-1]
     print('************* Results Checker ************')
-    print(f'Model results being checked: {os.path.join(args.d, model_name)}')
     print(f'Results dir: {args.d}')
+    print(f'Model results being searched: {os.path.join(args.d, model_name)}')
     n_tests = 0
+    print(f'Test num. threshold: {args.n}')
     for root, dirs, files in os.walk(args.d):
         for F in files:
             if model_name in F:
                 json_filepath = os.path.join(root, F)
+                print(f'Actual model results being checked: {json_filepath}')
                 with open(json_filepath, 'r', encoding='utf8') as f:
                     data = json.load(f)
                 n_tests = len(data)

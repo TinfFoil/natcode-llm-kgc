@@ -51,20 +51,21 @@ def main(args):
     df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
     icl_prompt = runner.make_icl_prompt(df_train)
 
-    json_path = './data/codekgc-data/scierc/test_triples.json'
+    test_split = f'{args.test_split}_triples.json'
+    test_json = os.path.join(dataset_path, test_split)
     
-    with open(json_path, 'r', encoding='utf8') as f:
+    with open(test_json, 'r', encoding='utf8') as f:
         test_data = json.load(f)
     
     for i, line in enumerate(test_data):
-        if len(line['triple_list']) == 1 and i == 52:
+        if len(line['triple_list']) == 1 and i == 15:
             attn_list, seq, stats = runner.get_attn(model, tokenizer, line, icl_prompt,)
-            if stats[-1] == 1:
-                break
+            # if stats[-1] == 1:
+            #     break
     savename = f"{args.model.split('/')[-1]}_test{i}"
     # for attn in attn_list:
-    for j, attn in enumerate(attn_list):
-        runner.heatmap2d(attn, seq, j, savename = savename)
+    # for j, attn in enumerate(attn_list):
+    #     runner.heatmap2d(attn, seq, j, savename = savename)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A sample argparse program")
@@ -84,11 +85,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     # args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=3"
-    args.model = "./models/Meta-Llama-3.1-8B-Instruct_ft_scierc_natlang_rationale_steps=200_icl=3"
-    args.dataset = "scierc"
+    args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
+    args.dataset = "ade"
     args.chat = 1
-    args.rationale = 1
-    args.natlang = 1
+    args.rationale = 0
+    args.natlang = 0
     args.verbose_test = 1
     args.fine_tuned = 1
     # args.bfloat16 = 1

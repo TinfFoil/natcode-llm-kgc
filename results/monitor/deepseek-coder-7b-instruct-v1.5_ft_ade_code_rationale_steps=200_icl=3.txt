@@ -1,0 +1,2099 @@
+text: Can ketamine prescribed for pain cause damage to the urinary tract ?
+result: extract = Extract([Triple(disease("damage to the urinary tract"), Rel("Adverse_effect"), drug("ketamine"))])
+
+pred: [['damage to the urinary tract', 'Adverse_effect', 'ketamine']]
+trues: [['damage to the urinary tract', 'Adverse_effect', 'ketamine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [1.0, 1.0, 1.0]
+text: The gynecomastia regressed when the theophylline was discontinued .
+result: extract = Extract([Triple(disease("gynaecomastia"), Rel("Adverse_effect"), drug("theophylline"))])
+
+pred: [['gynaecomastia', 'Adverse_effect', 'theophylline']]
+trues: [['gynecomastia', 'Adverse_effect', 'theophylline']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.5, 0.5, 0.5]
+text: Ovarian endometrioid carcinoma and endometriosis developing in a postmenopausal breast cancer patient during tamoxifen therapy : a case report and review of the literature .
+result: extract = Extract([Triple(disease("Ovarian endometrioid carcinoma"), Rel("Adverse_effect"), drug("tamoxifen")), Triple(disease("endometriosis"), Rel("Adverse_effect"), drug("tamoxifen"))])
+
+pred: [['Ovarian endometrioid carcinoma', 'Adverse_effect', 'tamoxifen'], ['endometriosis', 'Adverse_effect', 'tamoxifen']]
+trues: [['endometriosis', 'Adverse_effect', 'tamoxifen'], ['Ovarian endometrioid carcinoma', 'Adverse_effect', 'tamoxifen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.75, 0.75]
+text: We report 5 cases of acute reversible renal failure coinciding with the onset of treatment with captopril in patients with severe drug - resistant hypertension .
+result: extract = Extract([Triple(disease("acute reversible renal failure"), Rel("Adverse_effect"), drug("captopril"))])
+
+pred: [['acute reversible renal failure', 'Adverse_effect', 'captopril']]
+trues: [['acute reversible renal failure', 'Adverse_effect', 'captopril']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8, 0.8, 0.8000000000000002]
+text: Gemcitabine therapy has been associated with radiation recall reactions when used in the treatment of carcinoma .
+result: extract = Extract([Triple(disease("radiation recall reactions"), Rel("Adverse_effect"), drug("Gemcitabine"))])
+
+pred: [['radiation recall reactions', 'Adverse_effect', 'Gemcitabine']]
+trues: [['radiation recall reactions', 'Adverse_effect', 'Gemcitabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8333333333333334, 0.8333333333333334, 0.8333333333333334]
+text: Second cancers including various types of hematological malignancy have been reported in patients with hairy cell leukemia treated with chemotherapy or interferon alfa .
+result: extract = Extract([Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("hematological malignancy"), Rel("Ad
+pred: [['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['hematological malignancy', 'Adverse_effect', 'interferon alfa']]
+trues: [['hematological malignancy', 'Adverse_effect', 'interferon alfa'], ['Second cancers', 'Adverse_effect', 'interferon alfa']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.8571428571428571, 0.75, 0.7999999999999999]
+text: When the trazodone was reduced , the involuntary movements promptly ceased .
+result: extract = Extract([Triple(disease("involuntary movements"), Rel("Adverse_effect"), drug("trazodone"))])
+
+pred: [['involuntary movements', 'Adverse_effect', 'trazodone']]
+trues: [['involuntary movements', 'Adverse_effect', 'trazodone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.875, 0.7777777777777778, 0.823529411764706]
+text: This supports the well - reported potential of bleomycin to trigger acral vascular toxicity .
+result: extract = Extract([Triple(disease("acral vascular toxicity"), Rel("Adverse_effect"), drug("bleomycin"))])
+
+pred: [['acral vascular toxicity', 'Adverse_effect', 'bleomycin']]
+trues: [['acral vascular toxicity', 'Adverse_effect', 'bleomycin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8888888888888888, 0.8, 0.8421052631578948]
+text: To the best of our knowledge , corneoscleral melting in the first postoperative week after a single intraoperative application of mitomycin C has not been reported .
+result: extract = Extract([Triple(disease("corneoscleral melting"), Rel("Adverse_effect"), drug("mitomycin C"))])
+
+pred: [['corneoscleral melting', 'Adverse_effect', 'mitomycin C']]
+trues: [['corneoscleral melting', 'Adverse_effect', 'mitomycin C']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.9, 0.8181818181818182, 0.8571428571428572]
+text: Indinavir - associated nephrolithiasis and chronic interstitial nephritis were the only possible causes identified in this patient .
+result: extract = Extract([Triple(disease("nephrolithiasis"), Rel("Adverse_effect"), drug("Indinavir")), Triple(disease("chronic interstitial nephritis"), Rel("Adverse_effect"), drug("Indinavir"))])
+
+pred: [['nephrolithiasis', 'Adverse_effect', 'Indinavir'], ['chronic interstitial nephritis', 'Adverse_effect', 'Indinavir']]
+trues: [['interstitial nephritis', 'Adverse_effect', 'Indinavir'], ['nephrolithiasis', 'Adverse_effect', 'Indinavir']]
+metrics_sample: [0.5, 0.5, 0.5]
+metrics_current: [0.8333333333333334, 0.7692307692307693, 0.8]
+text: Acute renal failure most likely was secondary to the nephrotoxic effect of captopril on chronically hypoperfused kidneys .
+result: extract = Extract([Triple(disease("Acute renal failure"), Rel("Adverse_effect"), drug("captopril"))])
+
+pred: [['Acute renal failure', 'Adverse_effect', 'captopril']]
+trues: [['Acute renal failure', 'Adverse_effect', 'captopril']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8461538461538461, 0.7857142857142857, 0.8148148148148148]
+text: When DSCG was withdrawn , urticaria vanished and the child remained symptom - free .
+result: extract = Extract([Triple(disease("urticaria"), Rel("Adverse_effect"), drug("DSCG"))])
+
+pred: [['urticaria', 'Adverse_effect', 'DSCG']]
+trues: [['urticaria', 'Adverse_effect', 'DSCG']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8571428571428571, 0.8, 0.8275862068965518]
+text: Isoniazid and ethambutol as a cause of optic neuropathy .
+result: extract = Extract([Triple(disease("optic neuropathy"), Rel("Adverse_effect"), drug("isoniazid")), Triple(disease("optic neuropathy"), Rel("Adverse_effect"), drug("ethambutol"))])
+
+pred: [['optic neuropathy', 'Adverse_effect', 'isoniazid'], ['optic neuropathy', 'Adverse_effect', 'ethambutol']]
+trues: [['optic neuropathy', 'Adverse_effect', 'ethambutol'], ['optic neuropathy', 'Adverse_effect', 'Isoniazid']]
+metrics_sample: [0.5, 0.5, 0.5]
+metrics_current: [0.8125, 0.7647058823529411, 0.787878787878788]
+text: Severe respiratory syncytial virus pulmonary infection in a patient treated with fludarabine for chronic lymphocytic leukemia .
+result: extract = Extract([Triple(disease("Severe respiratory syncytial virus pulmonary infection"), Rel("Adverse_effect"), drug("fludarabine"))])
+
+pred: [['Severe respiratory syncytial virus pulmonary infection', 'Adverse_effect', 'fludarabine']]
+trues: [['Severe respiratory syncytial virus pulmonary infection', 'Adverse_effect', 'fludarabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8235294117647058, 0.7777777777777778, 0.7999999999999999]
+text: This case underscores problems in clinical management with sulfadiazine hypersensitivity , potential immunosuppression from corticosteroids and selection of medications for recurrences of toxoplasmic chorioretinitis .
+result: extract = Extract([Triple(disease("sulfadiazine hypersensitivity"), Rel("Adverse_effect"), drug("sulfadiazine"))])
+
+pred: [['sulfadiazine hypersensitivity', 'Adverse_effect', 'sulfadiazine']]
+trues: [['hypersensitivity', 'Adverse_effect', 'sulfadiazine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7777777777777778, 0.7368421052631579, 0.7567567567567567]
+text: OBJECTIVE : To describe a case of severe skin necrosis resulting from peripheral intravenous administration of low - dose vasopressin in a patient with catecholamine - resistant septic shock .
+result: extract = Extract([Triple(disease("severe skin necrosis"), Rel("Adverse_effect"), drug("vasopressin"))])
+
+pred: [['severe skin necrosis', 'Adverse_effect', 'vasopressin']]
+trues: [['skin necrosis', 'Adverse_effect', 'vasopressin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7368421052631579, 0.7, 0.717948717948718]
+text: We report on a 37-year - old female who complained of moderate hair loss during paroxetine treatment .
+result: extract = Extract([Triple(disease("hair loss"), Rel("Adverse_effect"), drug("paroxetine"))])
+
+pred: [['hair loss', 'Adverse_effect', 'paroxetine']]
+trues: [['hair loss', 'Adverse_effect', 'paroxetine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.7142857142857143, 0.7317073170731706]
+text: The second patient experienced mild nitritoid symptoms following several GSTM injections prior experiencing a cerebrovascular accident within several hours of her next injection .
+result: extract = Extract([Triple(disease("mild nitritoid symptoms"), Rel("Adverse_effect"), drug("GSTM")), Triple(disease("cerebrovascular accident"), Rel("Adverse_effect"), drug("GSTM"))])
+
+pred: [['mild nitritoid symptoms', 'Adverse_effect', 'GSTM'], ['cerebrovascular accident', 'Adverse_effect', 'GSTM']]
+trues: [['mild nitritoid symptoms', 'Adverse_effect', 'GSTM']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7272727272727273, 0.7272727272727273, 0.7272727272727273]
+text: Exacerbations of the heart failure were temporally related to the administration of the antitumor antibiotics actinomycin - D ( NSC-3053 ) and mithramycin ( NSC-24559 ) .
+result: extract = Extract([Triple(disease("heart failure"), Rel("Adverse_effect"), drug("actinomycin - D")), Triple(disease("heart failure"), Rel("Adverse_effect"), drug("mithramycin"))])
+
+pred: [['heart failure', 'Adverse_effect', 'actinomycin - D'], ['heart failure', 'Adverse_effect', 'mithramycin']]
+trues: [['Exacerbations of the heart failure', 'Adverse_effect', 'actinomycin - D'], ['Exacerbations of the heart failure', 'Adverse_effect', 'mithramycin'], ['Exacerbations of the heart failure', 'Adverse_effect', 'NSC-24559'], ['Exacerbations of the heart failure', 'Adverse_effect', 'NSC-3053']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.6666666666666666, 0.6153846153846154, 0.64]
+text: Acetazolamide - accelerated anticonvulsant osteomalacia .
+result: extract = Extract([Triple(disease("osteomalacia"), Rel("Adverse_effect"), drug("Acetazolamide"))])
+
+pred: [['osteomalacia', 'Adverse_effect', 'Acetazolamide']]
+trues: [['osteomalacia', 'Adverse_effect', 'Acetazolamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.68, 0.6296296296296297, 0.6538461538461539]
+text: CONCLUSION : A 26-year - old man with bipolar disorder developed hyperammonemia three weeks after initiating carbamazepine therapy .
+result: extract = Extract([Triple(disease("hyperammonemia"), Rel("Adverse_effect"), drug("carbamazepine"))])
+
+pred: [['hyperammonemia', 'Adverse_effect', 'carbamazepine']]
+trues: [['hyperammonemia', 'Adverse_effect', 'carbamazepine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.6923076923076923, 0.6428571428571429, 0.6666666666666666]
+text: Gemcitabine - induced pulmonary toxicity is usually a dramatic condition .
+result: extract = Extract([Triple(disease("pulmonary toxicity"), Rel("Adverse_effect"), drug("Gemcitabine"))])
+
+pred: [['pulmonary toxicity', 'Adverse_effect', 'Gemcitabine']]
+trues: [['pulmonary toxicity', 'Adverse_effect', 'Gemcitabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7037037037037037, 0.6551724137931034, 0.6785714285714286]
+text: Pancreatitis is a very rare adverse effect associated with the use of amiodarone , and only four cases of amiodarone - induced pancreatitis have been reported in literature .
+result: extract = Extract([Triple(disease("Pancreatitis"), Rel("Adverse_effect"), drug("amiodarone"))])
+
+pred: [['Pancreatitis', 'Adverse_effect', 'amiodarone']]
+trues: [['Pancreatitis', 'Adverse_effect', 'amiodarone'], ['pancreatitis', 'Adverse_effect', 'amiodarone']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7142857142857143, 0.6451612903225806, 0.6779661016949152]
+text: A new type of minocycline - induced cutaneous hyperpigmentation .
+result: extract = Extract([Triple(disease("cutaneous hyperpigmentation"), Rel("Adverse_effect"), drug("minocycline"))])
+
+pred: [['cutaneous hyperpigmentation', 'Adverse_effect', 'minocycline']]
+trues: [['cutaneous hyperpigmentation', 'Adverse_effect', 'minocycline']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7241379310344828, 0.65625, 0.6885245901639345]
+text: Paradoxical seizures in phenytoin toxicity .
+result: extract = Extract([Triple(disease("Paradoxical seizures"), Rel("Adverse_effect"), drug("phenytoin"))])
+
+pred: [['Paradoxical seizures', 'Adverse_effect', 'phenytoin']]
+trues: [['seizures', 'Adverse_effect', 'phenytoin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7, 0.6363636363636364, 0.6666666666666666]
+text: Based on the history and clinical features , a diagnosis of insulin - induced lipohypertrophy was made .
+result: extract = Extract([Triple(disease("lipohypertrophy"), Rel("Adverse_effect"), drug("insulin"))])
+
+pred: [['lipohypertrophy', 'Adverse_effect', 'insulin']]
+trues: [['lipohypertrophy', 'Adverse_effect', 'insulin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7096774193548387, 0.6470588235294118, 0.6769230769230768]
+text: Lupus - like syndrome caused by 5-aminosalicylic acid in patients with inflammatory bowel disease .
+result: extract = Extract([Triple(disease("Lupus - like syndrome"), Rel("Adverse_effect"), drug("5-aminosalicylic acid"))])
+
+pred: [['Lupus - like syndrome', 'Adverse_effect', '5-aminosalicylic acid']]
+trues: [['Lupus - like syndrome', 'Adverse_effect', '5-aminosalicylic acid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.71875, 0.6571428571428571, 0.6865671641791045]
+text: We report a case of pediatric bupropion ingestion resulting in multiple seizures .
+result: extract = Extract([Triple(disease("multiple seizures"), Rel("Adverse_effect"), drug("bupropion"))])
+
+pred: [['multiple seizures', 'Adverse_effect', 'bupropion']]
+trues: [['multiple seizures', 'Adverse_effect', 'bupropion']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7272727272727273, 0.6666666666666666, 0.6956521739130435]
+text: Acute acoustic nerve palsy associated with vincristine therapy .
+result: extract = Extract([Triple(disease("Acute acoustic nerve palsy"), Rel("Adverse_effect"), drug("vincristine"))])
+
+pred: [['Acute acoustic nerve palsy', 'Adverse_effect', 'vincristine']]
+trues: [['Acute acoustic nerve palsy', 'Adverse_effect', 'vincristine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7352941176470589, 0.6756756756756757, 0.7042253521126761]
+text: We present a case of a diabetic patient taking glyburide who was prescribed ciprofloxacin and developed prolonged hypoglycemia , which persisted for over 24 hours .
+result: extract = Extract([Triple(disease("prolonged hypoglycemia"), Rel("Adverse_effect"), drug("ciprofloxacin")), Triple(disease("prolonged hypoglycemia"), Rel("Adverse_effect"), drug("glyburide"))])
+
+pred: [['prolonged hypoglycemia', 'Adverse_effect', 'ciprofloxacin'], ['prolonged hypoglycemia', 'Adverse_effect', 'glyburide']]
+trues: [['prolonged hypoglycemia', 'Adverse_effect', 'ciprofloxacin'], ['prolonged hypoglycemia', 'Adverse_effect', 'glyburide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.6923076923076923, 0.7199999999999999]
+text: In one patient the vasculitis resolved after termination of the ciprofloxacin therapy ; in the other patient the ciprofloxacin - induced hemorrhagic vasculitis was superimposed on a severe forefoot infection , leading to progressive gangrene and a below - knee amputation .
+result: extract = Extract([Triple(disease("gangrene"), Rel("Adverse_effect"), drug("ciprofloxacin")), Triple(disease("hemorrhagic vasculitis"), Rel("Adverse_effect"), drug("ciprofloxacin"))])
+
+pred: [['gangrene', 'Adverse_effect', 'ciprofloxacin'], ['hemorrhagic vasculitis', 'Adverse_effect', 'ciprofloxacin']]
+trues: [['below - knee amputation', 'Adverse_effect', 'ciprofloxacin'], ['hemorrhagic vasculitis', 'Adverse_effect', 'ciprofloxacin'], ['progressive gangrene', 'Adverse_effect', 'ciprofloxacin'], ['severe forefoot infection', 'Adverse_effect', 'ciprofloxacin'], ['vasculitis', 'Adverse_effect', 'ciprofloxacin']]
+metrics_sample: [0.5, 0.2, 0.28571428571428575]
+metrics_current: [0.7368421052631579, 0.6363636363636364, 0.6829268292682926]
+text: CONCLUSIONS : Cefazolin was a probable cause of this patient 's leukopenia .
+result: extract = Extract([Triple(disease("leukopenia"), Rel("Adverse_effect"), drug("Cefazolin"))])
+
+pred: [['leukopenia', 'Adverse_effect', 'Cefazolin']]
+trues: [['leukopenia', 'Adverse_effect', 'Cefazolin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7435897435897436, 0.6444444444444445, 0.6904761904761906]
+text: CONCLUSION : Long - term treatment with rifabutin may have a reversible and previously undescribed side - effect on retinal function .
+result: extract = Extract([Triple(disease("side - effect on retinal function"), Rel("Adverse_effect"), drug("rifabutin"))])
+
+pred: [['side - effect on retinal function', 'Adverse_effect', 'rifabutin']]
+trues: [['side - effect on retinal function', 'Adverse_effect', 'rifabutin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.6521739130434783, 0.6976744186046512]
+text: We suggest that itraconazole should be added to the list of drugs that may be responsible for a drug - induced vanishing bile duct syndrome .
+result: extract = Extract([Triple(disease("vanishing bile duct syndrome"), Rel("Adverse_effect"), drug("itraconazole"))])
+
+pred: [['vanishing bile duct syndrome', 'Adverse_effect', 'itraconazole']]
+trues: [['vanishing bile duct syndrome', 'Adverse_effect', 'itraconazole']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7560975609756098, 0.6595744680851063, 0.7045454545454545]
+text: However , follow - up revealed that gestational diabetes when associated with norethisterone had a lesser risk of emerging diabetes mellitus and impaired glucose tolerance .
+result: extract = Extract([Triple(disease("diabetes mellitus"), Rel("Adverse_effect"), drug("norethisterone"))])
+
+pred: [['diabetes mellitus', 'Adverse_effect', 'norethisterone']]
+trues: [['diabetes mellitus', 'Adverse_effect', 'norethisterone'], ['gestational diabetes', 'Adverse_effect', 'norethisterone'], ['impaired glucose tolerance', 'Adverse_effect', 'norethisterone']]
+metrics_sample: [1.0, 0.3333333333333333, 0.5]
+metrics_current: [0.7619047619047619, 0.64, 0.6956521739130435]
+text: A paradoxical ocular effect of brimonidine .
+result: extract = Extract([Triple(disease("ocular effect"), Rel("Adverse_effect"), drug("brimonidine"))])
+
+pred: [['ocular effect', 'Adverse_effect', 'brimonidine']]
+trues: [['paradoxical ocular effect', 'Adverse_effect', 'brimonidine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7441860465116279, 0.6274509803921569, 0.6808510638297872]
+text: OBJECTIVE : To report the safe use of fluorouracil in a patient with breast cancer who had allergic reactions to capecitabine .
+result: extract = Extract([Triple(disease("allergic reactions"), Rel("Adverse_effect"), drug("capecitabine"))])
+
+pred: [['allergic reactions', 'Adverse_effect', 'capecitabine']]
+trues: [['allergic reactions', 'Adverse_effect', 'capecitabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.6346153846153846, 0.6875]
+text: Children receiving zonisamide should be monitored for oligohidrosis and the development of neurological symptoms associated with an elevation of body temperature .
+result: extract = Extract([Triple(disease("oligohidrosis"), Rel("Adverse_effect"), drug("zonisamide"))])
+
+pred: [['oligohidrosis', 'Adverse_effect', 'zonisamide']]
+trues: [['neurological symptoms', 'Adverse_effect', 'zonisamide'], ['oligohidrosis', 'Adverse_effect', 'zonisamide']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7555555555555555, 0.6296296296296297, 0.6868686868686867]
+text: Pravastatin is associated with myotonia in animals .
+result: extract = Extract([Triple(disease("myotonia"), Rel("Adverse_effect"), drug("Pravastatin"))])
+
+pred: [['myotonia', 'Adverse_effect', 'Pravastatin']]
+trues: [['myotonia', 'Adverse_effect', 'Pravastatin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7608695652173914, 0.6363636363636364, 0.693069306930693]
+text: IV propranolol was used as the initial treatment for his hyperadrenergic state , resulting in a decrease in heart rate but a paroxsymal increase in blood pressure .
+result: extract = Extract([Triple(disease("hyperadrenergic state"), Rel("Adverse_effect"), drug("propranolol"))])
+
+pred: [['hyperadrenergic state', 'Adverse_effect', 'propranolol']]
+trues: [['decrease in heart rate', 'Adverse_effect', 'propranolol'], ['paroxsymal increase in blood pressure', 'Adverse_effect', 'propranolol']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7446808510638298, 0.6140350877192983, 0.673076923076923]
+text: Significant clinical improvement of the porphyria followed withdrawal of the diphenylhydantoin .
+result: extract = Extract([Triple(disease("porphyria"), Rel("Adverse_effect"), drug("diphenylhydantoin"))])
+
+pred: [['porphyria', 'Adverse_effect', 'diphenylhydantoin']]
+trues: [['porphyria', 'Adverse_effect', 'diphenylhydantoin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.6206896551724138, 0.679245283018868]
+text: A 65-year - old female patient presented with jaundice followed 2 days later by severe dyspnea and tachypnea which worsened when patient was lying flat , 1 week after the fourth dose of adalimumab .
+result: extract = Extract([Triple(disease("jaundice"), Rel("Adverse_effect"), drug("adalimumab")), Triple(disease("severe dyspnea and tachypnea"), Rel("Adverse_effect"), drug("adalimumab"))])
+
+pred: [['jaundice', 'Adverse_effect', 'adalimumab'], ['severe dyspnea and tachypnea', 'Adverse_effect', 'adalimumab']]
+trues: [['jaundice', 'Adverse_effect', 'adalimumab'], ['severe dyspnea', 'Adverse_effect', 'adalimumab'], ['tachypnea', 'Adverse_effect', 'adalimumab']]
+metrics_sample: [0.5, 0.3333333333333333, 0.4]
+metrics_current: [0.74, 0.6065573770491803, 0.6666666666666666]
+text: A 51-year - old man developed type 1 diabetes mellitus following 24 weeks of treatment with recombinant alpha-2b peginterferon plus ribavirin for chronic hepatitis C .
+result: extract = Extract([Triple(disease("type 1 diabetes mellitus"), Rel("Adverse_effect"), drug("alpha-2b peginterferon")), Triple(disease("type 1 diabetes mellitus"), Rel("Adverse_effect"), drug("ribavirin"))])
+
+pred: [['type 1 diabetes mellitus', 'Adverse_effect', 'alpha-2b peginterferon'], ['type 1 diabetes mellitus', 'Adverse_effect', 'ribavirin']]
+trues: [['type 1 diabetes mellitus', 'Adverse_effect', 'alpha-2b peginterferon'], ['type 1 diabetes mellitus', 'Adverse_effect', 'ribavirin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.6190476190476191, 0.6782608695652174]
+text: Prenatal cytomegalovirus ( CMV ) infection associated with severe brain damage was detected in an infant whose mother had been treated with prednisolone and azathioprine for systemic lupus erythematosus ( SLE ) .
+result: extract = Extract([Triple(disease("Prenatal cytomegalovirus ( CMV ) infection"), Rel("Adverse_effect"), drug("azathioprine")), Triple(disease("Prenatal cytomegalovirus ( CMV ) infection"), Rel("Adverse_effect"), drug("prednisolone"))])
+
+pred: [['Prenatal cytomegalovirus ( CMV ) infection', 'Adverse_effect', 'azathioprine'], ['Prenatal cytomegalovirus ( CMV ) infection', 'Adverse_effect', 'prednisolone']]
+trues: [['brain damage', 'Adverse_effect', 'azathioprine'], ['brain damage', 'Adverse_effect', 'prednisolone'], ['Prenatal cytomegalovirus ( CMV ) infection', 'Adverse_effect', 'azathioprine'], ['Prenatal cytomegalovirus ( CMV ) infection', 'Adverse_effect', 'prednisolone']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7592592592592593, 0.6119402985074627, 0.6776859504132231]
+text: Morphea after bromocriptine therapy .
+result: extract = Extract([Triple(disease("Morphea"), Rel("Adverse_effect"), drug("bromocriptine"))])
+
+pred: [['Morphea', 'Adverse_effect', 'bromocriptine']]
+trues: [['Morphea', 'Adverse_effect', 'bromocriptine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7636363636363637, 0.6176470588235294, 0.6829268292682927]
+text: Drug - induced hepatitis in an acromegalic patient during combined treatment with pegvisomant and octreotide long - acting repeatable attributed to the use of pegvisomant .
+result: extract = Extract([Triple(disease("hepatitis"), Rel("Adverse_effect"), drug("pegvisomant"))])
+
+pred: [['hepatitis', 'Adverse_effect', 'pegvisomant']]
+trues: [['hepatitis', 'Adverse_effect', 'octreotide'], ['hepatitis', 'Adverse_effect', 'pegvisomant'], ['hepatitis', 'Adverse_effect', 'pegvisomant']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7678571428571429, 0.6142857142857143, 0.6825396825396827]
+text: CONCLUSION : Gemcitabine - induced recall pneumonitis is a rarely reported phenomenon and should be taken into account even after extended time interval to the previous radiotherapy .
+result: extract = Extract([Triple(disease("recall pneumonitis"), Rel("Adverse_effect"), drug("Gemcitabine"))])
+
+pred: [['recall pneumonitis', 'Adverse_effect', 'Gemcitabine']]
+trues: [['recall pneumonitis', 'Adverse_effect', 'Gemcitabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7719298245614035, 0.6197183098591549, 0.6875]
+text: Generalised pustular psoriasis induced by cyclosporin a withdrawal responding to the tumour necrosis factor alpha inhibitor etanercept .
+result: extract = Extract([Triple(disease("Generalised pustular psoriasis"), Rel("Adverse_effect"), drug("cyclosporin a")), Triple(disease("Generalised pustular psoriasis"), Rel("Adverse_effect"), drug("etanercept"))])
+
+pred: [['Generalised pustular psoriasis', 'Adverse_effect', 'cyclosporin a'], ['Generalised pustular psoriasis', 'Adverse_effect', 'etanercept']]
+trues: [['Generalised pustular psoriasis', 'Adverse_effect', 'cyclosporin a']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7627118644067796, 0.625, 0.6870229007633587]
+text: Prolonged prostate - specific antigen response in flutamide withdrawal syndrome despite disease progression .
+result: extract = Extract([Triple(disease("Prolonged prostate - specific antigen response in flutamide withdrawal syndrome"), Rel("Adverse_effect"), drug("flutamide"))])
+
+pred: [['Prolonged prostate - specific antigen response in flutamide withdrawal syndrome', 'Adverse_effect', 'flutamide']]
+trues: [['flutamide withdrawal syndrome', 'Adverse_effect', 'flutamide'], ['Prolonged prostate - specific antigen response', 'Adverse_effect', 'flutamide']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.75, 0.6081081081081081, 0.6716417910447762]
+text: In this case report , we have described a patient with Crohn 's disease who developed subfulminant hepatitis B after the fourth infusion of infliximab due to an unrecognized HBs - antigen carrier state .
+result: extract = Extract([Triple(disease("subfulminant hepatitis B"), Rel("Adverse_effect"), drug("infliximab"))])
+
+pred: [['subfulminant hepatitis B', 'Adverse_effect', 'infliximab']]
+trues: [['subfulminant hepatitis B', 'Adverse_effect', 'infliximab']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7540983606557377, 0.6133333333333333, 0.676470588235294]
+text: The authors present an elderly patient with mixed dementia who developed TD at multiple sites , ( including respiratory dyskinesia [ RD ] , limb dyskinesia , and orofacial dyskinesia ) following abrupt withdrawal of risperidone therapy .
+result: extract = Extract([Triple(disease("limb dyskinesia"), Rel("Adverse_effect"), drug("risperidone")), Triple(disease("orofacial dyskinesia"), Rel("Adverse_effect"), drug("risperidone")), Triple(disease("respiratory dyskinesia [ RD ]"), Rel("Adverse_effect"), drug("risperidone"))])
+
+pred: [['limb dyskinesia', 'Adverse_effect', 'risperidone'], ['orofacial dyskinesia', 'Adverse_effect', 'risperidone'], ['respiratory dyskinesia [ RD ]', 'Adverse_effect', 'risperidone']]
+trues: [['limb dyskinesia', 'Adverse_effect', 'risperidone'], ['orofacial dyskinesia', 'Adverse_effect', 'risperidone'], ['RD', 'Adverse_effect', 'risperidone'], ['respiratory dyskinesia', 'Adverse_effect', 'risperidone'], ['TD', 'Adverse_effect', 'risperidone']]
+metrics_sample: [0.6666666666666666, 0.4, 0.5]
+metrics_current: [0.75, 0.6, 0.6666666666666665]
+text: However , cyclosporine dependency is associated with the risk of nephrotoxicity .
+result: extract = Extract([Triple(disease("nephrotoxicity"), Rel("Adverse_effect"), drug("cyclosporine"))])
+
+pred: [['nephrotoxicity', 'Adverse_effect', 'cyclosporine']]
+trues: [['nephrotoxicity', 'Adverse_effect', 'cyclosporine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7538461538461538, 0.6049382716049383, 0.6712328767123288]
+text: We report a case of myoclonus induced by quetiapine .
+result: extract = Extract([Triple(disease("myoclonus"), Rel("Adverse_effect"), drug("quetiapine"))])
+
+pred: [['myoclonus', 'Adverse_effect', 'quetiapine']]
+trues: [['myoclonus', 'Adverse_effect', 'quetiapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7575757575757576, 0.6097560975609756, 0.6756756756756757]
+text: A case of clozapine - induced tonic - clonic seizures managed with valproate : implications for clinical care .
+result: extract = Extract([Triple(disease("tonic - clonic seizures"), Rel("Adverse_effect"), drug("clozapine"))])
+
+pred: [['tonic - clonic seizures', 'Adverse_effect', 'clozapine']]
+trues: [['tonic - clonic seizures', 'Adverse_effect', 'clozapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7611940298507462, 0.6144578313253012, 0.68]
+text: Sulfasalazine - induced lupus erythematosus .
+result: extract = Extract([Triple(disease("lupus erythematosus"), Rel("Adverse_effect"), drug("Sulfasalazine"))])
+
+pred: [['lupus erythematosus', 'Adverse_effect', 'Sulfasalazine']]
+trues: [['lupus erythematosus', 'Adverse_effect', 'Sulfasalazine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7647058823529411, 0.6190476190476191, 0.6842105263157895]
+text: Atypical endometriosis may act as a precancerous lesion in the process of tamoxifen - induced malignant transformation of endometriosis .
+result: extract = Extract([Triple(disease("malignant transformation of endometriosis"), Rel("Adverse_effect"), drug("tamoxifen"))])
+
+pred: [['malignant transformation of endometriosis', 'Adverse_effect', 'tamoxifen']]
+trues: [['malignant transformation of endometriosis', 'Adverse_effect', 'tamoxifen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7681159420289855, 0.6235294117647059, 0.6883116883116883]
+text: Persistent light reactivity from systemic quinine .
+result: extract = Extract([Triple(disease("Persistent light reactivity"), Rel("Adverse_effect"), drug("quinine"))])
+
+pred: [['Persistent light reactivity', 'Adverse_effect', 'quinine']]
+trues: [['Persistent light reactivity', 'Adverse_effect', 'quinine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7714285714285715, 0.627906976744186, 0.6923076923076923]
+text: When measured , the serum lithium level had increased 4-fold during acyclovir therapy .
+result: extract = Extract([Triple(disease("serum lithium level had increased 4-fold"), Rel("Adverse_effect"), drug("acyclovir"))])
+
+pred: [['serum lithium level had increased 4-fold', 'Adverse_effect', 'acyclovir']]
+trues: [['serum lithium level had increased', 'Adverse_effect', 'acyclovir'], ['serum lithium level had increased', 'Adverse_effect', 'lithium']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7605633802816901, 0.6136363636363636, 0.6792452830188679]
+text: Panic anxiety after abrupt discontinuation of mianserin .
+result: extract = Extract([Triple(disease("Panic anxiety"), Rel("Adverse_effect"), drug("mianserin"))])
+
+pred: [['Panic anxiety', 'Adverse_effect', 'mianserin']]
+trues: [['Panic anxiety', 'Adverse_effect', 'mianserin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7638888888888888, 0.6179775280898876, 0.6832298136645962]
+text: We believe that the acute renal failure in our patient was associated with anastrozole .
+result: extract = Extract([Triple(disease("acute renal failure"), Rel("Adverse_effect"), drug("anastrozole"))])
+
+pred: [['acute renal failure', 'Adverse_effect', 'anastrozole']]
+trues: [['acute renal failure', 'Adverse_effect', 'anastrozole']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7671232876712328, 0.6222222222222222, 0.6871165644171779]
+text: The literature search found 12 cases of radiation recall caused by gemcitabine .
+result: extract = Extract([Triple(disease("radiation recall"), Rel("Adverse_effect"), drug("gemcitabine"))])
+
+pred: [['radiation recall', 'Adverse_effect', 'gemcitabine']]
+trues: [['radiation recall', 'Adverse_effect', 'gemcitabine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7702702702702703, 0.6263736263736264, 0.690909090909091]
+text: A 67-year - old patient , with primary polymyositis and without previous evidence of liver disease , developed clinical and biochemical features of severe cholestasis 3 months after initiation of azathioprine therapy .
+result: extract = Extract([Triple(disease("severe cholestasis"), Rel("Adverse_effect"), drug("azathioprine"))])
+
+pred: [['severe cholestasis', 'Adverse_effect', 'azathioprine']]
+trues: [['severe cholestasis', 'Adverse_effect', 'azathioprine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7733333333333333, 0.6304347826086957, 0.6946107784431138]
+text: Tuberculous uveitis after treatment with etanercept .
+result: extract = Extract([Triple(disease("Tuberculous uveitis"), Rel("Adverse_effect"), drug("etanercept"))])
+
+pred: [['Tuberculous uveitis', 'Adverse_effect', 'etanercept']]
+trues: [['Tuberculous uveitis', 'Adverse_effect', 'etanercept']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7763157894736842, 0.6344086021505376, 0.6982248520710058]
+text: OBJECTIVE : To test the hypothesis that tumor necrosis factor ( TNF ) - alpha may mediate the loss and the dedifferentiation of subcutaneous fat tissue in the insulin - induced lipoatrophies of a diabetic patient who presented extensive lesions .
+result: extract = Extract([Triple(disease("loss and the dedifferentiation of subcutaneous fat tissue"), Rel("Adverse_effect"), drug("insulin"))])
+
+pred: [['loss and the dedifferentiation of subcutaneous fat tissue', 'Adverse_effect', 'insulin']]
+trues: [['lipoatrophies', 'Adverse_effect', 'insulin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7662337662337663, 0.6276595744680851, 0.6900584795321637]
+text: CONCLUSIONS : Jet - injection devices might constitute a helpful method to treat those patients affected by severe human insulin - induced lipoatrophy .
+result: extract = Extract([Triple(disease("lipoatrophy"), Rel("Adverse_effect"), drug("human insulin"))])
+
+pred: [['lipoatrophy', 'Adverse_effect', 'human insulin']]
+trues: [['lipoatrophy', 'Adverse_effect', 'human insulin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7692307692307693, 0.631578947368421, 0.6936416184971097]
+text: Suspected ciprofloxacin - induced interstitial nephritis .
+result: extract = Extract([Triple(disease("interstitial nephritis"), Rel("Adverse_effect"), drug("ciprofloxacin"))])
+
+pred: [['interstitial nephritis', 'Adverse_effect', 'ciprofloxacin']]
+trues: [['interstitial nephritis', 'Adverse_effect', 'ciprofloxacin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7721518987341772, 0.6354166666666666, 0.6971428571428571]
+text: Cutaneous eruptions occur in 3 % of individuals administered carbamazepine .
+result: extract = Extract([Triple(disease("Cutaneous eruptions"), Rel("Adverse_effect"), drug("carbamazepine"))])
+
+pred: [['Cutaneous eruptions', 'Adverse_effect', 'carbamazepine']]
+trues: [['Cutaneous eruptions', 'Adverse_effect', 'carbamazepine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.775, 0.6391752577319587, 0.7005649717514124]
+text: Long lasting respiratory depression induced by morphine-6-glucuronide ?
+result: extract = Extract([Triple(disease("respiratory depression"), Rel("Adverse_effect"), drug("morphine-6-glucuronide"))])
+
+pred: [['respiratory depression', 'Adverse_effect', 'morphine-6-glucuronide']]
+trues: [['respiratory depression', 'Adverse_effect', 'morphine-6-glucuronide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7777777777777778, 0.6428571428571429, 0.7039106145251396]
+text: Relapse in the external auditory canal of acute promyelocytic leukemia after treatment with all - trans retinoic acid .
+result: extract = Extract([Triple(disease("Relapse in the external auditory canal of acute promyelocytic leukemia"), Rel("Adverse_effect"), drug("all - trans retinoic acid"))])
+
+pred: [['Relapse in the external auditory canal of acute promyelocytic leukemia', 'Adverse_effect', 'all - trans retinoic acid']]
+trues: [['Relapse in the external auditory canal of acute promyelocytic leukemia', 'Adverse_effect', 'all - trans retinoic acid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7804878048780488, 0.6464646464646465, 0.7071823204419891]
+text: The case of a 29-year - old man suffering from falciparum malaria disease who got a reversible hearing loss from quinine therapy is presented .
+result: extract = Extract([Triple(disease("reversible hearing loss"), Rel("Adverse_effect"), drug("quinine"))])
+
+pred: [['reversible hearing loss', 'Adverse_effect', 'quinine']]
+trues: [['reversible hearing loss', 'Adverse_effect', 'quinine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7831325301204819, 0.65, 0.7103825136612022]
+text: Skin necrosis secondary to low - molecular weight heparin in a patient with antiphospholipid antibody syndrome .
+result: extract = Extract([Triple(disease("Skin necrosis"), Rel("Adverse_effect"), drug("low - molecular weight heparin"))])
+
+pred: [['Skin necrosis', 'Adverse_effect', 'low - molecular weight heparin']]
+trues: [['Skin necrosis', 'Adverse_effect', 'low - molecular weight heparin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7857142857142857, 0.6534653465346535, 0.7135135135135134]
+text: Anhedonic ejaculation with desipramine .
+result: extract = Extract([Triple(disease("Anhedonic ejaculation"), Rel("Adverse_effect"), drug("desipramine"))])
+
+pred: [['Anhedonic ejaculation', 'Adverse_effect', 'desipramine']]
+trues: [['Anhedonic ejaculation', 'Adverse_effect', 'desipramine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.788235294117647, 0.6568627450980392, 0.7165775401069518]
+text: This confirmed the history of captopril - related asthma .
+result: extract = Extract([Triple(disease("asthma"), Rel("Adverse_effect"), drug("captopril"))])
+
+pred: [['asthma', 'Adverse_effect', 'captopril']]
+trues: [['asthma', 'Adverse_effect', 'captopril']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7906976744186046, 0.6601941747572816, 0.7195767195767196]
+text: Recently , some studies have also reported association between patients with juvenile rheumatoid arthritis ( JRA ) treated with Methotrexate ( MTX ) and malignant lymphoma developing .
+result: extract = Extract([Triple(disease("malignant lymphoma"), Rel("Adverse_effect"), drug("Methotrexate"))])
+
+pred: [['malignant lymphoma', 'Adverse_effect', 'Methotrexate']]
+trues: [['malignant lymphoma', 'Adverse_effect', 'Methotrexate'], ['malignant lymphoma', 'Adverse_effect', 'MTX']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7931034482758621, 0.6571428571428571, 0.71875]
+text: Severe dapsone hypersensitivity syndrome .
+result: extract = Extract([Triple(disease("Severe dapsone hypersensitivity syndrome"), Rel("Adverse_effect"), drug("dapsone"))])
+
+pred: [['Severe dapsone hypersensitivity syndrome', 'Adverse_effect', 'dapsone']]
+trues: [['hypersensitivity syndrome', 'Adverse_effect', 'dapsone']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7840909090909091, 0.6509433962264151, 0.7113402061855669]
+text: Piritrexim - induced pulmonary toxicity .
+result: extract = Extract([Triple(disease("pulmonary toxicity"), Rel("Adverse_effect"), drug("Piritrexim"))])
+
+pred: [['pulmonary toxicity', 'Adverse_effect', 'Piritrexim']]
+trues: [['pulmonary toxicity', 'Adverse_effect', 'Piritrexim']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7865168539325843, 0.6542056074766355, 0.7142857142857143]
+text: Although major hazards of treatment of hypophosphatemic osteomalacia with phosphate and calcitriol are secondary hyperparathyroidism and vitamin D intoxication , potassium loss also should be kept in mind .
+result: extract = Extract([Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("calcitriol")), Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("calcitriol")), Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("phosphate")), Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("phosphate")), Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("vitamin D")), Triple(disease("hypophosphatemic osteomalacia"), Rel("Adverse_effect"), drug("vitamin D"))])
+
+pred: [['hypophosphatemic osteomalacia', 'Adverse_effect', 'calcitriol'], ['hypophosphatemic osteomalacia', 'Adverse_effect', 'calcitriol'], ['hypophosphatemic osteomalacia', 'Adverse_effect', 'phosphate'], ['hypophosphatemic osteomalacia', 'Adverse_effect', 'phosphate'], ['hypophosphatemic osteomalacia', 'Adverse_effect', 'vitamin D'], ['hypophosphatemic osteomalacia', 'Adverse_effect', 'vitamin D']]
+trues: [['potassium loss', 'Adverse_effect', 'calcitriol'], ['potassium loss', 'Adverse_effect', 'phosphate'], ['secondary hyperparathyroidism', 'Adverse_effect', 'calcitriol'], ['secondary hyperparathyroidism', 'Adverse_effect', 'phosphate'], ['vitamin D intoxication', 'Adverse_effect', 'calcitriol'], ['vitamin D intoxication', 'Adverse_effect', 'phosphate']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7608695652173914, 0.6194690265486725, 0.6829268292682927]
+text: Case 1 , a 62-year - old woman , developed bilateral optic neuritis with decreased sensation of vibration and increased deep tendon reflex in the lower extremities after a seven - month use of recombinant interferon alpha-2a for chronic active hepatitis C .
+result: extract = Extract([Triple(disease("bilateral optic neuritis with decreased sensation of vibration and increased deep tendon reflex in the lower extremities"), Rel("Adverse_effect"), drug("recombinant interferon alpha-2a")), Triple(disease("bilateral optic neuritis with decreased sensation of vibration and increased deep tendon reflex in the lower extremities"), Rel("Adverse_effect"), drug("interferon alpha-2a"))])
+
+pred: [['bilateral optic neuritis with decreased sensation of vibration and increased deep tendon reflex in the lower extremities', 'Adverse_effect', 'recombinant interferon alpha-2a'], ['bilateral optic neuritis with decreased sensation of vibration and increased deep tendon reflex in the lower extremities', 'Adverse_effect', 'interferon alpha-2a']]
+trues: [['bilateral optic neuritis', 'Adverse_effect', 'recombinant interferon alpha-2a'], ['decreased sensation of vibration', 'Adverse_effect', 'recombinant interferon alpha-2a'], ['increased deep tendon reflex', 'Adverse_effect', 'recombinant interferon alpha-2a']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7446808510638298, 0.603448275862069, 0.6666666666666665]
+text: To the best of our knowledge , this is the first case of lithium - associated CDI and NDI presenting concurrently .
+result: extract = Extract([Triple(disease("CDI and NDI presenting concurrently"), Rel("Adverse_effect"), drug("lithium"))])
+
+pred: [['CDI and NDI presenting concurrently', 'Adverse_effect', 'lithium']]
+trues: [['CDI', 'Adverse_effect', 'lithium'], ['NDI', 'Adverse_effect', 'lithium']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7368421052631579, 0.5932203389830508, 0.6572769953051644]
+text: The role of Adriamycin in the production of cardiotoxicity is reviewed .
+result: extract = Extract([Triple(disease("cardiotoxicity"), Rel("Adverse_effect"), drug("Adriamycin"))])
+
+pred: [['cardiotoxicity', 'Adverse_effect', 'Adriamycin']]
+trues: [['cardiotoxicity', 'Adverse_effect', 'Adriamycin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7395833333333334, 0.5966386554621849, 0.6604651162790698]
+text: Acute non - lymphocytic leukemia in patients with ovarian carcinoma following long - term treatment with Treosulfan (= dihydroxybusulfan ) .
+result: extract = Extract([Triple(disease("Acute non - lymphocytic leukemia"), Rel("Adverse_effect"), drug("Treosulfan"))])
+
+pred: [['Acute non - lymphocytic leukemia', 'Adverse_effect', 'Treosulfan']]
+trues: [['Acute non - lymphocytic leukemia', 'Adverse_effect', 'dihydroxybusulfan'], ['Acute non - lymphocytic leukemia', 'Adverse_effect', 'Treosulfan']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7422680412371134, 0.5950413223140496, 0.6605504587155964]
+text: Other upper tract neoplasms after cyclophosphamide are reviewed .
+result: extract = Extract([Triple(disease("upper tract neoplasms"), Rel("Adverse_effect"), drug("cyclophosphamide"))])
+
+pred: [['upper tract neoplasms', 'Adverse_effect', 'cyclophosphamide']]
+trues: [['upper tract neoplasms', 'Adverse_effect', 'cyclophosphamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7448979591836735, 0.5983606557377049, 0.6636363636363637]
+text: However , dermatologists should be cautious about a photosensitivity reaction induced by mequitazine or other phenothiazine - derivative drugs .
+result: extract = Extract([Triple(disease("photosensitivity reaction"), Rel("Adverse_effect"), drug("mequitazine"))])
+
+pred: [['photosensitivity reaction', 'Adverse_effect', 'mequitazine']]
+trues: [['photosensitivity', 'Adverse_effect', 'mequitazine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7373737373737373, 0.5934959349593496, 0.6576576576576577]
+text: Phenobarbital hepatotoxicity in an 8-month - old infant .
+result: extract = Extract([Triple(disease("hepatotoxicity"), Rel("Adverse_effect"), drug("Phenobarbital"))])
+
+pred: [['hepatotoxicity', 'Adverse_effect', 'Phenobarbital']]
+trues: [['hepatotoxicity', 'Adverse_effect', 'Phenobarbital']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.74, 0.5967741935483871, 0.6607142857142857]
+text: Gabapentin withdrawal presenting as status epilepticus .
+result: extract = Extract([Triple(disease("status epilepticus"), Rel("Adverse_effect"), drug("Gabapentin"))])
+
+pred: [['status epilepticus', 'Adverse_effect', 'Gabapentin']]
+trues: [['status epilepticus', 'Adverse_effect', 'Gabapentin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7425742574257426, 0.6, 0.6637168141592921]
+text: Intravenous diazepam exacerbated the seizures .
+result: extract = Extract([Triple(disease("seizures"), Rel("Adverse_effect"), drug("diazepam"))])
+
+pred: [['seizures', 'Adverse_effect', 'diazepam']]
+trues: [['seizures', 'Adverse_effect', 'diazepam']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7450980392156863, 0.6031746031746031, 0.6666666666666666]
+text: Palpable purpuric skin lesions on the anterior surface of both legs appeared on the 55th day of amphotericin B treatment .
+result: extract = Extract([Triple(disease("Palpable purpuric skin lesions"), Rel("Adverse_effect"), drug("amphotericin B"))])
+
+pred: [['Palpable purpuric skin lesions', 'Adverse_effect', 'amphotericin B']]
+trues: [['Palpable purpuric skin lesions', 'Adverse_effect', 'amphotericin B']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7475728155339806, 0.6062992125984252, 0.6695652173913044]
+text: CONCLUSIONS : Peripheral administration of low - dose vasopressin for septic shock should be discouraged because of the risk of ischemic skin complications .
+result: extract = Extract([Triple(disease("ischemic skin complications"), Rel("Adverse_effect"), drug("vasopressin"))])
+
+pred: [['ischemic skin complications', 'Adverse_effect', 'vasopressin']]
+trues: [['ischemic skin complications', 'Adverse_effect', 'vasopressin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.75, 0.609375, 0.6724137931034483]
+text: Erythromycin is a macrolide antibiotic that may increase the risk of lovastatin - induced rhabdomyolysis .
+result: extract = Extract([Triple(drug("rhabdomyolysis"), Rel("Adverse_effect"), drug("lovastatin")), Triple(drug("rhabdomyolysis"), Rel("Adverse_effect"), drug("Erythromycin"))])
+
+pred: [['rhabdomyolysis', 'Adverse_effect', 'lovastatin'], ['rhabdomyolysis', 'Adverse_effect', 'Erythromycin']]
+trues: [['rhabdomyolysis', 'Adverse_effect', 'Erythromycin'], ['rhabdomyolysis', 'Adverse_effect', 'lovastatin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7547169811320755, 0.6153846153846154, 0.6779661016949153]
+text: When tuberculosis patients on isoniazid eat certain varieties of fish they may develop a histamine reaction .
+result: extract = Extract([Triple(disease("histamine reaction"), Rel("Adverse_effect"), drug("isoniazid"))])
+
+pred: [['histamine reaction', 'Adverse_effect', 'isoniazid']]
+trues: [['histamine reaction', 'Adverse_effect', 'isoniazid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7570093457943925, 0.6183206106870229, 0.680672268907563]
+text: Methotrexate - induced liver cirrhosis .
+result: extract = Extract([Triple(disease("liver cirrhosis"), Rel("Adverse_effect"), drug("Methotrexate"))])
+
+pred: [['liver cirrhosis', 'Adverse_effect', 'Methotrexate']]
+trues: [['liver cirrhosis', 'Adverse_effect', 'Methotrexate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7592592592592593, 0.6212121212121212, 0.6833333333333333]
+text: Idiosyncratic factors involving vasopressin receptor affinity and distribution , vasopressin - associated vasodilation in some vascular beds , and the effect of vasopressin on the renin - angiotensin system may further contribute to impaired tissue perfusion .
+result: extract = Extract([Triple(disease("impaired tissue perfusion"), Rel("Adverse_effect"), drug("vasopressin"))])
+
+pred: [['impaired tissue perfusion', 'Adverse_effect', 'vasopressin']]
+trues: [['impaired tissue perfusion', 'Adverse_effect', 'vasopressin'], ['vasodilation', 'Adverse_effect', 'vasopressin']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7614678899082569, 0.6194029850746269, 0.6831275720164609]
+text: Clostridium difficile colitis associated with cisplatin - based chemotherapy in ovarian cancer patients .
+result: extract = Extract([Triple(disease("Clostridium difficile colitis"), Rel("Adverse_effect"), drug("cisplatin"))])
+
+pred: [['Clostridium difficile colitis', 'Adverse_effect', 'cisplatin']]
+trues: [['Clostridium difficile colitis', 'Adverse_effect', 'cisplatin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7636363636363637, 0.6222222222222222, 0.6857142857142857]
+text: OBJECTIVE : To describe a patient with ifosfamide - induced nonconvulsive status epilepticus .
+result: extract = Extract([Triple(disease("nonconvulsive status epilepticus"), Rel("Adverse_effect"), drug("ifosfamide"))])
+
+pred: [['nonconvulsive status epilepticus', 'Adverse_effect', 'ifosfamide']]
+trues: [['nonconvulsive status epilepticus', 'Adverse_effect', 'ifosfamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7657657657657657, 0.625, 0.6882591093117408]
+text: Secondary acute myeloid leukemia after etoposide therapy for haemophagocytic lymphohistiocytosis .
+result: extract = Extract([Triple(disease("Secondary acute myeloid leukemia"), Rel("Adverse_effect"), drug("etoposide"))])
+
+pred: [['Secondary acute myeloid leukemia', 'Adverse_effect', 'etoposide']]
+trues: [['acute myeloid leukemia', 'Adverse_effect', 'etoposide']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7589285714285714, 0.6204379562043796, 0.6827309236947792]
+text: This case study is the second report of localized purpura after prolonged lamotrigine treatment suggesting this may be an atypical lamotrigine - induced drug reaction .
+result: extract = Extract([Triple(disease("localized purpura"), Rel("Adverse_effect"), drug("lamotrigine"))])
+
+pred: [['localized purpura', 'Adverse_effect', 'lamotrigine']]
+trues: [['localized purpura', 'Adverse_effect', 'lamotrigine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7610619469026548, 0.6231884057971014, 0.6852589641434262]
+text: Ischaemia following selfadministered intra - arterial injection of methylphenidate and diamorphine .
+result: extract = Extract([Triple(disease("Ischaemia"), Rel("Adverse_effect"), drug("methylphenidate")), Triple(disease("Ischaemia"), Rel("Adverse_effect"), drug("diamorphine"))])
+
+pred: [['Ischaemia', 'Adverse_effect', 'methylphenidate'], ['Ischaemia', 'Adverse_effect', 'diamorphine']]
+trues: [['Ischaemia', 'Adverse_effect', 'diamorphine'], ['Ischaemia', 'Adverse_effect', 'methylphenidate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7652173913043478, 0.6285714285714286, 0.6901960784313725]
+text: PURPOSE : Topiramate - induced angle - closure glaucoma ( TiACG ) is believed to be related to its sulfonamide moiety .
+result: extract = Extract([Triple(disease("angle - closure glaucoma"), Rel("Adverse_effect"), drug("Topiramate"))])
+
+pred: [['angle - closure glaucoma', 'Adverse_effect', 'Topiramate']]
+trues: [['angle - closure glaucoma', 'Adverse_effect', 'Topiramate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7672413793103449, 0.6312056737588653, 0.6926070038910506]
+text: This communication describes a patient who developed Schneiderian first - rank symptoms in the course of treatment with fluvoxamine .
+result: extract = Extract([Triple(disease("Schneiderian first - rank symptoms"), Rel("Adverse_effect"), drug("fluvoxamine"))])
+
+pred: [['Schneiderian first - rank symptoms', 'Adverse_effect', 'fluvoxamine']]
+trues: [['Schneiderian first - rank symptoms', 'Adverse_effect', 'fluvoxamine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7692307692307693, 0.6338028169014085, 0.6949806949806951]
+text: Acute severe intoxication with carbamazepine is associated with seizures , coma and respiratory depression .
+result: extract = Extract([Triple(disease("coma"), Rel("Adverse_effect"), drug("carbamazepine")), Triple(disease("respiratory depression"), Rel("Adverse_effect"), drug("carbamazepine")), Triple(disease("seizures"), Rel("Adverse_effect"), drug("carbamazepine"))])
+
+pred: [['coma', 'Adverse_effect', 'carbamazepine'], ['respiratory depression', 'Adverse_effect', 'carbamazepine'], ['seizures', 'Adverse_effect', 'carbamazepine']]
+trues: [['coma', 'Adverse_effect', 'carbamazepine'], ['respiratory depression', 'Adverse_effect', 'carbamazepine'], ['seizures', 'Adverse_effect', 'carbamazepine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.775, 0.6413793103448275, 0.70188679245283]
+text: The aim of this study was to describe the occurrence of acute coronary syndromes in 3 cases of rituximab infusions .
+result: extract = Extract([Triple(disease("acute coronary syndromes"), Rel("Adverse_effect"), drug("rituximab"))])
+
+pred: [['acute coronary syndromes', 'Adverse_effect', 'rituximab']]
+trues: [['acute coronary syndromes', 'Adverse_effect', 'rituximab']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7768595041322314, 0.6438356164383562, 0.7041198501872659]
+text: Carbamazepine - induced hyperammonemia .
+result: extract = Extract([Triple(disease("hyperammonemia"), Rel("Adverse_effect"), drug("Carbamazepine"))])
+
+pred: [['hyperammonemia', 'Adverse_effect', 'Carbamazepine']]
+trues: [['hyperammonemia', 'Adverse_effect', 'Carbamazepine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7786885245901639, 0.6462585034013606, 0.7063197026022304]
+text: Seizures associated with fluoxetine therapy are uncommon .
+result: extract = Extract([Triple(disease("Seizures"), Rel("Adverse_effect"), drug("fluoxetine"))])
+
+pred: [['Seizures', 'Adverse_effect', 'fluoxetine']]
+trues: [['Seizures', 'Adverse_effect', 'fluoxetine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7804878048780488, 0.6486486486486487, 0.7084870848708487]
+text: Exacerbation of anthracycline - induced early chronic cardiomyopathy with ATRA : role of B - type natriuretic peptide as an indicator of cardiac dysfunction .
+result: extract = Extract([Triple(disease("cardiac dysfunction"), Rel("Adverse_effect"), drug("anthracycline"))])
+
+pred: [['cardiac dysfunction', 'Adverse_effect', 'anthracycline']]
+trues: [['early chronic cardiomyopathy', 'Adverse_effect', 'anthracycline']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7741935483870968, 0.6442953020134228, 0.7032967032967032]
+text: We report on 7 patients ( 2 women , 5 men ) with chronic renal failure , who developed under a high dosage of the new diuretic muzolimine ( range 240 to 1440 mg per day ) fatal neuromyeloencephalopathy .
+result: extract = Extract([Triple(disease("fatal neuromyeloencephalopathy"), Rel("Adverse_effect"), drug("muzolimine"))])
+
+pred: [['fatal neuromyeloencephalopathy', 'Adverse_effect', 'muzolimine']]
+trues: [['fatal neuromyeloencephalopathy', 'Adverse_effect', 'muzolimine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.776, 0.6466666666666666, 0.7054545454545454]
+text: A case is reported of an elderly woman who developed febrile agranulocytosis several weeks after commencing ticlopidine but who had a favorable outcome after cessation of that drug and treatment with filgastrim .
+result: extract = Extract([Triple(disease("febrile agranulocytosis"), Rel("Adverse_effect"), drug("ticlopidine"))])
+
+pred: [['febrile agranulocytosis', 'Adverse_effect', 'ticlopidine']]
+trues: [['febrile agranulocytosis', 'Adverse_effect', 'ticlopidine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7777777777777778, 0.6490066225165563, 0.7075812274368231]
+text: Nabumetone - associated interstitial nephritis .
+result: extract = Extract([Triple(disease("interstitial nephritis"), Rel("Adverse_effect"), drug("Nabumetone"))])
+
+pred: [['interstitial nephritis', 'Adverse_effect', 'Nabumetone']]
+trues: [['interstitial nephritis', 'Adverse_effect', 'Nabumetone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7795275590551181, 0.6513157894736842, 0.7096774193548387]
+text: Two patients with extrinsic asthma and coexistent insulin - dependent diabetes mellitus sustained an anaphylactoid reaction after the intravenous administration of 50 % solution of dextrose .
+result: extract = Extract([Triple(disease("anaphylactoid reaction"), Rel("Adverse_effect"), drug("dextrose"))])
+
+pred: [['anaphylactoid reaction', 'Adverse_effect', 'dextrose']]
+trues: [['anaphylactoid reaction', 'Adverse_effect', 'dextrose']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.78125, 0.6535947712418301, 0.7117437722419929]
+text: Fixed drug eruption of the scrotum due to methylphenidate .
+result: extract = Extract([Triple(disease("Fixed drug eruption of the scrotum"), Rel("Adverse_effect"), drug("methylphenidate"))])
+
+pred: [['Fixed drug eruption of the scrotum', 'Adverse_effect', 'methylphenidate']]
+trues: [['Fixed drug eruption of the scrotum', 'Adverse_effect', 'methylphenidate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7829457364341085, 0.6558441558441559, 0.7137809187279152]
+text: Propoxyphene - induced wide QRS complex dysrhythmia responsive to sodium bicarbonate -- a case report .
+result: extract = Extract([Triple(disease("wide QRS complex dysrhythmia"), Rel("Adverse_effect"), drug("Propoxyphene"))])
+
+pred: [['wide QRS complex dysrhythmia', 'Adverse_effect', 'Propoxyphene']]
+trues: [['wide QRS complex dysrhythmia', 'Adverse_effect', 'Propoxyphene']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7846153846153846, 0.6580645161290323, 0.7157894736842105]
+text: The clinical findings and laboratory studies suggested an autoimmune cell - mediated hypersensitivity reaction triggered by phenobarbital .
+result: extract = Extract([Triple(disease("hypersensitivity reaction"), Rel("Adverse_effect"), drug("phenobarbital"))])
+
+pred: [['hypersensitivity reaction', 'Adverse_effect', 'phenobarbital']]
+trues: [['autoimmune cell - mediated hypersensitivity', 'Adverse_effect', 'phenobarbital']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7786259541984732, 0.6538461538461539, 0.7108013937282229]
+text: Multiple sclerosis - like disease secondary to alpha interferon .
+result: extract = Extract([Triple(disease("Multiple sclerosis - like disease"), Rel("Adverse_effect"), drug("alpha interferon"))])
+
+pred: [['Multiple sclerosis - like disease', 'Adverse_effect', 'alpha interferon']]
+trues: [['Multiple sclerosis - like disease', 'Adverse_effect', 'alpha interferon']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7803030303030303, 0.6560509554140127, 0.7128027681660899]
+text: According to the Naranjo adverse drug reaction probability scale , the likelihood that temozolomide was responsible for the adverse drug reaction of fever was probable ( score of 6 ) .
+result: extract = Extract([Triple(disease("fever"), Rel("Adverse_effect"), drug("temozolomide"))])
+
+pred: [['fever', 'Adverse_effect', 'temozolomide']]
+trues: [['fever', 'Adverse_effect', 'temozolomide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7819548872180451, 0.6582278481012658, 0.7147766323024055]
+text: PURPOSE : To report a case of severe corticosteroid - induced glaucoma after intravitreal injection of triamcinolone acetate in a 34-year - old man without a history of glaucoma .
+result: extract = Extract([Triple(disease("severe corticosteroid - induced glaucoma"), Rel("Adverse_effect"), drug("triamcinolone acetate"))])
+
+pred: [['severe corticosteroid - induced glaucoma', 'Adverse_effect', 'triamcinolone acetate']]
+trues: [['glaucoma', 'Adverse_effect', 'corticosteroid'], ['glaucoma', 'Adverse_effect', 'triamcinolone acetate']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7761194029850746, 0.65, 0.7074829931972789]
+text: Nonconvulsive status epilepticus : the role of morphine and its antagonist .
+result: extract = Extract([Triple(disease("Nonconvulsive status epilepticus"), Rel("Adverse_effect"), drug("morphine"))])
+
+pred: [['Nonconvulsive status epilepticus', 'Adverse_effect', 'morphine']]
+trues: [['Nonconvulsive status epilepticus', 'Adverse_effect', 'morphine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7777777777777778, 0.6521739130434783, 0.7094594594594594]
+text: We present the cases of two female patients diagnosed with relapsing - remitting multiple sclerosis ( RRMS ) who developed inflammatory musculoskeletal manifestations , following IFN - beta therapy .
+result: extract = Extract([Triple(disease("inflammatory musculoskeletal manifestations"), Rel("Adverse_effect"), drug("IFN - beta"))])
+
+pred: [['inflammatory musculoskeletal manifestations', 'Adverse_effect', 'IFN - beta']]
+trues: [['inflammatory musculoskeletal manifestations', 'Adverse_effect', 'IFN - beta']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7794117647058824, 0.654320987654321, 0.7114093959731543]
+text: We suggest that sarcoidosis may develop in chronic hepatitis C patients during interferon alpha and/or ribavirin treatment , and diagnostic tests for this adverse effect should be performed during the follow - ups .
+result: extract = Extract([Triple(disease("sarcoidosis"), Rel("Adverse_effect"), drug("interferon alpha")), Triple(disease("sarcoidosis"), Rel("Adverse_effect"), drug("ribavirin"))])
+
+pred: [['sarcoidosis', 'Adverse_effect', 'interferon alpha'], ['sarcoidosis', 'Adverse_effect', 'ribavirin']]
+trues: [['sarcoidosis', 'Adverse_effect', 'interferon alpha'], ['sarcoidosis', 'Adverse_effect', 'ribavirin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.782608695652174, 0.6585365853658537, 0.7152317880794703]
+text: Cardiac glycosides are thought to prevent doxorubicin cardiomyopathy by competitively inhibiting doxorubicin at its receptor sites , but ouabain has a much shorter half life than doxorubicin and its metabolites and so is less effective than digoxin .
+result: extract = Extract([Triple(disease("cardiomyopathy"), Rel("Adverse_effect"), drug("doxorubicin")), Triple(disease("cardiomyopathy"), Rel("Adverse_effect"), drug("Cardiac glycosides"))])
+
+pred: [['cardiomyopathy', 'Adverse_effect', 'doxorubicin'], ['cardiomyopathy', 'Adverse_effect', 'Cardiac glycosides']]
+trues: [['cardiomyopathy', 'Adverse_effect', 'doxorubicin']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7785714285714286, 0.6606060606060606, 0.7147540983606558]
+text: In deciding if tamoxifen therapy is warranted , all potentially life - threatening adverse events associated with tamoxifen should be considered , including endometrial adenocarcinoma or uterine sarcoma .
+result: extract = Extract([Triple(disease("endometrial adenocarcinoma"), Rel("Adverse_effect"), drug("tamoxifen")), Triple(disease("uterine sarcoma"), Rel("Adverse_effect"), drug("tamoxifen"))])
+
+pred: [['endometrial adenocarcinoma', 'Adverse_effect', 'tamoxifen'], ['uterine sarcoma', 'Adverse_effect', 'tamoxifen']]
+trues: [['endometrial adenocarcinoma', 'Adverse_effect', 'tamoxifen'], ['endometrial adenocarcinoma', 'Adverse_effect', 'tamoxifen'], ['uterine sarcoma', 'Adverse_effect', 'tamoxifen'], ['uterine sarcoma', 'Adverse_effect', 'tamoxifen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7816901408450704, 0.6646706586826348, 0.7184466019417475]
+text: We are concerned that the macular lesion was a retinal toxic effect of gentamicin because of the recent description of similar lesions occurring after the inadvertent intraocular injection of massive doses of this drug .
+result: extract = Extract([Triple(disease("macular lesion"), Rel("Adverse_effect"), drug("gentamicin"))])
+
+pred: [['macular lesion', 'Adverse_effect', 'gentamicin']]
+trues: [['macular lesion', 'Adverse_effect', 'gentamicin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7832167832167832, 0.6666666666666666, 0.7202572347266881]
+text: Bradycardia and congestive heart failure associated with ocular timolol maleate .
+result: extract = Extract([Triple(disease("Bradycardia"), Rel("Adverse_effect"), drug("timolol maleate")), Triple(disease("congestive heart failure"), Rel("Adverse_effect"), drug("timolol maleate"))])
+
+pred: [['Bradycardia', 'Adverse_effect', 'timolol maleate'], ['congestive heart failure', 'Adverse_effect', 'timolol maleate']]
+trues: [['Bradycardia', 'Adverse_effect', 'timolol maleate'], ['congestive heart failure', 'Adverse_effect', 'timolol maleate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7862068965517242, 0.6705882352941176, 0.7238095238095237]
+text: IFNalpha - induced recurrence of Graves ' disease ten years after thyroidectomy in chronic viral hepatitis C .
+result: extract = Extract([Triple(disease("Graves ' disease"), Rel("Adverse_effect"), drug("IFNalpha"))])
+
+pred: [["Graves ' disease", 'Adverse_effect', 'IFNalpha']]
+trues: [["Graves ' disease", 'Adverse_effect', 'IFNalpha']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7876712328767124, 0.672514619883041, 0.7255520504731862]
+text: Desipramine - associated SIADH in an elderly woman : case report .
+result: extract = Extract([Triple(disease("SIADH"), Rel("Adverse_effect"), drug("Desipramine"))])
+
+pred: [['SIADH', 'Adverse_effect', 'Desipramine']]
+trues: [['SIADH', 'Adverse_effect', 'Desipramine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7891156462585034, 0.6744186046511628, 0.7272727272727274]
+text: Rapidly developing hyperglycemia during treatment with olanzapine .
+result: extract = Extract([Triple(disease("hyperglycemia"), Rel("Adverse_effect"), drug("olanzapine"))])
+
+pred: [['hyperglycemia', 'Adverse_effect', 'olanzapine']]
+trues: [['hyperglycemia', 'Adverse_effect', 'olanzapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7905405405405406, 0.6763005780346821, 0.7289719626168225]
+text: A review of the literature showed no previous description of this pattern in benzodiazepine coma .
+result: extract = Extract([Triple(disease("benzodiazepine coma"), Rel("Adverse_effect"), drug("benzodiazepine"))])
+
+pred: [['benzodiazepine coma', 'Adverse_effect', 'benzodiazepine']]
+trues: [['coma', 'Adverse_effect', 'benzodiazepine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.785234899328859, 0.6724137931034483, 0.7244582043343654]
+text: CONCLUSIONS : Although mirtazapine offers clinicians a combination of strong efficacy and good safety , we suggest bearing SS in mind when prescribing this drug , especially in frail , elderly patients with underlying chronic conditions .
+result: extract = Extract([Triple(disease("SS"), Rel("Adverse_effect"), drug("mirtazapine"))])
+
+pred: [['SS', 'Adverse_effect', 'mirtazapine']]
+trues: [['SS', 'Adverse_effect', 'mirtazapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7866666666666666, 0.6742857142857143, 0.726153846153846]
+text: Infliximab and its serious adverse effects are discussed , and other cases of osteomyelitis with infliximab use are also reviewed .
+result: extract = Extract([Triple(disease("osteomyelitis"), Rel("Adverse_effect"), drug("Infliximab"))])
+
+pred: [['osteomyelitis', 'Adverse_effect', 'Infliximab']]
+trues: [['osteomyelitis', 'Adverse_effect', 'Infliximab'], ['osteomyelitis', 'Adverse_effect', 'infliximab']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7880794701986755, 0.672316384180791, 0.7256097560975611]
+text: Oculomotor disturbances associated with 5-fluorouracil chemotherapy .
+result: extract = Extract([Triple(disease("Oculomotor disturbances"), Rel("Adverse_effect"), drug("5-fluorouracil"))])
+
+pred: [['Oculomotor disturbances', 'Adverse_effect', '5-fluorouracil']]
+trues: [['Oculomotor disturbances', 'Adverse_effect', '5-fluorouracil']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7894736842105263, 0.6741573033707865, 0.7272727272727273]
+text: Administration of intravenous nitroglycerin in a patient with idiopathic pulmonary hypertension resulted in an increase in pulmonary artery pressure associated with a decrease in blood flow that is best explained by an increase in pulmonary vascular resistance .
+result: extract = Extract([Triple(disease("idiopathic pulmonary hypertension"), Rel("Adverse_effect"), drug("nitroglycerin"))])
+
+pred: [['idiopathic pulmonary hypertension', 'Adverse_effect', 'nitroglycerin']]
+trues: [['decrease in blood flow', 'Adverse_effect', 'nitroglycerin'], ['increase in pulmonary artery pressure', 'Adverse_effect', 'nitroglycerin'], ['increase in pulmonary vascular resistance', 'Adverse_effect', 'nitroglycerin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7843137254901961, 0.6629834254143646, 0.718562874251497]
+text: Discontinuation of simvastatin and cyclosporine resulted in resolution of rhabdomyolysis and normalization of renal function .
+result: extract = Extract([Triple(disease("rhabdomyolysis"), Rel("Adverse_effect"), drug("simvastatin")), Triple(disease("rhabdomyolysis"), Rel("Adverse_effect"), drug("cyclosporine"))])
+
+pred: [['rhabdomyolysis', 'Adverse_effect', 'simvastatin'], ['rhabdomyolysis', 'Adverse_effect', 'cyclosporine']]
+trues: [['rhabdomyolysis', 'Adverse_effect', 'cyclosporine'], ['rhabdomyolysis', 'Adverse_effect', 'simvastatin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7870967741935484, 0.6666666666666666, 0.7218934911242604]
+text: We present a case of the syndrome of inappropriate antidiuretic hormone ( SIADH ) secondary to cisplatin therapy in a patient with advanced - stage large cell neuroendocrine carcinoma of the cervix .
+result: extract = Extract([Triple(disease("SIADH"), Rel("Adverse_effect"), drug("cisplatin"))])
+
+pred: [['SIADH', 'Adverse_effect', 'cisplatin']]
+trues: [['SIADH', 'Adverse_effect', 'cisplatin'], ['syndrome of inappropriate antidiuretic hormone', 'Adverse_effect', 'cisplatin']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7884615384615384, 0.6648648648648648, 0.721407624633431]
+text: Severe diffuse interstitial pneumonitis induced by carmustine ( BCNU ) .
+result: extract = Extract([Triple(disease("Severe diffuse interstitial pneumonitis"), Rel("Adverse_effect"), drug("carmustine"))])
+
+pred: [['Severe diffuse interstitial pneumonitis', 'Adverse_effect', 'carmustine']]
+trues: [['Severe diffuse interstitial pneumonitis', 'Adverse_effect', 'BCNU'], ['Severe diffuse interstitial pneumonitis', 'Adverse_effect', 'carmustine']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7898089171974523, 0.6631016042780749, 0.7209302325581396]
+text: Clinicians should be aware of the possibility that vinorelbine may cause SIADH and possibly hypokalemia .
+result: extract = Extract([Triple(disease("SIADH"), Rel("Adverse_effect"), drug("vinorelbine")), Triple(disease("hypokalemia"), Rel("Adverse_effect"), drug("vinorelbine"))])
+
+pred: [['SIADH', 'Adverse_effect', 'vinorelbine'], ['hypokalemia', 'Adverse_effect', 'vinorelbine']]
+trues: [['hypokalemia', 'Adverse_effect', 'vinorelbine'], ['SIADH', 'Adverse_effect', 'vinorelbine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7924528301886793, 0.6666666666666666, 0.7241379310344827]
+text: Painful neutrophilic skin lesions were observed in two children receiving granulocyte colony - stimulating factor ( G - CSF ) for treatment of idiopathic neutropenia .
+result: extract = Extract([Triple(disease("Painful neutrophilic skin lesions"), Rel("Adverse_effect"), drug("G - CSF"))])
+
+pred: [['Painful neutrophilic skin lesions', 'Adverse_effect', 'G - CSF']]
+trues: [['neutrophilic skin lesions', 'Adverse_effect', 'G - CSF'], ['neutrophilic skin lesions', 'Adverse_effect', 'granulocyte colony - stimulating factor'], ['Painful', 'Adverse_effect', 'G - CSF'], ['Painful', 'Adverse_effect', 'granulocyte colony - stimulating factor']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7875, 0.6528497409326425, 0.7138810198300283]
+text: A patient with disseminated herpes zoster developed a syndrome of inappropriate antidiuretic hormone and profound hyponatremia secondary to the administration of adenine arabinoside .
+result: extract = Extract([Triple(disease("syndrome of inappropriate antidiuretic hormone and profound hyponatremia"), Rel("Adverse_effect"), drug("adenine arabinoside"))])
+
+pred: [['syndrome of inappropriate antidiuretic hormone and profound hyponatremia', 'Adverse_effect', 'adenine arabinoside']]
+trues: [['hyponatremia', 'Adverse_effect', 'adenine arabinoside'], ['syndrome of inappropriate antidiuretic hormone', 'Adverse_effect', 'adenine arabinoside']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.782608695652174, 0.6461538461538462, 0.7078651685393258]
+text: Acute kidney injury caused by zonisamide - induced hypersensitivity syndrome .
+result: extract = Extract([Triple(disease("Acute kidney injury"), Rel("Adverse_effect"), drug("zonisamide"))])
+
+pred: [['Acute kidney injury', 'Adverse_effect', 'zonisamide']]
+trues: [['Acute kidney injury', 'Adverse_effect', 'zonisamide'], ['hypersensitivity syndrome', 'Adverse_effect', 'zonisamide']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7839506172839507, 0.6446700507614214, 0.7075208913649026]
+text: Methemoglobinemia after axillary block with bupivacaine and additional injection of lidocaine in the operative field .
+result: extract = Extract([Triple(disease("Methemoglobinemia"), Rel("Adverse_effect"), drug("bupivacaine")), Triple(disease("Methemoglobinemia"), Rel("Adverse_effect"), drug("lidocaine"))])
+
+pred: [['Methemoglobinemia', 'Adverse_effect', 'bupivacaine'], ['Methemoglobinemia', 'Adverse_effect', 'lidocaine']]
+trues: [['Methemoglobinemia', 'Adverse_effect', 'bupivacaine'], ['Methemoglobinemia', 'Adverse_effect', 'lidocaine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7865853658536586, 0.6482412060301508, 0.7107438016528925]
+text: We report a 31-year - old women with recurrent Hodgkin 's lymphoma and unrecognized HMSN-1 who developed severe motor neuropathy 3 weeks after the first cycle of treatment including 2 mg of vincristine .
+result: extract = Extract([Triple(disease("motor neuropathy"), Rel("Adverse_effect"), drug("vincristine"))])
+
+pred: [['motor neuropathy', 'Adverse_effect', 'vincristine']]
+trues: [['severe motor neuropathy', 'Adverse_effect', 'vincristine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7818181818181819, 0.645, 0.7068493150684932]
+text: Physicians should keep in mind that taxanes such as paclitaxel have the potential to cause pneumonitis and lung fibrosis .
+result: extract = Extract([Triple(disease("lung fibrosis"), Rel("Adverse_effect"), drug("paclitaxel"))])
+
+pred: [['lung fibrosis', 'Adverse_effect', 'paclitaxel']]
+trues: [['lung fibrosis', 'Adverse_effect', 'paclitaxel'], ['pneumonitis', 'Adverse_effect', 'paclitaxel']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7831325301204819, 0.6435643564356436, 0.7065217391304347]
+text: Disulfiram - induced hepatitis .
+result: extract = Extract([Triple(disease("hepatitis"), Rel("Adverse_effect"), drug("Disulfiram"))])
+
+pred: [['hepatitis', 'Adverse_effect', 'Disulfiram']]
+trues: [['hepatitis', 'Adverse_effect', 'Disulfiram']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7844311377245509, 0.645320197044335, 0.7081081081081081]
+text: Seizures and extrapyramidal symptoms in a patient with Tourette 's syndrome , Asperger 's syndrome , and multiple sclerosis treated with interferon beta-1a and clomipramine .
+result: extract = Extract([Triple(disease("Seizures"), Rel("Adverse_effect"), drug("clomipramine")), Triple(disease("Seizures"), Rel("Adverse_effect"), drug("interferon beta-1a")), Triple(disease("extrapyramidal symptoms"), Rel("Adverse_effect"), drug("clomipramine")), Triple(disease("extrapyramidal symptoms"), Rel("Adverse_effect"), drug("interferon beta-1a"))])
+
+pred: [['Seizures', 'Adverse_effect', 'clomipramine'], ['Seizures', 'Adverse_effect', 'interferon beta-1a'], ['extrapyramidal symptoms', 'Adverse_effect', 'clomipramine'], ['extrapyramidal symptoms', 'Adverse_effect', 'interferon beta-1a']]
+trues: [['extrapyramidal symptoms', 'Adverse_effect', 'clomipramine'], ['extrapyramidal symptoms', 'Adverse_effect', 'interferon beta-1a'], ['Seizures', 'Adverse_effect', 'clomipramine'], ['Seizures', 'Adverse_effect', 'interferon beta-1a']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7894736842105263, 0.6521739130434783, 0.7142857142857143]
+text: We report a premature infant who developed seizures associated with intraventricular administration of nafcillin and discuss the need for electroencephalographic monitoring of patients receiving intraventricular antibiotics .
+result: extract = Extract([Triple(disease("seizures"), Rel("Adverse_effect"), drug("nafcillin"))])
+
+pred: [['seizures', 'Adverse_effect', 'nafcillin']]
+trues: [['seizures', 'Adverse_effect', 'nafcillin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7906976744186046, 0.6538461538461539, 0.7157894736842104]
+text: CONCLUSIONS : There is very little published information regarding ofloxacin - induced toxic epidermal necrolysis .
+result: extract = Extract([Triple(disease("toxic epidermal necrolysis"), Rel("Adverse_effect"), drug("ofloxacin"))])
+
+pred: [['toxic epidermal necrolysis', 'Adverse_effect', 'ofloxacin']]
+trues: [['toxic epidermal necrolysis', 'Adverse_effect', 'ofloxacin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.791907514450867, 0.6555023923444976, 0.7172774869109948]
+text: The cases of two asthmatic patients who became hypokalemic after inhalation of normal doses of albuterol are presented .
+result: extract = Extract([Triple(disease("hypokalemic"), Rel("Adverse_effect"), drug("albuterol"))])
+
+pred: [['hypokalemic', 'Adverse_effect', 'albuterol']]
+trues: [['hypokalemic', 'Adverse_effect', 'albuterol']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7931034482758621, 0.6571428571428571, 0.71875]
+text: Although his renal function recovered completely with high - dose leucovorin , hemodialysis , charcoal hemoperfusion , and carboxypeptidase G2 , we present this case to emphasize that signs of renal toxicity may be present as early as 2 hours after the completion of a 4-hour MTX infusion , and to suggest that monitoring for MTX toxicity should perhaps begin within a few hours after the completion of 4-hour MTX infusion .
+result: extract = Extract([Triple(disease("renal toxicity"), Rel("Adverse_effect"), drug("MTX"))])
+
+pred: [['renal toxicity', 'Adverse_effect', 'MTX']]
+trues: [['renal toxicity', 'Adverse_effect', 'MTX']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7942857142857143, 0.6587677725118484, 0.7202072538860104]
+text: Hypersensitivity to zonisamide was confirmed by the skin patch test .
+result: extract = Extract([Triple(disease("Hypersensitivity"), Rel("Adverse_effect"), drug("zonisamide"))])
+
+pred: [['Hypersensitivity', 'Adverse_effect', 'zonisamide']]
+trues: [['Hypersensitivity', 'Adverse_effect', 'zonisamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7954545454545454, 0.660377358490566, 0.7216494845360825]
+text: A 64-year - old man with schizophrenia developed myoclonic jerks when given higher doses of quetiapine .
+result: extract = Extract([Triple(disease("myoclonic jerks"), Rel("Adverse_effect"), drug("quetiapine"))])
+
+pred: [['myoclonic jerks', 'Adverse_effect', 'quetiapine']]
+trues: [['myoclonic jerks', 'Adverse_effect', 'quetiapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7966101694915254, 0.6619718309859155, 0.7230769230769231]
+text: The latter form ( Macrodantin ) is reported to engender less gastrointestinal intolerance but it can produce the same adverse effects as the conventional form -- liver damage , acute and chronic pulmonary reactions , peripheral neuropathy , blood dyscrasias and allergic reactions -- and does so just as rapidly and floridly ; one such case is reported here .
+result: extract = Extract([Triple(disease("acute and chronic pulmonary reactions"), Rel("Adverse_effect"), drug("Macrodantin")), Triple(disease("acute and chronic pulmonary reactions"), Rel("Adverse_effect"), drug("Macrodantin")), Triple(disease("blood dyscrasias"), Rel("Adverse_effect"), drug("Macrodantin")), Triple(disease("gastrointestinal intolerance"), Rel("Adverse_effect"), drug("Macrodantin")), Triple(disease("liver damage"), Rel("Adverse_effect"), drug("Macrodantin")), Triple(disease("peripheral neuropathy"), Rel("Adverse_effect"), drug("Macrodantin"))])
+
+pred: [['acute and chronic pulmonary reactions', 'Adverse_effect', 'Macrodantin'], ['acute and chronic pulmonary reactions', 'Adverse_effect', 'Macrodantin'], ['blood dyscrasias', 'Adverse_effect', 'Macrodantin'], ['gastrointestinal intolerance', 'Adverse_effect', 'Macrodantin'], ['liver damage', 'Adverse_effect', 'Macrodantin'], ['peripheral neuropathy', 'Adverse_effect', 'Macrodantin']]
+trues: [['acute and chronic pulmonary reactions', 'Adverse_effect', 'Macrodantin'], ['allergic reactions', 'Adverse_effect', 'Macrodantin'], ['blood dyscrasias', 'Adverse_effect', 'Macrodantin'], ['liver damage', 'Adverse_effect', 'Macrodantin'], ['peripheral neuropathy', 'Adverse_effect', 'Macrodantin']]
+metrics_sample: [0.8, 0.8, 0.8000000000000002]
+metrics_current: [0.7967032967032966, 0.6651376146788991, 0.725]
+text: Some patients develop hypersensitivity rash in response to HCQ .
+result: extract = Extract([Triple(disease("hypersensitivity rash"), Rel("Adverse_effect"), drug("HCQ"))])
+
+pred: [['hypersensitivity rash', 'Adverse_effect', 'HCQ']]
+trues: [['hypersensitivity rash', 'Adverse_effect', 'HCQ']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7978142076502732, 0.6666666666666666, 0.7263681592039801]
+text: Enoxaparin - induced generalized exanthem .
+result: extract = Extract([Triple(disease("generalized exanthem"), Rel("Adverse_effect"), drug("Enoxaparin"))])
+
+pred: [['generalized exanthem', 'Adverse_effect', 'Enoxaparin']]
+trues: [['generalized exanthem', 'Adverse_effect', 'Enoxaparin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7989130434782609, 0.6681818181818182, 0.7277227722772276]
+text: A 52-year - old , white female developed low - grade fever , cough , and dyspnea after 8 weeks treatment with sodium aurothiomalate for rheumatoid arthritis .
+result: extract = Extract([Triple(disease("dyspnea"), Rel("Adverse_effect"), drug("sodium aurothiomalate")), Triple(disease("fever"), Rel("Adverse_effect"), drug("sodium aurothiomalate")), Triple(disease("low - grade fever"), Rel("Adverse_effect"), drug("sodium aurothiomalate"))])
+
+pred: [['dyspnea', 'Adverse_effect', 'sodium aurothiomalate'], ['fever', 'Adverse_effect', 'sodium aurothiomalate'], ['low - grade fever', 'Adverse_effect', 'sodium aurothiomalate']]
+trues: [['cough', 'Adverse_effect', 'sodium aurothiomalate'], ['dyspnea', 'Adverse_effect', 'sodium aurothiomalate'], ['low - grade fever', 'Adverse_effect', 'sodium aurothiomalate']]
+metrics_sample: [0.6666666666666666, 0.6666666666666666, 0.6666666666666666]
+metrics_current: [0.7967914438502673, 0.6681614349775785, 0.726829268292683]
+text: Zolpidem tissue concentrations in a multiple drug related death involving Ambien .
+result: extract = Extract([Triple(disease("multiple drug related death"), Rel("Adverse_effect"), drug("Zolpidem"))])
+
+pred: [['multiple drug related death', 'Adverse_effect', 'Zolpidem']]
+trues: [['death', 'Adverse_effect', 'Ambien'], ['death', 'Adverse_effect', 'Zolpidem']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7925531914893617, 0.6622222222222223, 0.7215496368038742]
+text: Transient cardiac arrhythmias related to lopinavir / ritonavir in two patients with HIV infection .
+result: extract = Extract([Triple(disease("Transient cardiac arrhythmias"), Rel("Adverse_effect"), drug("lopinavir / ritonavir"))])
+
+pred: [['Transient cardiac arrhythmias', 'Adverse_effect', 'lopinavir / ritonavir']]
+trues: [['Transient cardiac arrhythmias', 'Adverse_effect', 'lopinavir'], ['Transient cardiac arrhythmias', 'Adverse_effect', 'ritonavir']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7883597883597884, 0.6563876651982379, 0.7163461538461539]
+text: Chlorpropamide - induced hemolytic anemia .
+result: extract = Extract([Triple(disease("hemolytic anemia"), Rel("Adverse_effect"), drug("Chlorpropamide"))])
+
+pred: [['hemolytic anemia', 'Adverse_effect', 'Chlorpropamide']]
+trues: [['hemolytic anemia', 'Adverse_effect', 'Chlorpropamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7894736842105263, 0.6578947368421053, 0.7177033492822966]
+text: In addition to disease refractoriness , rare instances of disease progression from chronic phase to blast crisis during imatinib therapy have recently been anecdotally reported .
+result: extract = Extract([Triple(disease("blast crisis"), Rel("Adverse_effect"), drug("imatinib"))])
+
+pred: [['blast crisis', 'Adverse_effect', 'imatinib']]
+trues: [['blast crisis', 'Adverse_effect', 'imatinib']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7905759162303665, 0.6593886462882096, 0.7190476190476189]
+text: The present case is the first report of hypercalcemia induced by vitamin D3 ointment and thiazide simultaneously .
+result: extract = Extract([Triple(disease("hypercalcemia"), Rel("Adverse_effect"), drug("thiazide")), Triple(disease("hypercalcemia"), Rel("Adverse_effect"), drug("vitamin D3 ointment"))])
+
+pred: [['hypercalcemia', 'Adverse_effect', 'thiazide'], ['hypercalcemia', 'Adverse_effect', 'vitamin D3 ointment']]
+trues: [['hypercalcemia', 'Adverse_effect', 'thiazide'], ['hypercalcemia', 'Adverse_effect', 'vitamin D3']]
+metrics_sample: [0.5, 0.5, 0.5]
+metrics_current: [0.7875647668393783, 0.658008658008658, 0.7169811320754718]
+text: We report a case of hyponatremia associated with a grand mal seizure in a 28 month - old child after intra - nasal desmopressin administration for high fluid intake with nocturnal enuresis .
+result: extract = Extract([Triple(disease("hyponatremia"), Rel("Adverse_effect"), drug("desmopressin"))])
+
+pred: [['hyponatremia', 'Adverse_effect', 'desmopressin']]
+trues: [['grand mal seizure', 'Adverse_effect', 'desmopressin'], ['hyponatremia', 'Adverse_effect', 'desmopressin']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.788659793814433, 0.6566523605150214, 0.7166276346604215]
+text: Toxic optic neuropathy associated with ethambutol : implications for current therapy .
+result: extract = Extract([Triple(disease("Toxic optic neuropathy"), Rel("Adverse_effect"), drug("ethambutol"))])
+
+pred: [['Toxic optic neuropathy', 'Adverse_effect', 'ethambutol']]
+trues: [['Toxic optic neuropathy', 'Adverse_effect', 'ethambutol']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7897435897435897, 0.6581196581196581, 0.7179487179487178]
+text: An elderly man with procainamide hydrochloride - induced lupus syndrome had a circulating anticoagulant against factor XI and a biologic false - positive ( BFP ) test result for syphilis .
+result: extract = Extract([Triple(disease("lupus syndrome"), Rel("Adverse_effect"), drug("procainamide hydrochloride")), Triple(disease("BFP"), Rel("Adverse_effect"), drug("procainamide hydrochloride"))])
+
+pred: [['lupus syndrome', 'Adverse_effect', 'procainamide hydrochloride'], ['BFP', 'Adverse_effect', 'procainamide hydrochloride']]
+trues: [['lupus syndrome', 'Adverse_effect', 'procainamide hydrochloride']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7868020304568528, 0.6595744680851063, 0.7175925925925927]
+text: We present a case of respiratory failure occurring in a woman at 16 weeks ' gestation who was being treated with nitrofurantoin for a urinary tract infection .
+result: extract = Extract([Triple(disease("respiratory failure"), Rel("Adverse_effect"), drug("nitrofurantoin"))])
+
+pred: [['respiratory failure', 'Adverse_effect', 'nitrofurantoin']]
+trues: [['respiratory failure', 'Adverse_effect', 'nitrofurantoin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7878787878787878, 0.6610169491525424, 0.7188940092165897]
+text: We report a case of sustained hypotension after administration of parenteral verapamil .
+result: extract = Extract([Triple(disease("sustained hypotension"), Rel("Adverse_effect"), drug("verapamil"))])
+
+pred: [['sustained hypotension', 'Adverse_effect', 'verapamil']]
+trues: [['sustained hypotension', 'Adverse_effect', 'verapamil']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7889447236180904, 0.6624472573839663, 0.7201834862385321]
+text: The toxic effects of methotrexate included elevated liver transaminases ( 3/4 ) , nausea ( 2/4 ) , abdominal pain ( 2/4 ) , bone pain ( 2/4 ) , mild neutropenia ( 1/4 ) , and mild pruritus ( 1/4 ) .
+result: extract = Extract([Triple(disease("elevated liver transaminases"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("elevated liver transaminases"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("nausea"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("nausea"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("abdominal pain"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("abdominal pain"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("bone pain"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("bone pain"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("mild neutropenia"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("mild neutropenia"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("mild pruritus"), Rel("Adverse_effect"), drug("methotrexate")), Triple(disease("mild pruritus"), Rel("Adverse_effect"), drug("methotrexate"))])
+
+pred: [['elevated liver transaminases', 'Adverse_effect', 'methotrexate'], ['elevated liver transaminases', 'Adverse_effect', 'methotrexate'], ['nausea', 'Adverse_effect', 'methotrexate'], ['nausea', 'Adverse_effect', 'methotrexate'], ['abdominal pain', 'Adverse_effect', 'methotrexate'], ['abdominal pain', 'Adverse_effect', 'methotrexate'], ['bone pain', 'Adverse_effect', 'methotrexate'], ['bone pain', 'Adverse_effect', 'methotrexate'], ['mild neutropenia', 'Adverse_effect', 'methotrexate'], ['mild neutropenia', 'Adverse_effect', 'methotrexate'], ['mild pruritus', 'Adverse_effect', 'methotrexate'], ['mild pruritus', 'Adverse_effect', 'methotrexate']]
+trues: [['abdominal pain', 'Adverse_effect', 'methotrexate'], ['bone pain', 'Adverse_effect', 'methotrexate'], ['elevated liver transaminases', 'Adverse_effect', 'methotrexate'], ['mild neutropenia', 'Adverse_effect', 'methotrexate'], ['mild pruritus', 'Adverse_effect', 'methotrexate'], ['nausea', 'Adverse_effect', 'methotrexate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7951219512195122, 0.6707818930041153, 0.7276785714285715]
+text: Infliximab therapy may cause a lupus - like syndrome that is reversible upon discontinuing this agent .
+result: extract = Extract([Triple(disease("lupus - like syndrome"), Rel("Adverse_effect"), drug("Infliximab"))])
+
+pred: [['lupus - like syndrome', 'Adverse_effect', 'Infliximab']]
+trues: [['lupus - like syndrome', 'Adverse_effect', 'Infliximab']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7961165048543689, 0.6721311475409836, 0.7288888888888888]
+text: Nevertheless , the coagulopathy seemed to be most closely associated with the administration of the cephalosporin .
+result: extract = Extract([Triple(disease("coagulopathy"), Rel("Adverse_effect"), drug("cephalosporin"))])
+
+pred: [['coagulopathy', 'Adverse_effect', 'cephalosporin']]
+trues: [['coagulopathy', 'Adverse_effect', 'cephalosporin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7971014492753623, 0.673469387755102, 0.7300884955752212]
+text: After 3- to 13-month period of therapy without indapamide , glucose levels of all patients decreased and diabetes disappeared .
+result: extract = Extract([Triple(disease("diabetes"), Rel("Adverse_effect"), drug("indapamide"))])
+
+pred: [['diabetes', 'Adverse_effect', 'indapamide']]
+trues: [['diabetes', 'Adverse_effect', 'indapamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7980769230769231, 0.6747967479674797, 0.7312775330396476]
+text: Managing cardiovascular collapse in severe flecainide overdose without recourse to extracorporeal therapy .
+result: extract = Extract([Triple(disease("cardiovascular collapse"), Rel("Adverse_effect"), drug("flecainide"))])
+
+pred: [['cardiovascular collapse', 'Adverse_effect', 'flecainide']]
+trues: [['cardiovascular collapse', 'Adverse_effect', 'flecainide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7990430622009569, 0.6761133603238867, 0.7324561403508771]
+text: Isoniazid causing breast tissue enlargement has been very rarely reported .
+result: extract = Extract([Triple(disease("breast tissue enlargement"), Rel("Adverse_effect"), drug("Isoniazid"))])
+
+pred: [['breast tissue enlargement', 'Adverse_effect', 'Isoniazid']]
+trues: [['breast tissue enlargement', 'Adverse_effect', 'Isoniazid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8, 0.6774193548387096, 0.7336244541484714]
+text: Corneal edema recurred when the administration of amantadine was resumed .
+result: extract = Extract([Triple(disease("Corneal edema"), Rel("Adverse_effect"), drug("amantadine"))])
+
+pred: [['Corneal edema', 'Adverse_effect', 'amantadine']]
+trues: [['Corneal edema', 'Adverse_effect', 'amantadine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8009478672985783, 0.678714859437751, 0.7347826086956523]
+text: Telescoped digits of the hands and feet developed in a 69-year - old male with severe chronic tophaceous gout during allopurinol treatment .
+result: extract = Extract([Triple(disease("Telescoped digits of the hands and feet"), Rel("Adverse_effect"), drug("allopurinol"))])
+
+pred: [['Telescoped digits of the hands and feet', 'Adverse_effect', 'allopurinol']]
+trues: [['Telescoped digits of the hands and feet', 'Adverse_effect', 'allopurinol']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8018867924528302, 0.68, 0.735930735930736]
+text: After a two - month interruption of interferon administration , natural interferon alpha was given but followed by another episode of the same neurological manifestations .
+result: extract = Extract([Triple(disease("neurological manifestations"), Rel("Adverse_effect"), drug("interferon"))])
+
+pred: [['neurological manifestations', 'Adverse_effect', 'interferon']]
+trues: [['neurological manifestations', 'Adverse_effect', 'interferon alpha']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7981220657276995, 0.6772908366533864, 0.7327586206896551]
+text: Niflumic acid - induced skeletal fluorosis : iatrogenic disease or therapeutic perspective for osteoporosis ?
+result: extract = Extract([Triple(disease("skeletal fluorosis"), Rel("Adverse_effect"), drug("Niflumic acid"))])
+
+pred: [['skeletal fluorosis', 'Adverse_effect', 'Niflumic acid']]
+trues: [['skeletal fluorosis', 'Adverse_effect', 'Niflumic acid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7990654205607477, 0.6785714285714286, 0.7339055793991416]
+text: Bronchiolitis obliterans with organizing pneumonia after rituximab therapy for non - Hodgkin 's lymphoma .
+result: extract = Extract([Triple(disease("Bronchiolitis obliterans with organizing pneumonia"), Rel("Adverse_effect"), drug("rituximab"))])
+
+pred: [['Bronchiolitis obliterans with organizing pneumonia', 'Adverse_effect', 'rituximab']]
+trues: [['Bronchiolitis obliterans with organizing pneumonia', 'Adverse_effect', 'rituximab']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8, 0.6798418972332015, 0.7350427350427351]
+text: Hemodialysis was also shown to reverse ifosfamide - related neurotoxicity .
+result: extract = Extract([Triple(disease("neurotoxicity"), Rel("Adverse_effect"), drug("ifosfamide"))])
+
+pred: [['neurotoxicity', 'Adverse_effect', 'ifosfamide']]
+trues: [['neurotoxicity', 'Adverse_effect', 'ifosfamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8009259259259259, 0.6811023622047244, 0.7361702127659575]
+text: Unusual hypersensitivity to warfarin in a critically ill patient .
+result: extract = Extract([Triple(disease("hypersensitivity to warfarin"), Rel("Adverse_effect"), drug("warfarin"))])
+
+pred: [['hypersensitivity to warfarin', 'Adverse_effect', 'warfarin']]
+trues: [['hypersensitivity', 'Adverse_effect', 'warfarin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7972350230414746, 0.6784313725490196, 0.7330508474576272]
+text: METHODS : We report a patient who had an anaphylactic reaction during the intravenous infusion of cyclosporine .
+result: extract = Extract([Triple(disease("anaphylactic reaction"), Rel("Adverse_effect"), drug("cyclosporine"))])
+
+pred: [['anaphylactic reaction', 'Adverse_effect', 'cyclosporine']]
+trues: [['anaphylactic reaction', 'Adverse_effect', 'cyclosporine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7981651376146789, 0.6796875, 0.7341772151898734]
+text: RESULTS : Two patients with ocular inflammation of unknown origin developed severe chorioretinitis after IVTA injection .
+result: extract = Extract([Triple(disease("ocular inflammation of unknown origin"), Rel("Adverse_effect"), drug("IVTA"))])
+
+pred: [['ocular inflammation of unknown origin', 'Adverse_effect', 'IVTA']]
+trues: [['severe chorioretinitis', 'Adverse_effect', 'IVTA']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7945205479452054, 0.6770428015564203, 0.73109243697479]
+text: The development of erythroid leukemia plus carcinoma in these two men suggests mutagenic change secondary to cyclophosphamide therapy .
+result: extract = Extract([Triple(disease("erythroid leukemia plus carcinoma"), Rel("Adverse_effect"), drug("cyclophosphamide"))])
+
+pred: [['erythroid leukemia plus carcinoma', 'Adverse_effect', 'cyclophosphamide']]
+trues: [['carcinoma', 'Adverse_effect', 'cyclophosphamide']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7909090909090909, 0.6744186046511628, 0.7280334728033473]
+text: Amebic abscess of the spleen complicated by metronidazole - induced neurotoxicity : case report .
+result: extract = Extract([Triple(disease("neurotoxicity"), Rel("Adverse_effect"), drug("metronidazole"))])
+
+pred: [['neurotoxicity', 'Adverse_effect', 'metronidazole']]
+trues: [['Amebic abscess of the spleen', 'Adverse_effect', 'metronidazole'], ['neurotoxicity', 'Adverse_effect', 'metronidazole']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7918552036199095, 0.6730769230769231, 0.7276507276507276]
+text: One should therefore be aware of possible extrapyramidal side effects with olanzapine that are reduced compared to classical neuroleptic drugs but not completely eliminated .
+result: extract = Extract([Triple(disease("extrapyramidal side effects"), Rel("Adverse_effect"), drug("olanzapine"))])
+
+pred: [['extrapyramidal side effects', 'Adverse_effect', 'olanzapine']]
+trues: [['extrapyramidal side effects', 'Adverse_effect', 'olanzapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7927927927927928, 0.6743295019157088, 0.7287784679089028]
+text: One patient had severe temporary weakness after an ampicillin sodium challenge .
+result: extract = Extract([Triple(disease("severe temporary weakness"), Rel("Adverse_effect"), drug("ampicillin sodium"))])
+
+pred: [['severe temporary weakness', 'Adverse_effect', 'ampicillin sodium']]
+trues: [['severe temporary weakness', 'Adverse_effect', 'ampicillin sodium']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7937219730941704, 0.6755725190839694, 0.7298969072164949]
+text: Neurointensive care management of raised intracranial pressure caused by severe valproic acid intoxication .
+result: extract = Extract([Triple(disease("raised intracranial pressure"), Rel("Adverse_effect"), drug("valproic acid"))])
+
+pred: [['raised intracranial pressure', 'Adverse_effect', 'valproic acid']]
+trues: [['raised intracranial pressure', 'Adverse_effect', 'valproic acid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7946428571428571, 0.6768060836501901, 0.7310061601642711]
+text: Mammary gigantism is a rare complication of D - penicillamine treatment .
+result: extract = Extract([Triple(disease("Mammary gigantism"), Rel("Adverse_effect"), drug("D - penicillamine"))])
+
+pred: [['Mammary gigantism', 'Adverse_effect', 'D - penicillamine']]
+trues: [['Mammary gigantism', 'Adverse_effect', 'D - penicillamine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7955555555555556, 0.678030303030303, 0.7321063394683026]
+text: CONCLUSIONS : Symptoms and pathologic changes of colitis are associated with exposure to rofecoxib .
+result: extract = Extract([Triple(disease("colitis"), Rel("Adverse_effect"), drug("rofecoxib"))])
+
+pred: [['colitis', 'Adverse_effect', 'rofecoxib']]
+trues: [['colitis', 'Adverse_effect', 'rofecoxib']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7964601769911505, 0.6792452830188679, 0.7331975560081467]
+text: RESULTS : Evidence of neurological improvement and rehabilitation potential after severe myelopathy due to intrathecal injection of doxorubicin .
+result: extract = Extract([Triple(disease("severe myelopathy"), Rel("Adverse_effect"), drug("doxorubicin"))])
+
+pred: [['severe myelopathy', 'Adverse_effect', 'doxorubicin']]
+trues: [['severe myelopathy', 'Adverse_effect', 'doxorubicin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7973568281938326, 0.6804511278195489, 0.7342799188640973]
+text: We report three cases of amiodarone - induced torsades de pointe .
+result: extract = Extract([Triple(disease("torsades de pointe"), Rel("Adverse_effect"), drug("amiodarone"))])
+
+pred: [['torsades de pointe', 'Adverse_effect', 'amiodarone']]
+trues: [['torsades de pointe', 'Adverse_effect', 'amiodarone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7982456140350878, 0.6816479400749064, 0.7353535353535355]
+text: The patient expired after seven cycles of treatment had been completed because of pulmonary fibrosis and the drug toxicity of bleomycin .
+result: extract = Extract([Triple(disease("pulmonary fibrosis"), Rel("Adverse_effect"), drug("bleomycin")), Triple(disease("pulmonary fibrosis"), Rel("Adverse_effect"), drug("bleomycin"))])
+
+pred: [['pulmonary fibrosis', 'Adverse_effect', 'bleomycin'], ['pulmonary fibrosis', 'Adverse_effect', 'bleomycin']]
+trues: [['pulmonary fibrosis', 'Adverse_effect', 'bleomycin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7991266375545851, 0.6828358208955224, 0.7364185110663984]
+text: Terlipressin - induced ventricular arrhythmia .
+result: extract = Extract([Triple(disease("ventricular arrhythmia"), Rel("Adverse_effect"), drug("Terlipressin"))])
+
+pred: [['ventricular arrhythmia', 'Adverse_effect', 'Terlipressin']]
+trues: [['ventricular arrhythmia', 'Adverse_effect', 'Terlipressin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8, 0.6840148698884758, 0.7374749498997996]
+text: This patient developed sequential symptoms including alternative hemiparesis , dysarthria and altered consciousness 5 days after the second course of HD - MTX ( 8 gm / m2 by 6 h continuous infusion ) with leucovorin rescue .
+result: extract = Extract([Triple(disease("altered consciousness"), Rel("Adverse_effect"), drug("HD - MTX")), Triple(disease("alternative hemiparesis"), Rel("Adverse_effect"), drug("HD - MTX")), Triple(disease("dysarthria"), Rel("Adverse_effect"), drug("HD - MTX"))])
+
+pred: [['altered consciousness', 'Adverse_effect', 'HD - MTX'], ['alternative hemiparesis', 'Adverse_effect', 'HD - MTX'], ['dysarthria', 'Adverse_effect', 'HD - MTX']]
+trues: [['altered consciousness', 'Adverse_effect', 'HD - MTX'], ['dysarthria', 'Adverse_effect', 'HD - MTX'], ['hemiparesis', 'Adverse_effect', 'HD - MTX']]
+metrics_sample: [0.6666666666666666, 0.6666666666666666, 0.6666666666666666]
+metrics_current: [0.7982832618025751, 0.6838235294117647, 0.7366336633663367]
+text: OBJECTIVE : To report a case of possible foscarnet - induced severe hypomagnesemia and other electrolyte disorders .
+result: extract = Extract([Triple(disease("severe hypomagnesemia"), Rel("Adverse_effect"), drug("foscarnet"))])
+
+pred: [['severe hypomagnesemia', 'Adverse_effect', 'foscarnet']]
+trues: [['electrolyte disorders', 'Adverse_effect', 'foscarnet'], ['severe hypomagnesemia', 'Adverse_effect', 'foscarnet']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7991452991452992, 0.6824817518248175, 0.7362204724409449]
+text: A case of fluoxetine induced seizures , in a person with Down syndrome , is described .
+result: extract = Extract([Triple(disease("seizures"), Rel("Adverse_effect"), drug("fluoxetine"))])
+
+pred: [['seizures', 'Adverse_effect', 'fluoxetine']]
+trues: [['seizures', 'Adverse_effect', 'fluoxetine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.8, 0.6836363636363636, 0.7372549019607842]
+text: Case study : a modified topical treatment regimen for sodium warfarin - induced necrotizing fasciitis .
+result: extract = Extract([Triple(disease("necrotizing fasciitis"), Rel("Adverse_effect"), drug("sodium warfarin"))])
+
+pred: [['necrotizing fasciitis', 'Adverse_effect', 'sodium warfarin']]
+trues: [['necrotizing fasciitis', 'Adverse_effect', 'warfarin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7966101694915254, 0.6811594202898551, 0.7343750000000001]
+text: We believe that this is the first report of secretory carcinoma of the endometrium associated with tamoxifen use .
+result: extract = Extract([Triple(disease("secretory carcinoma of the endometrium"), Rel("Adverse_effect"), drug("tamoxifen"))])
+
+pred: [['secretory carcinoma of the endometrium', 'Adverse_effect', 'tamoxifen']]
+trues: [['secretory carcinoma of the endometrium', 'Adverse_effect', 'tamoxifen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7974683544303798, 0.6823104693140795, 0.735408560311284]
+text: Escape atrial complexes , which occurred following junctional premature complexes , failed to initiate tachycardia in the control state but tachycardia was always reinitiated by an identical escape sequence after procainamide .
+result: extract = Extract([Triple(disease("Escape atrial complexes"), Rel("Adverse_effect"), drug("procainamide"))])
+
+pred: [['Escape atrial complexes', 'Adverse_effect', 'procainamide']]
+trues: [['tachycardia', 'Adverse_effect', 'procainamide']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7941176470588235, 0.6798561151079137, 0.7325581395348837]
+text: During analysis of 28 patients receiving CAP with concomitant radiation ( XRT ) for pancreatic cancer ( resected or locally advanced ) , two patients developed signs and symptoms consistent with peripheral neuropathy .
+result: extract = Extract([Triple(disease("peripheral neuropathy"), Rel("Adverse_effect"), drug("CAP"))])
+
+pred: [['peripheral neuropathy', 'Adverse_effect', 'CAP']]
+trues: [['peripheral neuropathy', 'Adverse_effect', 'CAP']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7949790794979079, 0.6810035842293907, 0.7335907335907336]
+text: Ibopamine - induced reversible leukopenia during treatment for congestive heart failure .
+result: extract = Extract([Triple(disease("reversible leukopenia"), Rel("Adverse_effect"), drug("Ibopamine"))])
+
+pred: [['reversible leukopenia', 'Adverse_effect', 'Ibopamine']]
+trues: [['leukopenia', 'Adverse_effect', 'Ibopamine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7916666666666666, 0.6785714285714286, 0.7307692307692307]
+text: Acute dystonia induced by lamivudine .
+result: extract = Extract([Triple(disease("Acute dystonia"), Rel("Adverse_effect"), drug("lamivudine"))])
+
+pred: [['Acute dystonia', 'Adverse_effect', 'lamivudine']]
+trues: [['Acute dystonia', 'Adverse_effect', 'lamivudine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7925311203319502, 0.6797153024911032, 0.731800766283525]
+text: The authors postulate that two types of combined lithium - neuroleptic toxicity occur : a neuroleptic malignant extrapyramidal syndrome and a lithium toxicity that occurs in combination with phenothiazines , primarily thioridazine .
+result: extract = Extract([Triple(disease("lithium - neuroleptic toxicity"), Rel("Adverse_effect"), drug("lithium")), Triple(disease("lithium - neuroleptic toxicity"), Rel("Adverse_effect"), drug("neuroleptic")), Triple(disease("lithium - neuroleptic toxicity"), Rel("Adverse_effect"), drug("phenothiazines"))])
+
+pred: [['lithium - neuroleptic toxicity', 'Adverse_effect', 'lithium'], ['lithium - neuroleptic toxicity', 'Adverse_effect', 'neuroleptic'], ['lithium - neuroleptic toxicity', 'Adverse_effect', 'phenothiazines']]
+trues: [['lithium toxicity', 'Adverse_effect', 'lithium'], ['lithium toxicity', 'Adverse_effect', 'thioridazine'], ['neuroleptic malignant extrapyramidal syndrome', 'Adverse_effect', 'lithium'], ['neuroleptic malignant extrapyramidal syndrome', 'Adverse_effect', 'thioridazine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7827868852459017, 0.6701754385964912, 0.7221172022684311]
+text: Albendazole - induced pseudomembranous colitis .
+result: extract = Extract([Triple(disease("pseudomembranous colitis"), Rel("Adverse_effect"), drug("Albendazole"))])
+
+pred: [['pseudomembranous colitis', 'Adverse_effect', 'Albendazole']]
+trues: [['pseudomembranous colitis', 'Adverse_effect', 'Albendazole']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7836734693877551, 0.6713286713286714, 0.7231638418079095]
+text: Priapism associated with olanzapine .
+result: extract = Extract([Triple(disease("Priapism"), Rel("Adverse_effect"), drug("olanzapine"))])
+
+pred: [['Priapism', 'Adverse_effect', 'olanzapine']]
+trues: [['Priapism', 'Adverse_effect', 'olanzapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7845528455284553, 0.6724738675958188, 0.7242026266416509]
+text: Protamine - induced fatal anaphylaxis .
+result: extract = Extract([Triple(disease("fatal anaphylaxis"), Rel("Adverse_effect"), drug("Protamine"))])
+
+pred: [['fatal anaphylaxis', 'Adverse_effect', 'Protamine']]
+trues: [['fatal anaphylaxis', 'Adverse_effect', 'Protamine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7854251012145749, 0.6736111111111112, 0.7252336448598131]
+text: This is an image and brief case report of a 13-year - old boy who presented with severe rash and systemic symptoms after starting oxcarbazepine .
+result: extract = Extract([Triple(disease("severe rash and systemic symptoms"), Rel("Adverse_effect"), drug("oxcarbazepine"))])
+
+pred: [['severe rash and systemic symptoms', 'Adverse_effect', 'oxcarbazepine']]
+trues: [['severe rash', 'Adverse_effect', 'oxcarbazepine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.782258064516129, 0.671280276816609, 0.7225325884543761]
+text: Introduction of etanercept was also clinically effective but followed by development of severe heart failure .
+result: extract = Extract([Triple(disease("severe heart failure"), Rel("Adverse_effect"), drug("etanercept"))])
+
+pred: [['severe heart failure', 'Adverse_effect', 'etanercept']]
+trues: [['severe heart failure', 'Adverse_effect', 'etanercept']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7831325301204819, 0.6724137931034483, 0.7235621521335807]
+text: We report marked QT prolongation and torsades de pointes in a setting of flash pulmonary edema resulting from acute myocardial ischemia in a patient who was being treated with dofetilide for atrial fibrillation .
+result: extract = Extract([Triple(disease("marked QT prolongation and torsades de pointes"), Rel("Adverse_effect"), drug("dofetilide"))])
+
+pred: [['marked QT prolongation and torsades de pointes', 'Adverse_effect', 'dofetilide']]
+trues: [['acute myocardial ischemia', 'Adverse_effect', 'dofetilide'], ['flash pulmonary edema', 'Adverse_effect', 'dofetilide'], ['QT prolongation', 'Adverse_effect', 'dofetilide'], ['torsades de pointes', 'Adverse_effect', 'dofetilide']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.78, 0.6632653061224489, 0.7169117647058824]
+text: ARDS is rarely associated with rituximab infusion for lympho - proliferative disorders , but it should be considered by those administering rituximab , especially when a patient develops severe pulmonary symptoms soon after infusion .
+result: extract = Extract([Triple(disease("ARDS"), Rel("Adverse_effect"), drug("rituximab"))])
+
+pred: [['ARDS', 'Adverse_effect', 'rituximab']]
+trues: [['ARDS', 'Adverse_effect', 'rituximab'], ['ARDS', 'Adverse_effect', 'rituximab'], ['severe pulmonary symptoms', 'Adverse_effect', 'rituximab']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7808764940239044, 0.6621621621621622, 0.716636197440585]
+text: This report describes a case of paradoxical , intravenous valproic acid - induced seizure exacerbation in a child with juvenile absence epilepsy , documented by video - electroencephalography .
+result: extract = Extract([Triple(disease("seizure exacerbation"), Rel("Adverse_effect"), drug("valproic acid"))])
+
+pred: [['seizure exacerbation', 'Adverse_effect', 'valproic acid']]
+trues: [['seizure exacerbation', 'Adverse_effect', 'paradoxical'], ['seizure exacerbation', 'Adverse_effect', 'valproic acid']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7817460317460317, 0.6610738255033557, 0.7163636363636362]
+text: Gynecomastia in epileptics treated with phenobarbital , phenytoin and fluoresone : two case reports .
+result: extract = Extract([Triple(disease("Gynecomastia"), Rel("Adverse_effect"), drug("phenobarbital")), Triple(disease("Gynecomastia"), Rel("Adverse_effect"), drug("phenytoin")), Triple(disease("Gynecomastia"), Rel("Adverse_effect"), drug("fluoresone"))])
+
+pred: [['Gynecomastia', 'Adverse_effect', 'phenobarbital'], ['Gynecomastia', 'Adverse_effect', 'phenytoin'], ['Gynecomastia', 'Adverse_effect', 'fluoresone']]
+trues: [['Gynecomastia', 'Adverse_effect', 'fluoresone'], ['Gynecomastia', 'Adverse_effect', 'phenobarbital'], ['Gynecomastia', 'Adverse_effect', 'phenytoin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7843137254901961, 0.6644518272425249, 0.7194244604316546]
+text: Amiodarone - induced dysthyroidism .
+result: extract = Extract([Triple(disease("dysthyroidism"), Rel("Adverse_effect"), drug("Amiodarone"))])
+
+pred: [['dysthyroidism', 'Adverse_effect', 'Amiodarone']]
+trues: [['dysthyroidism', 'Adverse_effect', 'Amiodarone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.78515625, 0.6655629139072847, 0.7204301075268817]
+text: Although the two local anesthetics usually do not cause methemoglobinemia , we suspect that the displacement of lidocaine from protein binding by bupivacaine , in combination with metabolic acidosis and treatment with other oxidants , was the reason for the development of methemoglobinemia .
+result: extract = Extract([Triple(disease("methemoglobinemia"), Rel("Adverse_effect"), drug("bupivacaine")), Triple(disease("methemoglobinemia"), Rel("Adverse_effect"), drug("lidocaine"))])
+
+pred: [['methemoglobinemia', 'Adverse_effect', 'bupivacaine'], ['methemoglobinemia', 'Adverse_effect', 'lidocaine']]
+trues: [['methemoglobinemia', 'Adverse_effect', 'lidocaine']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7829457364341085, 0.6666666666666666, 0.7201426024955435]
+text: We describe a case of an NHL patient who received rituximab and developed symptomatic , biopsy - proven multinodular bronchiolitis obliterans with organizing pneumonia ( BOOP ) .
+result: extract = Extract([Triple(disease("multinodular bronchiolitis obliterans with organizing pneumonia ( BOOP )"), Rel("Adverse_effect"), drug("rituximab"))])
+
+pred: [['multinodular bronchiolitis obliterans with organizing pneumonia ( BOOP )', 'Adverse_effect', 'rituximab']]
+trues: [['bronchiolitis obliterans with organizing pneumonia', 'Adverse_effect', 'rituximab']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7799227799227799, 0.6644736842105263, 0.7175843694493784]
+text: One patient suffered coronary artery vasospasm , attributed to the use of topical 1:1000 epinephrine during surgery .
+result: extract = Extract([Triple(disease("coronary artery vasospasm"), Rel("Adverse_effect"), drug("epinephrine"))])
+
+pred: [['coronary artery vasospasm', 'Adverse_effect', 'epinephrine']]
+trues: [['coronary artery vasospasm', 'Adverse_effect', 'epinephrine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7807692307692308, 0.6655737704918033, 0.7185840707964601]
+text: PURPOSE : To describe the clinical and electrophysiological findings in a young boy with decreased vision possibly due to retinal damage by rifabutin .
+result: extract = Extract([Triple(disease("retinal damage"), Rel("Adverse_effect"), drug("rifabutin"))])
+
+pred: [['retinal damage', 'Adverse_effect', 'rifabutin']]
+trues: [['decreased vision', 'Adverse_effect', 'rifabutin'], ['retinal damage', 'Adverse_effect', 'rifabutin']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7816091954022989, 0.6644951140065146, 0.7183098591549296]
+text: We report on a child with fatal valproate - related hepatotoxic effects despite this supplementation .
+result: extract = Extract([Triple(disease("hepatotoxic effects"), Rel("Adverse_effect"), drug("valproate"))])
+
+pred: [['hepatotoxic effects', 'Adverse_effect', 'valproate']]
+trues: [['fatal', 'Adverse_effect', 'valproate'], ['hepatotoxic effects', 'Adverse_effect', 'valproate']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7824427480916031, 0.6634304207119741, 0.7180385288966725]
+text: This paper reports an autopsy case of a 78-year - old male with multiple nodules in the liver developed after long - termed administration of phosphate diethylstilbestrol ( PDES ) for prostatic cancer .
+result: extract = Extract([Triple(disease("nodules in the liver"), Rel("Adverse_effect"), drug("phosphate diethylstilbestrol"))])
+
+pred: [['nodules in the liver', 'Adverse_effect', 'phosphate diethylstilbestrol']]
+trues: [['multiple nodules in the liver', 'Adverse_effect', 'PDES'], ['multiple nodules in the liver', 'Adverse_effect', 'phosphate diethylstilbestrol']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.779467680608365, 0.6591639871382636, 0.7142857142857143]
+text: One case of tacrolimus - induced hepatic VOD developing after lung transplantation ( LT ) has been recently reported .
+result: extract = Extract([Triple(disease("hepatic VOD"), Rel("Adverse_effect"), drug("tacrolimus"))])
+
+pred: [['hepatic VOD', 'Adverse_effect', 'tacrolimus']]
+trues: [['hepatic VOD', 'Adverse_effect', 'tacrolimus']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7803030303030303, 0.6602564102564102, 0.7152777777777779]
+text: Administration of sumatriptan in subarachnoid haemorrhage ( SAH ) patients , misdiagnosed as migraine patients , may induce symptomatic cerebral vasospasm with potentially dangerous consequences .
+result: extract = Extract([Triple(disease("symptomatic cerebral vasospasm"), Rel("Adverse_effect"), drug("sumatriptan"))])
+
+pred: [['symptomatic cerebral vasospasm', 'Adverse_effect', 'sumatriptan']]
+trues: [['symptomatic cerebral vasospasm', 'Adverse_effect', 'sumatriptan']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7811320754716982, 0.6613418530351438, 0.7162629757785468]
+text: DISCUSSION : This case shows that switching to zidovudine potentially can lead to a hyperlactatemia relapse .
+result: extract = Extract([Triple(disease("hyperlactatemia relapse"), Rel("Adverse_effect"), drug("zidovudine"))])
+
+pred: [['hyperlactatemia relapse', 'Adverse_effect', 'zidovudine']]
+trues: [['hyperlactatemia relapse', 'Adverse_effect', 'zidovudine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7819548872180451, 0.6624203821656051, 0.7172413793103448]
+text: We report the syndrome of inappropriate antidiuresis as a much earlier side - effect of carbamazepine administration in a 29-year Nigerian female patient with generalized tonic - elonic seizures .
+result: extract = Extract([Triple(disease("syndrome of inappropriate antidiuresis"), Rel("Adverse_effect"), drug("carbamazepine"))])
+
+pred: [['syndrome of inappropriate antidiuresis', 'Adverse_effect', 'carbamazepine']]
+trues: [['antidiuresis', 'Adverse_effect', 'carbamazepine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7790262172284644, 0.6603174603174603, 0.7147766323024054]
+text: We believe this is the first report of myocardial infarction due to coronary spasm , demonstrated by angiography associated with L - thyroxine therapy .
+result: extract = Extract([Triple(disease("myocardial infarction"), Rel("Adverse_effect"), drug("L - thyroxine"))])
+
+pred: [['myocardial infarction', 'Adverse_effect', 'L - thyroxine']]
+trues: [['coronary spasm', 'Adverse_effect', 'L - thyroxine'], ['myocardial infarction', 'Adverse_effect', 'L - thyroxine']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7798507462686567, 0.6593059936908517, 0.7145299145299145]
+text: The case concerns the sudden death of a 29-year - old male during clozapine therapy started 2 weeks before .
+result: extract = Extract([Triple(disease("sudden death"), Rel("Adverse_effect"), drug("clozapine"))])
+
+pred: [['sudden death', 'Adverse_effect', 'clozapine']]
+trues: [['sudden death', 'Adverse_effect', 'clozapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7806691449814126, 0.660377358490566, 0.7155025553662692]
+text: Atenolol - induced pseudolymphoma .
+result: extract = Extract([Triple(disease("pseudolymphoma"), Rel("Adverse_effect"), drug("Atenolol"))])
+
+pred: [['pseudolymphoma', 'Adverse_effect', 'Atenolol']]
+trues: [['pseudolymphoma', 'Adverse_effect', 'Atenolol']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7814814814814814, 0.6614420062695925, 0.7164685908319185]
+text: The risk of cardiac decompensation in infants with supraventricular tachycardia and congestive cardiac failure should be kept in mind prior to administration of verapamil .
+result: extract = Extract([Triple(disease("cardiac decompensation"), Rel("Adverse_effect"), drug("verapamil"))])
+
+pred: [['cardiac decompensation', 'Adverse_effect', 'verapamil']]
+trues: [['cardiac decompensation', 'Adverse_effect', 'verapamil']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7822878228782287, 0.6625, 0.7174280879864635]
+text: Gynecomastia developed in two epileptic patients some months after the addition of oral fluoresone 750 mg daily to the phenobarbital and phenytoin already being administered .
+result: extract = Extract([Triple(disease("Gynecomastia"), Rel("Adverse_effect"), drug("fluoresone"))])
+
+pred: [['Gynecomastia', 'Adverse_effect', 'fluoresone']]
+trues: [['Gynecomastia', 'Adverse_effect', 'fluoresone'], ['Gynecomastia', 'Adverse_effect', 'phenobarbital'], ['Gynecomastia', 'Adverse_effect', 'phenytoin']]
+metrics_sample: [1.0, 0.3333333333333333, 0.5]
+metrics_current: [0.7830882352941176, 0.6594427244582043, 0.7159663865546217]
+text: Less common adverse events to dapsone include the idiosyncratic reactions of leukopenia and agranulocytosis , cutaneous eruptions , peripheral neuropathy , psychosis , toxic hepatitis , cholestatic jaundice , nephrotic syndrome , renal papillary necrosis , severe hypoalbuminemia without proteinuria , an infectious mononucleosis - like syndrome , and minor neurological and gastrointestinal complaints .
+result: extract = Extract([Triple(disease("agranulocytosis"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("cholestatic jaundice"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("cutaneous eruptions"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("hypoalbuminemia without proteinuria"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("leukopenia"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("nephrotic syndrome"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("peripheral neuropathy"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("renal papillary necrosis"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("severe hypoalbuminemia without proteinuria"), Rel("Adverse_effect"), drug("dapsone")), Triple(disease("toxic hepatitis"), Rel("Adverse_effect"), drug("dapsone"))])
+
+pred: [['agranulocytosis', 'Adverse_effect', 'dapsone'], ['cholestatic jaundice', 'Adverse_effect', 'dapsone'], ['cutaneous eruptions', 'Adverse_effect', 'dapsone'], ['hypoalbuminemia without proteinuria', 'Adverse_effect', 'dapsone'], ['leukopenia', 'Adverse_effect', 'dapsone'], ['nephrotic syndrome', 'Adverse_effect', 'dapsone'], ['peripheral neuropathy', 'Adverse_effect', 'dapsone'], ['renal papillary necrosis', 'Adverse_effect', 'dapsone'], ['severe hypoalbuminemia without proteinuria', 'Adverse_effect', 'dapsone'], ['toxic hepatitis', 'Adverse_effect', 'dapsone']]
+trues: [['agranulocytosis', 'Adverse_effect', 'dapsone'], ['an infectious mononucleosis - like syndrome', 'Adverse_effect', 'dapsone'], ['cholestatic jaundice', 'Adverse_effect', 'dapsone'], ['cutaneous eruptions', 'Adverse_effect', 'dapsone'], ['leukopenia', 'Adverse_effect', 'dapsone'], ['minor neurological and gastrointestinal complaints', 'Adverse_effect', 'dapsone'], ['nephrotic syndrome', 'Adverse_effect', 'dapsone'], ['peripheral neuropathy', 'Adverse_effect', 'dapsone'], ['psychosis', 'Adverse_effect', 'dapsone'], ['renal papillary necrosis', 'Adverse_effect', 'dapsone'], ['severe hypoalbuminemia without proteinuria', 'Adverse_effect', 'dapsone'], ['toxic hepatitis', 'Adverse_effect', 'dapsone']]
+metrics_sample: [0.9, 0.75, 0.8181818181818182]
+metrics_current: [0.7872340425531915, 0.6626865671641791, 0.7196110210696922]
+text: A 43-year - old white man developed a shallow erosion of a psoriatic plaque after chronic administration of methotrexate .
+result: extract = Extract([Triple(disease("shallow erosion of a psoriatic plaque"), Rel("Adverse_effect"), drug("methotrexate"))])
+
+pred: [['shallow erosion of a psoriatic plaque', 'Adverse_effect', 'methotrexate']]
+trues: [['erosion of a psoriatic plaque', 'Adverse_effect', 'methotrexate']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.784452296819788, 0.6607142857142857, 0.7172859450726979]
+text: Physicians using this " new " drug must be aware of the potential danger of sulfonamide - induced injury to the urinary tract .
+result: extract = Extract([Triple(disease("injury to the urinary tract"), Rel("Adverse_effect"), drug("sulfonamide"))])
+
+pred: [['injury to the urinary tract', 'Adverse_effect', 'sulfonamide']]
+trues: [['injury to the urinary tract', 'Adverse_effect', 'sulfonamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7852112676056338, 0.6617210682492581, 0.7181964573268921]
+text: Myoclonic spasms following intrathecal morphine .
+result: extract = Extract([Triple(disease("Myoclonic spasms"), Rel("Adverse_effect"), drug("morphine"))])
+
+pred: [['Myoclonic spasms', 'Adverse_effect', 'morphine']]
+trues: [['Myoclonic spasms', 'Adverse_effect', 'morphine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7859649122807018, 0.6627218934911243, 0.7191011235955057]
+text: Five months after initiating mirtazapine therapy , she developed symptomatic hyponatremia .
+result: extract = Extract([Triple(disease("symptomatic hyponatremia"), Rel("Adverse_effect"), drug("mirtazapine"))])
+
+pred: [['symptomatic hyponatremia', 'Adverse_effect', 'mirtazapine']]
+trues: [['symptomatic hyponatremia', 'Adverse_effect', 'mirtazapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7867132867132867, 0.6637168141592921, 0.72]
+text: Insulin - induced lipohypertrophy : report of a case with histopathology .
+result: extract = Extract([Triple(disease("lipohypertrophy"), Rel("Adverse_effect"), drug("Insulin"))])
+
+pred: [['lipohypertrophy', 'Adverse_effect', 'Insulin']]
+trues: [['lipohypertrophy', 'Adverse_effect', 'Insulin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7874564459930313, 0.6647058823529411, 0.7208931419457734]
+text: INTRODUCTION : We describe the neurointensive care ( NIC ) management of a patient with severe cerebral swelling and raised intracranial pressure ( ICP ) after severe sodium valproic acid ( VPA ) intoxication .
+result: extract = Extract([Triple(disease("cerebral swelling"), Rel("Adverse_effect"), drug("VPA")), Triple(disease("raised intracranial pressure"), Rel("Adverse_effect"), drug("VPA"))])
+
+pred: [['cerebral swelling', 'Adverse_effect', 'VPA'], ['raised intracranial pressure', 'Adverse_effect', 'VPA']]
+trues: [['raised intracranial pressure', 'Adverse_effect', 'sodium valproic acid'], ['raised intracranial pressure', 'Adverse_effect', 'VPA'], ['severe cerebral swelling', 'Adverse_effect', 'sodium valproic acid'], ['severe cerebral swelling', 'Adverse_effect', 'VPA']]
+metrics_sample: [0.5, 0.25, 0.3333333333333333]
+metrics_current: [0.7854671280276817, 0.6598837209302325, 0.7172195892575041]
+text: Tardive dyskinesia induced by sulpiride .
+result: extract = Extract([Triple(disease("Tardive dyskinesia"), Rel("Adverse_effect"), drug("sulpiride"))])
+
+pred: [['Tardive dyskinesia', 'Adverse_effect', 'sulpiride']]
+trues: [['Tardive dyskinesia', 'Adverse_effect', 'sulpiride']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7862068965517242, 0.6608695652173913, 0.7181102362204724]
+text: Flutamide withdrawal syndrome is characterized by a decrease in prostate - specific antigen ( PSA ) after flutamide withdrawal in a subset of patients with progressing metastatic carcinoma of the prostate .
+result: extract = Extract([Triple(disease("Flutamide withdrawal syndrome"), Rel("Adverse_effect"), drug("Flutamide"))])
+
+pred: [['Flutamide withdrawal syndrome', 'Adverse_effect', 'Flutamide']]
+trues: [['decrease in prostate - specific antigen', 'Adverse_effect', 'Flutamide'], ['decrease in prostate - specific antigen', 'Adverse_effect', 'flutamide'], ['Flutamide withdrawal syndrome', 'Adverse_effect', 'Flutamide'], ['Flutamide withdrawal syndrome', 'Adverse_effect', 'flutamide']]
+metrics_sample: [1.0, 0.25, 0.4]
+metrics_current: [0.7869415807560137, 0.6561604584527221, 0.715625]
+text: Fenclofenac - induced selective IgA deficiency in rheumatoid arthritis .
+result: extract = Extract([Triple(disease("IgA deficiency"), Rel("Adverse_effect"), drug("Fenclofenac"))])
+
+pred: [['IgA deficiency', 'Adverse_effect', 'Fenclofenac']]
+trues: [['IgA deficiency', 'Adverse_effect', 'Fenclofenac']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7876712328767124, 0.6571428571428571, 0.7165109034267912]
+text: After excluding other causes of long QT syndrome , the HCQ was suspected as the cause of her ventricular tachycardia .
+result: extract = Extract([Triple(disease("long QT syndrome"), Rel("Adverse_effect"), drug("HCQ"))])
+
+pred: [['long QT syndrome', 'Adverse_effect', 'HCQ']]
+trues: [['ventricular tachycardia', 'Adverse_effect', 'HCQ']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7849829351535836, 0.6552706552706553, 0.7142857142857142]
+text: The pathophysiological mechanisms remain unknown , although the drug could act through massive cytokines liberation after destruction of CD20 positive cells by rituximab .
+result: extract = Extract([Triple(disease("massive cytokines liberation after destruction of CD20 positive cells by rituximab"), Rel("Adverse_effect"), drug("rituximab"))])
+
+pred: [['massive cytokines liberation after destruction of CD20 positive cells by rituximab', 'Adverse_effect', 'rituximab']]
+trues: [['destruction of CD20 positive cells', 'Adverse_effect', 'rituximab'], ['massive cytokines liberation', 'Adverse_effect', 'rituximab']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.782312925170068, 0.6515580736543909, 0.7109737248840804]
+text: Two other patients who did not receive prochlorperazine , developed retinal problems which later improved , one after only 15 g of desferrioxamine .
+result: extract = Extract([Triple(disease("retinal problems"), Rel("Adverse_effect"), drug("desferrioxamine")), Triple(disease("retinal problems"), Rel("Adverse_effect"), drug("prochlorperazine"))])
+
+pred: [['retinal problems', 'Adverse_effect', 'desferrioxamine'], ['retinal problems', 'Adverse_effect', 'prochlorperazine']]
+trues: [['retinal problems', 'Adverse_effect', 'desferrioxamine']]
+metrics_sample: [0.5, 1.0, 0.6666666666666666]
+metrics_current: [0.7804054054054054, 0.652542372881356, 0.7107692307692308]
+text: The major side effect of infliximab is infection .
+result: extract = Extract([Triple(disease("infection"), Rel("Adverse_effect"), drug("infliximab"))])
+
+pred: [['infection', 'Adverse_effect', 'infliximab']]
+trues: [['infection', 'Adverse_effect', 'infliximab']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7811447811447811, 0.6535211267605634, 0.7116564417177914]
+text: CONCLUSIONS : Topiramate may be associated with ciliochoroidal effusion with forward displacement of the lens - iris diaphragm and anterior chamber shallowing , resulting in acute myopia and angle - closure glaucoma .
+result: extract = Extract([Triple(disease("acute myopia"), Rel("Adverse_effect"), drug("Topiramate")), Triple(disease("angle - closure glaucoma"), Rel("Adverse_effect"), drug("Topiramate"))])
+
+pred: [['acute myopia', 'Adverse_effect', 'Topiramate'], ['angle - closure glaucoma', 'Adverse_effect', 'Topiramate']]
+trues: [['acute myopia', 'Adverse_effect', 'Topiramate'], ['angle - closure glaucoma', 'Adverse_effect', 'Topiramate'], ['anterior chamber shallowing', 'Adverse_effect', 'Topiramate'], ['ciliochoroidal effusion', 'Adverse_effect', 'Topiramate'], ['displacement of the lens - iris diaphragm', 'Adverse_effect', 'Topiramate']]
+metrics_sample: [1.0, 0.4, 0.5714285714285715]
+metrics_current: [0.782608695652174, 0.65, 0.7101669195751139]
+text: We describe the first case of de novo asthma following treatment with the angiotensin converting enzyme ( ACE ) inhibitor captopril .
+result: extract = Extract([Triple(disease("de novo asthma"), Rel("Adverse_effect"), drug("captopril"))])
+
+pred: [['de novo asthma', 'Adverse_effect', 'captopril']]
+trues: [['asthma', 'Adverse_effect', 'captopril']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.78, 0.6481994459833795, 0.708018154311649]
+text: The knowledge concerning VGB - associated visual dysfunction in pediatric patients , particularly in those who have been exposed to VGB in utero is limited .
+result: extract = Extract([Triple(disease("visual dysfunction"), Rel("Adverse_effect"), drug("VGB"))])
+
+pred: [['visual dysfunction', 'Adverse_effect', 'VGB']]
+trues: [['visual dysfunction', 'Adverse_effect', 'VGB']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7807308970099668, 0.649171270718232, 0.708898944193062]
+text: Here we present the case of a woman who received high doses of methylprednisolone ( 1 g iv daily ) for active Graves ' ophthalmopathy , and developed severe hypertension followed by myocardial infarction on the fifth day of treatment .
+result: extract = Extract([Triple(disease("severe hypertension"), Rel("Adverse_effect"), drug("methylprednisolone")), Triple(disease("myocardial infarction"), Rel("Adverse_effect"), drug("methylprednisolone"))])
+
+pred: [['severe hypertension', 'Adverse_effect', 'methylprednisolone'], ['myocardial infarction', 'Adverse_effect', 'methylprednisolone']]
+trues: [['myocardial infarction', 'Adverse_effect', 'methylprednisolone'], ['severe hypertension', 'Adverse_effect', 'methylprednisolone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7821782178217822, 0.6510989010989011, 0.7106446776611693]
+text: METHODS : We report two cases of pseudoporphyria caused by naproxen and oxaprozin .
+result: extract = Extract([Triple(disease("pseudoporphyria"), Rel("Adverse_effect"), drug("naproxen")), Triple(disease("pseudoporphyria"), Rel("Adverse_effect"), drug("oxaprozin"))])
+
+pred: [['pseudoporphyria', 'Adverse_effect', 'naproxen'], ['pseudoporphyria', 'Adverse_effect', 'oxaprozin']]
+trues: [['pseudoporphyria', 'Adverse_effect', 'naproxen'], ['pseudoporphyria', 'Adverse_effect', 'oxaprozin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7836065573770492, 0.6530054644808743, 0.7123695976154992]
+text: Indolent aspergillus arthritis complicating fludarabine - based non - myeloablative stem cell transplantation .
+result: extract = Extract([Triple(disease("Indolent aspergillus arthritis"), Rel("Adverse_effect"), drug("fludarabine"))])
+
+pred: [['Indolent aspergillus arthritis', 'Adverse_effect', 'fludarabine']]
+trues: [['aspergillus arthritis', 'Adverse_effect', 'fludarabine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7810457516339869, 0.6512261580381471, 0.7102526002971767]
+text: In a patient with severe renovascular hypertension , nonoliguric acute renal failure developed after she received captopril treatment .
+result: extract = Extract([Triple(disease("renovascular hypertension"), Rel("Adverse_effect"), drug("captopril"))])
+
+pred: [['renovascular hypertension', 'Adverse_effect', 'captopril']]
+trues: [['nonoliguric acute renal failure', 'Adverse_effect', 'captopril']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7785016286644951, 0.6494565217391305, 0.7081481481481482]
+text: Presented is a case of acute renal failure induced by acetazolamide therapy for glaucoma .
+result: extract = Extract([Triple(disease("acute renal failure"), Rel("Adverse_effect"), drug("acetazolamide"))])
+
+pred: [['acute renal failure', 'Adverse_effect', 'acetazolamide']]
+trues: [['acute renal failure', 'Adverse_effect', 'acetazolamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7792207792207793, 0.6504065040650406, 0.7090103397341212]
+text: We describe a patient who , after receiving his first dose of pregabalin to relieve neuropathic pain , presented with a negative myoclonus .
+result: extract = Extract([Triple(disease("negative myoclonus"), Rel("Adverse_effect"), drug("pregabalin"))])
+
+pred: [['negative myoclonus', 'Adverse_effect', 'pregabalin']]
+trues: [['negative myoclonus', 'Adverse_effect', 'pregabalin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7799352750809061, 0.6513513513513514, 0.7098674521354934]
+text: Possible mechanisms by which clonidine decreases spasticity are described , probable mechanisms of induced bradycardia are reviewed , and specific treatment recommendations for the use of clonidine in spinal cord injured patients are presented .
+result: extract = Extract([Triple(disease("spasticity"), Rel("Adverse_effect"), drug("clonidine")), Triple(disease("induced bradycardia"), Rel("Adverse_effect"), drug("clonidine"))])
+
+pred: [['spasticity', 'Adverse_effect', 'clonidine'], ['induced bradycardia', 'Adverse_effect', 'clonidine']]
+trues: [['bradycardia', 'Adverse_effect', 'clonidine'], ['bradycardia', 'Adverse_effect', 'clonidine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.77491961414791, 0.6495956873315364, 0.7067448680351908]
+text: We report the first case of tuberculous uveitis due to etanercept .
+result: extract = Extract([Triple(disease("tuberculous uveitis"), Rel("Adverse_effect"), drug("etanercept"))])
+
+pred: [['tuberculous uveitis', 'Adverse_effect', 'etanercept']]
+trues: [['tuberculous uveitis', 'Adverse_effect', 'etanercept']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7756410256410257, 0.6505376344086021, 0.7076023391812866]
+text: Transient global amnesia after clioquinol : five personal observations from outside Japan .
+result: extract = Extract([Triple(disease("Transient global amnesia"), Rel("Adverse_effect"), drug("clioquinol"))])
+
+pred: [['Transient global amnesia', 'Adverse_effect', 'clioquinol']]
+trues: [['Transient global amnesia', 'Adverse_effect', 'clioquinol']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7763578274760383, 0.6514745308310992, 0.7084548104956269]
+text: This article describes two cases of aplastic anemia , at least one of which was almost certainly induced by the use of methazolamide , and one case of agranulocytosis related to the use of methazolamide .
+result: extract = Extract([Triple(disease("agranulocytosis"), Rel("Adverse_effect"), drug("methazolamide")), Triple(disease("aplastic anemia"), Rel("Adverse_effect"), drug("methazolamide"))])
+
+pred: [['agranulocytosis', 'Adverse_effect', 'methazolamide'], ['aplastic anemia', 'Adverse_effect', 'methazolamide']]
+trues: [['agranulocytosis', 'Adverse_effect', 'methazolamide'], ['aplastic anemia', 'Adverse_effect', 'methazolamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7777777777777778, 0.6533333333333333, 0.7101449275362319]
+text: De novo absence status of late onset following withdrawal of lorazepam : a case report .
+result: extract = Extract([Triple(disease("De novo absence status of late onset following withdrawal of lorazepam"), Rel("Adverse_effect"), drug("lorazepam"))])
+
+pred: [['De novo absence status of late onset following withdrawal of lorazepam', 'Adverse_effect', 'lorazepam']]
+trues: [['De novo absence status', 'Adverse_effect', 'lorazepam']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7753164556962026, 0.651595744680851, 0.708092485549133]
+text: We report a case of biopsy - proven acute tubulointerstitial nephritis associated with a second course of flurbiprofen , a nonsteroidal anti - inflammatory drug of the propionic acid class .
+result: extract = Extract([Triple(disease("acute tubulointerstitial nephritis"), Rel("Adverse_effect"), drug("flurbiprofen"))])
+
+pred: [['acute tubulointerstitial nephritis', 'Adverse_effect', 'flurbiprofen']]
+trues: [['acute tubulointerstitial nephritis', 'Adverse_effect', 'flurbiprofen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7760252365930599, 0.6525198938992043, 0.7089337175792506]
+text: We report a case of torsade de pointes following a single oral dose of amiodarone ( 1400 mg or 30 mg kg-1 ) administered after short intravenous loading for prevention of paroxysmal atrial flutter .
+result: extract = Extract([Triple(disease("torsade de pointes"), Rel("Adverse_effect"), drug("amiodarone"))])
+
+pred: [['torsade de pointes', 'Adverse_effect', 'amiodarone']]
+trues: [['torsade de pointes', 'Adverse_effect', 'amiodarone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7767295597484277, 0.6534391534391535, 0.709770114942529]
+text: We report the use of pamidronate for acute , severe hypercalcemia secondary to iatrogenic vitamin D poisoning .
+result: extract = Extract([Triple(disease("acute , severe hypercalcemia"), Rel("Adverse_effect"), drug("pamidronate"))])
+
+pred: [['acute , severe hypercalcemia', 'Adverse_effect', 'pamidronate']]
+trues: [['severe hypercalcemia', 'Adverse_effect', 'vitamin D'], ['vitamin D poisoning', 'Adverse_effect', 'vitamin D']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.774294670846395, 0.65, 0.7067238912732475]
+text: Insulin - induced cardiac failure .
+result: extract = Extract([Triple(disease("cardiac failure"), Rel("Adverse_effect"), drug("Insulin"))])
+
+pred: [['cardiac failure', 'Adverse_effect', 'Insulin']]
+trues: [['cardiac failure', 'Adverse_effect', 'Insulin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.775, 0.6509186351706037, 0.7075606276747504]
+text: Methotrexate pneumonitis in nonsurgical treatment of ectopic pregnancy .
+result: extract = Extract([Triple(disease("pneumonitis"), Rel("Adverse_effect"), drug("Methotrexate"))])
+
+pred: [['pneumonitis', 'Adverse_effect', 'Methotrexate']]
+trues: [['pneumonitis', 'Adverse_effect', 'Methotrexate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7757009345794392, 0.6518324607329843, 0.7083926031294451]
+text: Visual system side effects caused by parasympathetic dysfunction after botulinum toxin type B injections .
+result: extract = Extract([Triple(disease("Visual system side effects"), Rel("Adverse_effect"), drug("botulinum toxin type B"))])
+
+pred: [['Visual system side effects', 'Adverse_effect', 'botulinum toxin type B']]
+trues: [['parasympathetic dysfunction', 'Adverse_effect', 'botulinum toxin type B'], ['Visual system side effects', 'Adverse_effect', 'botulinum toxin type B']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7763975155279503, 0.6510416666666666, 0.7082152974504249]
+text: Acute hyperphosphatemia caused by sodium phosphate enema in a patient with liver dysfunction and chronic renal failure .
+result: extract = Extract([Triple(disease("Acute hyperphosphatemia"), Rel("Adverse_effect"), drug("sodium phosphate"))])
+
+pred: [['Acute hyperphosphatemia', 'Adverse_effect', 'sodium phosphate']]
+trues: [['hyperphosphatemia', 'Adverse_effect', 'sodium phosphate']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7739938080495357, 0.6493506493506493, 0.7062146892655368]
+text: We report AZA - induced drug eruption that developed in two cases of systemic scleroderma with polymyositis .
+result: extract = Extract([Triple(disease("drug eruption"), Rel("Adverse_effect"), drug("AZA"))])
+
+pred: [['drug eruption', 'Adverse_effect', 'AZA']]
+trues: [['drug eruption', 'Adverse_effect', 'AZA']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7746913580246914, 0.6502590673575129, 0.7070422535211268]
+text: OBJECTIVE : To report the first five cases of amphotericin B overdose with secondary cardiac complications in a pediatric population .
+result: extract = Extract([Triple(disease("cardiac complications"), Rel("Adverse_effect"), drug("amphotericin B"))])
+
+pred: [['cardiac complications', 'Adverse_effect', 'amphotericin B']]
+trues: [['cardiac complications', 'Adverse_effect', 'amphotericin B']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7753846153846153, 0.6511627906976745, 0.7078651685393259]
+text: Subcutaneous IL-2 is safe and well tolerated , with a mortality rate <3 % .
+result: extract = Extract([Triple(drug("IL-2"), Rel("Adverse_effect"), drug("IL-2"))])
+
+pred: [['IL-2', 'Adverse_effect', 'IL-2']]
+trues: [['mortality rate <3', 'Adverse_effect', 'IL-2']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7730061349693251, 0.6494845360824743, 0.7058823529411766]
+text: Disseminated cellulitic cryptococcosis in the setting of prednisone monotherapy for pemphigus vulgaris .
+result: extract = Extract([Triple(disease("Disseminated cellulitic cryptococcosis"), Rel("Adverse_effect"), drug("prednisone"))])
+
+pred: [['Disseminated cellulitic cryptococcosis', 'Adverse_effect', 'prednisone']]
+trues: [['Disseminated cellulitic cryptococcosis', 'Adverse_effect', 'prednisone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7737003058103975, 0.6503856041131105, 0.7067039106145251]
+text: Renal failure associated with the use of dextran-40 .
+result: extract = Extract([Triple(disease("Renal failure"), Rel("Adverse_effect"), drug("dextran-40"))])
+
+pred: [['Renal failure', 'Adverse_effect', 'dextran-40']]
+trues: [['Renal failure', 'Adverse_effect', 'dextran-40']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.774390243902439, 0.6512820512820513, 0.7075208913649026]
+text: Acute pancreatitis in a child with idiopathic ulcerative colitis on long - term 5-aminosalicylic acid therapy .
+result: extract = Extract([Triple(disease("Acute pancreatitis"), Rel("Adverse_effect"), drug("5-aminosalicylic acid"))])
+
+pred: [['Acute pancreatitis', 'Adverse_effect', '5-aminosalicylic acid']]
+trues: [['Acute pancreatitis', 'Adverse_effect', '5-aminosalicylic acid']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7750759878419453, 0.6521739130434783, 0.7083333333333334]
+text: STUDY DESIGN : Case report of a 31-year - old woman who presented with toxic myelopathy due to intrathecal administration of doxorubicin .
+result: extract = Extract([Triple(disease("toxic myelopathy"), Rel("Adverse_effect"), drug("doxorubicin"))])
+
+pred: [['toxic myelopathy', 'Adverse_effect', 'doxorubicin']]
+trues: [['toxic myelopathy', 'Adverse_effect', 'doxorubicin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7757575757575758, 0.6530612244897959, 0.709141274238227]
+text: We report two new cases of sarcoidosis in two patients with hepatitis C virus infection treated with interferon alfa and ribavirin .
+result: extract = Extract([Triple(disease("sarcoidosis"), Rel("Adverse_effect"), drug("interferon alfa")), Triple(disease("sarcoidosis"), Rel("Adverse_effect"), drug("ribavirin"))])
+
+pred: [['sarcoidosis', 'Adverse_effect', 'interferon alfa'], ['sarcoidosis', 'Adverse_effect', 'ribavirin']]
+trues: [['sarcoidosis', 'Adverse_effect', 'interferon alfa'], ['sarcoidosis', 'Adverse_effect', 'ribavirin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7771084337349398, 0.6548223350253807, 0.7107438016528924]
+text: Use of the Naranjo probability scale indicated a highly probable relationship between the observed cardiac toxicity and amphotericin B deoxycholate therapy in this patient .
+result: extract = Extract([Triple(disease("cardiac toxicity"), Rel("Adverse_effect"), drug("amphotericin B deoxycholate"))])
+
+pred: [['cardiac toxicity', 'Adverse_effect', 'amphotericin B deoxycholate']]
+trues: [['cardiac toxicity', 'Adverse_effect', 'amphotericin B deoxycholate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7777777777777778, 0.6556962025316456, 0.7115384615384616]
+text: Didanosine also has a potential for inducing seizures .
+result: extract = Extract([Triple(disease("seizures"), Rel("Adverse_effect"), drug("Didanosine"))])
+
+pred: [['seizures', 'Adverse_effect', 'Didanosine']]
+trues: [['seizures', 'Adverse_effect', 'Didanosine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7784431137724551, 0.6565656565656566, 0.7123287671232875]
+text: We present three patients with paradoxical seizures ; their serum phenytoin levels were 43.5 mcg / mL , 46.5 mcg / mL and 38.3 mcg / mL .
+result: extract = Extract([Triple(disease("paradoxical seizures"), Rel("Adverse_effect"), drug("phenytoin"))])
+
+pred: [['paradoxical seizures', 'Adverse_effect', 'phenytoin']]
+trues: [['seizures', 'Adverse_effect', 'phenytoin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7761194029850746, 0.654911838790932, 0.7103825136612022]
+text: In one patient , treatment with DCA was associated with a decrease in blood lactate levels from 11.2 mM before treatment to 0.8 mM 16 h later .
+result: extract = Extract([Triple(disease("decrease in blood lactate levels"), Rel("Adverse_effect"), drug("DCA"))])
+
+pred: [['decrease in blood lactate levels', 'Adverse_effect', 'DCA']]
+trues: [['decrease in blood lactate levels', 'Adverse_effect', 'DCA']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7767857142857143, 0.6557788944723618, 0.7111716621253407]
+text: OBJECTIVE : To report on the possible development of serotonin syndrome in a patient receiving clomipramine after clozapine was withdrawn from the treatment regimen .
+result: extract = Extract([Triple(disease("serotonin syndrome"), Rel("Adverse_effect"), drug("clomipramine"))])
+
+pred: [['serotonin syndrome', 'Adverse_effect', 'clomipramine']]
+trues: [['serotonin syndrome', 'Adverse_effect', 'clomipramine'], ['serotonin syndrome', 'Adverse_effect', 'clozapine']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7774480712166172, 0.655, 0.7109905020352781]
+text: CASES : Two postmenopausal women treated with tamoxifen and progestational agents for breast carcinoma developed uterine enlargement and intermittent spotting .
+result: extract = Extract([Triple(disease("uterine enlargement"), Rel("Adverse_effect"), drug("tamoxifen")), Triple(disease("intermittent spotting"), Rel("Adverse_effect"), drug("tamoxifen"))])
+
+pred: [['uterine enlargement', 'Adverse_effect', 'tamoxifen'], ['intermittent spotting', 'Adverse_effect', 'tamoxifen']]
+trues: [['intermittent spotting', 'Adverse_effect', 'tamoxifen'], ['uterine enlargement', 'Adverse_effect', 'tamoxifen']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7787610619469026, 0.6567164179104478, 0.7125506072874495]
+text: A case of acute cardiomyopathy and pericarditis associated with methylphenidate .
+result: extract = Extract([Triple(disease("acute cardiomyopathy"), Rel("Adverse_effect"), drug("methylphenidate")), Triple(disease("pericarditis"), Rel("Adverse_effect"), drug("methylphenidate"))])
+
+pred: [['acute cardiomyopathy', 'Adverse_effect', 'methylphenidate'], ['pericarditis', 'Adverse_effect', 'methylphenidate']]
+trues: [['acute cardiomyopathy', 'Adverse_effect', 'methylphenidate'], ['pericarditis', 'Adverse_effect', 'methylphenidate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7800586510263929, 0.6584158415841584, 0.7140939597315437]
+text: Early overanticoagulation with acenocoumarol due to a genetic polymorphism of cytochrome P450 CYP2C9 .
+result: extract = Extract([Triple(disease("Early overanticoagulation"), Rel("Adverse_effect"), drug("acenocoumarol"))])
+
+pred: [['Early overanticoagulation', 'Adverse_effect', 'acenocoumarol']]
+trues: [['overanticoagulation', 'Adverse_effect', 'acenocoumarol']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7777777777777778, 0.6567901234567901, 0.712182061579652]
+text: Kaposi 's sarcoma in a patient treated with imatinib mesylate for chronic myeloid leukemia .
+result: extract = Extract([Triple(disease("Kaposi 's sarcoma"), Rel("Adverse_effect"), drug("imatinib mesylate"))])
+
+pred: [["Kaposi 's sarcoma", 'Adverse_effect', 'imatinib mesylate']]
+trues: [["Kaposi 's sarcoma", 'Adverse_effect', 'imatinib mesylate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7784256559766763, 0.6576354679802956, 0.7129506008010682]
+text: Life - threatening alterations in heart rate after the use of adenosine in atrial flutter .
+result: extract = Extract([Triple(disease("Life - threatening alterations in heart rate"), Rel("Adverse_effect"), drug("adenosine"))])
+
+pred: [['Life - threatening alterations in heart rate', 'Adverse_effect', 'adenosine']]
+trues: [['alterations in heart rate', 'Adverse_effect', 'adenosine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7761627906976745, 0.6560196560196561, 0.7110519307589881]
+text: Bowel perforation associated with intraperitoneal chromic phosphate instillation .
+result: extract = Extract([Triple(disease("Bowel perforation"), Rel("Adverse_effect"), drug("chromic phosphate"))])
+
+pred: [['Bowel perforation', 'Adverse_effect', 'chromic phosphate']]
+trues: [['Bowel perforation', 'Adverse_effect', 'chromic phosphate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7768115942028986, 0.6568627450980392, 0.7118193891102257]
+text: Asthma and urticaria during disodium cromoglycate treatment .
+result: extract = Extract([Triple(disease("Asthma"), Rel("Adverse_effect"), drug("disodium cromoglycate")), Triple(disease("urticaria"), Rel("Adverse_effect"), drug("disodium cromoglycate"))])
+
+pred: [['Asthma', 'Adverse_effect', 'disodium cromoglycate'], ['urticaria', 'Adverse_effect', 'disodium cromoglycate']]
+trues: [['Asthma', 'Adverse_effect', 'disodium cromoglycate'], ['urticaria', 'Adverse_effect', 'disodium cromoglycate']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7780979827089337, 0.6585365853658537, 0.7133421400264202]
+text: A boy with chronic neutropenia and recurrent inflammatory skin lesions developed multiple erythematous nodules following administration of G - CSF .
+result: extract = Extract([Triple(disease("multiple erythematous nodules"), Rel("Adverse_effect"), drug("G - CSF"))])
+
+pred: [['multiple erythematous nodules', 'Adverse_effect', 'G - CSF']]
+trues: [['multiple erythematous nodules', 'Adverse_effect', 'G - CSF']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7787356321839081, 0.6593673965936739, 0.7140974967061924]
+text: Even after a strict warning , he took another quinine tablet that evening , which triggered his fifth episode of severe thrombocytopenia , and confirmed the etiology of quinine - induced thrombocytopenia .
+result: extract = Extract([Triple(disease("severe thrombocytopenia"), Rel("Adverse_effect"), drug("quinine")), Triple(disease("severe thrombocytopenia"), Rel("Adverse_effect"), drug("quinine"))])
+
+pred: [['severe thrombocytopenia', 'Adverse_effect', 'quinine'], ['severe thrombocytopenia', 'Adverse_effect', 'quinine']]
+trues: [['thrombocytopenia', 'Adverse_effect', 'quinine'], ['thrombocytopenia', 'Adverse_effect', 'quinine'], ['thrombocytopenia', 'Adverse_effect', 'quinine']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7765042979942693, 0.6577669902912622, 0.7122207621550591]
+text: Infant twins sustained severe circumoral and pharyngeal burns from a concentrated solution of benzalkonium ( Zephiran ) chloride prescribed for treatment of candidiasis .
+result: extract = Extract([Triple(disease("severe circumoral and pharyngeal burns"), Rel("Adverse_effect"), drug("benzalkonium ( Zephiran ) chloride"))])
+
+pred: [['severe circumoral and pharyngeal burns', 'Adverse_effect', 'benzalkonium ( Zephiran ) chloride']]
+trues: [['circumoral and pharyngeal burns', 'Adverse_effect', 'benzalkonium'], ['circumoral and pharyngeal burns', 'Adverse_effect', 'Zephiran']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7742857142857142, 0.6545893719806763, 0.7094240837696335]
+text: Neurological side effects in two patients receiving gold injections for rheumatoid arthritis .
+result: extract = Extract([Triple(disease("Neurological side effects"), Rel("Adverse_effect"), drug("gold"))])
+
+pred: [['Neurological side effects', 'Adverse_effect', 'gold']]
+trues: [['Neurological side effects', 'Adverse_effect', 'gold']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7749287749287749, 0.655421686746988, 0.710182767624021]
+text: The allopurinol hypersensitivity syndrome is a rare adverse drug reaction .
+result: extract = Extract([Triple(disease("allopurinol hypersensitivity syndrome"), Rel("Adverse_effect"), drug("allopurinol"))])
+
+pred: [['allopurinol hypersensitivity syndrome', 'Adverse_effect', 'allopurinol']]
+trues: [['hypersensitivity syndrome', 'Adverse_effect', 'allopurinol']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7727272727272727, 0.6538461538461539, 0.7083333333333333]
+text: This regimen could prove useful for other patients who develop hypersensitivity reactions to carboplatin and allow therapy to continue .
+result: extract = Extract([Triple(disease("hypersensitivity reactions"), Rel("Adverse_effect"), drug("carboplatin"))])
+
+pred: [['hypersensitivity reactions', 'Adverse_effect', 'carboplatin']]
+trues: [['hypersensitivity', 'Adverse_effect', 'carboplatin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7705382436260623, 0.6522781774580336, 0.7064935064935065]
+text: She had been on Copaxone 20 mg / day treatment for 2 years when she first exhibited gastrointestinal symptoms .
+result: extract = Extract([Triple(disease("gastrointestinal symptoms"), Rel("Adverse_effect"), drug("Copaxone"))])
+
+pred: [['gastrointestinal symptoms', 'Adverse_effect', 'Copaxone']]
+trues: [['gastrointestinal symptoms', 'Adverse_effect', 'Copaxone']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7711864406779662, 0.65311004784689, 0.7072538860103627]
+text: Rifampicin - induced adrenal insufficiency in the acquired immunodeficiency syndrome : difficulties in diagnosis and treatment .
+result: extract = Extract([Triple(disease("adrenal insufficiency"), Rel("Adverse_effect"), drug("Rifampicin"))])
+
+pred: [['adrenal insufficiency', 'Adverse_effect', 'Rifampicin']]
+trues: [['adrenal insufficiency', 'Adverse_effect', 'Rifampicin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7718309859154929, 0.6539379474940334, 0.7080103359173127]
+text: We have reported six cases of metoclopramide - induced parkinsonism seen in consultation over a two - year period .
+result: extract = Extract([Triple(disease("parkinsonism"), Rel("Adverse_effect"), drug("metoclopramide"))])
+
+pred: [['parkinsonism', 'Adverse_effect', 'metoclopramide']]
+trues: [['parkinsonism', 'Adverse_effect', 'metoclopramide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7724719101123596, 0.6547619047619048, 0.7087628865979383]
+text: We report three cases of patients who developed leukopenia during olanzapine treatment .
+result: extract = Extract([Triple(disease("leukopenia"), Rel("Adverse_effect"), drug("olanzapine"))])
+
+pred: [['leukopenia', 'Adverse_effect', 'olanzapine']]
+trues: [['leukopenia', 'Adverse_effect', 'olanzapine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.773109243697479, 0.6555819477434679, 0.7095115681233933]
+text: We report here a 26-year - old female with diffuse large B - cell lymphoma who died of severe pulmonary fibrosis 81 days after the administration of high - dose BCNU ( 600 mg / m2 ) .
+result: extract = Extract([Triple(disease("severe pulmonary fibrosis"), Rel("Adverse_effect"), drug("BCNU"))])
+
+pred: [['severe pulmonary fibrosis', 'Adverse_effect', 'BCNU']]
+trues: [['severe pulmonary fibrosis', 'Adverse_effect', 'BCNU']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7737430167597765, 0.6563981042654028, 0.7102564102564102]
+text: Severe rhabdomyolysis following massive ingestion of oolong tea : caffeine intoxication with coexisting hyponatremia .
+result: extract = Extract([Triple(disease("Severe rhabdomyolysis"), Rel("Adverse_effect"), drug("oolong tea"))])
+
+pred: [['Severe rhabdomyolysis', 'Adverse_effect', 'oolong tea']]
+trues: [['caffeine intoxication', 'Adverse_effect', 'caffeine'], ['caffeine intoxication', 'Adverse_effect', 'oolong tea'], ['rhabdomyolysis', 'Adverse_effect', 'caffeine'], ['rhabdomyolysis', 'Adverse_effect', 'oolong tea']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7715877437325905, 0.6502347417840375, 0.7057324840764332]
+text: Progressive pulmonary fibrosis complicating cyclophosphamide therapy .
+result: extract = Extract([Triple(disease("Progressive pulmonary fibrosis"), Rel("Adverse_effect"), drug("cyclophosphamide"))])
+
+pred: [['Progressive pulmonary fibrosis', 'Adverse_effect', 'cyclophosphamide']]
+trues: [['Progressive pulmonary fibrosis', 'Adverse_effect', 'cyclophosphamide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7722222222222223, 0.6510538641686182, 0.7064803049555273]
+text: Pulmonary infiltrates and skin pigmentation associated with sulfasalazine .
+result: extract = Extract([Triple(disease("Pulmonary infiltrates"), Rel("Adverse_effect"), drug("sulfasalazine")), Triple(disease("skin pigmentation"), Rel("Adverse_effect"), drug("sulfasalazine"))])
+
+pred: [['Pulmonary infiltrates', 'Adverse_effect', 'sulfasalazine'], ['skin pigmentation', 'Adverse_effect', 'sulfasalazine']]
+trues: [['Pulmonary infiltrates', 'Adverse_effect', 'sulfasalazine'], ['skin pigmentation', 'Adverse_effect', 'sulfasalazine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7734806629834254, 0.6526806526806527, 0.7079646017699116]
+text: High - dose intravenous mannitol infusion in various clinical settings may result in acute renal failure ( ARF ) .
+result: extract = Extract([Triple(disease("acute renal failure ( ARF )"), Rel("Adverse_effect"), drug("mannitol"))])
+
+pred: [['acute renal failure ( ARF )', 'Adverse_effect', 'mannitol']]
+trues: [['acute renal failure', 'Adverse_effect', 'mannitol'], ['ARF', 'Adverse_effect', 'mannitol']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7713498622589532, 0.6496519721577726, 0.7052896725440806]
+text: Phenytoin toxicity : an easily missed cause of cerebellar syndrome .
+result: extract = Extract([Triple(disease("cerebellar syndrome"), Rel("Adverse_effect"), drug("Phenytoin"))])
+
+pred: [['cerebellar syndrome', 'Adverse_effect', 'Phenytoin']]
+trues: [['cerebellar syndrome', 'Adverse_effect', 'Phenytoin']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.771978021978022, 0.6504629629629629, 0.7060301507537688]
+text: Sulindac ( Clinoril ) , a nonsteroidal anti - inflammatory agent , has few reported neurologic toxic effects , all of which have been associated with systemic disease .
+result: extract = Extract([Triple(disease("neurologic toxic effects"), Rel("Adverse_effect"), drug("Sulindac"))])
+
+pred: [['neurologic toxic effects', 'Adverse_effect', 'Sulindac']]
+trues: [['neurologic toxic effects', 'Adverse_effect', 'Clinoril'], ['neurologic toxic effects', 'Adverse_effect', 'Sulindac']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7726027397260274, 0.6497695852534562, 0.7058823529411765]
+text: Prazosin - induced first - dose phenomenon possibly associated with hemorrhagic stroke : a report of three cases .
+result: extract = Extract([Triple(disease("first - dose phenomenon"), Rel("Adverse_effect"), drug("Prazosin"))])
+
+pred: [['first - dose phenomenon', 'Adverse_effect', 'Prazosin']]
+trues: [['hemorrhagic stroke', 'Adverse_effect', 'Prazosin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7704918032786885, 0.6482758620689655, 0.7041198501872659]
+text: The case demonstrates that hypersensitivity reaction to pranlukast and resultant ATIN is possible , and that periodic urine testing in patients receiving pranlukast should be considered .
+result: extract = Extract([Triple(disease("ATIN"), Rel("Adverse_effect"), drug("pranlukast"))])
+
+pred: [['ATIN', 'Adverse_effect', 'pranlukast']]
+trues: [['ATIN', 'Adverse_effect', 'pranlukast'], ['ATIN', 'Adverse_effect', 'pranlukast'], ['hypersensitivity reaction', 'Adverse_effect', 'pranlukast'], ['hypersensitivity reaction', 'Adverse_effect', 'pranlukast']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.771117166212534, 0.6475972540045767, 0.7039800995024875]
+text: L - asparaginase - induced pancreatitis is an uncommon but potential lethal complication of the treatment of leukemia .
+result: extract = Extract([Triple(disease("pancreatitis"), Rel("Adverse_effect"), drug("L - asparaginase"))])
+
+pred: [['pancreatitis', 'Adverse_effect', 'L - asparaginase']]
+trues: [['lethal complication', 'Adverse_effect', 'L - asparaginase'], ['pancreatitis', 'Adverse_effect', 'L - asparaginase']]
+metrics_sample: [1.0, 0.5, 0.6666666666666666]
+metrics_current: [0.7717391304347826, 0.6469248291571754, 0.7038413878562578]
+text: Disopyramide - induced heart block .
+result: extract = Extract([Triple(disease("heart block"), Rel("Adverse_effect"), drug("Disopyramide"))])
+
+pred: [['heart block', 'Adverse_effect', 'Disopyramide']]
+trues: [['heart block', 'Adverse_effect', 'Disopyramide']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.7723577235772358, 0.6477272727272727, 0.7045735475896169]
+text: Two 65-year - old white men with coronary heart disease , given niacin therapy for dyslipidemia for 5 months , developed intense dental and gingival pain that was associated with increases in dose and that was relieved with discontinuance of niacin treatment .
+result: extract = Extract([Triple(disease("dental and gingival pain"), Rel("Adverse_effect"), drug("niacin")), Triple(disease("dental and gingival pain"), Rel("Adverse_effect"), drug("niacin"))])
+
+pred: [['dental and gingival pain', 'Adverse_effect', 'niacin'], ['dental and gingival pain', 'Adverse_effect', 'niacin']]
+trues: [['intense dental and gingival pain', 'Adverse_effect', 'niacin'], ['intense dental and gingival pain', 'Adverse_effect', 'niacin']]
+metrics_sample: [0.0, 0.0, 0]
+metrics_current: [0.7702702702702703, 0.6462585034013606, 0.7028360049321826]
+text: The other patient developed transient intraoperative hypertension immediately after inadvertent submucosal injection of concentrated epinephrine .
+result: extract = Extract([Triple(disease("transient intraoperative hypertension"), Rel("Adverse_effect"), drug("epinephrine"))])
+
+pred: [['transient intraoperative hypertension', 'Adverse_effect', 'epinephrine']]
+trues: [['transient intraoperative hypertension', 'Adverse_effect', 'epinephrine']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.77088948787062, 0.6470588235294118, 0.7035670356703567]
