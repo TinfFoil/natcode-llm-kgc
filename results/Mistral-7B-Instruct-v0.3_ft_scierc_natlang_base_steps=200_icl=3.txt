@@ -1,0 +1,18 @@
+text: One remarkable feature of this model is that it has allowed us to derive an efficient algorithm based on powerful statistical methods for estimating the Fujisaki-model parameters from raw F0 contours .
+result: triple_list: [["statistical methods", "Used_for", "algorithm"]]
+pred: [('statistical methods', 'Used_for', 'algorithm')]
+trues: [['remarkable feature', 'Feature_of', 'model'], ['algorithm', 'Used_for', 'Fujisaki-model parameters'], ['statistical methods', 'Used_for', 'algorithm'], ['raw F0 contours', 'Used_for', 'Fujisaki-model parameters']]
+metrics_sample: [1.0, 0.25, 0.4]
+metrics_current: [1.0, 0.25, 0.4]
+text: A demonstration ( in UNIX ) for Applied Natural Language Processing emphasizes components put to novel technical uses in intelligent computer-assisted morphological analysis ( ICALL ) , including disambiguated morphological analysis and lemmatized indexing for an aligned bilingual corpus of word examples .
+result: triple_list: [["demonstration ( in UNIX )", "Used_for", "Applied Natural Language Processing"], ["components", "Part_of", "demonstration ( in UNIX )"], ["technical uses", "Used_for", "components"], ["technical uses", "Used_for", "intelligent computer-assisted morphological analysis ( ICALL )"], ["intelligent computer-assisted morphological analysis ( ICALL )", "Used_for", "disambiguated morphological analysis"], ["intelligent computer-assisted morphological analysis ( ICALL )", "Used_for", "lemmatized indexing"], ["disambiguated morphological analysis", "Conjunction", "lemmatized indexing"], ["aligned bilingual corpus of word examples", "Used_for", "lemmatized indexing"]]
+pred: [('demonstration ( in UNIX )', 'Used_for', 'Applied Natural Language Processing'), ('components', 'Part_of', 'demonstration ( in UNIX )'), ('technical uses', 'Used_for', 'components'), ('technical uses', 'Used_for', 'intelligent computer-assisted morphological analysis ( ICALL )'), ('intelligent computer-assisted morphological analysis ( ICALL )', 'Used_for', 'disambiguated morphological analysis'), ('intelligent computer-assisted morphological analysis ( ICALL )', 'Used_for', 'lemmatized indexing'), ('disambiguated morphological analysis', 'Conjunction', 'lemmatized indexing'), ('aligned bilingual corpus of word examples', 'Used_for', 'lemmatized indexing')]
+trues: [['components', 'Used_for', 'intelligent computer-assisted morphological analysis ( ICALL )'], ['disambiguated morphological analysis', 'Hyponym_of', 'components'], ['disambiguated morphological analysis', 'Conjunction', 'lemmatized indexing'], ['disambiguated morphological analysis', 'Used_for', 'aligned bilingual corpus'], ['lemmatized indexing', 'Hyponym_of', 'components'], ['lemmatized indexing', 'Used_for', 'aligned bilingual corpus']]
+metrics_sample: [0.125, 0.16666666666666666, 0.14285714285714288]
+metrics_current: [0.2222222222222222, 0.2, 0.2105263157894737]
+text: While previous approaches relied on geometric , appearance , or correlation-based information for establishing correspondences between static cameras , they each have well-known limitations and are not extendable to wide-area settings with PTZ cameras .
+result: triple_list: [["geometric , appearance , or correlation-based information", "Used_for", "approaches"]]
+pred: [('geometric , appearance , or correlation-based information', 'Used_for', 'approaches')]
+trues: [['geometric , appearance , or correlation-based information', 'Used_for', 'approaches']]
+metrics_sample: [1.0, 1.0, 1.0]
+metrics_current: [0.3, 0.2727272727272727, 0.28571428571428564]

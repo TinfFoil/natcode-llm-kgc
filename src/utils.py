@@ -12,6 +12,10 @@ import torch
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, ListedColormap, Normalize
 import numpy as np
+from mpl_toolkits.axes_grid1 import make_axes_locatable
+from transformers.trainer_callback import TrainerControl, TrainerState, TrainerCallback
+from transformers import TrainingArguments
+import random
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -254,17 +258,15 @@ class Runner:
                 prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.pythonize_triples(triple_list=triples)}\n\n"""
         return prompt
 
-    def calculate_micro_f1(self, trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
+    def calculate_strict_micro_f1(self, trues: List[List[List[str]]], preds: List[List[List[str]]]) -> List[float]:
         TP = 0
         FP = 0
         FN = 0
         
         for true_triples, pred_triples in zip(trues, preds):
-            trues_merged = ['-'.join(trues) for trues in true_triples]
-            preds_merged = ['-'.join(preds) for preds in pred_triples]
+            trues_merged = ['|||'.join(trues) for trues in true_triples]
+            preds_merged = ['|||'.join(preds) for preds in pred_triples]
             true_set = set(trues_merged)
-            # if len(true_set) != len(trues_merged):
-            #     raise AssertionError('List and set lengths are different')
             pred_set = set(preds_merged)
             
             TP += len(true_set & pred_set)
@@ -313,6 +315,8 @@ class Runner:
         
         text_test = df_test['text'].to_list()
         triple_list_test = df_test['triple_list'].to_list()
+        all_rel_types = set([el[1] for list in triple_list_test for el in list])
+        rel_type_preds_trues = {k: {'trues': [], 'preds': []} for k in all_rel_types}
 
         pbar = tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}')
         
@@ -321,14 +325,17 @@ class Runner:
         for text, triple_list in pbar:
 
             result = self.run_model(text, icl_prompt)
-
+            
             trues.append(triple_list)
             pred = self.extract_triples(result)
             preds.append(pred)
+            for el in triple_list:
+                rel_type_preds_trues[el[1]]['preds'].append(pred)
+                rel_type_preds_trues[el[1]]['trues'].append(triple_list)
             
             if self.verbose_test:
-                metrics_sample = self.calculate_micro_f1([triple_list], [pred])
-                metrics_current = self.calculate_micro_f1(trues, preds)
+                metrics_sample = self.calculate_strict_micro_f1([triple_list], [pred])
+                metrics_current = self.calculate_strict_micro_f1(trues, preds)
                 pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
                 output_texts = '\n' + f'text: {text}' + '\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}'
                 output_metrics = '\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}'
@@ -340,8 +347,18 @@ class Runner:
             self.verbose_output = self.verbose_output.lstrip()
             with open(self.verbose_output_path, 'w', encoding='utf8') as f:
                 f.write(self.verbose_output)
-        precision, recall, f1_score = self.calculate_micro_f1(trues, preds)
-        return precision, recall, f1_score
+        precision, recall, f1_score = self.calculate_strict_micro_f1(trues, preds)
+        
+        rel_type_metrics = {k: {}  for k in all_rel_types}
+
+        for k, v in rel_type_preds_trues.items():
+            rel_type_metrics[k]['prec'], rel_type_metrics[k]['rec'], rel_type_metrics[k]['f1'] = self.calculate_strict_micro_f1(v['trues'], v['preds'])
+
+        return {'prec': precision,
+                'rec': recall,
+                'f1': f1_score,
+                'rel_type_metrics': rel_type_metrics
+                  }
 
     def make_samples(self, tokenizer, df: pd.DataFrame, n_icl_samples: int) -> List[str]:
         text_list = []
@@ -383,12 +400,7 @@ class Runner:
             prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
         
         inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-        # with torch.inference_mode():
-        #     outputs = model(**inputs,
-        #                     output_attentions=True,
-        #                     output_hidden_states=True,
-        #                     )
-        # output_ids = torch.argmax(outputs.logits, dim = -1).squeeze()
+
         outputs = model.generate(inputs.input_ids,
                                 num_return_sequences=1,
                                 eos_token_id=tokenizer.eos_token_id,
@@ -405,9 +417,6 @@ class Runner:
 
         input_len = inputs.input_ids.shape[1]
         
-        full_result = tokenizer.decode(outputs.sequences.squeeze(),#[input_len:],
-                                            skip_special_tokens=True
-                                            )
         output_no_prompt = outputs.sequences.squeeze()[input_len:]
 
         result = tokenizer.decode(output_no_prompt,
@@ -416,44 +425,13 @@ class Runner:
         true = sample['triple_list']        
         pred = self.extract_triples(result)
         print('pred', result)
-        stats = self.calculate_micro_f1([true], [pred])
+        stats = self.calculate_strict_micro_f1([true], [pred])
         print('results:', stats)
         print('gt', true)
 
         return attn_list, outputs.sequences.squeeze(), stats
 
-
-    def heatmap(self, attention_scores, token_ids):
-        num_tokens = attention_scores.shape[0]
-        token_ids = token_ids[:num_tokens]
-        labels = [self.tokenizer.decode(token) for token in token_ids]
-        # Reshape the values array into a 2D array (1 row)
-        attention_scores_2d = attention_scores.reshape(1, -1)
-        
-        fig, ax = plt.subplots(figsize=(480, 2))
-        
-        # Create the heatmap
-        im = ax.imshow(attention_scores_2d.float().cpu(), cmap='viridis', aspect='auto')
-        
-        # Set the x-axis ticks and labels
-        ax.set_xticks(np.arange(len(labels)))
-        ax.set_xticklabels(labels, rotation=45, ha='right')
-        
-        # Remove y-axis ticks
-        ax.set_yticks([])
-        
-        # Add a colorbar
-        cbar = ax.figure.colorbar(im, ax=ax)
-        cbar.ax.set_ylabel('Value', rotation=-90, va="bottom")
-        
-        # Add value annotations on each cell
-        for i, value in enumerate(attention_scores):
-            ax.text(i, 0, round(float(value), 2), ha='center', va='center', color='white')
-        
-        plt.tight_layout()
-        plt.savefig('./paper/attn.pdf', format='pdf', bbox_inches='tight')
-
-    def heatmap2d(self, attention_scores, token_ids_full, idx, width=20, height=None, cmap='viridis', norm='log', high_threshold=0.999, savename = ''):
+    def heatmap2d(self, attention_scores, token_ids_full, idx, width=20, height=None, cmap='viridis', norm='log', high_threshold=0.999, savename=''):
         attention_scores = attention_scores.float().cpu().numpy()
         num_tokens = attention_scores.shape[0]
         next_token = token_ids_full[:num_tokens][-1]
@@ -510,11 +488,20 @@ class Runner:
                     wrapped_text = wrap_text(text)
                     ax.text(j, i, wrapped_text, ha='center', va='center', fontsize=20, color='white', fontweight='bold')
         
-        plt.title(heatmap_token)
+        # plt.title(heatmap_token)
 
         # Remove axis ticks
         ax.set_xticks([])
         ax.set_yticks([])
+        
+        divider = make_axes_locatable(ax)
+        cax = divider.append_axes("right", size="5%", pad=0.05)
+
+        plt.colorbar(im, cax=cax, aspect=20)
+        
+        # Add text for high values
+        # plt.text(1.02, 0.5, 'High\nAttention', transform=ax.transAxes, 
+        #         va='center', ha='left', bbox=dict(facecolor='black', edgecolor='none', alpha=0.8, pad=5))
         
         plt.tight_layout()
         save_dir = f"./paper/attn/{savename}"
@@ -535,3 +522,40 @@ def save_json(info, json_path):
     with open(json_path, 'w', encoding='utf8') as f:
         json.dump(data, f, ensure_ascii = False)
 
+class OutputPrinterCallback(TrainerCallback):
+    def __init__(self, tokenizer, dataset, print_interval=10):
+        self.tokenizer = tokenizer
+        self.dataset = dataset
+        self.print_interval = print_interval
+
+    def on_step_end(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, model, **kwargs):
+        if state.global_step % self.print_interval == 0:
+            # Select a random sample from the dataset
+            sample = random.choice(self.dataset)
+            inputs = self.tokenizer(sample['text'], return_tensors='pt', truncation=True, padding=True, max_length=512)
+            inputs = {k: v.to(model.device) for k, v in inputs.items()}
+
+            # Perform a forward pass instead of generation
+            with torch.no_grad():
+                outputs = model(**inputs)
+            
+            # Get the most likely token at each step
+            predicted_token_ids = torch.argmax(outputs.logits, dim=-1)
+            
+            # Decode the predicted tokens
+            generated_text = self.tokenizer.decode(predicted_token_ids[0], skip_special_tokens=True)
+            
+            print(f"\nStep {state.global_step} - Sample Output:")
+            print(f"Input: {sample['text'][:100]}...")  # Print first 100 characters of input
+            print(f"Model output: {generated_text}\n")
+
+        return control
+
+class PrinterCallback(TrainerCallback):
+    def on_log(self, args, state, control, logs=None, **kwargs):
+        if logs is not None:
+            log_message = {key: logs[key] for key in ['loss', 'grad_norm', 'learning_rate', 'epoch'] if key in logs}
+            logger.info(log_message)
+    def on_step_begin(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
+        logger.info(state.global_step)
+        return super().on_step_begin(args, state, control, **kwargs)

@@ -1,4 +1,3 @@
-from transformers.trainer_callback import TrainerControl, TrainerState
 from unsloth import FastLanguageModel
 import torch
 import os
@@ -8,13 +7,12 @@ from datasets import Dataset
 from tqdm.auto import tqdm
 from utils import Runner
 from trl import SFTTrainer
-from transformers import TrainingArguments, TrainerCallback
+from transformers import TrainingArguments
 import argparse
 import logging
 import numpy as np
 from datetime import datetime
 from utils import *
-import random
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -42,26 +40,26 @@ def main(args):
     print(f"Language: {'natlang' if natlang else 'code'}")
 
     model, tokenizer = FastLanguageModel.from_pretrained(
-        model_name = model_name, # Choose ANY! eg teknium/OpenHermes-2.5-Mistral-7B
+        model_name = model_name,
         max_seq_length = max_seq_length,
         dtype = dtype,
         load_in_4bit = load_in_4bit
-        # token = "hf_...", # use one if using gated models like meta-llama/Llama-2-7b-hf
     )
 
     model = FastLanguageModel.get_peft_model(
         model,
         r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-        target_modules = ["q_proj", "k_proj", "v_proj", "o_proj",
-                        "gate_proj", "up_proj", "down_proj",],
+        target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
         lora_alpha = 16,
         lora_dropout = 0, # Supports any, but = 0 is optimized
         bias = "none",    # Supports any, but = "none" is optimized
         use_gradient_checkpointing = "unsloth", # 4x longer contexts auto supported!
         random_state = 3407,
-        use_rslora = False,  # We support rank stabilized LoRA
+        use_rslora = False,  # TODO: redo with rslora
         loftq_config = None, # And LoftQ
     )
+
+    print(model, file=open(f"./{args.model_name.split('/')[-1]}_arch.txt", 'w'))
 
     entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:
@@ -101,44 +99,6 @@ def main(args):
         dataset_val = Dataset.from_pandas(df_val.rename(columns={0: "text"}), split="val")
         eval_strategy = 'steps'
         load_best_model_at_end=True
-
-    class OutputPrinterCallback(TrainerCallback):
-        def __init__(self, tokenizer, dataset, print_interval=10):
-            self.tokenizer = tokenizer
-            self.dataset = dataset
-            self.print_interval = print_interval
-
-        def on_step_end(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, model, **kwargs):
-            if state.global_step % self.print_interval == 0:
-                # Select a random sample from the dataset
-                sample = random.choice(self.dataset)
-                inputs = self.tokenizer(sample['text'], return_tensors='pt', truncation=True, padding=True, max_length=512)
-                inputs = {k: v.to(model.device) for k, v in inputs.items()}
-
-                # Perform a forward pass instead of generation
-                with torch.no_grad():
-                    outputs = model(**inputs)
-                
-                # Get the most likely token at each step
-                predicted_token_ids = torch.argmax(outputs.logits, dim=-1)
-                
-                # Decode the predicted tokens
-                generated_text = self.tokenizer.decode(predicted_token_ids[0], skip_special_tokens=True)
-                
-                print(f"\nStep {state.global_step} - Sample Output:")
-                print(f"Input: {sample['text'][:100]}...")  # Print first 100 characters of input
-                print(f"Model output: {generated_text}\n")
-
-            return control
-
-    class PrinterCallback(TrainerCallback):
-        def on_log(self, args, state, control, logs=None, **kwargs):
-            if logs is not None:
-                log_message = {key: logs[key] for key in ['loss', 'grad_norm', 'learning_rate', 'epoch'] if key in logs}
-                logger.info(log_message)
-        def on_step_begin(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
-            logger.info(state.global_step)
-            return super().on_step_begin(args, state, control, **kwargs)
     
     def compute_metrics(eval_preds):
         logits, labels = eval_preds
@@ -154,7 +114,7 @@ def main(args):
         predicted_triples = [runner.extract_triples(pred) for pred in predictions]
         true_triples = [runner.extract_triples(label) for label in labels_decoded]
         
-        precision, recall, f1_score = runner.calculate_micro_f1(true_triples, predicted_triples)
+        precision, recall, f1_score = runner.calculate_strict_micro_f1(true_triples, predicted_triples)
         
         return {"precision": precision, "recall": recall, "f1": f1_score}
 
@@ -285,7 +245,7 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     args = parser.parse_args()
 
-    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
+    args.model_name = "unsloth/Meta-Llama-3.1-8B"
     # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
     
     # args.model_name = "mistralai/Mistral-7B-v0.3"

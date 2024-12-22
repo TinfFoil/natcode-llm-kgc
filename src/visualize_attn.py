@@ -58,14 +58,14 @@ def main(args):
         test_data = json.load(f)
     
     for i, line in enumerate(test_data):
-        if len(line['triple_list']) == 1 and i == 15:
+        if len(line['triple_list']) == 1 and i == 52:
             attn_list, seq, stats = runner.get_attn(model, tokenizer, line, icl_prompt,)
-            # if stats[-1] == 1:
-            #     break
+            break
+        
     savename = f"{args.model.split('/')[-1]}_test{i}"
-    # for attn in attn_list:
-    # for j, attn in enumerate(attn_list):
-    #     runner.heatmap2d(attn, seq, j, savename = savename)
+    for attn in attn_list:
+        for j, attn in enumerate(attn_list):
+            runner.heatmap2d(attn, seq, j, savename = savename)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A sample argparse program")
@@ -84,14 +84,14 @@ if __name__ == "__main__":
     # parser.add_argument("--bfloat16", action="store_true", help="Whether to use bfloat16 precision for model weights")
     args = parser.parse_args()
 
-    # args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=3"
-    args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
-    args.dataset = "ade"
-    args.chat = 1
-    args.rationale = 0
-    args.natlang = 0
-    args.verbose_test = 1
-    args.fine_tuned = 1
+    # args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
+    # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
+    # args.dataset = "scierc"
+    # args.chat = 0
+    # args.rationale = 0
+    # args.natlang = 1
+    # args.verbose_test = 1
+    # args.fine_tuned = 1
     # args.bfloat16 = 1
 
     main(args)
