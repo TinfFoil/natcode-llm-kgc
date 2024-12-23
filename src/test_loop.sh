@@ -1,12 +1,13 @@
 #!/bin/bash
 #SBATCH -J test_kgc
-#SBATCH -p local
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:1
-#SBATCH --time=72:00:00
+#SBATCH --gres=gpu:h100
+#SBATCH --time=24:00:00
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
+
+nvidia-smi
 
 declare -A model_list=(
     # non fine-tuned models
@@ -70,10 +71,8 @@ n_icl_samples=3
 command=$1
 if [[ $command =~ --test_split[[:space:]]+([[:alnum:]_]+) ]]; then
     test_split=${BASH_REMATCH[1]}
-    # echo "User-set test split: $test_split"
 else
     test_split='test'
-    # echo "Default test split: $test_split"
 fi
 
 test_split_flag="--test_split ${test_split}"
@@ -83,7 +82,6 @@ for rationale in "${rationale_toggle[@]}"; do
         for model in "${!model_list[@]}"; do
             is_chat_model=${model_list[$model]}
             
-            # Check if the model is fine-tuned or not
             if [[ $model == ./models/* ]]; then
                 is_fine_tuned=true
                 fine_tuned_flag='--fine_tuned'
@@ -93,6 +91,8 @@ for rationale in "${rationale_toggle[@]}"; do
                 fine_tuned_flag=''
                 model_type_dir='base'
             fi
+
+            echo "Fine-tuned model: $is_fine_tuned"
 
             for dataset in "${dataset_list[@]}"; do
                 if $natlang; then
@@ -111,7 +111,6 @@ for rationale in "${rationale_toggle[@]}"; do
                     rationale_flag=""
                 fi
                 
-                # Construct the model name
                 if $is_fine_tuned; then
                     model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
                     results_name=$model_name
@@ -120,28 +119,34 @@ for rationale in "${rationale_toggle[@]}"; do
                     results_name="${model}_${dataset}_${natlang_suffix}_${rationale_suffix}"
                 fi
 
-                # Check if the model is a chat model
+                echo "Current model: $model_name"
+
                 if $is_chat_model; then
                     chat_flag="--chat"
                 else
                     chat_flag=""
                 fi
 
+                # Check if the directory exists
+                if [[ ! -d "$model_name" && "$is_fine_tuned" == "true" ]]; then
+                    log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Skipping model: $model_name - directory does not exist."
+                    echo "Skipping model: $model_name - directory does not exist."
+                    echo '*****************************'
+                    continue
+                fi
+
                 cmd="python ./src/test.py -m $model_name \
                         -d $dataset \
                         $chat_flag"
 
-                # Log information
-                log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix fine-tuned: $is_fine_tuned"
-                # echo "Testing this model: $model_name"
-                # results_name="${model_name}_${test_split}.json"
-                # echo "results_name: ${results_name}"
+                log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix, fine-tuned: $is_fine_tuned"
+                
                 if python ./src/check_results.py -r "$results_name" -d "./results/${test_split}/${model_type_dir}" --split ${test_split} -n 3; then
                     continue
                 fi
-
-                # Run the command
+                echo 'Running test command...'
                 $cmd $natlang_flag $rationale_flag $fine_tuned_flag $1
+                echo '*****************************'
             done
         done
     done

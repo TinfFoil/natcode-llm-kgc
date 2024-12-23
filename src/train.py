@@ -4,7 +4,6 @@ import os
 import pandas as pd
 import json
 from datasets import Dataset
-from tqdm.auto import tqdm
 from utils import Runner
 from trl import SFTTrainer
 from transformers import TrainingArguments
@@ -46,6 +45,12 @@ def main(args):
         load_in_4bit = load_in_4bit
     )
 
+    print(tokenizer.chat_template)
+
+    if tokenizer.chat_template is None:
+        tokenizer.chat_template = chat_template_dict[model.config.model_type]
+        print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
+
     model = FastLanguageModel.get_peft_model(
         model,
         r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
@@ -58,6 +63,9 @@ def main(args):
         use_rslora = False,  # TODO: redo with rslora
         loftq_config = None, # And LoftQ
     )
+
+
+    print(tokenizer.chat_template, file=open(f"./{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
 
     print(model, file=open(f"./{args.model_name.split('/')[-1]}_arch.txt", 'w'))
 

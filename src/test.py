@@ -1,10 +1,7 @@
 import os
 import json
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import re
-from typing import List
 import pandas as pd
-from tqdm.auto import tqdm
 from datetime import datetime
 from utils import *
 import argparse
@@ -115,14 +112,14 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_output_path", help="Dir in which to model outputs", default='./results')
     args = parser.parse_args()
 
-    args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
-    args.dataset = "scierc"
-    args.chat = 1
-    args.rationale = 0
-    args.natlang = 1
-    args.verbose_test = 1
-    args.fine_tuned = 1
-    args.bfloat16 = 1
-    args.results_dir = './results/trials'
+    # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
+    # args.dataset = "scierc"
+    # args.chat = 1
+    # args.rationale = 0
+    # args.natlang = 1
+    # args.verbose_test = 1
+    # args.fine_tuned = 1
+    # args.bfloat16 = 1
+    # args.results_dir = './results/trials'
 
     main(args)

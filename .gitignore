@@ -4,4 +4,9 @@ outputs/
 logging/
 .vscode/
 paper/
-results/old 
+results/old/
+venv-llmkgc/
+results_sub_1/
+scripts/
+model_info/
+chat_templates/
