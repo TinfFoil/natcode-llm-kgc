@@ -31,7 +31,7 @@ def main(args):
     test_split = f'{args.test_split}_triples.json'
     test_json = os.path.join(dataset_path, test_split)
 
-    results_dir_path = f"./results/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
+    results_dir_path = f"{args.results_dir}/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
@@ -74,9 +74,9 @@ def main(args):
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
     info = [{"Model": args.model_name,
-            "Precision": eval_dict['prec'],
-            "Recall": eval_dict['prec'],
-            "F1_Score": eval_dict['prec'],
+            "Precision": eval_dict['precision'],
+            "Recall": eval_dict['recall'],
+            "F1_Score": eval_dict['f1'],
             "rel_type_metrics": eval_dict['rel_type_metrics'],
             "n_icl_samples": args.n_icl_samples,
             "n_samples_test": n_samples_test,
@@ -108,18 +108,17 @@ if __name__ == "__main__":
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
     parser.add_argument("--fine_tuned", action="store_true", help="Whether a fine-tuned LLM is beind tested")
-    parser.add_argument("--results_dir", help="Dir in which to save results", default='./results/monitor')
-    parser.add_argument("--verbose_output_path", help="Dir in which to model outputs", default='./results')
+    parser.add_argument("--results_dir", help="Dir in which to save results", default='./results')
+    parser.add_argument("--verbose_output_path", help="Dir in which to model outputs", default='./results/monitor')
     args = parser.parse_args()
 
-    # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
-    # args.dataset = "scierc"
-    # args.chat = 1
-    # args.rationale = 0
-    # args.natlang = 1
-    # args.verbose_test = 1
-    # args.fine_tuned = 1
-    # args.bfloat16 = 1
-    # args.results_dir = './results/trials'
+    args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_base_steps=200_icl=3"
+    args.dataset = "ade"
+    args.chat = 1
+    args.rationale = 0
+    args.natlang = 1
+    args.verbose_test = 1
+    args.fine_tuned = 1
+    args.bfloat16 = 1
 
     main(args)

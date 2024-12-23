@@ -326,17 +326,20 @@ class Runner:
             result = self.run_model(text, icl_prompt)
             
             trues.append(triple_list)
-            pred = self.extract_triples(result)
-            preds.append(pred)
-            for el in triple_list:
-                rel_type_preds_trues[el[1]]['preds'].append(pred)
-                rel_type_preds_trues[el[1]]['trues'].append(triple_list)
-            
+            pred_list = self.extract_triples(result)
+            preds.append(pred_list)
+
+            for rel_type in all_rel_types:
+                trues_type = [true for true in triple_list if true[1] == rel_type]
+                preds_type = [pred for pred in pred_list if pred[1] == rel_type]
+                rel_type_preds_trues[rel_type]['trues'].append(trues_type)
+                rel_type_preds_trues[rel_type]['preds'].append(preds_type)
+
             if self.verbose_test:
-                metrics_sample = self.calculate_strict_micro_f1([triple_list], [pred])
+                metrics_sample = self.calculate_strict_micro_f1([triple_list], [pred_list])
                 metrics_current = self.calculate_strict_micro_f1(trues, preds)
                 pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
-                output_texts = '\n' + f'text: {text}' + '\n' + f'result: {result}' + '\n' + f'pred: {pred}' + '\n' + f'trues: {triple_list}'
+                output_texts = '\n' + f'text: {text}' + '\n' + f'result: {result}' + '\n' + f'pred: {pred_list}' + '\n' + f'trues: {triple_list}'
                 output_metrics = '\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}'
                 logger.info(output_texts)
                 logger.info(output_metrics)
@@ -351,10 +354,10 @@ class Runner:
         rel_type_metrics = {k: {}  for k in all_rel_types}
 
         for k, v in rel_type_preds_trues.items():
-            rel_type_metrics[k]['prec'], rel_type_metrics[k]['rec'], rel_type_metrics[k]['f1'] = self.calculate_strict_micro_f1(v['trues'], v['preds'])
+            rel_type_metrics[k]['precision'], rel_type_metrics[k]['recall'], rel_type_metrics[k]['f1'] = self.calculate_strict_micro_f1(v['trues'], v['preds'])
 
-        return {'prec': precision,
-                'rec': recall,
+        return {'precision': precision,
+                'recall': recall,
                 'f1': f1_score,
                 'rel_type_metrics': rel_type_metrics
                   }
