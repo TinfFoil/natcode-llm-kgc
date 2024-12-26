@@ -1,26 +1,25 @@
 #!/bin/bash
 #SBATCH -J train_kgc
-#SBATCH -p local
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:h100
 #SBATCH --time=72:00:00
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-# ["unsloth/Meta-Llama-3.1-8B"]=false
-# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+["unsloth/Meta-Llama-3.1-8B"]=false
+["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
-# ["mistralai/Mistral-7B-v0.3"]=false
+["mistralai/Mistral-7B-v0.3"]=false
 ["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
-# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
-# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
 
-# ["Qwen/CodeQwen1.5-7B"]=false
-# ["Qwen/CodeQwen1.5-7B-Chat"]=true
+["Qwen/CodeQwen1.5-7B"]=false
+["Qwen/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(

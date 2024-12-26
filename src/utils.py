@@ -279,88 +279,144 @@ class Runner:
         
         return [precision, recall, f1_score]
     
-    def run_model(self, text, icl_prompt):
-        if self.natlang:
-            prompt = self.make_natlang_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
-        else:
-            prompt = self.make_code_prompt(ICL_prompt=icl_prompt, sample_text=text, triples=[])
-        
-        inputs = self.tokenizer(prompt, return_tensors="pt").input_ids.to(self.model.device)
-        
-        t0 = time.time()
-        outputs = self.model.generate(inputs,
-                                num_return_sequences=1,
-                                eos_token_id=self.tokenizer.eos_token_id,
-                                pad_token_id=self.tokenizer.eos_token_id,
-                                max_new_tokens = 1000,
-                                )
-        t1 = time.time()
-        t_diff = t1 - t0
-        input_len = inputs.shape[1]
-        result = self.tokenizer.decode(outputs[0][input_len:],
-                                            skip_special_tokens=True
-                                            )
-        timeout = 30
-        if t_diff > timeout:
-            self.t_counter += 1
-            if self.t_counter > 2:
-                raise TimeoutError(f'Generation for {self.model_name} is taking longer than {timeout} seconds, exiting...')
-        else:
-            self.t_counter -= 1
-        return result
+    def run_model(self, texts, icl_prompt):
+        """
+        Unified method for both single-sample and batch generation.
+        If `texts` is a string, convert it to a list of length 1. 
+        Then handle batch generation in one go.
+        """
+        # 1) If the user passes a single text as a string, convert to list
+        if isinstance(texts, str):
+            texts = [texts]
 
-    def evaluate(self, df_test, icl_prompt):
+        # 2) Construct prompts
+        if self.natlang:
+            prompts = [self.make_natlang_prompt(icl_prompt, txt, []) for txt in texts]
+        else:
+            prompts = [self.make_code_prompt(icl_prompt, txt, []) for txt in texts]
+
+        # 3) Tokenize as a batch
+        tokenized = self.tokenizer(
+            prompts, 
+            return_tensors="pt", 
+            padding=True, 
+            truncation=True
+        ).to(self.model.device)
+
+        # 4) Generate outputs in batch
+        with torch.no_grad():
+            outputs = self.model.generate(
+                **tokenized,
+                num_return_sequences=1,
+                eos_token_id=self.tokenizer.eos_token_id,
+                pad_token_id=self.tokenizer.eos_token_id,
+                max_new_tokens=1000
+            )
+
+        # 5) Decode each output
+        input_lengths = (tokenized["input_ids"].ne(self.tokenizer.pad_token_id).sum(dim=1))
+        decoded = []
+        for i, seq in enumerate(outputs):
+            # Slice out prompt tokens, then decode generation
+            in_len = input_lengths[i]
+            gen_tokens = seq[in_len:]
+            decoded_text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True)
+            decoded.append(decoded_text)
+
+        # 6) If single text was provided, return just the string; else return a list
+        return decoded[0] if len(decoded) == 1 else decoded
+
+    def evaluate(self, df_test, icl_prompt, batch_size=1):
+        """
+        Evaluate the model on the test set using a configurable `batch_size`.
+        This uses a unified run_model(...) method that can handle both
+        single-item or multi-item batches.
+        """
         trues = []
         preds = []
-        
+
         text_test = df_test['text'].to_list()
         triple_list_test = df_test['triple_list'].to_list()
-        all_rel_types = set([el[1] for list in triple_list_test for el in list])
-        rel_type_preds_trues = {k: {'trues': [], 'preds': []} for k in all_rel_types}
 
-        pbar = tqdm(zip(text_test, triple_list_test), total=len(df_test), desc=f'Model: {self.model_name}')
-        
-        self.t_counter = 0 # initialize model timeout counter
-        
-        for text, triple_list in pbar:
-            result = self.run_model(text, icl_prompt)
-            
-            trues.append(triple_list)
-            pred_list = self.extract_triples(result)
-            preds.append(pred_list)
+        # Gather all possible relation types for eventual per-relation metrics
+        all_true_rel_types = set([el[1] for t_list in triple_list_test for el in t_list])
+        rel_type_preds_trues = {k: {'trues': [], 'preds': []} for k in all_true_rel_types}
 
-            for rel_type in all_rel_types:
-                trues_type = [true for true in triple_list if true[1] == rel_type]
-                preds_type = [pred for pred in pred_list if pred[1] == rel_type]
-                rel_type_preds_trues[rel_type]['trues'].append(trues_type)
-                rel_type_preds_trues[rel_type]['preds'].append(preds_type)
+        # Progress bar over sub-batches, rather than item by item
+        pbar = tqdm(range(0, len(df_test), batch_size), desc=f'Model: {self.model_name}')
+        self.t_counter = 0  # initialize model timeout counter
 
-            if self.verbose_test:
-                metrics_sample = self.calculate_strict_micro_f1([triple_list], [pred_list])
-                metrics_current = self.calculate_strict_micro_f1(trues, preds)
-                pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
-                output_texts = '\n' + f'text: {text}' + '\n' + f'result: {result}' + '\n' + f'pred: {pred_list}' + '\n' + f'trues: {triple_list}'
-                output_metrics = '\n' + f'metrics_sample: {metrics_sample}' + '\n' + f'metrics_current: {metrics_current}'
-                logger.info(output_texts)
-                logger.info(output_metrics)
-                if self.verbose_output_path:
-                    self.verbose_output += output_texts + output_metrics
+        for start_idx in pbar:
+            end_idx = min(start_idx + batch_size, len(df_test))
+            batch_texts = text_test[start_idx:end_idx]
+            batch_triples = triple_list_test[start_idx:end_idx]
+
+            # Run the model on the batch. If batch_size=1, this will still work.
+            results = self.run_model(batch_texts, icl_prompt)
+
+            # If run_model returned a single string (when batch_size=1), make it a list
+            if isinstance(results, str):
+                results = [results]
+
+            # Now iterate over each sample in the batch
+            for text, true_triple_list, model_output in zip(batch_texts, batch_triples, results):
+                pred_list = self.extract_triples(model_output)
+                trues.append(true_triple_list)
+                preds.append(pred_list)
+
+                # Collect per-relation predictions + gold
+                for rel_type in all_true_rel_types:
+                    trues_type = [t for t in true_triple_list if t[1] == rel_type]
+                    preds_type = [p for p in pred_list if p[1] == rel_type]
+                    rel_type_preds_trues[rel_type]['trues'].append(trues_type)
+                    rel_type_preds_trues[rel_type]['preds'].append(preds_type)
+
+                # Optionally display partial F1 and log verbose output
+                if self.verbose_test:
+                    metrics_sample = self.calculate_strict_micro_f1([true_triple_list], [pred_list])
+                    metrics_current = self.calculate_strict_micro_f1(trues, preds)
+                    pbar.set_description(f'F1: {round(metrics_current[-1], 2)}')
+
+                    output_texts = (
+                        '\n' + f'text: {text}' +
+                        '\n' + f'result: {model_output}' +
+                        '\n' + f'pred: {pred_list}' +
+                        '\n' + f'trues: {true_triple_list}'
+                    )
+                    output_metrics = (
+                        '\n' + f'metrics_sample: {metrics_sample}' +
+                        '\n' + f'metrics_current: {metrics_current}'
+                    )
+                    logger.info(output_texts)
+                    logger.info(output_metrics)
+                    if self.verbose_output_path:
+                        self.verbose_output += output_texts + output_metrics
+
+        # If verbose output path is specified, save the accumulated logs
         if self.verbose_output:
             self.verbose_output = self.verbose_output.lstrip()
             with open(self.verbose_output_path, 'w', encoding='utf8') as f:
                 f.write(self.verbose_output)
+        all_pred_rel_types = set([p[1] for p_list in preds for p in p_list])
+        print(f'All types of predicted relations: {all_pred_rel_types}')
+        # Final strict micro-averaged metrics
         precision, recall, f1_score = self.calculate_strict_micro_f1(trues, preds)
-        
-        rel_type_metrics = {k: {}  for k in all_rel_types}
 
-        for k, v in rel_type_preds_trues.items():
-            rel_type_metrics[k]['precision'], rel_type_metrics[k]['recall'], rel_type_metrics[k]['f1'] = self.calculate_strict_micro_f1(v['trues'], v['preds'])
+        # Per-relation metrics
+        rel_type_metrics = {k: {} for k in all_true_rel_types}
+        for rel_type, pr_dict in rel_type_preds_trues.items():
+            p_rel, r_rel, f1_rel = self.calculate_strict_micro_f1(pr_dict['trues'], pr_dict['preds'])
+            rel_type_metrics[rel_type]['precision'] = p_rel
+            rel_type_metrics[rel_type]['recall']    = r_rel
+            rel_type_metrics[rel_type]['f1']        = f1_rel
 
-        return {'precision': precision,
-                'recall': recall,
-                'f1': f1_score,
-                'rel_type_metrics': rel_type_metrics
-                  }
+        return {
+            'precision': precision,
+            'recall': recall,
+            'f1': f1_score,
+            'rel_type_metrics': rel_type_metrics
+        }
+
 
     def make_samples(self, tokenizer, df: pd.DataFrame, n_icl_samples: int) -> List[str]:
         text_list = []
@@ -564,6 +620,7 @@ class PrinterCallback(TrainerCallback):
 
 chat_template_dict = {
     "llama": "{{- bos_token }}\n{%- if custom_tools is defined %}\n    {%- set tools = custom_tools %}\n{%- endif %}\n{%- if not tools_in_user_message is defined %}\n    {%- set tools_in_user_message = true %}\n{%- endif %}\n{%- if not date_string is defined %}\n    {%- set date_string = \"26 Jul 2024\" %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = none %}\n{%- endif %}\n\n{#- This block extracts the system message, so we can slot it into the right place. #}\n{%- if messages[0]['role'] == 'system' %}\n    {%- set system_message = messages[0]['content']|trim %}\n    {%- set messages = messages[1:] %}\n{%- else %}\n    {%- set system_message = \"\" %}\n{%- endif %}\n\n{#- System message + builtin tools #}\n{{- \"<|start_header_id|>system<|end_header_id|>\\n\\n\" }}\n{%- if builtin_tools is defined or tools is not none %}\n    {{- \"Environment: ipython\\n\" }}\n{%- endif %}\n{%- if builtin_tools is defined %}\n    {{- \"Tools: \" + builtin_tools | reject('equalto', 'code_interpreter') | join(\", \") + \"\\n\\n\"}}\n{%- endif %}\n{{- \"Cutting Knowledge Date: December 2023\\n\" }}\n{{- \"Today Date: \" + date_string + \"\\n\\n\" }}\n{%- if tools is not none and not tools_in_user_message %}\n    {{- \"You have access to the following functions. To call a function, please respond with JSON for a function call.\" }}\n    {{- 'Respond in the format {\"name\": function name, \"parameters\": dictionary of argument name and its value}.' }}\n    {{- \"Do not use variables.\\n\\n\" }}\n    {%- for t in tools %}\n        {{- t | tojson(indent=4) }}\n        {{- \"\\n\\n\" }}\n    {%- endfor %}\n{%- endif %}\n{{- system_message }}\n{{- \"<|eot_id|>\" }}\n\n{#- Custom tools are passed in a user message with some extra guidance #}\n{%- if tools_in_user_message and not tools is none %}\n    {#- Extract the first user message so we can plug it in here #}\n    {%- if messages | length != 0 %}\n        {%- set first_user_message = messages[0]['content']|trim %}\n        {%- set messages = messages[1:] %}\n    {%- else %}\n        {{- raise_exception(\"Cannot put tools in the first user message when there's no first user message!\") }}\n{%- endif %}\n    {{- '<|start_header_id|>user<|end_header_id|>\\n\\n' -}}\n    {{- \"Given the following functions, please respond with a JSON for a function call \" }}\n    {{- \"with its proper arguments that best answers the given prompt.\\n\\n\" }}\n    {{- 'Respond in the format {\"name\": function name, \"parameters\": dictionary of argument name and its value}.' }}\n    {{- \"Do not use variables.\\n\\n\" }}\n    {%- for t in tools %}\n        {{- t | tojson(indent=4) }}\n        {{- \"\\n\\n\" }}\n    {%- endfor %}\n    {{- first_user_message + \"<|eot_id|>\"}}\n{%- endif %}\n\n{%- for message in messages %}\n    {%- if not (message.role == 'ipython' or message.role == 'tool' or 'tool_calls' in message) %}\n        {{- '<|start_header_id|>' + message['role'] + '<|end_header_id|>\\n\\n'+ message['content'] | trim + '<|eot_id|>' }}\n    {%- elif 'tool_calls' in message %}\n        {%- if not message.tool_calls|length == 1 %}\n            {{- raise_exception(\"This model only supports single tool-calls at once!\") }}\n        {%- endif %}\n        {%- set tool_call = message.tool_calls[0].function %}\n        {%- if builtin_tools is defined and tool_call.name in builtin_tools %}\n            {{- '<|start_header_id|>assistant<|end_header_id|>\\n\\n' -}}\n            {{- \"<|python_tag|>\" + tool_call.name + \".call(\" }}\n            {%- for arg_name, arg_val in tool_call.arguments | items %}\n                {{- arg_name + '=\"' + arg_val + '\"' }}\n                {%- if not loop.last %}\n                    {{- \", \" }}\n                {%- endif %}\n                {%- endfor %}\n            {{- \")\" }}\n        {%- else  %}\n            {{- '<|start_header_id|>assistant<|end_header_id|>\\n\\n' -}}\n            {{- '{\"name\": \"' + tool_call.name + '\", ' }}\n            {{- '\"parameters\": ' }}\n            {{- tool_call.arguments | tojson }}\n            {{- \"}\" }}\n        {%- endif %}\n        {%- if builtin_tools is defined %}\n            {#- This means we're in ipython mode #}\n            {{- \"<|eom_id|>\" }}\n        {%- else %}\n            {{- \"<|eot_id|>\" }}\n        {%- endif %}\n    {%- elif message.role == \"tool\" or message.role == \"ipython\" %}\n        {{- \"<|start_header_id|>ipython<|end_header_id|>\\n\\n\" }}\n        {%- if message.content is mapping or message.content is iterable %}\n            {{- message.content | tojson }}\n        {%- else %}\n            {{- message.content }}\n        {%- endif %}\n        {{- \"<|eot_id|>\" }}\n    {%- endif %}\n{%- endfor %}\n{%- if add_generation_prompt %}\n    {{- '<|start_header_id|>assistant<|end_header_id|>\\n\\n' }}\n{%- endif %}\n",
-    "mistral": "",
-    "qwen1.5": "",
+    "mistral": '{%- if messages[0]["role"] == "system" %}\n    {%- set system_message = messages[0]["content"] %}\n    {%- set loop_messages = messages[1:] %}\n{%- else %}\n    {%- set loop_messages = messages %}\n{%- endif %}\n{%- if not tools is defined %}\n    {%- set tools = none %}\n{%- endif %}\n{%- set user_messages = loop_messages | selectattr("role", "equalto", "user") | list %}\n\n{#- This block checks for alternating user/assistant messages, skipping tool calling messages #}\n{%- set ns = namespace() %}\n{%- set ns.index = 0 %}\n{%- for message in loop_messages %}\n    {%- if not (message.role == "tool" or message.role == "tool_results" or (message.tool_calls is defined and message.tool_calls is not none)) %}\n        {%- if (message["role"] == "user") != (ns.index % 2 == 0) %}\n            {{- raise_exception("After the optional system message, conversation roles must alternate user/assistant/user/assistant/...") }}\n        {%- endif %}\n        {%- set ns.index = ns.index + 1 %}\n    {%- endif %}\n{%- endfor %}\n\n{{- bos_token }}\n{%- for message in loop_messages %}\n    {%- if message["role"] == "user" %}\n        {%- if tools is not none and (message == user_messages[-1]) %}\n            {{- "[AVAILABLE_TOOLS] [" }}\n            {%- for tool in tools %}\n                {%- set tool = tool.function %}\n                {{- \'{"type": "function", "function": {\' }}\n                {%- for key, val in tool.items() if key != "return" %}\n                    {%- if val is string %}\n                        {{- \'"\' + key + \'": "\' + val + \'"\' }}\n                    {%- else %}\n                        {{- \'"\' + key + \'": \' + val|tojson }}\n                    {%- endif %}\n                    {%- if not loop.last %}\n                        {{- ", " }}\n                    {%- endif %}\n                {%- endfor %}\n                {{- "}}" }}\n                {%- if not loop.last %}\n                    {{- ", " }}\n                {%- else %}\n                    {{- "]" }}\n                {%- endif %}\n            {%- endfor %}\n            {{- "[/AVAILABLE_TOOLS]" }}\n            {%- endif %}\n        {%- if loop.last and system_message is defined %}\n            {{- "[INST] " + system_message + "\\n\\n" + message["content"] + "[/INST]" }}\n        {%- else %}\n            {{- "[INST] " + message["content"] + "[/INST]" }}\n        {%- endif %}\n    {%- elif message.tool_calls is defined and message.tool_calls is not none %}\n        {{- "[TOOL_CALLS] [" }}\n        {%- for tool_call in message.tool_calls %}\n            {%- set out = tool_call.function|tojson %}\n            {{- out[:-1] }}\n            {%- if not tool_call.id is defined or tool_call.id|length != 9 %}\n                {{- raise_exception("Tool call IDs should be alphanumeric strings with length 9!") }}\n            {%- endif %}\n            {{- \', "id": "\' + tool_call.id + \'"}\' }}\n            {%- if not loop.last %}\n                {{- ", " }}\n            {%- else %}\n                {{- "]" + eos_token }}\n            {%- endif %}\n        {%- endfor %}\n    {%- elif message["role"] == "assistant" %}\n        {{- " " + message["content"]|trim + eos_token}}\n    {%- elif message["role"] == "tool_results" or message["role"] == "tool" %}\n        {%- if message.content is defined and message.content.content is defined %}\n            {%- set content = message.content.content %}\n        {%- else %}\n            {%- set content = message.content %}\n        {%- endif %}\n        {{- \'[TOOL_RESULTS] {"content": \' + content|string + ", " }}\n        {%- if not message.tool_call_id is defined or message.tool_call_id|length != 9 %}\n            {{- raise_exception("Tool call IDs should be alphanumeric strings with length 9!") }}\n        {%- endif %}\n        {{- \'"call_id": "\' + message.tool_call_id + \'"}[/TOOL_RESULTS]\' }}\n    {%- else %}\n        {{- raise_exception("Only user and assistant roles are supported, with the exception of an initial optional system message!") }}\n    {%- endif %}\n{%- endfor %}\n',
+    "qwen2": "{% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system\nYou are a helpful assistant.<|im_end|>\n' }}{% endif %}{{'<|im_start|>' + message['role'] + '\n' + message['content'] + '<|im_end|>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
     }
+

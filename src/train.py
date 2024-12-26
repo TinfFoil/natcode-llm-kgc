@@ -45,8 +45,6 @@ def main(args):
         load_in_4bit = load_in_4bit
     )
 
-    print(tokenizer.chat_template)
-
     if tokenizer.chat_template is None:
         tokenizer.chat_template = chat_template_dict[model.config.model_type]
         print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
@@ -253,7 +251,7 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     args = parser.parse_args()
 
-    args.model_name = "unsloth/Meta-Llama-3.1-8B"
+    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
     # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
     
     # args.model_name = "mistralai/Mistral-7B-v0.3"
@@ -265,10 +263,10 @@ if __name__ == "__main__":
     # args.model_name = "Qwen/CodeQwen1.5-7B"
     # args.model_name = "Qwen/CodeQwen1.5-7B-Chat"
     
-    # args.dataset = "scierc"
+    # args.dataset = "ade"
     # args.chat = 1
-    # args.rationale = 1
-    # args.natlang = 0
+    # args.rationale = 0
+    # args.natlang = 1
     # args.train_steps = 200
     # args.noval = True
     # args.val_samples = 3

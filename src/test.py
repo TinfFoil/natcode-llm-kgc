@@ -68,6 +68,7 @@ def main(args):
     eval_dict = runner.evaluate(
                                 df_test,
                                 icl_prompt,
+                                batch_size=32
                                 )
 
     now = datetime.now()
@@ -112,7 +113,21 @@ if __name__ == "__main__":
     parser.add_argument("--verbose_output_path", help="Dir in which to model outputs", default='./results/monitor')
     args = parser.parse_args()
 
+    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
+    # args.model_name = "mistralai/Mistral-7B-v0.3"
+    # args.model_name = "deepseek-ai/deepseek-coder-7b-base-v1.5"
+    # args.model_name = "Qwen/CodeQwen1.5-7B"
+
+    # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
+    # args.model_name = "mistralai/Mistral-7B-Instruct-v0.3"
+    # args.model_name = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
+    # args.model_name = "Qwen/CodeQwen1.5-7B-Chat"
+
+    # args.model_name = "./models/Meta-Llama-3.1-8B-Instruct_ft_ade_natlang_base_steps=200_icl=3"
     # args.model_name = "./models/Mistral-7B-Instruct-v0.3_ft_ade_natlang_base_steps=200_icl=3"
+    # args.model_name = "./models/deepseek-coder-7b-instruct-v1.5_ft_ade_natlang_base_steps=200_icl=3"
+    # args.model_name = "./models/CodeQwen1.5-7B-Chat_ft_ade_natlang_base_steps=200_icl=3"
+
     # args.dataset = "ade"
     # args.chat = 1
     # args.rationale = 0
