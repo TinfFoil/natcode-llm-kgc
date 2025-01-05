@@ -1,9 +1,10 @@
 #!/bin/bash
 #SBATCH -J train_kgc
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:h100
+#SBATCH --cpus-per-task=32
+#SBATCH --gres=gpu:h100:1
 #SBATCH --time=72:00:00
+#SBATCH --mem=256G
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 
@@ -52,7 +53,7 @@ natlang_toggle=(
     false
 )
 
-train_steps=150
+train_steps=200
 n_icl_samples=3
 
 # Loop through model_list
@@ -103,7 +104,7 @@ for natlang in ${natlang_toggle[@]}; do
 
                 # Log information
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, natlang: $natlang, rationale: $rationale", 
-                $cmd --train_steps $train_steps $1
+                $cmd #--train_steps $train_steps $1
             done
         done
     done

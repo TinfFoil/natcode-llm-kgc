@@ -8,6 +8,7 @@ paper/
 results/old/
 venv-llmkgc/
 results_sub_1/
+results_argo/
 scripts/
 model_info/
 chat_templates/

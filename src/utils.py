@@ -300,7 +300,8 @@ class Runner:
             prompts, 
             return_tensors="pt", 
             padding=True, 
-            truncation=True
+            truncation=True,
+            return_token_type_ids=False,
         ).to(self.model.device)
 
         # 4) Generate outputs in batch

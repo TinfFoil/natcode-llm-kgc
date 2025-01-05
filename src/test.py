@@ -24,6 +24,9 @@ def main(args):
     
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
 
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+
     dataset_path = f'./data/codekgc-data/{args.dataset}'
     
     train_split = f'{args.train_split}_triples.json'
