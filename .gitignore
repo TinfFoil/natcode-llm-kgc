@@ -3,6 +3,12 @@ models/
 outputs/
 .slurm/
 logging/
+data/checkthat24
+data/araieval_arabicnlp24
+data/xl-wa
+data/pred_documents
+data/mt_train_data
+data/combined
 .vscode/
 paper/
 results/old/

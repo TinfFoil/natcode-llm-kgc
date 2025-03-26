@@ -16,6 +16,7 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 from transformers.trainer_callback import TrainerControl, TrainerState, TrainerCallback
 from transformers import TrainingArguments
 import random
+import warnings
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -445,8 +446,10 @@ class Runner:
                 with open(txt_path, 'w', encoding='utf8') as f:
                     f.write(prompt)
             prompt_token_len = len(tokenizer(prompt).input_ids)
+            if prompt_token_len > self.model.max_seq_length:
+                raise Exception(f'The prompt is longer than the model\'s maximum sequence length ({self.model.max_seq_length}).')
             if prompt_token_len > self.max_seq_len:
-                raise Exception(f'prompt is over {self.max_seq_len} tokens')
+                warnings.warn(f'The prompt is longer than the set maximum sequence length ({self.max_seq_len})')
             text_list.append(prompt)
         
         return text_list
@@ -614,9 +617,9 @@ class PrinterCallback(TrainerCallback):
     def on_log(self, args, state, control, logs=None, **kwargs):
         if logs is not None:
             log_message = {key: logs[key] for key in ['loss', 'grad_norm', 'learning_rate', 'epoch'] if key in logs}
-            logger.info(log_message)
+            # logger.info(log_message)
     def on_step_begin(self, args: TrainingArguments, state: TrainerState, control: TrainerControl, **kwargs):
-        logger.info(state.global_step)
+        # logger.info(state.global_step)
         return super().on_step_begin(args, state, control, **kwargs)
 
 chat_template_dict = {

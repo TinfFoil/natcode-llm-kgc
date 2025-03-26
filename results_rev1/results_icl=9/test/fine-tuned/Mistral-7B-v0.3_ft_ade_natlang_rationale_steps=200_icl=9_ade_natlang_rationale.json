@@ -1,0 +1,53 @@
+[
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=9",
+        "Precision": 0.7770114942528735,
+        "Recall": 0.7647058823529411,
+        "F1_Score": 0.7708095781071835,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.7770114942528735, "recall": 0.7647058823529411, "f1": 0.7708095781071835}},
+        "n_icl_samples": 9,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-36-44",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=9",
+        "Precision": 0.7893518518518519,
+        "Recall": 0.7714932126696833,
+        "F1_Score": 0.780320366132723,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.7893518518518519, "recall": 0.7714932126696833, "f1": 0.780320366132723}},
+        "n_icl_samples": 9,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-42-30",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=9",
+        "Precision": 0.7939110070257611,
+        "Recall": 0.7669683257918553,
+        "F1_Score": 0.7802071346375145,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.7939110070257611, "recall": 0.7669683257918553, "f1": 0.7802071346375145}},
+        "n_icl_samples": 9,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-48-18",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    }
+]

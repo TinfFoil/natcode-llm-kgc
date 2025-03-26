@@ -1,0 +1,77 @@
+[
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=0",
+        "Precision": 0.3311432325886991,
+        "Recall": 0.2587268993839836,
+        "F1_Score": 0.2904899135446686,
+        "rel_type_metrics": {
+            "Part_of": {"precision": 0.3333333333333333, "recall": 0.031746031746031744, "f1": 0.057971014492753624},
+            "Conjunction": {"precision": 0.6111111111111112, "recall": 0.17886178861788618, "f1": 0.27672955974842767},
+            "Used_for": {"precision": 0.3065015479876161, "recall": 0.3714821763602251, "f1": 0.3358778625954198},
+            "Evaluate_for": {"precision": 0.35, "recall": 0.15384615384615385, "f1": 0.2137404580152672},
+            "Feature_of": {"precision": 1, "recall": 0.01694915254237288, "f1": 0.03333333333333333},
+            "Hyponym_of": {"precision": 0, "recall": 0, "f1": 0},
+            "Compare": {"precision": 0.46875, "recall": 0.39473684210526316, "f1": 0.4285714285714286}
+        },
+        "n_icl_samples": 0,
+        "n_samples_test": 397,
+        "dataset": "scierc",
+        "date": "2025-01-18-00-30-55",
+        "schema_path": "./data/codekgc-data/scierc/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=0",
+        "Precision": 0.3237221494102228,
+        "Recall": 0.2535934291581109,
+        "F1_Score": 0.2843983880253311,
+        "rel_type_metrics": {
+            "Hyponym_of": {"precision": 0, "recall": 0, "f1": 0},
+            "Compare": {"precision": 0.46875, "recall": 0.39473684210526316, "f1": 0.4285714285714286},
+            "Feature_of": {"precision": 1, "recall": 0.01694915254237288, "f1": 0.03333333333333333},
+            "Used_for": {"precision": 0.2996894409937888, "recall": 0.3621013133208255, "f1": 0.32795242141036535},
+            "Conjunction": {"precision": 0.6052631578947368, "recall": 0.18699186991869918, "f1": 0.2857142857142857},
+            "Part_of": {"precision": 0.16666666666666666, "recall": 0.015873015873015872, "f1": 0.028985507246376812},
+            "Evaluate_for": {"precision": 0.3333333333333333, "recall": 0.15384615384615385, "f1": 0.21052631578947367}
+        },
+        "n_icl_samples": 0,
+        "n_samples_test": 397,
+        "dataset": "scierc",
+        "date": "2025-01-18-00-36-29",
+        "schema_path": "./data/codekgc-data/scierc/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=0",
+        "Precision": 0.32588699080157685,
+        "Recall": 0.2546201232032854,
+        "F1_Score": 0.285878962536023,
+        "rel_type_metrics": {
+            "Compare": {"precision": 0.46875, "recall": 0.39473684210526316, "f1": 0.4285714285714286},
+            "Feature_of": {"precision": 1, "recall": 0.01694915254237288, "f1": 0.03333333333333333},
+            "Part_of": {"precision": 0.2, "recall": 0.015873015873015872, "f1": 0.029411764705882353},
+            "Evaluate_for": {"precision": 0.3333333333333333, "recall": 0.15384615384615385, "f1": 0.21052631578947367},
+            "Conjunction": {"precision": 0.6111111111111112, "recall": 0.17886178861788618, "f1": 0.27672955974842767},
+            "Hyponym_of": {"precision": 0, "recall": 0, "f1": 0},
+            "Used_for": {"precision": 0.3023255813953488, "recall": 0.36585365853658536, "f1": 0.33106960950764003}
+        },
+        "n_icl_samples": 0,
+        "n_samples_test": 397,
+        "dataset": "scierc",
+        "date": "2025-01-18-00-42-05",
+        "schema_path": "./data/codekgc-data/scierc/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    }
+]

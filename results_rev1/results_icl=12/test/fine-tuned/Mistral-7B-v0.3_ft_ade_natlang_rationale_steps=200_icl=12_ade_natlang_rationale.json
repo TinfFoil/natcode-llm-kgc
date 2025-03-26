@@ -1,0 +1,53 @@
+[
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=12",
+        "Precision": 0.7845433255269321,
+        "Recall": 0.7579185520361991,
+        "F1_Score": 0.7710011507479861,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.7845433255269321, "recall": 0.7579185520361991, "f1": 0.7710011507479861}},
+        "n_icl_samples": 12,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-38-14",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=12",
+        "Precision": 0.7930232558139535,
+        "Recall": 0.7714932126696833,
+        "F1_Score": 0.7821100917431193,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.7930232558139535, "recall": 0.7714932126696833, "f1": 0.7821100917431193}},
+        "n_icl_samples": 12,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-44-36",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_ade_natlang_rationale_steps=200_icl=12",
+        "Precision": 0.8089622641509434,
+        "Recall": 0.7760180995475113,
+        "F1_Score": 0.792147806004619,
+        "rel_type_metrics": {"Adverse_effect": {"precision": 0.8089622641509434, "recall": 0.7760180995475113, "f1": 0.792147806004619}},
+        "n_icl_samples": 12,
+        "n_samples_test": 300,
+        "dataset": "ade",
+        "date": "2025-01-18-17-50-57",
+        "schema_path": "./data/codekgc-data/ade/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    }
+]

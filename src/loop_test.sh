@@ -1,10 +1,10 @@
 #!/bin/bash
 #SBATCH -J test_kgc
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
-#SBATCH --time=72:00:00
-#SBATCH --mem=256G
+#SBATCH --time=24:00:00
+#SBATCH --mem=64G
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 nvidia-smi
@@ -16,23 +16,23 @@ declare -A model_list=(
     # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
     # ["Qwen/CodeQwen1.5-7B"]=false
 
-    ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-    ["mistralai/Mistral-7B-Instruct-v0.3"]=true
-    ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
-    ["Qwen/CodeQwen1.5-7B-Chat"]=true
+    # ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+    # ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+    # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+    # ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
     # fine-tuned models
-    ["./models/Meta-Llama-3.1-8B"]=false
-    ["./models/Meta-Llama-3.1-8B-Instruct"]=true
+    # ["./models/Meta-Llama-3.1-8B"]=false
+    # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
     ["./models/Mistral-7B-v0.3"]=false
-    ["./models/Mistral-7B-Instruct-v0.3"]=true
+    # ["./models/Mistral-7B-Instruct-v0.3"]=true
 
-    ["./models/deepseek-coder-7b-base-v1.5"]=false
-    ["./models/deepseek-coder-7b-instruct-v1.5"]=true
+    # ["./models/deepseek-coder-7b-base-v1.5"]=false
+    # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
 
-    ["./models/CodeQwen1.5-7B"]=false
-    ["./models/CodeQwen1.5-7B-Chat"]=true
+    # ["./models/CodeQwen1.5-7B"]=false
+    # ["./models/CodeQwen1.5-7B-Chat"]=true
 )
 
 dataset_list=(
@@ -66,7 +66,7 @@ rationale_toggle=(
 )
 
 train_steps=200
-n_icl_samples=3
+n_icl_samples=15
 num_tests=3
 
 command=$1
@@ -138,6 +138,8 @@ for rationale in "${rationale_toggle[@]}"; do
 
                 cmd="python ./src/test.py -m $model_name \
                         -d $dataset \
+                        --n_icl_samples $n_icl_samples \
+                        --results_dir ./results_icl=$n_icl_samples \
                         $chat_flag"
 
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix, fine-tuned: $is_fine_tuned"
@@ -145,7 +147,7 @@ for rationale in "${rationale_toggle[@]}"; do
                 # Repeat the test until check_results.py reports num_tests == 3
                 while ! python ./src/check_results.py \
                   -r "$results_name" \
-                  -d "./results/${test_split}/${model_type_dir}" \
+                  -d "./results_icl=$n_icl_samples/${test_split}/${model_type_dir}" \
                   --split ${test_split} \
                   -n $num_tests; do
 

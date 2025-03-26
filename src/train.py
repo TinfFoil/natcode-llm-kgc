@@ -31,12 +31,15 @@ def main(args):
     dataset_name = args.dataset
     dataset_path = f'./data/codekgc-data/{dataset_name}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
-
+    print('##################################################################')
     print(f'Training model: {model_name}')
     print(f"Training data: {dataset_name}")
     print(f'Chat model: {chat_model}')
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if natlang else 'code'}")
+    print(f"Number of ICL samples: {args.n_icl_samples}")
+    print(f"Quantized: {args.load_in_4bit}")
+    print('##################################################################')
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = model_name,
@@ -58,10 +61,9 @@ def main(args):
         bias = "none",    # Supports any, but = "none" is optimized
         use_gradient_checkpointing = "unsloth", # 4x longer contexts auto supported!
         random_state = 3407,
-        use_rslora = False,  # TODO: redo with rslora
+        use_rslora = True,  # TODO: redo with rslora
         loftq_config = None, # And LoftQ
     )
-
 
     print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
 
@@ -123,9 +125,7 @@ def main(args):
         precision, recall, f1_score = runner.calculate_strict_micro_f1(true_triples, predicted_triples)
         
         return {"precision": precision, "recall": recall, "f1": f1_score}
-
-    output_printer = OutputPrinterCallback(tokenizer, dataset_train, print_interval=1)
-
+    
     trainer = SFTTrainer(
         model = model,
         tokenizer = tokenizer,
@@ -134,7 +134,7 @@ def main(args):
         dataset_text_field = "text",
         max_seq_length = max_seq_length,
         dataset_num_proc = 2,
-        packing = False, # Can make training 5x faster for short sequences.
+        packing = False,
         compute_metrics=compute_metrics,
         args = TrainingArguments(
             per_device_train_batch_size = args.batch_size_train,
@@ -145,7 +145,7 @@ def main(args):
             learning_rate = 2e-4,
             fp16 = not torch.cuda.is_bf16_supported(),
             bf16 = torch.cuda.is_bf16_supported(),
-            logging_steps = 1,
+            # logging_steps = 1,
             optim = "adamw_8bit",
             weight_decay = 0.01,
             lr_scheduler_type = "linear",
@@ -158,10 +158,6 @@ def main(args):
             metric_for_best_model="f1",
             load_best_model_at_end=load_best_model_at_end,
         ),
-        callbacks=[
-            PrinterCallback(),
-            # output_printer
-            ],
     )
 
     trainer_stats = trainer.train()
@@ -250,27 +246,5 @@ if __name__ == "__main__":
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     args = parser.parse_args()
-
-    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
-    # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
-    
-    # args.model_name = "mistralai/Mistral-7B-v0.3"
-    # args.model_name = "mistralai/Mistral-7B-Instruct-v0.3"
-    
-    # args.model_name = "deepseek-ai/deepseek-coder-7b-base-v1.5"
-    # args.model_name = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
-    
-    # args.model_name = "Qwen/CodeQwen1.5-7B"
-    # args.model_name = "Qwen/CodeQwen1.5-7B-Chat"
-    
-    # args.dataset = "ade"
-    # args.chat = 1
-    # args.rationale = 0
-    # args.natlang = 1
-    # args.train_steps = 200
-    # args.noval = True
-    # args.val_samples = 3
-    # args.n_icl_samples = 3
-    # args.verbose_train = True
 
     main(args)

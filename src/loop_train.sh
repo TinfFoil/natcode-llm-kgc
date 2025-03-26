@@ -1,26 +1,49 @@
 #!/bin/bash
 #SBATCH -J train_kgc
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=32
+#SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
-#SBATCH --time=72:00:00
-#SBATCH --mem=256G
+#SBATCH --time=4:00:00
+#SBATCH --mem=64G
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 
 # Define model_list and whether they are chat models
+# declare -A model_list=(
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+
+# ["mistralai/Mistral-7B-v0.3"]=false
+# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+
+# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+
+# ["Qwen/CodeQwen1.5-7B"]=false
+# ["Qwen/CodeQwen1.5-7B-Chat"]=true
+# )
+
+# Define model_list and whether they are chat models
 declare -A model_list=(
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+["unsloth/Meta-Llama-3.1-70B"]=false
+["unsloth/Meta-Llama-3.1-70B-Instruct"]=true
 
-["mistralai/Mistral-7B-v0.3"]=false
-["mistralai/Mistral-7B-Instruct-v0.3"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
-["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
-["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+# ["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
 
-["Qwen/CodeQwen1.5-7B"]=false
-["Qwen/CodeQwen1.5-7B-Chat"]=true
+# ["mistralai/Mistral-7B-v0.3"]=false
+# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+
+# ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
+# ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
+
+# ["Qwen/CodeQwen1.5-7B"]=false
+# ["Qwen/CodeQwen1.5-7B-Chat"]=true
+
+# ["Qwen/Qwen2.5-32B"]=false
+# ["Qwen/Qwen2.5-32B-Instruct"]=true
 )
 
 dataset_list=(
@@ -55,6 +78,7 @@ natlang_toggle=(
 
 train_steps=200
 n_icl_samples=3
+load_in_4bit=false
 
 # Loop through model_list
 for natlang in ${natlang_toggle[@]}; do
@@ -67,11 +91,16 @@ for natlang in ${natlang_toggle[@]}; do
                 # Base command
                 cmd="python ./src/train.py \
                     -m $model \
-                    -d $dataset"
+                    -d $dataset \
+                    --n_icl_samples $n_icl_samples"
 
                 # Add chat flag if it's a chat model
                 if $is_chat; then
                     cmd+=" --chat"
+                fi
+
+                if $load_in_4bit; then
+                    cmd+=" --load_in_4bit"
                 fi
 
                 if $rationale; then
@@ -104,7 +133,7 @@ for natlang in ${natlang_toggle[@]}; do
 
                 # Log information
                 log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Training model: $model, dataset: $dataset, chat: $is_chat, natlang: $natlang, rationale: $rationale", 
-                $cmd #--train_steps $train_steps $1
+                $cmd
             done
         done
     done

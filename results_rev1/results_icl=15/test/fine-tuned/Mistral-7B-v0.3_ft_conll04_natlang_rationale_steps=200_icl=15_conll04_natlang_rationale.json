@@ -1,0 +1,71 @@
+[
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_conll04_natlang_rationale_steps=200_icl=15",
+        "Precision": 0.6927083333333334,
+        "Recall": 0.6535626535626535,
+        "F1_Score": 0.672566371681416,
+        "rel_type_metrics": {
+            "Live_in": {"precision": 0.7111111111111111, "recall": 0.6530612244897959, "f1": 0.6808510638297872},
+            "Located_in": {"precision": 0.6951219512195121, "recall": 0.6333333333333333, "f1": 0.6627906976744186},
+            "Organization_based_in": {"precision": 0.6625, "recall": 0.5520833333333334, "f1": 0.6022727272727273},
+            "Work_for": {"precision": 0.6172839506172839, "recall": 0.6578947368421053, "f1": 0.6369426751592356},
+            "Kill": {"precision": 0.8571428571428571, "recall": 0.8936170212765957, "f1": 0.875}
+        },
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset": "conll04",
+        "date": "2025-01-18-18-13-19",
+        "schema_path": "./data/codekgc-data/conll04/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_conll04_natlang_rationale_steps=200_icl=15",
+        "Precision": 0.7112299465240641,
+        "Recall": 0.6535626535626535,
+        "F1_Score": 0.6811779769526248,
+        "rel_type_metrics": {
+            "Kill": {"precision": 0.8571428571428571, "recall": 0.8936170212765957, "f1": 0.875},
+            "Organization_based_in": {"precision": 0.6623376623376623, "recall": 0.53125, "f1": 0.5895953757225433},
+            "Live_in": {"precision": 0.7415730337078652, "recall": 0.673469387755102, "f1": 0.7058823529411764},
+            "Located_in": {"precision": 0.7, "recall": 0.6222222222222222, "f1": 0.6588235294117647},
+            "Work_for": {"precision": 0.6710526315789473, "recall": 0.6710526315789473, "f1": 0.6710526315789473}
+        },
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset": "conll04",
+        "date": "2025-01-18-18-18-10",
+        "schema_path": "./data/codekgc-data/conll04/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    },
+    {
+        "Model": "./models/Mistral-7B-v0.3_ft_conll04_natlang_rationale_steps=200_icl=15",
+        "Precision": 0.6848958333333334,
+        "Recall": 0.6461916461916462,
+        "F1_Score": 0.6649810366624527,
+        "rel_type_metrics": {
+            "Live_in": {"precision": 0.7111111111111111, "recall": 0.6530612244897959, "f1": 0.6808510638297872},
+            "Organization_based_in": {"precision": 0.5647058823529412, "recall": 0.5, "f1": 0.5303867403314917},
+            "Kill": {"precision": 0.8571428571428571, "recall": 0.8936170212765957, "f1": 0.875},
+            "Located_in": {"precision": 0.6867469879518072, "recall": 0.6333333333333333, "f1": 0.6589595375722543},
+            "Work_for": {"precision": 0.7123287671232876, "recall": 0.6842105263157895, "f1": 0.6979865771812079}
+        },
+        "n_icl_samples": 15,
+        "n_samples_test": 288,
+        "dataset": "conll04",
+        "date": "2025-01-18-18-22-49",
+        "schema_path": "./data/codekgc-data/conll04/code_prompt",
+        "split": "test",
+        "fine-tuned": true,
+        "rationale": true,
+        "natlang": true,
+        "chat_model": false
+    }
+]
