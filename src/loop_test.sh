@@ -25,8 +25,8 @@ declare -A model_list=(
     # ["./models/Meta-Llama-3.1-8B"]=false
     # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
-    ["./models/Mistral-7B-v0.3"]=false
-    # ["./models/Mistral-7B-Instruct-v0.3"]=true
+    # ["./models/Mistral-7B-v0.3"]=false
+    ["./models/Mistral-7B-Instruct-v0.3"]=true
 
     # ["./models/deepseek-coder-7b-base-v1.5"]=false
     # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
@@ -65,8 +65,19 @@ rationale_toggle=(
     false
 )
 
+target_modules_list=(
+    "q"
+    "k"
+    # "v"
+    # "q-k"
+    # "q-v"
+    # "k-v"
+    # "q-k-v"
+    # "q-k-v-o-gate-up-down"
+    )
+
 train_steps=200
-n_icl_samples=15
+n_icl_samples=3
 num_tests=3
 
 command=$1
@@ -81,81 +92,82 @@ test_split_flag="--test_split ${test_split}"
 for rationale in "${rationale_toggle[@]}"; do
     for natlang in "${natlang_toggle[@]}"; do
         for model in "${!model_list[@]}"; do
-            is_chat_model=${model_list[$model]}
-            
-            if [[ $model == ./models/* ]]; then
-                is_fine_tuned=true
-                fine_tuned_flag='--fine_tuned'
-                model_type_dir='fine-tuned'
-            else
-                is_fine_tuned=false
-                fine_tuned_flag=''
-                model_type_dir='base'
-            fi
-
-            echo "Fine-tuned model: $is_fine_tuned"
-
-            for dataset in "${dataset_list[@]}"; do
-                if $natlang; then
-                    natlang_suffix="natlang"
-                    natlang_flag="--natlang"
-                else
-                    natlang_suffix="code"
-                    natlang_flag=""
-                fi
-
-                if $rationale; then
-                    rationale_suffix="rationale"
-                    rationale_flag="--rationale"
-                else
-                    rationale_suffix="base"
-                    rationale_flag=""
-                fi
+            for target_modules in "${target_modules_list[@]}"; do
+                is_chat_model=${model_list[$model]}
                 
-                if $is_fine_tuned; then
-                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}"
-                    results_name=$model_name
+                if [[ $model == ./models/* ]]; then
+                    is_fine_tuned=true
+                    fine_tuned_flag='--fine_tuned'
+                    model_type_dir='fine-tuned'
                 else
-                    model_name="${model}"
-                    results_name="${model}_${dataset}_${natlang_suffix}_${rationale_suffix}"
+                    is_fine_tuned=false
+                    fine_tuned_flag=''
+                    model_type_dir='base'
                 fi
 
-                echo "Current model: $model_name"
+                echo "Fine-tuned model: $is_fine_tuned"
 
-                if $is_chat_model; then
-                    chat_flag="--chat"
-                else
-                    chat_flag=""
-                fi
+                for dataset in "${dataset_list[@]}"; do
+                    if $natlang; then
+                        natlang_suffix="natlang"
+                        natlang_flag="--natlang"
+                    else
+                        natlang_suffix="code"
+                        natlang_flag=""
+                    fi
 
-                # Check if the directory exists for fine-tuned models
-                if [[ ! -d "$model_name" && "$is_fine_tuned" == "true" ]]; then
-                    log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Skipping model: $model_name - directory does not exist."
-                    echo "Skipping model: $model_name - directory does not exist."
-                    echo '*****************************'
-                    continue
-                fi
+                    if $rationale; then
+                        rationale_suffix="rationale"
+                        rationale_flag="--rationale"
+                    else
+                        rationale_suffix="base"
+                        rationale_flag=""
+                    fi
+                    
+                    if $is_fine_tuned; then
+                        model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}_mod=${target_modules}"
+                        results_name=$model_name
+                    else
+                        model_name="${model}"
+                        results_name="${model}_${dataset}_${natlang_suffix}_${rationale_suffix}"
+                    fi
 
-                cmd="python ./src/test.py -m $model_name \
-                        -d $dataset \
-                        --n_icl_samples $n_icl_samples \
-                        --results_dir ./results_icl=$n_icl_samples \
-                        $chat_flag"
+                    echo "Current model: $model_name"
 
-                log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix, fine-tuned: $is_fine_tuned"
+                    if $is_chat_model; then
+                        chat_flag="--chat"
+                    else
+                        chat_flag=""
+                    fi
 
-                # Repeat the test until check_results.py reports num_tests == 3
-                while ! python ./src/check_results.py \
-                  -r "$results_name" \
-                  -d "./results_icl=$n_icl_samples/${test_split}/${model_type_dir}" \
-                  --split ${test_split} \
-                  -n $num_tests; do
+                    # Check if the directory exists for fine-tuned models
+                    if [[ ! -d "$model_name" && "$is_fine_tuned" == "true" ]]; then
+                        log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Skipping model: $model_name - directory does not exist."
+                        echo "Skipping model: $model_name - directory does not exist."
+                        echo '*****************************'
+                        continue
+                    fi
 
-                    echo 'Running test command...'
-                    $cmd $natlang_flag $rationale_flag $fine_tuned_flag $1
-                    echo '*****************************'
+                    cmd="python ./src/test.py -m $model_name \
+                            -d $dataset \
+                            --n_icl_samples $n_icl_samples \
+                            --results_dir ./results_icl=$n_icl_samples \
+                            $chat_flag"
+
+                    log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix, fine-tuned: $is_fine_tuned"
+
+                    # Repeat the test until check_results.py reports num_tests == 3
+                    while ! python ./src/check_results.py \
+                    -r "$results_name" \
+                    -d "./results_icl=$n_icl_samples/${test_split}/${model_type_dir}" \
+                    --split ${test_split} \
+                    -n $num_tests; do
+
+                        echo 'Running test command...'
+                        $cmd $natlang_flag $rationale_flag $fine_tuned_flag $1
+                        echo '*****************************'
+                    done
                 done
-
             done
         done
     done

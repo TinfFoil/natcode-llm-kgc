@@ -31,6 +31,7 @@ def main(args):
     dataset_name = args.dataset
     dataset_path = f'./data/codekgc-data/{dataset_name}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
+    target_modules = [el+'_proj' for el in args.target_modules.split('-')]
     print('##################################################################')
     print(f'Training model: {model_name}')
     print(f"Training data: {dataset_name}")
@@ -39,6 +40,7 @@ def main(args):
     print(f"Language: {'natlang' if natlang else 'code'}")
     print(f"Number of ICL samples: {args.n_icl_samples}")
     print(f"Quantized: {args.load_in_4bit}")
+    print(f"Target moduls: {target_modules}")
     print('##################################################################')
 
     model, tokenizer = FastLanguageModel.from_pretrained(
@@ -51,11 +53,13 @@ def main(args):
     if tokenizer.chat_template is None:
         tokenizer.chat_template = chat_template_dict[model.config.model_type]
         print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
-
+    
+    
+    
     model = FastLanguageModel.get_peft_model(
         model,
         r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-        target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
+        target_modules = target_modules,  # ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
         lora_alpha = 16,
         lora_dropout = 0, # Supports any, but = 0 is optimized
         bias = "none",    # Supports any, but = "none" is optimized
@@ -180,6 +184,7 @@ def main(args):
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
     info = [{"Model": args.model_name,
+            "target_modules": args.target_modules,
             "Loss_train": trainer_stats.metrics['train_loss'],
             "Loss_val": eval_results['eval_loss'],
             "Precision_val": eval_results['eval_precision'],
@@ -196,13 +201,15 @@ def main(args):
     
     print(info)
 
-    results_dir_path = './results'
+    results_dir_path = os.path.join('./results',
+                                    f"{args.target_modules}",
+                                    )
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
     
     model_name_simple = model_name.split('/')[-1]
-    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}"
+    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}_mod={args.target_modules.replace('_proj', '')}"
     json_path = os.path.join(results_dir_path, f"{model_name_ft}_val.json")
 
     if args.save_results:
@@ -245,6 +252,9 @@ if __name__ == "__main__":
     parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
+    parser.add_argument("--use_lora", action="store_true", help="Whether to train with LoRA or full fine-tuning.")
+    parser.add_argument("--target_modules", type=str, help="List of LoRA modules to use (as dash-separated string).", default='q_proj-k_proj-v_proj-o_proj-gate_proj-up_proj-down_proj')
+    
     args = parser.parse_args()
 
     main(args)

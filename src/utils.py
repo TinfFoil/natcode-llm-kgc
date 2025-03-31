@@ -493,7 +493,46 @@ class Runner:
 
         return attn_list, outputs.sequences.squeeze(), stats
 
-    def heatmap2d(self, attention_scores, token_ids_full, idx, width=20, height=None, cmap='viridis', norm='log', high_threshold=0.999, savename=''):
+    def heatmap2d(
+        self,
+        attention_scores,
+        token_ids_full,
+        idx,
+        width=10,         # number of columns in the grid
+        height=None,      # maximum number of rows (if provided)
+        cell_w=3,       # width of each cell (in figure units)
+        cell_h=0.75,       # height of each cell (in figure units)
+        cmap='viridis',
+        norm='log',
+        high_threshold=0.999,
+        savename='',
+        format='pdf',
+        text_mode='truncate',   # 'wrap' or 'truncate'
+        wrap_width=10,      # maximum characters per line if wrapping
+        truncate_length=5  # maximum total characters if truncating
+    ):
+        """
+        Plots a 2D heatmap of attention scores with token labels in each cell.
+        Allows customizing the cell's width and height separately (rather than only squares).
+        Also supports wrapping or truncating text within the cells.
+
+        Args:
+            attention_scores: 1D array (num_tokens,) of attention values.
+            token_ids_full:   The list/array of token IDs.
+            idx:              Index or identifier used in the filename.
+            width:            Number of columns in the grid.
+            height:           Maximum number of rows in the grid (if None, computed automatically).
+            cell_w:           Width of each cell in figure coordinates.
+            cell_h:           Height of each cell in figure coordinates.
+            cmap:             Matplotlib colormap.
+            norm:             Normalization type, 'log' or 'linear'.
+            high_threshold:   Quantile above which cells will be colored black.
+            savename:         Directory or prefix to save the output file.
+            format:           Output format for saving the figure (e.g., 'pdf', 'png').
+            text_mode:        Either 'wrap' (to wrap text) or 'truncate' (to truncate text).
+            wrap_width:       Maximum characters per line if text_mode is 'wrap'.
+            truncate_length:  Maximum total characters if text_mode is 'truncate'.
+        """
         attention_scores = attention_scores.float().cpu().numpy()
         num_tokens = attention_scores.shape[0]
         next_token = token_ids_full[:num_tokens][-1]
@@ -519,17 +558,19 @@ class Runner:
         attention_scores_2d = attention_scores_padded.reshape(n_rows, n_cols)
         labels_2d = np.array(labels_padded).reshape(n_rows, n_cols)
         
-        # Create the figure and axis
-        fig, ax = plt.subplots(figsize=(n_cols * 1.5, n_rows * 1.5))
+        # Create the figure and axis using cell dimensions
+        fig_width = n_cols * cell_w
+        fig_height = n_rows * cell_h
+        fig, ax = plt.subplots(figsize=(fig_width, fig_height))
         
         # Choose the normalization
         if norm == 'log':
-            norm = LogNorm(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
+            color_norm = LogNorm(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
         else:
-            norm = Normalize(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
+            color_norm = Normalize(vmin=np.nanmin(attention_scores), vmax=np.nanmax(attention_scores))
         
-        # Create the heatmap
-        im = ax.imshow(attention_scores_2d, cmap=cmap, aspect='equal', norm=norm)
+        # Create the heatmap with non-square cells
+        im = ax.imshow(attention_scores_2d, cmap=cmap, aspect='auto', norm=color_norm)
         
         # Apply black color to high values
         high_mask = attention_scores_2d > np.nanquantile(attention_scores, high_threshold)
@@ -537,9 +578,14 @@ class Runner:
         attention_scores_2d_masked = np.ma.masked_where(high_mask, attention_scores_2d)
         im.set_data(attention_scores_2d_masked)
         
-        # Function to wrap text
-        def wrap_text(text, width=10):
-            return "\n".join(textwrap.wrap(text, width=width))
+        # Helper function to process text based on mode
+        def process_text(text):
+            if text_mode == 'wrap':
+                return "\n".join(textwrap.wrap(text, width=wrap_width))
+            elif text_mode == 'truncate':
+                return text[:truncate_length] + "..." if len(text) > truncate_length else text
+            else:
+                return text
         
         # Add labels to each cell
         for i in range(n_rows):
@@ -547,30 +593,26 @@ class Runner:
                 text = labels_2d[i, j]
                 score = attention_scores_2d[i, j]
                 if not np.isnan(score):
-                    wrapped_text = wrap_text(text)
-                    ax.text(j, i, wrapped_text, ha='center', va='center', fontsize=20, color='white', fontweight='bold')
+                    processed_text = process_text(text)
+                    ax.text(j, i, processed_text, ha='center', va='center', fontsize=30, color='white', fontweight='bold')
         
-        # plt.title(heatmap_token)
-
         # Remove axis ticks
         ax.set_xticks([])
         ax.set_yticks([])
         
+        # Add colorbar
         divider = make_axes_locatable(ax)
         cax = divider.append_axes("right", size="5%", pad=0.05)
-
-        plt.colorbar(im, cax=cax, aspect=20)
-        
-        # Add text for high values
-        # plt.text(1.02, 0.5, 'High\nAttention', transform=ax.transAxes, 
-        #         va='center', ha='left', bbox=dict(facecolor='black', edgecolor='none', alpha=0.8, pad=5))
+        cbar = plt.colorbar(im, cax=cax, aspect=20)
+        cbar.ax.tick_params(labelsize=26)
         
         plt.tight_layout()
         save_dir = f"./paper/attn/{savename}"
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
-        plt.savefig(os.path.join(save_dir, f'attn_{idx}_{heatmap_token}.pdf'), format='pdf', bbox_inches='tight')
+        plt.savefig(os.path.join(save_dir, f'attn_{idx}_{heatmap_token}.{format}'), format=format, bbox_inches='tight')
         plt.close()
+
 
 def save_json(info, json_path):
     try:
