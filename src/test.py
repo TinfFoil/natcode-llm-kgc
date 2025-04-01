@@ -42,8 +42,12 @@ def main(args):
     train_json = os.path.join(dataset_path, train_split)
     test_split = f'{args.test_split}_triples.json'
     test_json = os.path.join(dataset_path, test_split)
-
-    results_dir_path = f"{args.results_dir}/{test_split.split('_')[0]}/{'fine-tuned' if args.fine_tuned else 'base'}"
+    model_type = 'fine-tuned' if args.fine_tuned else 'base'
+    
+    results_dir_path = os.path.join(args.results_dir,
+                                    test_split.split('_')[0],
+                                    model_type,
+                                    )
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)

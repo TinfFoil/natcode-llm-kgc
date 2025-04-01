@@ -3,93 +3,56 @@ import os
 import pandas as pd
 import json
 from datasets import Dataset
-from utils import Runner
-from trl import SFTTrainer, SFTConfig
-from transformers import TrainingArguments, AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, LlamaForCausalLM
-from peft import LoftQConfig, LoraConfig, get_peft_model    
+from trl import SFTTrainer
+from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments
 import argparse
 import logging
 import numpy as np
 from datetime import datetime
-from utils import *
+from utils import Runner, save_json  # Assuming these are provided in your utils module
 
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s',
     level=logging.INFO
 )
-
 logger = logging.getLogger(__name__)
 
 def main(args):
 
     max_seq_length = args.max_seq_length
-    dtype = args.dtype
-    load_in_4bit = args.load_in_4bit
     model_name = args.model_name
     chat_model = args.chat
     natlang = args.natlang
     dataset_name = args.dataset
-    dataset_path = f'./data/codekgc-data/{dataset_name}'
+    dataset_path = os.path.join('./data/codekgc-data', dataset_name)
     schema_path = os.path.join(dataset_path, args.prompt_filename)
-
+    
+    print('##################################################################')
     print(f'Training model: {model_name}')
     print(f"Training data: {dataset_name}")
     print(f'Chat model: {chat_model}')
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if natlang else 'code'}")
+    print(f"Number of ICL samples: {args.n_icl_samples}")
+    print('##################################################################')
 
-    nf4_config = BitsAndBytesConfig(
-    load_in_4bit=load_in_4bit,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.bfloat16
-    )
-
-    print(f'Quantization: {load_in_4bit}')
-
-    model = AutoModelForCausalLM.from_pretrained(
-        model_name,
-        # max_seq_length = max_seq_length,
-        # dtype = dtype,
-        # device_map = 'auto',
-        # quantization_config = nf4_config
-    )
-
+    # Load model and tokenizer directly using Transformers (full fine-tuning)
+    model = AutoModelForCausalLM.from_pretrained(model_name)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
+    
+    # (Optional) If your application requires a chat template and the tokenizer does not have one,
+    # you can either assign one or leave this section out.
+    if not hasattr(tokenizer, "chat_template") or tokenizer.chat_template is None:
+        # If available, you can define a mapping for your model types to chat templates.
+        # For now, we log a warning.
+        logger.warning("No chat template found for the tokenizer. Proceeding without one.")
 
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    tokenizer.padding_side = 'right'
-    if tokenizer.chat_template is None:
-        tokenizer.chat_template = chat_template_dict[model.config.model_type]
-        print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
-
-    lora_config = LoraConfig(
-        r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-        target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
-        lora_alpha = 16,
-        lora_dropout = 0, # Supports any, but = 0 is optimized
-        bias = "none",    # Supports any, but = "none" is optimized
-        # use_gradient_checkpointing = "unsloth", # 4x longer contexts auto supported!
-        # random_state = 3407,
-        use_rslora = False,  # TODO: redo with rslora
-        loftq_config = None, # And LoftQ
-    )
-
-
-    # model = get_peft_model(
-    #     model,
-    #     lora_config
-    # )
-
-    print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
-
-    print(model, file=open(f"./model_info/{args.model_name.split('/')[-1]}_arch.txt", 'w'))
-
+    # Read entity-to-type mapping from JSON
     entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:
         entity2type_dict = json.load(f)
 
+    # Initialize the Runner from your utils
     runner = Runner(model=model,
                     type_dict=entity2type_dict,
                     natlang=natlang,
@@ -98,23 +61,25 @@ def main(args):
                     schema_path=schema_path,
                     rationale=args.rationale,
                     verbose_train=args.verbose_train,
-                    max_seq_len=args.max_seq_length,
+                    max_seq_len=max_seq_length,
                     model_name=args.model_name,
                     )
     
     print('Model system message:', runner.check_system_msg())
 
+    # Load training data
     train_json = os.path.join(dataset_path, 'train_triples.json')
     df_train = pd.read_json(train_json)
     text_list_train = runner.make_samples(tokenizer, df_train, n_icl_samples=args.n_icl_samples)
     df_train = pd.DataFrame(text_list_train)
     dataset_train = Dataset.from_pandas(df_train.rename(columns={0: "text"}), split="train")
 
+    # Load validation data if required
     if args.noval:
         n_samples_val = 0
         dataset_val = None
         eval_strategy = 'no'
-        load_best_model_at_end=False
+        load_best_model_at_end = False
     else:
         val_json = os.path.join(dataset_path, 'val_triples.json')
         df_val = pd.read_json(val_json)
@@ -123,68 +88,59 @@ def main(args):
         df_val = pd.DataFrame(text_list_val).sample(n=n_samples_val)
         dataset_val = Dataset.from_pandas(df_val.rename(columns={0: "text"}), split="val")
         eval_strategy = 'steps'
-        load_best_model_at_end=True
+        load_best_model_at_end = True
     
     def compute_metrics(eval_preds):
         logits, labels = eval_preds
         logits_argmax = np.argmax(logits, axis=-1)
-        
         predictions = tokenizer.batch_decode(logits_argmax, skip_special_tokens=True)
         
-        # Decode labels, ignoring -100 values
+        # Decode labels (ignoring -100 tokens)
         label_tokens = np.where(labels != -100, labels, tokenizer.pad_token_id)
         labels_decoded = tokenizer.batch_decode(label_tokens, skip_special_tokens=True)
         
-        # Extract triples from predictions and labels
+        # Extract triples from predictions and labels using runner methods
         predicted_triples = [runner.extract_triples(pred) for pred in predictions]
         true_triples = [runner.extract_triples(label) for label in labels_decoded]
         
         precision, recall, f1_score = runner.calculate_strict_micro_f1(true_triples, predicted_triples)
         
         return {"precision": precision, "recall": recall, "f1": f1_score}
-
-    output_printer = OutputPrinterCallback(tokenizer, dataset_train, print_interval=1)
-    args.batch_size_train = 4
+    
     trainer = SFTTrainer(
-        model = model,
-        tokenizer = tokenizer,
-        train_dataset = dataset_train,
-        eval_dataset = dataset_val,
+        model=model,
+        tokenizer=tokenizer,
+        train_dataset=dataset_train,
+        eval_dataset=dataset_val,
+        dataset_text_field="text",
+        max_seq_length=max_seq_length,
+        dataset_num_proc=2,
+        packing=False,
         compute_metrics=compute_metrics,
-        args = SFTConfig(
-            dataset_text_field = "text",
-            packing = False, # Can make training 5x faster for short sequences.
-            max_seq_length = max_seq_length,
-            dataset_num_proc = 2,
-            # TrainingArguments
-            per_device_train_batch_size = args.batch_size_train,
-            per_device_eval_batch_size = args.batch_size_eval,
-            gradient_accumulation_steps = args.grad_acc_steps,
-            warmup_steps = 5,
-            max_steps = args.train_steps,
-            fp16 = not torch.cuda.is_bf16_supported(),
-            bf16 = torch.cuda.is_bf16_supported(),
-            logging_steps = 1,
-            optim = "adamw_8bit",
-            weight_decay = 0.01,
-            lr_scheduler_type = "linear",
-            seed = 3407,
-            output_dir = "outputs",
-            report_to = "none",
-            eval_strategy = eval_strategy,
-            eval_steps = args.train_steps,
-            save_steps = args.train_steps,
+        args=TrainingArguments(
+            per_device_train_batch_size=args.batch_size_train,
+            per_device_eval_batch_size=args.batch_size_eval,
+            gradient_accumulation_steps=args.grad_acc_steps,
+            warmup_steps=5,
+            max_steps=args.train_steps,
+            learning_rate=2e-4,
+            fp16=not torch.cuda.is_bf16_supported(),
+            bf16=torch.cuda.is_bf16_supported(),
+            optim="adamw_8bit",
+            weight_decay=0.01,
+            lr_scheduler_type="linear",
+            seed=3407,
+            output_dir="outputs",
+            report_to="none",
+            eval_strategy=eval_strategy,
+            eval_steps=args.train_steps,
+            save_steps=args.train_steps,
             metric_for_best_model="f1",
             load_best_model_at_end=load_best_model_at_end,
         ),
-        callbacks=[
-            PrinterCallback(),
-            # output_printer
-            ],
     )
 
     trainer_stats = trainer.train()
-
     best_metric = trainer.state.best_metric
     print(f"Best F1 score: {best_metric}")
 
@@ -202,30 +158,33 @@ def main(args):
     now = datetime.now()
     dt_string = now.strftime("%Y-%m-%d-%H-%M-%S")
 
-    info = [{"Model": args.model_name,
-            "Loss_train": trainer_stats.metrics['train_loss'],
-            "Loss_val": eval_results['eval_loss'],
-            "Precision_val": eval_results['eval_precision'],
-            "Recall_val": eval_results['eval_recall'],
-            "F1_val": eval_results['eval_f1'],
-            "n_icl_samples": args.n_icl_samples,
-            "n_samples_val": n_samples_val,
-            "dataset": args.dataset,
-            "date": dt_string,
-            "schema_path": schema_path,
-            "split": 'val',
-            "noval": args.noval,
-            }]
+    info = [{
+        "Model": args.model_name,
+        "Loss_train": trainer_stats.metrics['train_loss'],
+        "Loss_val": eval_results['eval_loss'],
+        "Precision_val": eval_results['eval_precision'],
+        "Recall_val": eval_results['eval_recall'],
+        "F1_val": eval_results['eval_f1'],
+        "n_icl_samples": args.n_icl_samples,
+        "n_samples_val": n_samples_val,
+        "dataset": args.dataset,
+        "date": dt_string,
+        "schema_path": schema_path,
+        "split": 'val',
+        "noval": args.noval,
+    }]
     
     print(info)
 
-    results_dir_path = './results'
+    results_dir_path = os.path.join('./results',
+                                    f"{args.target_modules}",
+                                    )
 
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
     
     model_name_simple = model_name.split('/')[-1]
-    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}"
+    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}_mod={args.target_modules.replace('_proj', '')}"
     json_path = os.path.join(results_dir_path, f"{model_name_ft}_val.json")
 
     if args.save_results:
@@ -268,28 +227,9 @@ if __name__ == "__main__":
     parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
+    parser.add_argument("--use_lora", action="store_true", help="Whether to train with LoRA or full fine-tuning.")
+    parser.add_argument("--target_modules", type=str, help="List of LoRA modules to use (as dash-separated string).", default='q_proj-k_proj-v_proj-o_proj-gate_proj-up_proj-down_proj')
+    
     args = parser.parse_args()
-
-    # args.model_name = "unsloth/Meta-Llama-3.1-8B"
-    # args.model_name = "unsloth/Meta-Llama-3.1-8B-Instruct"
-    
-    # args.model_name = "mistralai/Mistral-7B-v0.3"
-    # args.model_name = "mistralai/Mistral-7B-Instruct-v0.3"
-    
-    # args.model_name = "deepseek-ai/deepseek-coder-7b-base-v1.5"
-    # args.model_name = "deepseek-ai/deepseek-coder-7b-instruct-v1.5"
-    
-    # args.model_name = "Qwen/CodeQwen1.5-7B"
-    # args.model_name = "Qwen/CodeQwen1.5-7B-Chat"
-    
-    # args.dataset = "ade"
-    # args.chat = 1
-    # args.rationale = 0
-    # args.natlang = 1
-    # args.train_steps = 200
-    # args.noval = True
-    # args.val_samples = 3
-    # args.n_icl_samples = 3
-    # args.verbose_train = True
 
     main(args)

@@ -12,7 +12,7 @@ data/combined
 .vscode/
 paper/
 results/old/
-venv-llmkgc/
+.env/
 results_sub_1/
 results_argo/
 scripts/

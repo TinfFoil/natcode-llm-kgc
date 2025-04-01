@@ -17,8 +17,6 @@ def main(args):
     print(f'Rationale: {args.rationale}')
     print(f"Language: {'natlang' if args.natlang else 'code'}")
 
-    model_name_simple = args.model.split('/')[-1]
-
     model = AutoModelForCausalLM.from_pretrained(
         args.model,
         torch_dtype='auto',
@@ -48,7 +46,7 @@ def main(args):
                     verbose_test=args.verbose_test,
                     model_name=args.model,
                     )
-    df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
+    df_train = pd.read_json(train_json).sample(n=args.n_icl_samples, random_state=42)
     icl_prompt = runner.make_icl_prompt(df_train)
 
     test_split = f'{args.test_split}_triples.json'
@@ -57,15 +55,31 @@ def main(args):
     with open(test_json, 'r', encoding='utf8') as f:
         test_data = json.load(f)
     
+    # i = 52
+    # rationale
+    # attn_1_images_truncate_noattnpeaks.pdf
+    # attn_4_Used_truncate.pdf
+
+    # no rationale
+    # attn_9_Used_truncate.pdf
+    # attn_22_images_truncate.pdf
+ 
+    # i = 240
+    # "This paper investigates the utility of applying standard MT evaluation methods ( BLEU , NIST , WER and PER ) to building classifiers to predict semantic equivalence and entailment ."
+    
     for i, line in enumerate(test_data):
         if len(line['triple_list']) == 1 and i == 52:
             attn_list, seq, stats = runner.get_attn(model, tokenizer, line, icl_prompt,)
             break
-        
+    
     savename = f"{args.model.split('/')[-1]}_test{i}"
+    print(len(attn_list))
     for attn in attn_list:
         for j, attn in enumerate(attn_list):
             runner.heatmap2d(attn, seq, j, savename = savename)
+            if j > 22:
+                break
+        break
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A sample argparse program")
@@ -84,14 +98,15 @@ if __name__ == "__main__":
     # parser.add_argument("--bfloat16", action="store_true", help="Whether to use bfloat16 precision for model weights")
     args = parser.parse_args()
 
-    # args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_base_steps=200_icl=3"
+    # args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_base_steps=200_icl=3_mod=q-k-v-o-gate-up-down"
+    args.model = "./models/Mistral-7B-v0.3_ft_scierc_natlang_rationale_steps=200_icl=3_mod=q-k-v-o-gate-up-down"
     # args.model = "./models/Mistral-7B-Instruct-v0.3_ft_ade_code_base_steps=200_icl=3"
-    # args.dataset = "scierc"
-    # args.chat = 0
-    # args.rationale = 0
-    # args.natlang = 1
-    # args.verbose_test = 1
-    # args.fine_tuned = 1
-    # args.bfloat16 = 1
+    args.dataset = "scierc"
+    args.chat = 0
+    args.rationale = 1
+    args.natlang = 1
+    args.verbose_test = 1
+    args.fine_tuned = 1
+    args.bfloat16 = 1
 
     main(args)
