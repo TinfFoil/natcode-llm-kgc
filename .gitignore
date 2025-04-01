@@ -18,3 +18,4 @@ results_argo/
 scripts/
 model_info/
 chat_templates/
+.env/
