@@ -2,7 +2,7 @@
 #SBATCH -J test_kgc
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:h100:1
+#SBATCH --gres=gpu:1
 #SBATCH --time=24:00:00
 #SBATCH --mem=64G
 #SBATCH --output=./.slurm/%j_output.log
@@ -66,14 +66,15 @@ rationale_toggle=(
 )
 
 target_modules_list=(
-    "q"
-    "k"
+    # "q"
+    # "k"
     # "v"
     # "q-k"
     # "q-v"
     # "k-v"
     # "q-k-v"
     # "q-k-v-o-gate-up-down"
+    # "full_ft"
     )
 
 train_steps=200

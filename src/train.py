@@ -31,7 +31,7 @@ def main(args):
     dataset_name = args.dataset
     dataset_path = f'./data/codekgc-data/{dataset_name}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
-    target_modules = [el+'_proj' for el in args.target_modules.split('-')]
+    
     print('##################################################################')
     print(f'Training model: {model_name}')
     print(f"Training data: {dataset_name}")
@@ -40,7 +40,7 @@ def main(args):
     print(f"Language: {'natlang' if natlang else 'code'}")
     print(f"Number of ICL samples: {args.n_icl_samples}")
     print(f"Quantized: {args.load_in_4bit}")
-    print(f"Target moduls: {target_modules}")
+    print(f"Target moduls: {args.target_modules}")
     print('##################################################################')
 
     model, tokenizer = FastLanguageModel.from_pretrained(
@@ -54,20 +54,22 @@ def main(args):
         tokenizer.chat_template = chat_template_dict[model.config.model_type]
         print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
     
-    
-    
-    model = FastLanguageModel.get_peft_model(
-        model,
-        r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
-        target_modules = target_modules,  # ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
-        lora_alpha = 16,
-        lora_dropout = 0, # Supports any, but = 0 is optimized
-        bias = "none",    # Supports any, but = "none" is optimized
-        use_gradient_checkpointing = "unsloth", # 4x longer contexts auto supported!
-        random_state = 3407,
-        use_rslora = True,  # TODO: redo with rslora
-        loftq_config = None, # And LoftQ
-    )
+    if args.target_modules != 'full_ft':
+        target_modules = [el+'_proj' for el in args.target_modules.split('-')]
+        model = FastLanguageModel.get_peft_model(
+            model,
+            r = 16, # Choose any number > 0 ! Suggested 8, 16, 32, 64, 128
+            target_modules = target_modules,  # ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj",],
+            lora_alpha = 16,
+            lora_dropout = 0, # Supports any, but = 0 is optimized
+            bias = "none",    # Supports any, but = "none" is optimized
+            use_gradient_checkpointing = "unsloth", # 4x longer contexts auto supported!
+            random_state = 3407,
+            use_rslora = True,  # TODO: redo with rslora
+            loftq_config = None, # And LoftQ
+        )
+    else:
+        target_modules = args.target_modules[0]
 
     print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
 

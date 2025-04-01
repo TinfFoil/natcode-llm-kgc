@@ -13,7 +13,12 @@ def main():
 
     for root, dirs, files in os.walk(args.d):
         for D in dirs:
-            if args.m.split('/')[-1] in D:
+            model_name = args.m.split('/')[-1]
+            # print('----------------')
+            # print(f"D: {D}")
+            # print(f"model_name: {model_name}")
+            if model_name == D:
+                # print(f"model_name: {model_name}")    
                 print("Model has already been trained")
                 sys.exit(0)  # Exit with 0 (success) if found
     

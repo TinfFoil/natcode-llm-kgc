@@ -2,12 +2,12 @@
 #SBATCH -J train_kgc
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:h100:1
 #SBATCH --time=24:00:00
 #SBATCH --mem=64G
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
-nvidia-smi
+
 module load gcc arrow
 source .env/bin/activate
 
@@ -29,7 +29,7 @@ source .env/bin/activate
 # Define model_list and whether they are chat models
 declare -A model_list=(
 # ["unsloth/Meta-Llama-3.1-70B"]=false
-# ["unsloth/Meta-Llama-3.1-70B-Instruct"]=true
+["unsloth/Meta-Llama-3.1-70B-Instruct"]=true
 
 # ["unsloth/Meta-Llama-3.1-8B"]=false
 # ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
@@ -37,7 +37,7 @@ declare -A model_list=(
 # ["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["mistralai/Mistral-7B-v0.3"]=false
-["mistralai/Mistral-7B-Instruct-v0.3"]=true
+# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
 # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
 # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
@@ -85,14 +85,14 @@ load_in_4bit=false
 
 # target_modules_list=("q-k-v-o-gate-up-down")
 target_modules_list=(
-    "q"
+    # "q"
     # "k"
     # "v"
     # "q-k"
     # "q-v"
     # "k-v"
     # "q-k-v"
-    # "q-k-v-o-gate-up-down"
+    "q-k-v-o-gate-up-down"
     # "full_ft"
     )
 
@@ -105,7 +105,7 @@ for natlang in ${natlang_toggle[@]}; do
             for dataset in "${dataset_list[@]}"; do
                 for target_modules in "${target_modules_list[@]}"; do
                     # Base command
-                    cmd="python ./src/train.py \
+                    cmd="python ./src/train_hf.py \
                         -m $model \
                         -d $dataset \
                         --n_icl_samples $n_icl_samples \
