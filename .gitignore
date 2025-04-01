@@ -1,5 +1,13 @@
 **pyc
-models/
+# models/
+*.safetensors
+tokenizer.model
+model.safetensors.index.json
+special_tokens_map.json
+tokenizer_config.json
+tokenizer.json
+generation_config.json
+# config.json
 outputs/
 .slurm/
 logging/
