@@ -66,13 +66,13 @@ rationale_toggle=(
 )
 
 target_modules_list=(
-    # "q"
-    # "k"
-    # "v"
-    # "q-k"
-    # "q-v"
-    # "k-v"
-    # "q-k-v"
+    "q"
+    "k"
+    "v"
+    "q-k"
+    "q-v"
+    "k-v"
+    "q-k-v"
     # "q-k-v-o-gate-up-down"
     # "full_ft"
     )
