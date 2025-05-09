@@ -1,3 +1,3 @@
 module load gcc arrow
-source venv-llmkgc/bin/activate
+source .env/bin/activate
 CUDA_VISIBLE_DEVICES=0

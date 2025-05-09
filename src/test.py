@@ -18,10 +18,10 @@ def main(args):
     model_name_simple = args.model_name.split('/')[-1]
 
     nf4_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_use_double_quant=True,
-    bnb_4bit_compute_dtype=torch.bfloat16
+        load_in_4bit=True,
+        bnb_4bit_quant_type="nf4",
+        bnb_4bit_use_double_quant=True,
+        bnb_4bit_compute_dtype=torch.bfloat16
     )
 
     model = AutoModelForCausalLM.from_pretrained(
@@ -31,7 +31,9 @@ def main(args):
         quantization_config=nf4_config,
     )
     
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name,
+                                              padding_side = 'left',
+                                              )
 
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
@@ -80,7 +82,7 @@ def main(args):
     
     df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
     icl_prompt = runner.make_icl_prompt(df_train)
-    
+
     eval_dict = runner.evaluate(
                                 df_test,
                                 icl_prompt,
@@ -123,7 +125,7 @@ if __name__ == "__main__":
     parser.add_argument("--train_split", help="Filename of the train file to use", default='train')
     parser.add_argument("--test_split", help="Filename of the test file to use", default='test')
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
-    parser.add_argument("--verbose_test", action="store_true", help="Verbose testing")
+    parser.add_argument("--verbose_test", default=0, type=int, help="Verbose testing")
     parser.add_argument("--fine_tuned", action="store_true", help="Whether a fine-tuned LLM is beind tested")
     parser.add_argument("--results_dir", help="Dir in which to save results", default='./results')
     parser.add_argument("--verbose_output_path", help="Dir in which to model outputs", default='./results/monitor')
@@ -147,7 +149,7 @@ if __name__ == "__main__":
 
     # args.model_name = "mistralai/Mistral-7B-v0.3"
     # args.dataset = "ade"
-    # args.chat = 0
+    # args.chat = 1
     # args.rationale = 0
     # args.natlang = 1
     # args.verbose_test = 1

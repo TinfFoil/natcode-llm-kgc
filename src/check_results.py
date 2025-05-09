@@ -19,12 +19,18 @@ def main():
     print(f'Test num. threshold: {args.n}')
     for root, dirs, files in os.walk(args.d):
         for F in files:
+            print('-----------')
+            # F = '_'.join(F.split('_')[:-3])
+            # F = F.replace('.json', '')
+            print('F', F)
+            print('model_name', model_name)
             if model_name in F:
                 json_filepath = os.path.join(root, F)
                 print(f'Actual model results being checked: {json_filepath}')
                 with open(json_filepath, 'r', encoding='utf8') as f:
                     data = json.load(f)
                 n_tests = len(data)
+                print(n_tests)
                 if n_tests >= int(args.n):
                     print(f"{model_name} has already been tested {n_tests} times on the {args.split.upper()} split")
                     print('**********************************')

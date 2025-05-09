@@ -2,12 +2,16 @@
 #SBATCH -J test_kgc
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:1
+#SBATCH --gres=gpu:h100:1
 #SBATCH --time=24:00:00
 #SBATCH --mem=64G
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 nvidia-smi
+
+module load gcc arrow/19.0.1
+source .env/bin/activate
+
 
 declare -A model_list=(
     # non fine-tuned models
@@ -21,18 +25,33 @@ declare -A model_list=(
     # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
     # ["Qwen/CodeQwen1.5-7B-Chat"]=true
 
+    # ["meta-llama/Llama-3.2-1B-Instruct"]=true
+    # ["meta-llama/Llama-3.2-3B-Instruct"]=true
+
     # fine-tuned models
+
+    # ["meta-llama/Meta-Llama-3.1-70B"]=false
+    # ["meta-llama/Meta-Llama-3.1-70B-Instruct"]=true
+
     # ["./models/Meta-Llama-3.1-8B"]=false
     # ["./models/Meta-Llama-3.1-8B-Instruct"]=true
 
+    # ["./models/4-bit/Meta-Llama-3.1-8B"]=false
+    ["./models/4-bit/Meta-Llama-3.1-8B-Instruct"]=true
+
     # ["./models/Mistral-7B-v0.3"]=false
-    ["./models/Mistral-7B-Instruct-v0.3"]=true
+    # ["./models/Mistral-7B-Instruct-v0.3"]=true
 
     # ["./models/deepseek-coder-7b-base-v1.5"]=false
     # ["./models/deepseek-coder-7b-instruct-v1.5"]=true
 
     # ["./models/CodeQwen1.5-7B"]=false
     # ["./models/CodeQwen1.5-7B-Chat"]=true
+
+    # ["./models/Llama-3.2-1B"]=false
+    # ["./models/Llama-3.2-1B-Instruct"]=true
+    # ["./models/Llama-3.2-3B"]=false
+    # ["./models/Llama-3.2-3B-Instruct"]=true
 )
 
 dataset_list=(
@@ -65,7 +84,10 @@ rationale_toggle=(
     false
 )
 
+verbose_test=0
+
 target_modules_list=(
+    # "dummy"
     # "q"
     # "k"
     # "v"
@@ -73,7 +95,7 @@ target_modules_list=(
     # "q-v"
     # "k-v"
     # "q-k-v"
-    # "q-k-v-o-gate-up-down"
+    "q-k-v-o-gate-up-down"
     # "full_ft"
     )
 
@@ -153,6 +175,7 @@ for rationale in "${rationale_toggle[@]}"; do
                             -d $dataset \
                             --n_icl_samples $n_icl_samples \
                             --results_dir ./results_icl=$n_icl_samples \
+                            --verbose_test $verbose_test \
                             $chat_flag"
 
                     log_info "[$(date +"%Y-%m-%d %H:%M:%S")] Testing model: $model_name, dataset: $dataset, chat_model: $is_chat_model, language: $natlang_suffix, rationale: $rationale_suffix, fine-tuned: $is_fine_tuned"
@@ -165,7 +188,7 @@ for rationale in "${rationale_toggle[@]}"; do
                     -n $num_tests; do
 
                         echo 'Running test command...'
-                        $cmd $natlang_flag $rationale_flag $fine_tuned_flag $1
+                        $cmd $natlang_flag $rationale_flag $fine_tuned_flag
                         echo '*****************************'
                     done
                 done

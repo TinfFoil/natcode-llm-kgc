@@ -53,6 +53,8 @@ class Runner:
         self.max_seq_len = max_seq_len
         self.model_name = model_name.split('/')[-1]
         if verbose_output_path:
+            if not os.path.exists(verbose_output_path):
+                os.makedirs(verbose_output_path)
             self.verbose_output_path = os.path.join(verbose_output_path, f'{self.model_name}.txt')
         self.verbose_output = ''
 
@@ -304,7 +306,7 @@ class Runner:
             truncation=True,
             return_token_type_ids=False,
         ).to(self.model.device)
-
+        
         # 4) Generate outputs in batch
         with torch.no_grad():
             outputs = self.model.generate(
@@ -322,6 +324,7 @@ class Runner:
             # Slice out prompt tokens, then decode generation
             in_len = input_lengths[i]
             gen_tokens = seq[in_len:]
+            # print(gen_tokens)
             decoded_text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True)
             decoded.append(decoded_text)
 
@@ -423,6 +426,7 @@ class Runner:
     def make_samples(self, tokenizer, df: pd.DataFrame, n_icl_samples: int) -> List[str]:
         text_list = []
         EOS_TOKEN = tokenizer.eos_token # add EOS_TOKEN to prevent infinite generation
+        max_prompt_len = 0
         for index in tqdm(df.index, total=len(df)):
             # Select the specific row
             sample = df.loc[index]
@@ -446,12 +450,14 @@ class Runner:
                 with open(txt_path, 'w', encoding='utf8') as f:
                     f.write(prompt)
             prompt_token_len = len(tokenizer(prompt).input_ids)
-            if prompt_token_len > self.model.max_seq_length:
-                raise Exception(f'The prompt is longer than the model\'s maximum sequence length ({self.model.max_seq_length}).')
+            # if prompt_token_len > self.model.max_seq_length:
+            #     raise Exception(f'The prompt is longer than the model\'s maximum sequence length ({self.model.max_seq_length}).')
             if prompt_token_len > self.max_seq_len:
                 warnings.warn(f'The prompt is longer than the set maximum sequence length ({self.max_seq_len})')
+            if prompt_token_len > max_prompt_len:
+                max_prompt_len = prompt_token_len
             text_list.append(prompt)
-        
+        print('max prompt length:', max_prompt_len)
         return text_list
     
     def get_attn(self, model, tokenizer, sample, icl_prompt):

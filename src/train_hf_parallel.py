@@ -1,5 +1,6 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 import torch
+import torch.distributed as dist
 import os
 import pandas as pd
 import json
@@ -20,58 +21,70 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+# local_rank = int(os.environ.get("LOCAL_RANK", 0))
+# gpu_count = torch.cuda.device_count()
+
+# if local_rank >= gpu_count:
+#     raise ValueError(f"Local rank {local_rank} is invalid; only {gpu_count} GPUs are available.")
+
+torch.cuda.set_device(0)
+# print("Local rank:", local_rank)
+
+print("Available GPUs:", torch.cuda.device_count())
+
 def main(args):
-    dataset_path = f'./data/codekgc-data/{args.dataset}'
+    # Initialize distributed process group
+    if args.local_rank != -1:
+        torch.distributed.init_process_group(backend='nccl')
+        torch.cuda.set_device(args.local_rank)
+
+    # Check GPU availability
+    if torch.cuda.device_count() < args.local_rank + 1:
+        raise RuntimeError(f"Insufficient GPUs: requested rank {args.local_rank}, but only {torch.cuda.device_count()} GPUs available.")
+    load_in_4bit = args.load_in_4bit
+    model_name = args.model_name
+    chat_model = args.chat
+    natlang = args.natlang
+    dataset_name = args.dataset
+    dataset_path = f'./data/codekgc-data/{dataset_name}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
     
     print('##################################################################')
-    print(f'Training model: {args.model_name}')
-    print(f"Training data: {args.dataset}")
-    print(f'Chat model: {args.chat}')
+    print(f'Training model: {model_name}')
+    print(f"Training data: {dataset_name}")
+    print(f'Chat model: {chat_model}')
     print(f'Rationale: {args.rationale}')
-    print(f"Language: {'natlang' if args.natlang else 'code'}")
+    print(f"Language: {'natlang' if natlang else 'code'}")
     print(f"Number of ICL samples: {args.n_icl_samples}")
-    print(f"4-bit quantization: {args.load_in_4bit}")
-    print(f"8-bit quantization: {args.load_in_8bit}")
+    print(f"Quantized: {args.load_in_4bit}")
     print(f"Target modules: {args.target_modules}")
     print(f"Learning rate: {args.lr}")
     print('##################################################################')
 
-    bit_string = '4-bit' if args.load_in_4bit else 'fp16'
-    bit_string = '8-bit' if args.load_in_8bit else bit_string
-    model_dir = os.path.join('./models', bit_string)
-
-    if not os.path.exists(model_dir):
-        os.makedirs(model_dir)
-
     # Configure quantization if needed
-    if args.load_in_4bit:
+    if load_in_4bit:
         quantization_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_compute_dtype=torch.float16,
             bnb_4bit_use_double_quant=True,
             bnb_4bit_quant_type="nf4"
         )
-    elif args.load_in_8bit:
-        quantization_config = BitsAndBytesConfig(
-            load_in_8bit=True,
-        )
     else:
         quantization_config = None
 
     # Load model and tokenizer    
     model = AutoModelForCausalLM.from_pretrained(
-        args.model_name,
+        model_name,
         quantization_config=quantization_config,
         torch_dtype=torch.bfloat16,
         device_map='auto',
         trust_remote_code=True,
     )
-    print(model)
+
     model.gradient_checkpointing_enable()
     
     tokenizer = AutoTokenizer.from_pretrained(
-        args.model_name,
+        model_name,
         trust_remote_code=True
     )
 
@@ -89,7 +102,7 @@ def main(args):
         target_modules = [el+'_proj' for el in args.target_modules.split('-')]
         
         # Prepare the model for training, particularly important for quantized models
-        if args.load_in_4bit:
+        if load_in_4bit:
             model = prepare_model_for_kbit_training(model)
         
         # Configure LoRA
@@ -108,8 +121,6 @@ def main(args):
         target_modules = args.target_modules
         lora_config = None
 
-    print('Trainable parameters:', sum(p.numel() for p in model.parameters() if p.requires_grad))
-
     # Save model information
     print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
     print(model, file=open(f"./model_info/{args.model_name.split('/')[-1]}_arch.txt", 'w'))
@@ -120,9 +131,9 @@ def main(args):
 
     runner = Runner(model=model,
                     type_dict=entity2type_dict,
-                    natlang=args.natlang,
+                    natlang=natlang,
                     tokenizer=tokenizer,
-                    chat_model=args.chat,
+                    chat_model=chat_model,
                     schema_path=schema_path,
                     rationale=args.rationale,
                     verbose_train=args.verbose_train,
@@ -253,8 +264,13 @@ def main(args):
     if not os.path.exists(results_dir_path):
         os.makedirs(results_dir_path)
     
-    model_name_simple = args.model_name.split('/')[-1]
-    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if args.natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}_mod={args.target_modules.replace('_proj', '')}"
+    model_name_simple = model_name.split('/')[-1]
+    model_name_ft = f"{model_name_simple}_ft_{args.dataset}_{'natlang' if natlang else 'code'}_{'rationale' if args.rationale else 'base'}_steps={args.train_steps}_icl={args.n_icl_samples}_mod={args.target_modules.replace('_proj', '')}"
+
+    model_dir = './models'
+
+    if not os.path.exists(model_dir):
+        os.makedirs(model_dir)
 
     model_save_path = os.path.join(model_dir, model_name_ft)
     
@@ -295,7 +311,6 @@ if __name__ == "__main__":
     parser.add_argument("--n_icl_samples", type=int, default=3, help="Number of ICL examples")
     parser.add_argument("--dtype", type=str, default=None, help="Data type for training")
     parser.add_argument("--load_in_4bit", action="store_true", help="Use 4-bit quantization")
-    parser.add_argument("--load_in_8bit", action="store_true", help="Use 8-bit quantization")
     parser.add_argument("--chat", action="store_true", help="Whether it's a chat model")
     parser.add_argument("--natlang", action="store_true", help="Use natural language prompts")
     parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
@@ -303,10 +318,8 @@ if __name__ == "__main__":
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
     parser.add_argument("--target_modules", type=str, help="List of LoRA modules to use (as dash-separated string).", default='q-k-v-o-gate-up-down')
+    parser.add_argument("--local-rank", type=int, default=-1)
+
     
     args = parser.parse_args()
-
-    # args.model_name = 'meta-llama/Llama-3.2-3B-Instruct'
-    # args.model_name = 'meta-llama/Llama-3.2-1B-Instruct'
-
     main(args)

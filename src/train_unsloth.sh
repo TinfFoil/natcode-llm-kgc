@@ -8,8 +8,8 @@
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 nvidia-smi
-module load gcc arrow/19.0.1
-source .env/bin/activate
+module load gcc arrow
+source unsloth/bin/activate
 
 # Define model_list and whether they are chat models
 # declare -A model_list=(
@@ -28,21 +28,16 @@ source .env/bin/activate
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-# ["meta-llama/Meta-Llama-3.1-70B"]=false
-# ["meta-llama/Meta-Llama-3.1-70B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-70B"]=false
+# ["unsloth/Meta-Llama-3.1-70B-Instruct"]=true
 
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
-
-# ["meta-llama/Llama-3.2-1B"]=false
-# ["meta-llama/Llama-3.2-1B-Instruct"]=true
-# ["meta-llama/Llama-3.2-3B"]=false
-# ["meta-llama/Llama-3.2-3B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["mistralai/Mistral-7B-v0.3"]=false
-# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
 # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
 # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
@@ -86,14 +81,7 @@ natlang_toggle=(
 
 train_steps=200
 n_icl_samples=3
-# load_in_4bit=false
-load_in_4bit=true
-
-load_in_8bit=false
-# load_in_8bit=true
-
-lr=2e-4
-# lr=1e-5
+load_in_4bit=false
 
 # target_modules_list=("q-k-v-o-gate-up-down")
 target_modules_list=(
@@ -104,8 +92,8 @@ target_modules_list=(
     # "q-v"
     # "k-v"
     # "q-k-v"
-    "q-k-v-o-gate-up-down"
-    # "full_ft"
+    # "q-k-v-o-gate-up-down"
+    "full_ft"
     )
 
 # Loop through model_list
@@ -121,8 +109,7 @@ for natlang in ${natlang_toggle[@]}; do
                         -m $model \
                         -d $dataset \
                         --n_icl_samples $n_icl_samples \
-                        --target_modules $target_modules \
-                        --lr $lr"
+                        --target_modules $target_modules"
 
                     # Add chat flag if it's a chat model
                     if $is_chat; then
@@ -131,10 +118,6 @@ for natlang in ${natlang_toggle[@]}; do
 
                     if $load_in_4bit; then
                         cmd+=" --load_in_4bit"
-                    fi
-
-                    if $load_in_8bit; then
-                        cmd+=" --load_in_8bit"
                     fi
 
                     if $rationale; then

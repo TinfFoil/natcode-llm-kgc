@@ -27,3 +27,6 @@ scripts/
 model_info/
 chat_templates/
 .env/
+unsloth/
+models/
+results*

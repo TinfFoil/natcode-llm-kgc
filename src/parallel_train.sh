@@ -1,15 +1,82 @@
 #!/bin/bash
-#SBATCH -J train_kgc
-#SBATCH --ntasks=1
-#SBATCH --cpus-per-task=8
-#SBATCH --gres=gpu:h100:1
-#SBATCH --time=24:00:00
-#SBATCH --mem=64G
+#SBATCH --time=1-00:00
+#SBATCH --job-name=train_kgc
+ 
+#SBATCH --nodes=1
+ 
+# Request 1 process per GPU
+#SBATCH --gpus-per-node=h100:2
+#SBATCH --tasks-per-node=2
+ 
+# Request more CPUs to enable multiple data-loader workers to load data in parallel.
+#SBATCH --cpus-per-task=4
+ 
+# Request the whole memory of the node
+#SBATCH --mem=512G
+ 
+#SBATCH --mail-user=paolo.gajo2@unibo.it
+#SBATCH --mail-type=BEGIN
+#SBATCH --mail-type=END
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
-nvidia-smi
-module load gcc arrow/19.0.1
+ 
+#### LOAD MODULES ####
+# module load scipy-stack
+# module load python/3.9
+module load StdEnv/2023
+module load gcc/12.3
+module load cudacore/.12.2.2
+module load cuda/12.2
+module load arrow
+module load protobuf
+
 source .env/bin/activate
+
+python -c "import torch; print(torch.__version__, torch.version.cuda, torch.backends.cudnn.version())"
+nvcc --version
+
+# # #### SET ENVIRONMENT VARS ####
+# export PROJECT_DIR="$(pwd)"
+# export DATA_DIR=${PROJECT_DIR}/data
+# export CONFIG_DIR=${PROJECT_DIR}/configs
+# export PYTHONPATH=$PYTHONPATH:${PROJECT_DIR}
+export MASTER_ADDR=$(hostname)
+export MASTER_PORT=34567
+export TORCH_NCCL_BLOCKING_WAIT=1
+export TRANSFORMERS_OFFLINE=1
+# export HF_HOME=~/scratch/cache/huggingface/transformers
+# export HF_DATASETS_CACHE=~/scratch/cache/huggingface/datasets
+export WANDB_MODE=offline
+export LOG_DIR=~/scratch/logs/${PROJECT_DIR}
+export TOKENIZERS_PARALLELISM=false
+export CUDA_VISIBLE_DEVICES=0,1
+echo "SLURM_JOB_GPUS: $SLURM_JOB_GPUS"
+echo "CUDA_VISIBLE_DEVICES: $CUDA_VISIBLE_DEVICES"
+
+export NCCL_DEBUG=INFO
+export NCCL_DEBUG_SUBSYS=ALL
+
+# #### CREATE VIRTUAL ENV ####
+# if [[ -z "${SLURM_TMPDIR}" ]]; then
+#   ENVDIR=/tmp/$RANDOM
+# else
+#   ENVDIR=$SLURM_TMPDIR/env
+# fi
+# virtualenv --no-download $ENVDIR
+# source $ENVDIR/bin/activate
+# pip3 install --no-index --upgrade pip
+ 
+# #### INSTALL PACKAGES ####
+# pip3 install --no-index transformers
+# pip3 install --no-index datasets
+# pip3 install --no-index sentencepiece
+# pip3 install --no-index protobuf
+# pip3 install --no-index torch
+# pip3 install --no-index --find-links ~/scratch/packages/ -r requirements.txt
+# pip3 install --no-index -U pandas numpy
+ 
+# CHECK GPU AVAILABILITY
+nvidia-smi
 
 # Define model_list and whether they are chat models
 # declare -A model_list=(
@@ -28,18 +95,13 @@ source .env/bin/activate
 
 # Define model_list and whether they are chat models
 declare -A model_list=(
-# ["meta-llama/Meta-Llama-3.1-70B"]=false
-# ["meta-llama/Meta-Llama-3.1-70B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-70B"]=false
+# ["unsloth/Meta-Llama-3.1-70B-Instruct"]=true
 
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
-# ["meta-llama/Llama-3.2-1B"]=false
-# ["meta-llama/Llama-3.2-1B-Instruct"]=true
-# ["meta-llama/Llama-3.2-3B"]=false
-# ["meta-llama/Llama-3.2-3B-Instruct"]=true
-
-# ["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
+["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["mistralai/Mistral-7B-v0.3"]=false
 # ["mistralai/Mistral-7B-Instruct-v0.3"]=true
@@ -86,14 +148,7 @@ natlang_toggle=(
 
 train_steps=200
 n_icl_samples=3
-# load_in_4bit=false
-load_in_4bit=true
-
-load_in_8bit=false
-# load_in_8bit=true
-
-lr=2e-4
-# lr=1e-5
+load_in_4bit=false
 
 # target_modules_list=("q-k-v-o-gate-up-down")
 target_modules_list=(
@@ -117,12 +172,12 @@ for natlang in ${natlang_toggle[@]}; do
             for dataset in "${dataset_list[@]}"; do
                 for target_modules in "${target_modules_list[@]}"; do
                     # Base command
-                    cmd="python ./src/train_hf.py \
+                    cmd="torchrun --nproc_per_node=2 \
+                        ./src/train_hf_parallel.py \
                         -m $model \
                         -d $dataset \
                         --n_icl_samples $n_icl_samples \
-                        --target_modules $target_modules \
-                        --lr $lr"
+                        --target_modules $target_modules"
 
                     # Add chat flag if it's a chat model
                     if $is_chat; then
@@ -131,10 +186,6 @@ for natlang in ${natlang_toggle[@]}; do
 
                     if $load_in_4bit; then
                         cmd+=" --load_in_4bit"
-                    fi
-
-                    if $load_in_8bit; then
-                        cmd+=" --load_in_8bit"
                     fi
 
                     if $rationale; then

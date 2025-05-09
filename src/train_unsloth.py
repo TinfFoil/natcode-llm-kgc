@@ -5,8 +5,7 @@ import pandas as pd
 import json
 from datasets import Dataset
 from utils import Runner
-from trl import SFTTrainer
-from transformers import TrainingArguments
+from trl import SFTTrainer, SFTConfig
 import argparse
 import logging
 import numpy as np
@@ -23,7 +22,6 @@ logger = logging.getLogger(__name__)
 def main(args):
 
     max_seq_length = args.max_seq_length
-    dtype = args.dtype
     load_in_4bit = args.load_in_4bit
     model_name = args.model_name
     chat_model = args.chat
@@ -40,13 +38,13 @@ def main(args):
     print(f"Language: {'natlang' if natlang else 'code'}")
     print(f"Number of ICL samples: {args.n_icl_samples}")
     print(f"Quantized: {args.load_in_4bit}")
-    print(f"Target moduls: {args.target_modules}")
+    print(f"Target modules: {args.target_modules}")
     print('##################################################################')
 
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = model_name,
         max_seq_length = max_seq_length,
-        dtype = dtype,
+        dtype = torch.bfloat16,
         load_in_4bit = load_in_4bit
     )
 
@@ -137,15 +135,16 @@ def main(args):
         tokenizer = tokenizer,
         train_dataset = dataset_train,
         eval_dataset = dataset_val,
-        dataset_text_field = "text",
-        max_seq_length = max_seq_length,
-        dataset_num_proc = 2,
-        packing = False,
         compute_metrics=compute_metrics,
-        args = TrainingArguments(
+        args = SFTConfig(
+            dataset_text_field = "text",
+            max_seq_length = args.max_seq_length,
+            dataset_num_proc = 2,
+            packing = False,
             per_device_train_batch_size = args.batch_size_train,
             per_device_eval_batch_size = args.batch_size_eval,
             gradient_accumulation_steps = args.grad_acc_steps,
+            gradient_checkpointing=False,
             warmup_steps = 5,
             max_steps = args.train_steps,
             learning_rate = 2e-4,
@@ -234,7 +233,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")
-    parser.add_argument("-m", "--model_name", type=str, help="Name of the model to train", default='unsloth/Meta-Llama-3.1-8B')
+    parser.add_argument("-m", "--model_name", type=str, help="Name of the model to train", default='mistralai/Mistral-7B-Instruct-v0.3')
     parser.add_argument("-d", "--dataset", type=str, help="Name of the dataset to use", default='ade')
     parser.add_argument("--train_steps", type=int, help="Number of training samples", default=200)
     parser.add_argument("--batch_size_train", type=int, help="Number of training samples", default=8)
@@ -254,9 +253,10 @@ if __name__ == "__main__":
     parser.add_argument("-ent", "--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--verbose_train", action="store_true", help="Verbose training")
-    parser.add_argument("--use_lora", action="store_true", help="Whether to train with LoRA or full fine-tuning.")
-    parser.add_argument("--target_modules", type=str, help="List of LoRA modules to use (as dash-separated string).", default='q_proj-k_proj-v_proj-o_proj-gate_proj-up_proj-down_proj')
+    parser.add_argument("--target_modules", type=str, help="List of LoRA modules to use (as dash-separated string).", default='q-k-v-o-gate-up-down')
     
     args = parser.parse_args()
+
+    # args.target_modules = 'full_ft'
 
     main(args)
