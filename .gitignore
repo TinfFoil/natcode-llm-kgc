@@ -27,6 +27,9 @@ scripts/
 model_info/
 chat_templates/
 .env/
+<<<<<<< HEAD
 unsloth/
+=======
+>>>>>>> 7a1d8c6545324be406be869268c93a91d3593767
 models/
 results*

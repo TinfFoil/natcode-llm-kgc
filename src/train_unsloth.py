@@ -69,9 +69,9 @@ def main(args):
     else:
         target_modules = args.target_modules[0]
 
-    print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
+    # print(tokenizer.chat_template, file=open(f"./model_info/{args.model_name.split('/')[-1]}_chat_template.txt", 'w'))
 
-    print(model, file=open(f"./model_info/{args.model_name.split('/')[-1]}_arch.txt", 'w'))
+    # print(model, file=open(f"./model_info/{args.model_name.split('/')[-1]}_arch.txt", 'w'))
 
     entity2type_json = os.path.join(dataset_path, args.entitytypes)
     with open(entity2type_json, 'r', encoding='utf8') as f:

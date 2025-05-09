@@ -87,6 +87,7 @@ rationale_toggle=(
 verbose_test=0
 
 target_modules_list=(
+<<<<<<< HEAD
     # "dummy"
     # "q"
     # "k"
@@ -96,6 +97,16 @@ target_modules_list=(
     # "k-v"
     # "q-k-v"
     "q-k-v-o-gate-up-down"
+=======
+    "q"
+    "k"
+    "v"
+    "q-k"
+    "q-v"
+    "k-v"
+    "q-k-v"
+    # "q-k-v-o-gate-up-down"
+>>>>>>> 7a1d8c6545324be406be869268c93a91d3593767
     # "full_ft"
     )
 
