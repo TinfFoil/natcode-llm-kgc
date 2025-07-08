@@ -21,7 +21,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def main(args):
-    dataset_path = f'./data/codekgc-data/{args.dataset}'
+    dataset_path = f'./data/parsing/{args.dataset}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
     
     print('##################################################################')

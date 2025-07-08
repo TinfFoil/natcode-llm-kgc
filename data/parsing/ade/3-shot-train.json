@@ -1,0 +1,60 @@
+[
+    {
+        "text": "In rare cases mitomycin C ( MMC ) may induce cancer - associated hemolytic uremic syndrome , which is characterized by hemolytic anemia , thrombocytopenia and progressive renal failure .",
+        "triple_list": [
+            [
+                "hemolytic anemia", "Adverse_effect", "mitomycin C"
+            ],
+            [
+                "hemolytic anemia", "Adverse_effect", "MMC"
+            ],
+            [
+                "hemolytic uremic syndrome", "Adverse_effect", "mitomycin C"
+            ],
+            [
+                "hemolytic uremic syndrome", "Adverse_effect", "MMC"
+            ],
+            [
+                "progressive renal failure", "Adverse_effect", "mitomycin C"
+            ],
+            [
+                "progressive renal failure", "Adverse_effect", "MMC"
+            ]
+        ]
+    },
+    {
+        "text": "A search of the United States Food and Drug Administration 's Adverse Event Reporting System identified nine cases of oxcarbazepine - associated angioedema in pediatric patients aged 16 years and younger .",
+        "triple_list": [
+            [
+                "angioedema",
+                "Adverse_effect",
+                "oxcarbazepine"
+            ]
+        ]
+    },
+    {
+        "text": "We report a patient in whom the anti - depressant trazodone hydrochloride ( Molipaxin , Roussel ) , a serotonin antagonist , provoked generalized pustular psoriasis ( GPP ) .",
+        "triple_list": [
+            [
+                "generalized pustular psoriasis", 
+                "Adverse_effect", 
+                "Molipaxin"
+            ],
+            [
+                "pustular psoriasis", 
+                "Adverse_effect", 
+                "trazodone hydrochloride"
+            ],
+            [
+                "GPP", 
+                "Adverse_effect", 
+                "Molipaxin"
+            ],
+            [
+                "GPP", 
+                "Adverse_effect", 
+                "trazodone hydrochloride"
+            ]
+        ]
+    }
+]

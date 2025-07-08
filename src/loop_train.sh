@@ -8,11 +8,7 @@
 #SBATCH --output=./.slurm/%j_output.log
 #SBATCH --error=./.slurm/%j_error.log
 nvidia-smi
-<<<<<<< HEAD
 module load gcc arrow/19.0.1
-=======
-# module load gcc arrow
->>>>>>> 7a1d8c6545324be406be869268c93a91d3593767
 source .env/bin/activate
 
 # Define model_list and whether they are chat models
@@ -35,8 +31,8 @@ declare -A model_list=(
 # ["meta-llama/Meta-Llama-3.1-70B"]=false
 # ["meta-llama/Meta-Llama-3.1-70B-Instruct"]=true
 
-["unsloth/Meta-Llama-3.1-8B"]=false
-["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
+# ["unsloth/Meta-Llama-3.1-8B"]=false
+# ["unsloth/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["meta-llama/Llama-3.2-1B"]=false
 # ["meta-llama/Llama-3.2-1B-Instruct"]=true
@@ -46,7 +42,7 @@ declare -A model_list=(
 # ["meta-llama/Meta-Llama-3.1-8B-Instruct"]=true
 
 # ["mistralai/Mistral-7B-v0.3"]=false
-# ["mistralai/Mistral-7B-Instruct-v0.3"]=true
+["mistralai/Mistral-7B-Instruct-v0.3"]=true
 
 # ["deepseek-ai/deepseek-coder-7b-base-v1.5"]=false
 # ["deepseek-ai/deepseek-coder-7b-instruct-v1.5"]=true
@@ -59,9 +55,12 @@ declare -A model_list=(
 )
 
 dataset_list=(
-    "ade"
-    "conll04"
-    "scierc"
+    # ade
+    # conll04
+    # scierc
+    erfgc
+    # scidtb
+    # enewt
     )
 
 # Create a timestamp string

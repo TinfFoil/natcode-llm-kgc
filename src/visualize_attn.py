@@ -25,7 +25,7 @@ def main(args):
     
     tokenizer = AutoTokenizer.from_pretrained(args.model)
 
-    dataset_path = f'./data/codekgc-data/{args.dataset}'
+    dataset_path = f'./data/parsing/{args.dataset}'
     
     train_split = f'{args.train_split}_triples.json'
     train_json = os.path.join(dataset_path, train_split)

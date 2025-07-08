@@ -46,7 +46,7 @@ def main(args):
     chat_model = args.chat
     natlang = args.natlang
     dataset_name = args.dataset
-    dataset_path = f'./data/codekgc-data/{dataset_name}'
+    dataset_path = f'./data/parsing/{dataset_name}'
     schema_path = os.path.join(dataset_path, args.prompt_filename)
     
     print('##################################################################')
