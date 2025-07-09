@@ -1,0 +1,447 @@
+[
+    {
+        "text": "The model is a pushdown automaton augmented with the ability to check reduplication by using the stack in a new way .",
+        "triple_list": [
+            [
+                "model",
+                "Hyponym_of",
+                "pushdown automaton"
+            ],
+            [
+                "stack",
+                "Used_for",
+                "pushdown automaton"
+            ],
+            [
+                "stack",
+                "Used_for",
+                "reduplication"
+            ]
+        ]
+    },
+    {
+        "text": "Our blur detection is based on image patches , making region-wise training and classification in one image efficient .",
+        "triple_list": [
+            [
+                "image patches",
+                "Used_for",
+                "blur detection"
+            ],
+            [
+                "region-wise training and classification",
+                "Used_for",
+                "blur detection"
+            ]
+        ]
+    },
+    {
+        "text": "We show experimental results on block selection criteria based on unigram counts and phrase length .",
+        "triple_list": [
+            [
+                "unigram counts",
+                "Used_for",
+                "block selection criteria"
+            ],
+            [
+                "unigram counts",
+                "Conjunction",
+                "phrase length"
+            ],
+            [
+                "phrase length",
+                "Used_for",
+                "block selection criteria"
+            ]
+        ]
+    },
+    {
+        "text": "In particular , we explore the use of probabilistic decision tree within the clustering framework to account for the variation as well as regularity in human created summaries .",
+        "triple_list": [
+            [
+                "clustering framework",
+                "Feature_of",
+                "probabilistic decision tree"
+            ]
+        ]
+    },
+    {
+        "text": "While it is generic , we demonstrate it on the combination of an image and a dense depth map which give complementary object information .",
+        "triple_list": [
+            [
+                "it",
+                "Used_for",
+                "it"
+            ],
+            [
+                "image",
+                "Used_for",
+                "it"
+            ],
+            [
+                "image",
+                "Conjunction",
+                "dense depth map"
+            ],
+            [
+                "dense depth map",
+                "Used_for",
+                "it"
+            ],
+            [
+                "complementary object information",
+                "Feature_of",
+                "dense depth map"
+            ]
+        ]
+    },
+    {
+        "text": "We take a selection of both bag-of-words and segment order-sensitive string comparison methods , and run each over both character - and word-segmented data , in combination with a range of local segment contiguity models ( in the form of N-grams ) .",
+        "triple_list": [
+            [
+                "character - and word-segmented data",
+                "Used_for",
+                "bag-of-words and segment order-sensitive string comparison methods"
+            ],
+            [
+                "local segment contiguity models",
+                "Conjunction",
+                "bag-of-words and segment order-sensitive string comparison methods"
+            ],
+            [
+                "N-grams",
+                "Feature_of",
+                "local segment contiguity models"
+            ]
+        ]
+    },
+    {
+        "text": "We show that adding these conditions to Gib-son 's assumptions is not sufficient to ensure global computability with one hidden layer , by exhibiting a new non-local configuration , the `` critical cycle '' , which implies that f is not computable with one hidden layer .",
+        "triple_list": [
+            [
+                "`` critical cycle ''",
+                "Hyponym_of",
+                "non-local configuration"
+            ]
+        ]
+    },
+    {
+        "text": "Traditional linear Fukunaga-Koontz Transform ( FKT ) [ 1 ] is a powerful discriminative subspaces building approach .",
+        "triple_list": [
+            [
+                "linear Fukunaga-Koontz Transform ( FKT )",
+                "Hyponym_of",
+                "discriminative subspaces building approach"
+            ]
+        ]
+    },
+    {
+        "text": "Empirical experience and observations have shown us when powerful and highly tunable classifiers such as maximum entropy classifiers , boosting and SVMs are applied to language processing tasks , it is possible to achieve high accuracies , but eventually their performances all tend to plateau out at around the same point .",
+        "triple_list": [
+            [
+                "classifiers",
+                "Used_for",
+                "language processing tasks"
+            ],
+            [
+                "maximum entropy classifiers",
+                "Hyponym_of",
+                "classifiers"
+            ],
+            [
+                "maximum entropy classifiers",
+                "Conjunction",
+                "boosting"
+            ],
+            [
+                "boosting",
+                "Hyponym_of",
+                "classifiers"
+            ],
+            [
+                "boosting",
+                "Conjunction",
+                "SVMs"
+            ],
+            [
+                "SVMs",
+                "Hyponym_of",
+                "classifiers"
+            ]
+        ]
+    },
+    {
+        "text": "A larger model trained after the deadline achieves 80.5 % macro-average F1 , 87.6 % syntactic dependencies LAS , and 73.1 % semantic dependencies F1 .",
+        "triple_list": [
+            [
+                "macro-average F1",
+                "Evaluate_for",
+                "model"
+            ],
+            [
+                "macro-average F1",
+                "Conjunction",
+                "syntactic dependencies LAS"
+            ],
+            [
+                "syntactic dependencies LAS",
+                "Evaluate_for",
+                "model"
+            ],
+            [
+                "syntactic dependencies LAS",
+                "Conjunction",
+                "semantic dependencies F1"
+            ],
+            [
+                "semantic dependencies F1",
+                "Evaluate_for",
+                "model"
+            ]
+        ]
+    },
+    {
+        "text": "Finally , we evaluate the approach in a working multi-page system .",
+        "triple_list": [
+            [
+                "multi-page system",
+                "Evaluate_for",
+                "approach"
+            ]
+        ]
+    },
+    {
+        "text": "In such domains a cascade of simple classifiers each trained to achieve high detection rates and modest false positive rates can yield a final detector with many desirable features : including high detection rates , very low false positive rates , and fast performance .",
+        "triple_list": [
+            [
+                "cascade of simple classifiers",
+                "Used_for",
+                "detector"
+            ],
+            [
+                "detection rates",
+                "Evaluate_for",
+                "classifiers"
+            ],
+            [
+                "detection rates",
+                "Conjunction",
+                "modest false positive rates"
+            ],
+            [
+                "modest false positive rates",
+                "Evaluate_for",
+                "classifiers"
+            ],
+            [
+                "features",
+                "Feature_of",
+                "detector"
+            ]
+        ]
+    },
+    {
+        "text": "The transfer phase in machine translation ( MT ) systems has been considered to be more complicated than analysis and generation , since it is inherently a conglomeration of individual lexical rules .",
+        "triple_list": [
+            [
+                "transfer phase",
+                "Part_of",
+                "machine translation ( MT ) systems"
+            ],
+            [
+                "transfer phase",
+                "Compare",
+                "analysis"
+            ],
+            [
+                "transfer phase",
+                "Compare",
+                "generation"
+            ],
+            [
+                "analysis",
+                "Conjunction",
+                "generation"
+            ]
+        ]
+    },
+    {
+        "text": "Background maintenance is a frequent element of video surveillance systems .",
+        "triple_list": [
+            [
+                "Background maintenance",
+                "Part_of",
+                "video surveillance systems"
+            ]
+        ]
+    },
+    {
+        "text": "In this paper , we describe the pronominal anaphora resolution module of Lucy , a portable English understanding system .",
+        "triple_list": [
+            [
+                "pronominal anaphora resolution module",
+                "Part_of",
+                "Lucy"
+            ],
+            [
+                "Lucy",
+                "Hyponym_of",
+                "English understanding system"
+            ]
+        ]
+    },
+    {
+        "text": "This paper presents an entirely data-driven model selection procedure based on genetic search , which is shown to outperform both knowledge-based and random selection procedures on two different language modeling tasks ( Arabic and Turkish ) .",
+        "triple_list": [
+            [
+                "entirely data-driven model selection procedure",
+                "Compare",
+                "knowledge-based and random selection procedures"
+            ],
+            [
+                "genetic search",
+                "Used_for",
+                "entirely data-driven model selection procedure"
+            ],
+            [
+                "knowledge-based and random selection procedures",
+                "Used_for",
+                "language modeling tasks"
+            ],
+            [
+                "Arabic",
+                "Hyponym_of",
+                "language modeling tasks"
+            ],
+            [
+                "Arabic",
+                "Conjunction",
+                "Turkish"
+            ],
+            [
+                "Turkish",
+                "Hyponym_of",
+                "language modeling tasks"
+            ]
+        ]
+    },
+    {
+        "text": "An efficient ranking algorithm is described , together with experimental results showing significant improvements over simple enumeration or a lattice-based approach .",
+        "triple_list": [
+            [
+                "ranking algorithm",
+                "Compare",
+                "enumeration"
+            ],
+            [
+                "ranking algorithm",
+                "Compare",
+                "lattice-based approach"
+            ],
+            [
+                "enumeration",
+                "Conjunction",
+                "lattice-based approach"
+            ]
+        ]
+    },
+    {
+        "text": "Our experiment result shows that the neural network can learn a language model that has performance even better than standard statistical methods .",
+        "triple_list": [
+            [
+                "neural network",
+                "Used_for",
+                "language model"
+            ],
+            [
+                "neural network",
+                "Compare",
+                "statistical methods"
+            ]
+        ]
+    },
+    {
+        "text": "Because of its adaptive nature , Bayesian learning serves as a unified approach for the following four speech recognition applications , namely parameter smoothing , speaker adaptation , speaker group modeling and corrective training .",
+        "triple_list": [
+            [
+                "Bayesian learning",
+                "Used_for",
+                "speech recognition applications"
+            ],
+            [
+                "parameter smoothing",
+                "Hyponym_of",
+                "speech recognition applications"
+            ],
+            [
+                "parameter smoothing",
+                "Conjunction",
+                "speaker adaptation"
+            ],
+            [
+                "speaker adaptation",
+                "Hyponym_of",
+                "speech recognition applications"
+            ],
+            [
+                "speaker adaptation",
+                "Conjunction",
+                "speaker group modeling"
+            ],
+            [
+                "speaker group modeling",
+                "Hyponym_of",
+                "speech recognition applications"
+            ],
+            [
+                "speaker group modeling",
+                "Conjunction",
+                "corrective training"
+            ],
+            [
+                "corrective training",
+                "Hyponym_of",
+                "speech recognition applications"
+            ]
+        ]
+    },
+    {
+        "text": "We address the problem of populating object category detection datasets with dense , per-object 3D reconstructions , bootstrapped from class labels , ground truth figure-ground segmentations and a small set of keypoint annotations .",
+        "triple_list": [
+            [
+                "object category detection datasets",
+                "Used_for",
+                "per-object 3D reconstructions"
+            ],
+            [
+                "ground truth figure-ground segmentations",
+                "Used_for",
+                "per-object 3D reconstructions"
+            ],
+            [
+                "ground truth figure-ground segmentations",
+                "Conjunction",
+                "keypoint annotations"
+            ],
+            [
+                "keypoint annotations",
+                "Used_for",
+                "per-object 3D reconstructions"
+            ]
+        ]
+    },
+    {
+        "text": "We also find that the transcription errors inevitable in ASR output have a negative impact on models that combine lexical-cohesion and conversational features , but do not change the general preference of approach for the two tasks .",
+        "triple_list": [
+            [
+                "transcription errors",
+                "Feature_of",
+                "ASR output"
+            ],
+            [
+                "models",
+                "Conjunction",
+                "lexical-cohesion and conversational features"
+            ]
+        ]
+    }
+]

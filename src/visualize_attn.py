@@ -6,7 +6,7 @@ from typing import List
 import pandas as pd
 from tqdm.auto import tqdm
 from datetime import datetime
-from utils import *
+from runner import *
 import argparse
 
 def main(args):

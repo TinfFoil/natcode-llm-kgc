@@ -1,0 +1,22 @@
+{
+    "F": "food",
+    "T": "tool",
+    "D": "duration",
+    "Q": "quantity",
+    "Ac": "actionByChef",
+    "Ac2": "discontAction",
+    "Af": "actionByFood",
+    "At": "actionByTool",
+    "Sf": "foodState",
+    "St": "toolState"
+}
+
+
+
+
+
+
+
+
+
+

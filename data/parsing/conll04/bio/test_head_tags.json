@@ -1,0 +1,9 @@
+{
+    "O": 0,
+    "B-LOCATION": 1,
+    "I-LOCATION": 2,
+    "B-ORGANIZATION": 3,
+    "I-ORGANIZATION": 4,
+    "B-PERSON": 5,
+    "I-PERSON": 6
+}

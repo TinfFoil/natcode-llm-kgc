@@ -1,0 +1,7 @@
+{
+    "O": 0,
+    "B-DISEASE": 1,
+    "I-DISEASE": 2,
+    "B-DRUG": 3,
+    "I-DRUG": 4
+}

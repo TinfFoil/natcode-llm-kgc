@@ -1,0 +1,15 @@
+{
+"a": "agent",
+"a-eq": "actionEquality",
+"t": "target",
+"v-tm": "timingHeadVerb",
+"d": "indirectObject",
+"o": "other",
+"t-comp": "toolComplement",
+"f-comp": "foodComplement",
+"f-eq": "foodEquality",
+"f-part-of": "foodPartOf",
+"f-set": "foodSet",
+"t-eq": "toolEquality",
+"t-part-of": "toolPartOf"
+}

@@ -1,0 +1,15 @@
+{
+    "O": 0,
+    "B-GENERIC": 1,
+    "I-GENERIC": 2,
+    "B-MATERIAL": 3,
+    "I-MATERIAL": 4,
+    "B-METHOD": 5,
+    "I-METHOD": 6,
+    "B-METRIC": 7,
+    "I-METRIC": 8,
+    "B-OTHER_SCIENTIFIC_TERM": 9,
+    "I-OTHER_SCIENTIFIC_TERM": 10,
+    "B-TASK": 11,
+    "I-TASK": 12
+}

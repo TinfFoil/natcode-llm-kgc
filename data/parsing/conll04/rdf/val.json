@@ -1,0 +1,5616 @@
+[
+    {
+        "text": "John Wilkes Booth , who assassinated President Lincoln , was an actor .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Wilkes Booth",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President Lincoln",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The opera company performed at the Palace of Fine Arts , in San Francisco , on June 30 and July 1-2 , said Kevin O 'Brien , a spokesman for the theater.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Palace of Fine Arts",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "San Francisco",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In the field of mechanics , Wang Ziqiang at the Institute of Mechanics has made considerable headway in the area of elastoplastic crack mechanics .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Wang Ziqiang",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Institute of Mechanics",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Sun Hung Kai Properties , a Hong Kong construction firm with a 27 percent share ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Sun Hung Kai Properties",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Hong Kong",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Marie Magdefrau Ferraro , 50 , of Bethany , Conn. , was shot to death Thursday when two bandits armed with assault rifles emerged from nearby bushes and began firing at a van carrying a Connecticut Audubon Society wildlife wild tour group .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Marie Magdefrau Ferraro",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Bethany",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Marie Magdefrau Ferraro",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Conn.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Bethany",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Conn.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Ten oil workers were missing off Morgan City , La. , after their rig capsized while heading inland Monday to escape the storm.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Morgan City",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "La.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Lightning ignited a firestorm that charred 10 , 000 acres in central Idaho , including much of the small resort town of Lowman , about 70 miles northeast of Boise.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Lowman",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Idaho",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "\" It ( Arrow ) is not practical in the short term , \" says former Air Force commander Avihu Bin-Nun .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Avihu Bin-Nun",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Air Force",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The three reactors , all at the Savannah River Plant , in Aiken , S.C. , have been shut down since last April undergoing changes to make them safer .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Savannah River Plant",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Aiken",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Savannah River Plant",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "S.C.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Aiken",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "S.C.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Composer Thomas is a native of Chisholm , Minn .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Thomas",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Chisholm",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Thomas",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Minn .",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Chisholm",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Minn .",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Illinois Gov. James Thompson signed legislation last month scrapping Chicago 's central school board next July , to be replaced by parent-run councils empowered to set budgets and hire and fire principals .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "James Thompson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Illinois",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "During the 10-hour rescue , diver Brian Michaud of Millinocket hooked the men to harnesses , and rescuers dragged them to the surface with winches .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Brian Michaud",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Millinocket",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The Warren Commission found Oswald acted alone in killing Kennedy .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( By Yang Jianbai ( 2799 1017 4101 ) of the Economic Research",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Yang Jianbai",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Economic Research",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` He was going pretty fast , wasn 't he ? ' ' said Daniel Urquhart , 8 , of Aumsville , whose slug crept to the championship.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Daniel Urquhart",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Aumsville",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Kovacevic , a Serb , has come under fire from Serbian politicians and the republic 's press since the U.S. Congress last month passed two resolutions claiming there were human rights violations in the strife-torn southern province of Kosovo.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Congress",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Martin Luther King III , a son of the slain civil rights leader , said the execution of King assassin James Earl Ray ` ` would not bring my father back. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "James Earl Ray",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Martin Luther King III",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "On this date : In 1833 , Benjamin Harrison , the 23rd President of the United States , was born in North Bend , Ohio .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Benjamin Harrison",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "North Bend , Ohio",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The book said Khrushchev 's order to ignore the blockade was disclosed in a largely unknown work by dissident Soviet historian Roy Medvedev .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Khrushchev",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Roy Medvedev",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "EDITOR 'S NOTE : Walter R. Mears , vice and columnist for The Associated Press , has reported on Washington and national politics for more than 25 years .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Walter R. Mears",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "The Associated Press",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` The Germans just tunneled like rabbits , ' ' said Gerald Przenislawski , who operates La Valette Underground Military Museum.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Gerald Przenislawski",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "La Valette Underground Military Museum.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` With South Carolina being Jesse Jackson 's home state , there was a very strong incentive in the black community. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Jesse Jackson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "South Carolina",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Photo , Dueling Over a GunIt is a scene seared into the memories of Americans old enough to have watched it that November day in 1963 : Jack Ruby firing his .38-caliber Colt Cobra , above , at Lee Harvey Oswald , the man who had assassinated President John F. Kennedy two days earlier.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Jack Ruby",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In a statement at the airport before his departure , Cetin said that Turkey welcomed this step taken by Bosnians and Croats and hoped that real peace comes to Bosnia-Herzegovina when Serbs join this process too .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Cetin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Turkey",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "On Friday , U.S. Ambassador Vernon A. Walters displayed photographs of one Libyan jet showing shapes resembling missile pods on its wings and fuselage .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Vernon A. Walters",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Ms. Carpenter 's brother , retired National Football League placekicker Mark Moseley , was in the courtroom Wednesday and told reporters afterward , ` ` It 's been nine years of hell for myself and my family. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Mark Moseley",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "National Football League",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Hernandez Galicia 's allegedly corrupt Mexican Oil Workers Union controls more than half the lucrative drilling contracts issued by the state oil monopoly , Pemex .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Hernandez Galicia",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Mexican Oil Workers Union",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "You 'll pass through Rolling Fork , where Muddy Waters was born , close to Greenville , home of Nelson Street 's funky strip of blues clubs , and into Clarksdale , at the intersection of Highway 61 and another major road in blues lore , U.S. Highway 49. ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Muddy Waters",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Rolling Fork",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` The Challenger accident marked a major change in the U.S. outlook and policies with respect to the flight of other than NASA astronauts , ' ' the National Aeronautics and Space Administration said in a policy statement .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NASA",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "National Aeronautics and Space Administration",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` It 's not going to make you a whole bunch of money , but that 's not why we 're doing it , ' ' said Phil Fuhrer , vice of Gannett New Media. 1-900-WEATHER offers callers the current weather and a three-day forecast , plus skiing and highway conditions in the winter and coastal reports during the summer.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Phil Fuhrer",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Gannett New Media.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "PA2904034294 Guatemala City Teleonce Television in Spanish 0400 GMT 26 Apr 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Teleonce Television",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Guatemala City",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "DAYTON , Ohio ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "DAYTON",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Ohio",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "DAYTON",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Ohio",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1865 , four people were hanged in Washington , D.C. , after being convicted of conspiring with John Wilkes Booth in the assassination of President Lincoln .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Wilkes Booth",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President Lincoln",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "San Gabriel River Channel , Azusa , Calif. ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "San Gabriel River Channel",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Azusa",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "San Gabriel River Channel",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Calif.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Azusa",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Calif.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "He said that the Phnom Penh government has worked out several incentives to attract foreign investment in Cambodia .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Phnom Penh government",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Cambodia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Derwinski , a Republican from Chicago who served 24 years in Congress , publicly denied 1978 allegations that he leaked the information and refused to testify in the matter before a federal grand jury and the House Ethics Committee .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Derwinski",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Chicago",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Derwinski",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Congress",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "BANGKOK , Thailand ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "BANGKOK",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "BANGKOK",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Police Major Pramot Pansakun , the commander of the Region 2 Border Patrol Police ( BPP ) , Khon Kaen , and Thai and American narcotics suppression officials accompanied by reporters , spent more than 2 hours climbing a high mountain to destroy a Hmong poppy field located along the border between Dan Sai District in Loei Province , Nakhon Thai District in Phitsanulok Province , and Lomsak District in Phetchabun Province .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Pramot Pansakun",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Region 2 Border Patrol Police",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Dan Sai District",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Loei Province",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Nakhon Thai District",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Phitsanulok Province",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Lomsak District",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Phetchabun Province",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Further buying was linked to rumors that the Chilean copper company Codelco was considering shutting down its smelter at Chuquicamata , the world 's largest copper mine , due to persistent mechanical problems , said Fred Demler , metals economist with Drexel Burnham Lambert Inc. in New York .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Fred Demler",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Drexel Burnham Lambert Inc.",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Fred Demler",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "New York",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Drexel Burnham Lambert Inc.",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "New York",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "An urgent call for international help to avert food shortages in Poland went out both from last month 's Western economic summit in Paris and from Monday 's meeting in Brussels of 24 concerned nations chaired by the European Community Commission.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "European Community Commission.",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Brussels",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Cheek , 53 , is a former chief and charge in Addis Ababa , Ethiopia.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Addis Ababa",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Ethiopia.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1881 , President James A. Garfield was shot by Charles J. Guiteau , a disappointed office-seeker , at the Washington railroad station .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Charles J. Guiteau",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President James A. Garfield",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Middle-class Argentines , among the most affluent in Latin America at one time , are so strapped now that they are selling off heirlooms that had been in their families since the days when beef and grain made Argentina one of the world 's wealthiest nations.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Argentina",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Latin America",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` I don 't think there are any good answers why , ' ' said Virginia Towle of Wallingford , a family friend.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Virginia Towle",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Wallingford",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The meeting will be held at the request of the Soviet Union , which also plans direct talks with resistance leader Prince Norodom Sihanouk , said Sihanouk 's son and representative in Thailand , Prince Norodom Ranariddh .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Prince Norodom Ranariddh",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Hundreds of children and adults sporting cowboy boots and hats turned out Wednesday to watch as Winterset 's busiest street was named for John Wayne , the community 's most famous native son .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "John Wayne",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Winterset",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "River North 's nouvelle sensibilities also might be offended by the Ranch 's menu , which features items such as the ` ` Jesse James Steak ( A Steal ! ) , ' ' and the occasional ornery patron .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Ranch",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "River North",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Police Find No Signs of Radiation Leak AU0202111694 Paris AFP in English 0107 GMT 2 Feb 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AFP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Paris",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "It was filmed on location in Tokyo and Kyoto and is a co-production of Children 's Television Worship and NHK network in Japan .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Tokyo",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Japan",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Kyoto",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Japan",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The self-propelled rig Avco 5 with 14 people aboard was headed to shore early Monday when it capsized about 20 miles off the Louisiana coast , near Morgan City , Chevron spokesman Jonathan Lifa said.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jonathan Lifa",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Chevron",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Sen. Jake Garn , R-Utah , flew on the shuttle in April 1985 and Rep. Bill Nelson , D-Fla. , was aboard in January 1986 , at the invitation of NASA 's administrator .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jake Garn",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "NASA",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Bill Nelson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "NASA",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Ten Soviet volunteers and their American counterparts plan to spend August in Washington building homes for the poor as a return favor for help in earthquake-devastated Soviet Armenia.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Armenia.",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Evaluating Juppe 's visit , Cetin said that the French Government was not displaying a disturbing stand toward Turkey and was very careful in not intervening in Turkey 's internal affairs .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Juppe",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "French Government",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Cetin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Turkey",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Cetin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Turkey",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Jose Vicente Maldonado , the Ecuadoran minister of industry , commerce , and integration , said that the foreign of the Andean Group ( Colombia , Bolivia , Ecuador , Peru , and Venezuela ) , will study a new date for the summit .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Andean Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Colombia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Andean Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Bolivia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Andean Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Ecuador",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Andean Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Peru",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Andean Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Venezuela",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Dole 's wife , Elizabeth , is a native of Salisbury , N.C .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Elizabeth",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Salisbury , N.C",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Sofia , February 15 ( BTA ) -- Today the two main political forces in Bulgaria , the Bulgarian Socialist ( formerly Communist ) Party ( BSP ) and the Union of Democratic Forces ( SDS ) announced their stand on the possible airstrikes in Bosnia five days before the expiry of NATO 's ultimatum .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "BTA",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Sofia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Bulgarian Socialist ( formerly Communist ) Party",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Bulgaria",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "BSP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Bulgaria",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Union of Democratic Forces",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Bulgaria",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "SDS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Bulgaria",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Starr , who served as counselor to Attorney William French Smith from 1981 prior to taking the bench in 1983 , had been mentioned as a possible Supreme Court nominee after his former colleague on the District of Columbia circuit , Robert Bork , failed to win Senate confirmation in 1987 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Supreme Court",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "District of Columbia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Senate",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "District of Columbia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The program , financed with a grant from the United States Agency for International Development , is aimed at reducing infant mortality in Madagascar , an island nation in the Indian Ocean off the eastern coast of Africa.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Madagascar",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Indian Ocean",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "JN0704183294 Paris Radio Monte Carlo in Arabic 1700 GMT 7 Apr 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Radio Monte Carlo",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Paris",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "On this date : In 1533 , the last Incan King of Peru , Atahualpa , was murdered on the orders of Spanish conqueror Francisco Pizarro .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Francisco Pizarro",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Atahualpa",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` We 'd play hearts for hours at a time , ' ' said Atlanta businessman Neil Estes.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Neil Estes.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Atlanta",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Minox has not shown a profit since 1981 , and on April 1 , 1988 , Robert C. Corduwener , a Netherlands businessman bought a 51 percent share of the company to take control from the Rinn family .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Robert C. Corduwener",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Netherlands",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Volcanoes in Nicaragua and Indonesia , deforestation in Brazil and Madagascar , the Sahara desert in Africa and global beach erosion are among the subjects to be photographed .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Sahara desert",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Africa",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` This is really hurting Heuchelheim , ' ' the town 's mayor Willi Marx told The Associated Press in an interview at his office earlier this month .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Willi Marx",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Heuchelheim",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` I think at this moment they fear making a wrong move _ whether they should seek political asylum or use other reasons to remain here , ' ' said Jeff Shia , president of the Kiangsu Chekiang Association , a non-profit group that helps new Chinese immigrants establish themselves in the city.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jeff Shia",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kiangsu Chekiang Association",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The term ` ` 30 Seconds Over Tokyo ' ' was the title of a popular movie about the raid. _Anzio _ The Anzio beachhead , 33 miles south of Rome , saw some of the bloodiest fighting of World War II and accounted for many of the 10 , 000 U.S. battle deaths in Italy the first half of 1944 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Anzio",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Italy",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Anna Sandhu Ray , who 10 years ago Thursday wed the man convicted of killing the Rev. Martin Luther King Jr. , said on her anniversary that she plans to divorce James Earl Ray .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "James Earl Ray",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Rev. Martin Luther King Jr.",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The 23-foot-tall statue was modeled after the 30-foot-tall Goddess of Democracy raised by Chinese pro-democracy demonstrators in Beijing 's Tiananmen Square on May 30.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Tiananmen Square",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Beijing",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Ulaanbaatar , 29 Apr ( XINHUA ) -- China 's Premier Li Peng and Mongolian Prime P. Jasray signed the \" Treaty of Friendly Cooperation Relations Between the People 's Republic of China and Mongolia \" at the State Palace in the afternoon of 29 April .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "XINHUA",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "China",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "XINHUA",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "People 's Republic of China",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Li Peng",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "China",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Li Peng",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "People 's Republic of China",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1874 , Herbert Clark Hoover , the 31st president of the United States , was born in West Branch , Iowa .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Herbert Clark Hoover",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "West Branch , Iowa",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) The Rwandan Patriotic Front ( RPF ) has rescued 2 , 000 people in Bugesera in the southeastern part of Rwanda .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Bugesera",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Rwanda",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "One of Warner 's lawyers , Andrew Hall of Miami , Fla. , confirmed Tuesday that Warner is trying to settle the case.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Andrew Hall",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Miami",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Andrew Hall",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Fla.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Miami",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Fla.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "GRAND RAPIDS , Mich .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "GRAND RAPIDS",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Mich .",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "New Jersey Gov. Thomas Kean , who is leaving office after two terms at the end of this year , was greeted with effuse public praise by his colleagues during the conference.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Thomas Kean",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "New Jersey",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` The country was starved of resources , ' ' said Marcos Victorica , director of the Institute of Contemporary Studies.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Marcos Victorica",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Institute of Contemporary Studies.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Excess Lira Reportedly Causes Currency Crisis NC1901223094 London Kanal-6 Television in Turkish 1700 GMT 19 Jan 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Kanal-6 Television",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "London",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "\" This is the Garrett place where John Wilkes Booth , assassin of Lincoln , was cornered by Union soldiers and killed April 26 , 1865 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Wilkes Booth",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lincoln",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "BANGKOK , Thailand ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "BANGKOK",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Joseph Cicippio , 58 , was acting comptroller at the American University of Beirut when he was kidnapped from the campus Sept. 12 , 1986.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Joseph Cicippio",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "American University of Beirut",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The Santa Ana winds _ also called ` ` devil winds ' ' _ are spun off by high pressure over the interior of the country , picking up speed as they move from Southern California 's deserts through mountain passes and roar down on adjacent communities .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Santa Ana",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Southern California",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "FL2706231194 Havana Radio Reloj Network in Spanish 1402 GMT 27 Jun 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Radio Reloj Network",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Havana",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` Our white paper , market pulp and packaging businesses turned in particularly impressive results in 1988 , ' ' said John A. Georges , International Paper 's chairman and chief executive officer .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "John A. Georges",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "International Paper",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The FA-18 Hornet was on a mission to Pinecastle Electronic Warfare Range in the Ocala National Forest when the bomb tumbled free at 1 : 50 p.m .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Pinecastle Electronic Warfare Range",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Ocala National Forest",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "EAST LANSING , Mich.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "EAST LANSING",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Mich.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Born in Athens , Psacharopoulos came to the United States at age 17 to enter Oberlin College , where he studied art history .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Oberlin College",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "United States",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Two days later , Perry operated on Kennedy 's assassin , Lee Harvey Oswald , who had just been shot by Jack Ruby .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Jack Ruby",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The prime was accompanied by his wife , Datuk Sri Datin Paduka Dr. Siti Hasmah and the deputy secretary of the Foreign Ministry , Datuk Abdul Halim Ali , during his brief visit to South Africa .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Datuk Abdul Halim Ali",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Foreign Ministry",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The federal appeals court previously overturned a key provision of Arizona 's death penalty statute in the case of John Harvey Adamson , convicted of murdering reporter Don Bolles .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Harvey Adamson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Don Bolles",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The movie 's script remains a secret , but Stone has said Kevin Costner will star as New Orleans prosecutor Jim Garrison , who said that Kennedy was the victim of an FBI and CIA conspiracy and that Lee Harvey Oswald , identified by a presidential commission as the lone assassin , was set up to take the blame. ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Becton Dickinson sells needle containers to doctors and hospitals but may develop a container for home use , said Linda Schmitt , an assistant product manager.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Linda Schmitt",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Becton Dickinson",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The police files on Kennedy 's shooting could shed new light on persistent questions about whether Sirhan Bishara Sirhan was the only gunman in the shooting .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Sirhan Bishara Sirhan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "NC1404123794 Cairo AL-AHALI in Arabic 6 Apr 94 p 6",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AL-AHALI",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Cairo",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1936 , rock legend Buddy Holly was born Charles Hardin Holley in Lubbock , Texas .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Buddy Holly",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lubbock , Texas",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Charles Hardin Holley",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lubbock , Texas",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Belli 's clients have included Jack Ruby , who killed John F. Kennedy assassin Lee Harvey Oswald , and Jim and Tammy Bakker .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Jack Ruby",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "John F. Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Bosnia 's capital , Sarajevo , is best-known as the site of the assassination in 1914 of Austrian Archduke Franz Ferdinand by young Bosnian nationalist Gavrilo Princip , which was the spark that ignited World War I. No single party appeared likely to win a clear majority in Bosnia 's 240-seat bicameral parliament .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Sarajevo",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Bosnia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Gavrilo Princip",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Austrian Archduke Franz Ferdinand",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Walesa said Solidarity wants to avoid unrest .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Walesa",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Solidarity",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1817 , naturalist-author Henry David Thoreau was born in Concord , Mass .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Henry David Thoreau",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Concord , Mass",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The nine sentences noting the spot where Dallas was settled are followed by this : ` ` On Nov. 22 , 1963 , the building gained national notoriety when Lee Harvey Oswald allegedly shot and killed President John F. Kennedy from a sixth floor window as the presidential motorcade passed the site. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President John F. Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "It almost makes me want to laugh. ( Minoli ) Why ? ( Fini ) Bossi is a very strange character and his extreme envy has been demonstrated. ( passage omitted ) He tried to get votes from the south , those votes which he now despises so much , but the south sent him back to the valleys. ( Minoli ) You said that Bossi reminded you of Hitler trapped in his Berlin bunker , a man with delusions of grandeur and a tendency towards suicide .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Hitler",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Berlin",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` One thing I have learned over the past 17 months is that the truth is hard to find , and it remains so , ' ' said Mrs. Higgins , 37 , who is a major inthe Marine Corps and works at the Pentagon as a public information officer.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Mrs. Higgins",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Marine Corps",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Mrs. Higgins",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Pentagon",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Sam Kadet of the corporate law firm of Skadden , Arps said Popeyes could give Church 's notice on Thursday that it planned to proceed with the takeover attempt and deliver the information to Church 's after five business days .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Sam Kadet",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Skadden , Arps",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Yisrael Tal , one of the top military strategists in Israel , says the Arabs have reached a strategic balance with Israel through their acquisition of ground-to-ground missiles .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Yisrael Tal",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Israel",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Yisrael Tal",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Israel",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Some people in the United States are saying that Clinton \" gave away \" $12 billion to Russia -- this is the amount it is proposed to pay for uranium destined for U.S. nuclear electric power stations , which will be obtained from our nuclear warheads .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Clinton",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "United States",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Clinton",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Guy M. Struve , the New York attorney representing Church 's , said he was disappointed and did not know when the chain would decide whether to appeal Thursday 's ruling .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Guy M. Struve",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "New York",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Guy M. Struve",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Church 's",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "A golden future seemed assured when , at 25 , Ogdon shared top place with Soviet pianist Vladimir Ashkenazy in the piano section of the 1962 Moscow Tchaikovsky International Competition for young musicians.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Vladimir Ashkenazy",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Illinois born Charlton Heston was a 27-year-old actor from Broadway and television when he arrived in Hollywood for a five-picture contract with Hal Wallis .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Charlton Heston",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Illinois",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The justices heard 60 minutes of arguments Wednesday on whether they will allow the execution of Johnny Paul Penry , 32 , a convicted rapist-murderer sentenced to die in Texas .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Johnny Paul Penry",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Texas",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "1911 , playwright Tennessee Williams was born in Columbus , Miss.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Tennessee Williams",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Columbus , Miss.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "BRISBANE , Australia ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "BRISBANE",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Australia",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "BRISBANE",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Australia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "CNEN Radioprotection Director Laercio Vinhas yesterday reported by fax that the thyroid dysfunctions detected in the employees have no relation whatsoever with their work at the laboratory and that this problem is detected in 3 percent of the overall population .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Laercio Vinhas",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "CNEN",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Photographer , author , filmmaker and composer Gordon Parks , 76 , born in Fort Scott , Kan. , who was on the photographic staff of Life Magazine for 19 years before branching out into other activities.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Gordon Parks",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Fort Scott , Kan.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1830 , poet Emily Dickinson was born in Amherst , Mass.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Emily Dickinson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Amherst , Mass.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` This is not a good idea for a lot of environmental reasons , ' ' Stephanie Powell , of the DEM 's division of groundwater and freshwater wetlands , said Tuesday.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Stephanie Powell",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "DEM",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Nihat ( Marka ) , deputy leader of SHP ( Social Democrat Populist Party ) parliamentary group , said : They should have run in the elections for the sake of democracy .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Nihat",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "SHP",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Nihat",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Social Democrat Populist Party",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Marka",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "SHP",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Marka",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Social Democrat Populist Party",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "A statement from military headquarters said the aircraft crashed during a 260-mile flight to Khartoum from Kassala in eastern Sudan near the Ethiopian border.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Kassala",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Sudan",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Harrington , a professor of political science at Queens College of the City University of New York and honorary president of the Socialist International , died Monday night at his home in suburban Larchmont , the university said in a statement Tuesday.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Queens College",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "City University of New York",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Socialist International",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Larchmont",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Norton Winfred Simon was born on Feb. 5 , 1907 , in Portland , Ore. , and spent his teen-age years in San Francisco .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Norton Winfred Simon",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Portland , Ore.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The National Aeronautics and Space Administration announced Thursday that Ulf D. Merbold , 47 , of the European Space Agency and Roger K. Crouch of NASA have been chosen to train to perform materials sciences experiments on the International Microgravity Laboratory-1 mission scheduled for April 1991 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Ulf D. Merbold",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "European Space Agency",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Roger K. Crouch",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "National Aeronautics and Space Administration",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Roger K. Crouch",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "NASA",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Prime Minister Felipe Gonzalez of Spain told reporters , ` ` The police actions and the arrests are of great importance to Spanish society on such a major matter as the battle against terrorism. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Felipe Gonzalez",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Spain",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1752 , flagmaker Betsy Ross was born in Philadelphia .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Betsy Ross",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Philadelphia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "This Latin American group 's reaction came two days after the military leaders of Haiti made Emile Jonassaint provisional president of Haiti , following the Haitian Parliament 's declaration that the post was vacant .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Emile Jonassaint",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Haiti",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Emile Jonassaint",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Haiti",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Haitian Parliament",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Haiti",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Haitian Parliament",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Haiti",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "No. 1 is the West Coast 's tallest building , the 76-story black-glass Columbia Seafirst Center built in 1985 , before downtown zoning went into effect .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Columbia Seafirst Center",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "West Coast",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Yahia Bouguettaya , the former mayor of Mohammadia , south-east Algeria , and Mohamed Touali , an activist in Algeria 's Ettahadi ( Challenge ) political party , were assassinated Wednesday .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Mohammadia",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Algeria",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Mohamed Touali",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Ettahadi ( Challenge ) political party",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Ettahadi ( Challenge ) political party",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Algeria",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Ettahadi ( Challenge ) political party",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Algeria",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "He developed evidence regarding the assassination of President Kennedy which supported the findings of the Warren Commission that Lee Harvey Oswald was the lone assassin .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Montana : A fire burning in grassland and scattered timber in the Custer National Forest became the state 's biggest fire of the summer Tuesday when it surpassed 1 , 200 acres.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Custer National Forest",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Montana",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "JOHANNESBURG , South Africa ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "JOHANNESBURG",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "South Africa",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The PRAVDA newspaper carries an interview with Radovan Karadzic , leader of Bosnian Serbs and vice-president of the Union of Serb Writers .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Radovan Karadzic",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Union of Serb Writers",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) The National Central Organization of Panamanian Workers ( CNTP ) , which comprises three workers ' federations and 16 unions for a total of 12 , 000 workers , has proclaimed its determination to support Dr. Ernesto Perez Balladares for the presidency of the Republic .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "The National Central Organization of Panamanian Workers",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "the Republic",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "CNTP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "the Republic",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Ernesto Perez Balladares",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "the Republic",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "MOSKOVSKIY KOMSOMOLETS has learned from competent sources that the commission is supposed to pay special attention to Lazutkin , former first deputy general director of \" Ostankino , \" who currently holds the position of first deputy head of the Russian Federation Federal Service for Television and Radio Broadcasting.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Lazutkin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Russian Federation Federal Service for Television and Radio Broadcasting.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "But trustee Daniel L. Bakst , a West Palm Beach , Fla. , lawyer , said he will not let the 11th-hour settlement efforts interfere with his assignment to track down Warner 's assets for distribution to creditors.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Daniel L. Bakst",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "West Palm Beach",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Daniel L. Bakst",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Fla.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "West Palm Beach",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Fla.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Serbia is the largest of Yugoslavia 's six republics.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Serbia",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Yugoslavia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Sirhan was convicted of Kennedy 's killing and is serving a life sentence .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Sirhan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "A mechanized infantry battalion belonging to the 21st Brigade of Cerro Muriano in Cordoba and to the 12th Brigade in Botoa in Badajoz , a company of the Special Operations Group in Alicante , and a squadron from the Jarama 1st Cavalry Brigade from Salamanca make up the Cordoba Group .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "21st Brigade of Cerro Muriano",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Cordoba",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "12th Brigade",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Botoa",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "12th Brigade",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Badajoz",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Special Operations Group",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Alicante",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Jarama 1st Cavalry Brigade",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Salamanca",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Those honored were Jean Griffith , mother of a man killed on a Howard Beach , Queens , parkway after being chased by a gang of whites in December 1986 ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Howard Beach",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Queens",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "FBI agents arrived at Sohn 's New Jersey home and escorted him to safety only 30 minutes before KCIA agents showed up , an unidentified senior law enforcement official told the Times .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Sohn",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "New Jersey",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Prime Brian Mulroney 's Progressive Conservative Party won its second consecutive majority government in the election , and he signed the trade pact with President Reagan in January 1988 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Brian Mulroney",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Progressive Conservative Party",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Treiki disclosed the planned missile tests during Security Council debate Tuesday night after the U.S. 6th Fleet informed Libyan air traffic controllers so they could divert civilian air traffic .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "6th Fleet",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "BANGKOK , Thailand ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "BANGKOK",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "BANGKOK",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Thailand",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In Washington , the General Accounting Office ( GAO ) , the congressional watchdog of government spending , says in a report released last August that Israel might be underestimating the costs of producing and deploying the Arrow system .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "General Accounting Office",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Washington",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "GAO",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Washington",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Britain 's Duchess of York and former Philippines first lady Imelda Marcos topped the list by Blackwell , a designer and self-appointed fashion arbiter whose real name is Richard Sylvan Selzer .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Duchess of York",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Britain",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Imelda Marcos",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Philippines",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Today 's highlight in history : On the Ides of March , 44 B.C. , Roman Emperor Julius Caesar was assassinated by a group of nobles that included Brutus and Cassius .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Brutus",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Roman Emperor Julius Caesar",
+                    "type": "Person"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Cassius",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Roman Emperor Julius Caesar",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Until President 's Day of this year , the public could not enter the sixth floor of the old school book depository in downtown Dallas , where it 's believed Lee Harvey Oswald fired the shots that killed Kennedy .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "An electrical train has arrived at Novonezhino to evacuate local inhabitants , and a special group from the Russian Defence Ministry has left Moscow by plane en route to Vladivostok and the site of the explosion .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Russian Defence Ministry",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Deputy U.S. Ambassador Herbert S. Okun announced the cancellation just before the council began debate , and officials in Washington confirmed it .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Herbert S. Okun",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "U.S.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Moscow March 5 ( ITAR-TASS ) -- Moscow leading newspapers concentrate on the speeches by President Boris Yeltsin and Premier Viktor Chernomyrdin at the government 's enlarged meeting on Friday .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "ITAR-TASS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "ITAR-TASS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Boris Yeltsin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Boris Yeltsin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Viktor Chernomyrdin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Viktor Chernomyrdin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Winter , 53 , a former Yale University law professor who took the bench in 1982 , and Starr , a fellow appointee of President Reagan , are both known as judicial conservatives .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Winter",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Yale University",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1873 , radio electronics pioneer Dr. Lee DeForest was born in Council Bluffs , Iowa .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Dr. Lee DeForest",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Council Bluffs , Iowa",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In southwest Louisiana 's Cameron Parish ( county ) , civil defense director Hayes Picou about 8 , 500 of the low-lying parish 's 10 , 000 residents had evacuated the southern coast , most to stay with friends or relatives.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Cameron Parish",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Louisiana",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Hayes Picou",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Louisiana",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Hayes Picou",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Cameron Parish",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The Internal Revenue Service and Manufacturers Hanover Trust Co. of New York , two of the largest creditors in the Herbert Hunt bankruptcy , said they will file a repayment plan by Friday.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Manufacturers Hanover Trust Co.",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "New York",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The committee reported in July 1979 that Lee Harvey Oswald had shot Kennedy and that neither the Soviet Union nor Cuba nor any U.S. government agency was involved in the killing. ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Announces Offer to End Strike PA0302025694 Panama City ACAN in Spanish 2153 GMT 2 Feb 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "ACAN",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Panama City",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Other winners are : _ Actress Helen Hayes , 87 , born in Washington , who first appeared on stage at the age of 5 , made her New York debut in 1909 and has played in works of Shakespeare , Tennessee Williams and Eugene O'Neill during her long career as a stage and movie actress.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Actress Helen Hayes",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Washington",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Bossi set up the Freedom Alliance not because he believed in it , but because he found that it was necessary to do so. ( Minoli ) Do you think that this continual exchange of insults is advantageous to the common cause ? ( Fini ) It is advantageous because whoever listens does not vote for Occhetto ( leader of the Democratic Party of the Left ) .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Bossi",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Freedom Alliance",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Occhetto",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Democratic Party",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The law , patterned after similar measures in Michigan and California , gives victims ` ` a maximum opportunity to participate , ' ' said Fran Sepler , executive of the state Crime Victim and Witness Advisory Council.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Fran Sepler",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "state Crime Victim and Witness Advisory Council.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Gary Hess , an Emery employee , saw the plane go down as he was getting off work at the airport .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Gary Hess",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Emery",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The six men were found under the rubble in the basement of a nine-story apartment building which had collapsed on them , the official Soviet news agency said in a report from Yerevan , the capital of Armenia .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Yerevan",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Armenia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1963 , the year he joined the Herald Tribune , he was riding in the motorcade with President Kennedy when Kennedy was fatally shot by Lee Harvey Oswald in Dallas. ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` If we 're going to address this problem it will be a grass-roots effort by activists throughout the cities of the world , ' ' said Jeremy Rifkin , director of the Foundation on Economic Trends and a member of the Global Greenhouse Network , a coalition of environmental activists in 35 countries .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jeremy Rifkin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Foundation on Economic Trends",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jeremy Rifkin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Global Greenhouse Network",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "When he was called to examine Robert F. Kennedy 's assassin , Sirhan Sirhan , a Jordanian residing in the United States , Markman refused .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Sirhan Sirhan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Robert F. Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Tokyo NIHON KEIZAI SHIMBUN",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NIHON KEIZAI SHIMBUN",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Tokyo",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Jeffrey Bander , vice for development of new products at American Express , said the credit card company conducted two different research projects before launching its weather phone.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jeffrey Bander",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "American Express",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1968 , authorities announced the capture in London of James Earl Ray , suspected of the assassination of civil rights leader Dr. Martin Luther King Jr .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "James Earl Ray",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Dr. Martin Luther King Jr",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "James Earl Ray , 60 , is serving 99 years in prison for first-degree murder of King in Memphis on April 4 , 1968 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "James Earl Ray",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "King",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Excerpts ) US President Bill Clinton 's decision to lift a long-standing trade embargo against Vietnam had been expected. ( passage omitted ) In his White House speech , Clinton said the time for bitterness was over and now was the time for a new beginning between Hanoi and Washington .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Bill Clinton",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "US",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In Washington , U.S officials announced that the Navy will rotate two aircraft carrier battle groups well away from Libya as one replaces the other .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Washington",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "U.S",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Navy",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "U.S",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Such theories , which are not alone in the international press , find support in another agreement that was also signed in Geneva -- which the Croatian opposition ostensibly did not notice , to the great surprise and almost astonishment of all , and consequently did not comment on , although the integral text was published in Croatian newspapers -- the agreement signed between Mile Akmadzic , on behalf of the Croatian Republic of Herceg-Bosna , and Nikola Koljevic , on behalf of the Serbian Republic , in which both sides emphasize that \" there are no disputed issues between them that cannot be solved in a peaceful way . \"",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Mile Akmadzic",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Croatian Republic of Herceg-Bosna",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Nikola Koljevic",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Serbian Republic",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Tal , a senior Defense Ministry official , has not repeated these views in public .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Tal",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Defense Ministry",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Lennon was shot to death Dec. 8 , 1980 , in the courtyard of his New York City apartment building by Mark David Chapman , a former Beatles ' fan who was convicted of the killing and sentenced to prison for a term of 20 years to life .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Mark David Chapman",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lennon",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1890 , the 34th President of the United States , Dwight D. Eisenhower , was born in Denison , Texas .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Dwight D. Eisenhower",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Denison , Texas",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "By contrast , nearly 6 million square feet of downtown office space is newly completed , under construction or has received city permits , said Virginia Galle , a City Council member and CAP supporter .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Virginia Galle",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "City Council",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Harrington taught at Harvard University and the National War College.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Harvard University",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Harrington",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "National War College.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The federal appeals court threw out the death sentence of John Harvey Adamson , convicted of murdering Phoenix newspaper reporter Don Bolles in 1976 .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Harvey Adamson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Don Bolles",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Fred Farrar , another FAA spokesman , said airlines flying the 737-300s are Aloha , America West , American , Continental , Delta , Orion , Piedmont , Southwest , United and U.S. Air .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Fred Farrar",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "FAA",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The trud newspaper features the last part of the memoirs by former commander of the Soviet Navy Nikolai Kuznetsov who personally knew Stalin , under the headline \" Stalin 's Death . \"",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Navy",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Nikolai Kuznetsov",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Nikolai Kuznetsov",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Navy",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Stalin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Stalin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Soviet",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "National Congress President Vinicio Villar Anleu commented on the implications of the case : ( Begin recording ) ( Villar Anleu ) It seems to us -- and we uphold Congress ' institutional policy -- that the nation 's laws must be respected and that the Constitution must be respected .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Vinicio Villar Anleu",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "National Congress",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Several organizations planned remembrances later today at Parkland Memorial Hospital , where Kennedy was taken after being shot , and the Texas Theater , where Lee Harvey Oswald was arrested hours after the assassination .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Ambassador Miller is also scheduled to meet with Crimean Deputy Yevhen Saburov and Black Sea Fleet Commander Eduard Baltin.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Eduard Baltin.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Black Sea Fleet",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` I think the longer they talk , the longer they delay , the greater the chances that we may turn this around and get them all home , ' ' said Ms. Say in Nashville , Tenn.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Nashville",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Tenn.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "A chart used to decipher the code was found among Booth 's effects after he was shot by Union soldiers 11 days after the assassination of Lincoln .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Booth",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Lincoln",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Taipei , Jan. 20 ( CNA ) -- Foreign Chien Fu will leave for the United States on January 29 to give two speeches in the Boston area .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Chien Fu",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Taipei",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` ` Ryan 's Hope ' has not been rejected by the audience , it has simply been unavailable to viewers , ' ' Jo Ann Emmerich , vice president of daytime programs for ABC Entertainment , said at the time .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jo Ann Emmerich",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "ABC Entertainment",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "On this date : In 1843 , the 25th President of the United States , William McKinley , was born in Niles , Ohio .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "William McKinley",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Niles , Ohio",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Moscow MOSKOVSKIY KOMSOMOLETS",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "MOSKOVSKIY KOMSOMOLETS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1874 , Herbert Clark Hoover , the 31st president of the United States , was born in West Branch , Iowa .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Herbert Clark Hoover",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "West Branch , Iowa",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Many had hoped their loyality would convince the banks , primarily the Frankfurt-based Commerzbank and Giessen 's Bezirksparkasse bank , to continue to help Minox , but the hope backfired on those who were layed off , he said .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Bezirksparkasse bank",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Giessen",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "An abstract theory explaining the structure of minimal surface in Riemann 's multi-dimensional space has been developed by Wang Guangyan , with the assistance of his PhD student , at the Institute of Mathematics .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Wang Guangyan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Institute of Mathematics",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Owen Le Vallee , president of the Liberation Day Committee , said his mother found a starving German in the outhouse during the year after D-Day , the 1944 Allied invasion of Europe.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Owen Le Vallee",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Liberation Day Committee",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "KARBALA , Iraq ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "KARBALA",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Iraq",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "KARBALA",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Iraq",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Another beacon of the better life is Prateep Ungsongtham , known as the ` ` Slum Angel of Bangkok. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Prateep Ungsongtham",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Bangkok.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) In an interview with Interfax the chief of Belarus 's Security Committee , Eduard Shirkovskiy , has dismissed rumors that the copies of the files relating to Lee Harvey Oswald , who was charged with having assassinated President John Kennedy , will be handed to President Bill Clinton during his visit to Minsk .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President John Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Michael Henley Jr. , 10 , disappeared on a turkey hunt with his father in April 1988 in the mountains near their hometown of Grants , N.M. Ms. Calico , then 19 , disappeared five months later while bicycling on a country road near her hometown of Belen , N.M.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Michael Henley Jr.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Grants",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Michael Henley Jr.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "N.M.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Grants",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "N.M.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Ms. Calico",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "N.M.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Ms. Calico",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Belen",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Ms. Calico",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "N.M.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Belen",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "N.M.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Moscow April 25 TASS -- Preliminary marine pollution measurements taken from the sites of radioactive waste dumping by the former Soviet Union and Japan in the Sea of Japan did not reveal any Caesium-137 radioactive level fluctuations .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "TASS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Police arrested 10 Spanish Basque militants , including Jose Antonio Urutigoechea , considered by Madrid to be a top leader of the Spanish Basque separatist organization ETA , authorities said today .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Jose Antonio Urutigoechea",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "ETA",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The Warren Commission concluded that Oswald , acting alone , fired the shots that killed Kennedy and wounded John Connally , then the Texas governor .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The advisory committee voted 7-1 to recommend that the drug remain a prescription ingredient , said Susan Cruzan , an FDA spokeswoman.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Susan Cruzan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "FDA",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` It 's been a nightmare , ' ' said Shelley Yeager , director of the Clara Barton camp at Oxford in central Massachusetts.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Oxford",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Massachusetts.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "And William McKinley 's assassin Leon Czolgosz croons \" The Ballad of Czolgosz \" from the electric chair .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Leon Czolgosz",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "William McKinley",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Yeltsin Orders Audit of Ostankino Finances MK1401103094 Moscow MOSKOVSKIY KOMSOMOLETS in Russian 14 Jan 94 p 1",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "MOSKOVSKIY KOMSOMOLETS",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` We are constantly getting confirmation that the U.S. economy is no longer in a boom phase , and that interest rates are falling , ' ' said a dealer at a U.S. bank in Frankfurt , West Germany.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Frankfurt",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "West Germany.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1969 , Sirhan Sirhan was convicted of assassinating U.S. Sen. Robert F. Kennedy .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Sirhan Sirhan",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "U.S. Sen. Robert F. Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Jesse Jackson easily won the Democratic precinct caucuses Saturday in his native South Carolina , while Sen. Bob Dole went on Illinois television for a half-hour plea for Republican votes in a state where he said he is the underdog .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Jesse Jackson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "South Carolina",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "MEXICO CITY ( AP )",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "MEXICO CITY",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Temperatures around the nation at 2 a.m. EST ranged from 2 degrees at Jackson , Wyo. , and Gunnison , Colo. , to 89 degrees at McAllen , Texas .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Jackson",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Wyo.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Gunnison",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Colo.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "McAllen",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Texas",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "` ` We certainly believe it 's a prudent measure to go out and check to make sure there 's nothing wrong with the fleet , ' ' Boeing Commercial Airplanes spokesman Craig Martin said Wednesday in Seattle .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Craig Martin",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Boeing Commercial Airplanes",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "As Rochester teacher union leader Adam Urbanski put it : ` ` We have set the table ; we have not served the meal yet. ' '",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Adam Urbanski",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Rochester",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Tokyo MAINICHI SHIMBUN",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "MAINICHI SHIMBUN",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Tokyo",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "If the elections had been held during the last 10 days of May , that is , after the debate , Fernandez de Cevallos would reportedly be the next president of Mexico with 33.2 percent of the vote .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Fernandez de Cevallos",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Mexico",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Authorities say Oswald opened fire from a sixth-floor window there into Kennedy 's motorcade .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Meanwhile , the historical society in Beaumont , Texas , Richardson 's hometown , plans to raise two statues on Feb. 3 _ one of Buddy Holly , Richardson and Valens , and a second of the Big Bopper alone .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Richardson",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Beaumont , Texas",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "At a briefing at NRC headquarters in nearby Rockville , Md. , Bernero said the volcanic cones in the area of Yucca Mountain have been a cause of concern for NRC experts.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NRC",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Rockville",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NRC",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Md.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Rockville",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Md.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Bernero",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "NRC",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NRC",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Rockville",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "NRC",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Md.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "( Text ) Saint-Gall , Switzerland , Feb 2 ( AFP ) -- The wreck of a twin-engine aircraft has been found 160 metres below the surface of Lake Constance , Swiss police said Tuesday ( 1 February ) .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Saint-Gall",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Switzerland",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AFP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Saint-Gall",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "AFP",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Switzerland",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "According to the communique , clashes are continuing mainly in the Rancho Nuevo area at the military base in the southern Chiapas State .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Rancho Nuevo",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Chiapas State",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Dallas police arrested Oswald there on Nov. 22 , 1963 , after the assassination of President John F. Kennedy .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "President John F. Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In Washington state , near the Canadian border , firefighters hoped to contain an 850-acre fire by tonight , said Greg Thayer of the Forest Service.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Greg Thayer",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Forest Service.",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In an \" electoral communique \" signed by CNTP Secretary Luis Cobos R. , the organization said it hopes that with this decision \" we will achieve the return of the Torrijist forces to power to stimulate the process of national liberation . \"",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Luis Cobos R.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "CNTP",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In it , actor Edwin Booth tells us his version of his life story , in which he and not his brother John Wilkes shoots Abraham Lincoln at Ford 's Theater .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "John Wilkes",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Abraham Lincoln",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In 1801 , Mormon leader Brigham Young was born in Whitingham , Vt .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Brigham Young",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Whitingham , Vt",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The Warren Commission concluded that Lee Harvey Oswald , acting alone , fired the shots that killed Kennedy and wounded John Connally , then the Texas governor , on Nov. 22 , 1963 in Dallas .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Lee Harvey Oswald",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Kennedy",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The spilled fuel covered an area two miles long and nearly a half-mile wide , said Whitefish City Attorney Tom Muri.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Tom Muri.",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Whitefish City",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "In California 's Sierra Nevada foothills , firefighters today declared they had contained a fire that blackened 11 , 700 acres of brush and grassland and destroyed seven homes.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Sierra Nevada",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "California",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "\" I was hearing the same story , \" says James Hackett , an executive with Titan Systems and one of the leading missile experts in the U.S .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "James Hackett",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Titan Systems",
+                    "type": "Organization"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "James Hackett",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "U.S .",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "The quake leveled much of Leninakan , Armenia 's second-largest city 10 miles east of the Turkish border and left thousands homeless .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Leninakan",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Armenia",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Pittsburgh-Corning Corp. of Pittsburgh ;",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "Pittsburgh-Corning Corp.",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Pittsburgh",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Barrett is a member of the Illinois Commerce Commission , and Marshall is a lawyer and former legislative aide to Patrick.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Work_for"
+                },
+                "head": {
+                    "text": "Barrett",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Illinois Commerce Commission",
+                    "type": "Organization"
+                }
+            }
+        ]
+    },
+    {
+        "text": "During my recent tour , I met with Sultan Qabus Bin-Sa 'id of Oman .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Live_in"
+                },
+                "head": {
+                    "text": "Sultan Qabus Bin-Sa 'id",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Oman",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Ten years ago : James Earl Ray , convicted of assassinating Dr. Martin Luther King Jr. in 1968 , repeated his assertion at a Capitol Hill hearing that he did not commit the crime , saying he 'd been set up to take the blame by a mysterious man called Raoul .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "James Earl Ray",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Dr. Martin Luther King Jr.",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "They will also be cleaning the car Oswald drove on the day Kennedy was shot and the ambulance that took Oswald to hospital after he was shot by Jack Ruby .",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Kill"
+                },
+                "head": {
+                    "text": "Jack Ruby",
+                    "type": "Person"
+                },
+                "tail": {
+                    "text": "Oswald",
+                    "type": "Person"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Widespread street flooding was reported throughout Brazoria , Fort Bend , Galveston and southern Harris Counties in southeast Texas.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Brazoria",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Texas.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Fort Bend",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Texas.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Galveston",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Texas.",
+                    "type": "Location"
+                }
+            },
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Harris Counties",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Texas.",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "LD2804174994 Moscow INTERFAX in English 1601 GMT 28 Apr 94",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "INTERFAX",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Moscow",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "Navy sources said the Coral Sea , on duty with the 6th Fleet in the Mediterranean , left ` ` a few hours ' ' ahead of its scheduled departure.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Organization_based_in"
+                },
+                "head": {
+                    "text": "6th Fleet",
+                    "type": "Organization"
+                },
+                "tail": {
+                    "text": "Mediterranean",
+                    "type": "Location"
+                }
+            }
+        ]
+    },
+    {
+        "text": "It is one of many deep below the arid surface , fed by underground channels that carry rainwater from the Najd plateau in northern Saudi Arabia to the west.",
+        "triple_list": [
+            {
+                "rel": {
+                    "text": "Located_in"
+                },
+                "head": {
+                    "text": "Najd plateau",
+                    "type": "Location"
+                },
+                "tail": {
+                    "text": "Saudi Arabia",
+                    "type": "Location"
+                }
+            }
+        ]
+    }
+]

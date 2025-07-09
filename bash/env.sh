@@ -1,3 +1,3 @@
-#!/bin/bash
+# module load StdEnv/2023
 module load gcc arrow
-source /home/pgajo/projects/def-hsajjad/pgajo/natcode-llm-kgc/venv-llmkgc/bin/activate
+source .env/bin/activate
