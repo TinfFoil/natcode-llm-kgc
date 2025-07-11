@@ -64,20 +64,9 @@ def main(args):
     n_samples_test = len(df_test)
     df_test = df_test.sample(n=n_samples_test)
 
-    entity2type_json = os.path.join(dataset_path, args.entitytypes)
-    with open(entity2type_json, 'r', encoding='utf8') as f:
-        entity2type_dict = json.load(f)
-
     runner = Runner(model=model,
-                    type_dict=entity2type_dict,
-                    natlang=args.natlang,
                     tokenizer=tokenizer,
-                    chat_model=args.chat,
-                    schema_path=schema_path,
-                    rationale=args.rationale,
-                    verbose_test=args.verbose_test,
-                    model_name=args.model_name,
-                    verbose_output_path=args.verbose_output_path,
+                    config=config,
                     )
     
     df_train = pd.read_json(train_json).sample(n=args.n_icl_samples)
@@ -120,7 +109,6 @@ if __name__ == "__main__":
     parser.add_argument("--natlang", help="Type of language", action='store_true')
     parser.add_argument("-r", "--rationale", help="Whether to include rationale in the prompt", action='store_true')
     parser.add_argument("--chat", help="Type of model (default = completion model)", action='store_true')
-    parser.add_argument("-ent", "--entitytypes", help="Filename of  the entity2type json", default='entity2type.json')
     parser.add_argument("-pf", "--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
     parser.add_argument("--train_split", help="Filename of the train file to use", default='train')
     parser.add_argument("--test_split", help="Filename of the test file to use", default='test')

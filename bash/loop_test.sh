@@ -86,7 +86,7 @@ rationale_toggle=(
 
 verbose_test=0
 
-target_modules_list=(
+lora_modules_list=(
 <<<<<<< HEAD
     # "dummy"
     # "q"
@@ -126,7 +126,7 @@ test_split_flag="--test_split ${test_split}"
 for rationale in "${rationale_toggle[@]}"; do
     for natlang in "${natlang_toggle[@]}"; do
         for model in "${!model_list[@]}"; do
-            for target_modules in "${target_modules_list[@]}"; do
+            for lora_modules in "${lora_modules_list[@]}"; do
                 is_chat_model=${model_list[$model]}
                 
                 if [[ $model == ./models/* ]]; then
@@ -159,7 +159,7 @@ for rationale in "${rationale_toggle[@]}"; do
                     fi
                     
                     if $is_fine_tuned; then
-                        model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}_mod=${target_modules}"
+                        model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}_mod=${lora_modules}"
                         results_name=$model_name
                     else
                         model_name="${model}"

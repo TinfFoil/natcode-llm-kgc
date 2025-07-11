@@ -83,8 +83,8 @@ train_steps=200
 n_icl_samples=3
 load_in_4bit=false
 
-# target_modules_list=("q-k-v-o-gate-up-down")
-target_modules_list=(
+# lora_modules_list=("q-k-v-o-gate-up-down")
+lora_modules_list=(
     # "q"
     # "k"
     # "v"
@@ -103,13 +103,13 @@ for natlang in ${natlang_toggle[@]}; do
             is_chat=${model_list[$model]}
             # Loop through dataset_list
             for dataset in "${dataset_list[@]}"; do
-                for target_modules in "${target_modules_list[@]}"; do
+                for lora_modules in "${lora_modules_list[@]}"; do
                     # Base command
                     cmd="python ./src/train_hf.py \
                         -m $model \
                         -d $dataset \
                         --n_icl_samples $n_icl_samples \
-                        --target_modules $target_modules"
+                        --lora_modules $lora_modules"
 
                     # Add chat flag if it's a chat model
                     if $is_chat; then
@@ -139,7 +139,7 @@ for natlang in ${natlang_toggle[@]}; do
                     fi
                     
                     # Construct the model name
-                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}_mod=${target_modules}"
+                    model_name="${model}_ft_${dataset}_${natlang_suffix}_${rationale_suffix}_steps=${train_steps}_icl=${n_icl_samples}_mod=${lora_modules}"
                     echo "Training this model: $model_name"
                     
                     if python ./src/check_models.py -m "$model_name" -d './models'; then
