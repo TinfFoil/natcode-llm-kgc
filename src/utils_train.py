@@ -2,22 +2,15 @@ from transformers.trainer_callback import TrainerControl, TrainerState, TrainerC
 from transformers import TrainingArguments, BitsAndBytesConfig
 import random
 import torch
-from peft import get_peft_model, prepare_model_for_kbit_training
+from peft import get_peft_model, prepare_model_for_kbit_training, LoraConfig
 from trl import SFTTrainer, SFTConfig
 import pandas as pd
-
-def make_dataset(df: pd.DataFrame, runner, tokenizer, n_samples: int = 0):
-    data_train = runner.make_samples(tokenizer, df)
-    df = pd.DataFrame(data_train)
-    if n_samples:
-        df = df.sample(n=n_samples)
-    return df
 
 def prep_model(config, model):
     if config['do_train'] and config['lora_modules']:
         if config['load_in_4bit'] or config['load_in_8bit']:
             model = prepare_model_for_kbit_training(model)
-        model = get_peft_model(model, config['lora_config'])
+        model = get_peft_model(model, LoraConfig(**config['lora_config']))
         print('Applied LoRA!')
     print('Trainable parameters:', sum(p.numel() for p in model.parameters() if p.requires_grad))
     return model
@@ -29,7 +22,7 @@ def get_trainer(config, model, tokenizer, dataset_train, dataset_dev = None):
         train_dataset=dataset_train,
         eval_dataset=dataset_dev,
         # compute_metrics=evaluator.compute_metrics,
-        peft_config=config['lora_config'],
+        peft_config=LoraConfig(**config['lora_config']),
         args=SFTConfig(
             max_length=config['max_length'],
             dataset_num_proc=1,

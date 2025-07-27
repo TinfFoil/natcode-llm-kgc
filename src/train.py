@@ -2,7 +2,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import Dataset
 from utils_io import setup_config, save_json, save_prompt
-from utils_train import get_quant_config, prep_model, get_trainer, make_dataset
+from utils_train import get_quant_config, prep_model, get_trainer
 from runner import Runner
 from calculate_metrics import RelationExtractionEvaluator
 import argparse
@@ -30,7 +30,7 @@ def main(args):
         device_map='auto',
     )
     model.gradient_checkpointing_enable()
-    evaluator = RelationExtractionEvaluator(mode = 'SE')
+    evaluator = RelationExtractionEvaluator(mode = 'EE')
     runner = Runner(model=model,
                     tokenizer=tokenizer,
                     config=config,
@@ -38,22 +38,29 @@ def main(args):
                     )
     
     df_train = pd.read_json(os.path.join(config['dataset_path'], 'train.json'))
-    df_train_prompts = make_dataset(df_train, runner, tokenizer)
+    df_train_prompts = runner.make_dataset(df_train, tokenizer)
     dataset_train = Dataset.from_pandas(df_train_prompts, split="train")
-
-    if config['save_prompt']:
-        save_prompt(df_train, config)
     
     if not config['train_steps']:
-        config['train_steps'] = len(dataset_train) // int(config['batch_size_train'])
+        train_size = len(dataset_train)
+        batch_size = int(config['batch_size_train'])
+        config['train_steps'] = train_size // batch_size
+        print(f"Argument `train_steps` not specified, training on the whole dataset ({train_size} samples, {config['train_steps']} steps @ batch size == {batch_size})")
     
     df_val = pd.read_json(os.path.join(config['dataset_path'], 'val.json'))
-    if config['val_samples']:
-        df_val = df_val[:config['val_samples']]
+    df_test = pd.read_json(os.path.join(config['dataset_path'], 'test.json'))
+    if config['eval_steps']:
+        df_val = df_val[:config['eval_steps'] * config['batch_size_eval']]
+        df_test = df_test[:config['eval_steps'] * config['batch_size_eval']]
+
+    if config['save_prompt']:
+        txt_path = os.path.join(config['results_dir'], 'train_prompt.txt')
+        text = df_train_prompts.iloc[0]['text']
+        save_prompt(text, txt_path)
 
     model = prep_model(config, model)
     trainer = get_trainer(config, model, tokenizer, dataset_train)
-    
+    val_results = []
     if config['do_train']:
         for epoch in range(config['epochs']):
             trainer_stats = trainer.train()
@@ -62,17 +69,23 @@ def main(args):
             print(f"Best F1 score: {best_metric}")
 
             if config['evaluate']:
-                eval_results = runner.evaluate(df_val, df_train)
-                print(f"Final evaluation results: {eval_results}")
+                val_results.append(runner.evaluate(df_val, df_train, split = 'val'))
+                print(f"Val @ epoch {epoch + 1}: {val_results}")
             else:
-                eval_results = {
+                val_results = {
                     'eval_loss': -1,
                     'eval_precision': -1,
                     'eval_recall': -1,
                     'eval_f1': -1,
                 }
+        save_json(val_results, os.path.join(config['results_dir'], 'val_results.json'))
     
-    if config['save_model']:
+    test_results = runner.evaluate(df_test, df_train, split = 'test')
+    print(f"Test results: {test_results}")
+
+    save_json(test_results, os.path.join(config['results_dir'], 'test_results.json'))
+
+    if config['save_model'] and config['do_train']:
         if config['lora_modules']:
             model.save_pretrained(config['model_dir'])
         else:
@@ -80,22 +93,16 @@ def main(args):
         tokenizer.save_pretrained(config['model_dir'])
         print(f"Fine-tuned model saved to: {config['model_dir']}")
     else:
-        print('Model was not saved because of --save_model 0 flag')
-
-    print('VRAM usage:',torch.cuda.memory_allocated())
-    print('Model deleted, test time...')
-    model.to('cpu')
-    del model
-    torch.cuda.empty_cache()
-    print('VRAM usage:',torch.cuda.memory_allocated())
+        print(f"Model was not saved because of `save_model`=={config['save_model']}, `do_train`=={config['do_train']}")
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")
     parser.add_argument("--model_name", type=str, help="Name of the model to train", default='mistralai/Mistral-7B-Instruct-v0.3')
     parser.add_argument("--dataset", type=str, help="Name of the dataset to use", default='ade')
-    parser.add_argument("--train_steps", type=int, help="Number of training steps", default=5)
+    parser.add_argument("--train_steps", type=int, help="Number of training steps", default=0)
+    parser.add_argument("--eval_steps", type=int, help="Number of validation samples", default=0)
     parser.add_argument("--epochs", type=int, help="Number of training steps", default=1)
-    parser.add_argument("--batch_size_train", type=int, help="Batch size for training", default=8)
+    parser.add_argument("--batch_size_train", type=int, help="Batch size for training", default=4)
     parser.add_argument("--batch_size_eval", type=int, help="Batch size for evaluation", default=4)
     parser.add_argument("--grad_acc_steps", type=int, help="Gradient accumulation steps", default=1)
     parser.add_argument("--lr", type=float, help="Learning ratre", default=2e-4)
@@ -109,7 +116,7 @@ if __name__ == "__main__":
     parser.add_argument("--evaluate", type=int, help="Evaluate on validation split", default=1)
     parser.add_argument("--save_model", type=int, help="Don't save the fine-tuned model", default=1)
     parser.add_argument("--save_results", type=int, help="Save the training results", default=0)
-    parser.add_argument("--val_samples", type=int, help="Number of validation samples", default=0)
+    parser.add_argument("--results_dir", type=str, help="Target dir in which to save the results", default='')
     parser.add_argument("--load_in_4bit", type=int, help="Use 4-bit quantization", default=0)
     parser.add_argument("--load_in_8bit", type=int, help="Use 8-bit quantization", default=0)
     # parser.add_argument("--chat", type=int, help="Whether it's a chat model", default=0)

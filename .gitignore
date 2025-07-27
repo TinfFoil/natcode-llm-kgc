@@ -32,3 +32,4 @@ models/
 results*
 notebooks/
 __pycache__
+data

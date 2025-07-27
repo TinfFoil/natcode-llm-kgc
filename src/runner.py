@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, ListedColormap, Normalize
 import numpy as np
 import warnings
-from utils_io import dict_to_records
+from utils_io import dict_to_records, save_json, save_prompt
 import json
 
 class Runner:
@@ -25,18 +25,32 @@ class Runner:
         self.tokenizer = tokenizer
         self.config = config
         self.evaluator = evaluator
-        self.code_schema_prompt = open(config['schema_path'], 'r', encoding='utf8').read()
-
+        self.relations = open(config['relations_path'], 'r', encoding='utf8').read()
+        self.ent_classes = open(config['ent_classes_path'], 'r', encoding='utf8').read()
         if self.config['natlang']:
-            self.comment_symbol = ''
-            self.instruction = 'Task: Extract a list of [entity, relation, entity] triples from the text below.'
             self.sys_prompt = 'You are an AI specialized in the task of extracting entity-relation-entity triples from texts.'
+            self.comment_symbol = ''
+            self.natlang_triple_layout = """{{"rel": {{"type": "{relation_type}"}}, "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}}, "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}"""
+            self.instruction = f"""Task: Extract a list of dictionaries in valid JSON format as follows: [{self.natlang_triple_layout}]\n\nONLY generate the valid JSON, nothing else.\n"""
         else:
+            self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
+            self.code_schema_prompt = open(config['schema_path'], 'r', encoding='utf8').read()
             self.comment_symbol = '# '
             self.instruction = f'{self.comment_symbol}Task: Define an instance of Extract from the text below.'
-            self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
-        self.instruction += ' Do not produce any more text samples after you finish extracting triples from the text below.'
-    
+        
+        self.relations_prompt = f"\nThe types of relations are: {self.relations}\n"
+        self.ent_classes_prompt = f"\nThe types of entities are: {self.ent_classes}\n"
+
+        self.instruction += self.ent_classes_prompt
+        self.instruction += self.relations_prompt
+
+    def make_dataset(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):
+        data_train = self.make_samples(tokenizer, df)
+        df = pd.DataFrame(data_train)
+        if n_samples:
+            df = df.sample(n=n_samples)
+        return df
+
     def check_system_msg(self):
         psw = str(uuid.uuid4())
         response = self.tokenizer.apply_chat_template([{"role": "system", "content": psw},], tokenize=False)
@@ -71,7 +85,7 @@ class Runner:
                     {"role": "assistant", "content": text_triples},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = self.comment_symbol + self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     {"role": "assistant", "content": text_triples},
@@ -85,7 +99,7 @@ class Runner:
                     {"role": "user", "content": prompt},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = self.comment_symbol + self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     ]
@@ -115,7 +129,7 @@ class Runner:
                     {"role": "assistant", "content": text_triples},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = self.comment_symbol + self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     {"role": "assistant", "content": text_triples},
@@ -129,7 +143,7 @@ class Runner:
                     {"role": "user", "content": prompt},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
+                    prompt = self.comment_symbol + self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     ]
@@ -144,16 +158,21 @@ class Runner:
             prompt = self.sys_prompt + '\n\n' + prompt
         return prompt
 
-    def extract_triples(self, response: str) -> List[List[str]]:
+    def extract_triples(self, response: str) -> List[str]:
         print('response:', response)
+
         if self.config['natlang']:
-            pattern = r'\{"([^"]+)":\s+"([^"]+)"\},\s+"([^"]+)",\s+\{"([^"]+)":\s+"([^"]+)"\}'
-            matches = re.findall(pattern, response)
-            # import pdb; pdb.set_trace()
-            return [{'rel': {'text': match[2]},
-                     'head': {'text': match[0], 'type': match[1]},
-                     'tail': {'text': match[4], 'type': match[3]},
-                     } for match in matches]
+            # Try to find a JSON array of dicts
+            json_match = re.search(r'\[\s*\{.*?\}\s*\]', response, re.DOTALL)
+            if not json_match:
+                print('No JSON-like triple found in response.')
+                return []
+            try:
+                data = json.loads(json_match.group(0))
+            except json.JSONDecodeError as e:
+                print('JSON decode error:', e)
+                return []
+            return data
         else:
             raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
             pattern = re.compile(raw_pattern)
@@ -178,12 +197,12 @@ class Runner:
     def make_natlang_triples(self, triple_list: List[List[str]]) -> str:
         natlang_triples = "triple_list: ["
         for i, triple in enumerate(triple_list):
-            natlang_triples += '''[{{\"{head_text}\": \"{head_type}\"}}, \"{rel}\", {{\"{tail_text}\": \"{tail_type}\"}}]'''.format(
-                head_text=triple['head']['text'],
-                head_type=triple['head']['type'],
-                tail_text=triple['tail']['text'],
-                tail_type=triple['tail']['type'],
-                rel=triple['rel']['text'],
+            natlang_triples += self.natlang_triple_layout.format(
+                relation_type=triple['rel']['type'],
+                entity_head=triple['head']['text'],
+                entity_type_head=triple['head']['type'],
+                entity_tail=triple['tail']['text'],
+                entity_type_tail=triple['tail']['type'],
             )
             
             if i < len(triple_list) - 1:
@@ -195,10 +214,10 @@ class Runner:
     def make_rationale_prompt(self, triple_list):
         if triple_list:
             if self.config['natlang']:
-                rels = '\n'.join([triple['rel']['text'] for triple in triple_list])
+                rels = '\n'.join([triple['rel']['type'] for triple in triple_list])
                 ents = '\n'.join(['\n'.join([triple['head']['text'], triple['tail']['text']]) for triple in triple_list])
             else:
-                rels = '\n'.join([f"{self.comment_symbol}Rel('{triple['rel']['text']}')" for triple in triple_list])
+                rels = '\n'.join([f"{self.comment_symbol}Rel('{triple['rel']['type']}')" for triple in triple_list])
                 ents = '\n'.join([f"{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')\n{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')" for triple in triple_list])
             rationale_prompt = f'''\n{self.comment_symbol}The candidate relations for this text are:\n{rels}\n{self.comment_symbol}The candidate entities for this text are:\n{ents}\n'''
         else:
@@ -207,26 +226,25 @@ class Runner:
 
     def make_icl_prompt(self, df: pd.DataFrame, index: int|None = None) -> str:
         df_filtered = df.drop(index) if index else df
-        icl_rows = df_filtered.sample(n=self.config['n_icl_samples'])
+        n = self.config['n_icl_samples']
+        icl_rows = df_filtered.sample(n=n)
         text_list = icl_rows['text'].to_list()
         triple_list = icl_rows['triple_list'].to_list()
-        prompt = f'{self.comment_symbol}Look at the examples below and then carry out the following indicated task.\n\n'
+        if n > 0:
+            prompt = f'\n{self.comment_symbol}Look at the examples below and then carry out the following indicated task.\n\n'
+        else:
+            prompt = '\n'
         if self.config['natlang']:
             for i, (text, triples) in enumerate(zip(text_list, triple_list)):
                 rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
-                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_natlang_triples(triple_list=triples)}\n\n"""
+                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_natlang_triples(triple_list=triples)}\n"""
         else:
             for i, (text, triples) in enumerate(zip(text_list, triple_list)):
                 rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
-                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.make_python_triples(triple_list=triples)}\n\n"""
+                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.make_python_triples(triple_list=triples)}\n"""
         return prompt
     
-    def run_model(self, texts, icl_prompt_list):
-        if isinstance(texts, str):
-            texts = [texts]
-
-        prompt_func = self.make_natlang_prompt if self.config['natlang'] else self.make_code_prompt
-        prompts = [prompt_func(icl_prompt, txt, []) for txt, icl_prompt in zip(texts, icl_prompt_list)]
+    def run_model(self, prompts):
 
         tokenized = self.tokenizer(
             prompts, 
@@ -242,28 +260,35 @@ class Runner:
                 num_return_sequences=1,
                 eos_token_id=self.tokenizer.eos_token_id,
                 pad_token_id=self.tokenizer.eos_token_id,
-                max_new_tokens=1000
+                max_new_tokens=5000
             )
 
         decoded = []
         for i, seq in enumerate(outputs):
             in_len = tokenized["input_ids"].shape[-1]
-            print('in_len:', in_len)
             gen_tokens = seq[in_len:] # only get the generated tokens
             decoded_text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True)
             decoded.append(decoded_text)
         return decoded
 
-    def run_evaluation(self, df_test, df_train):
+    def run_evaluation(self, df_test, df_train, split):
         trues, preds, outputs = [], [], []
         pbar = tqdm(range(0, len(df_test), self.config['batch_size_eval']),
                     desc=f"Model: {self.config['model_name_string']}")
+        prompt_saved = 0
         for start_idx in pbar:
             end_idx = min(start_idx + self.config['batch_size_eval'], len(df_test))
             batch_texts = df_test['text'][start_idx:end_idx]
             batch_triples = df_test['triple_list'][start_idx:end_idx]
             icl_prompt_list = [self.make_icl_prompt(df_train) for _ in range(self.config['batch_size_eval'])]
-            results = self.run_model(batch_texts, icl_prompt_list)
+            if isinstance(batch_texts, str):
+                batch_texts = [batch_texts]
+            prompt_func = self.make_natlang_prompt if self.config['natlang'] else self.make_code_prompt
+            prompts = [prompt_func(icl_prompt, txt, []) for txt, icl_prompt in zip(batch_texts, icl_prompt_list)]
+            if self.config['save_prompt'] and not prompt_saved:
+                save_prompt(prompts[0], txt_path = os.path.join(self.config['results_dir'], f'{split}_prompt.txt'))
+                prompt_saved = 1
+            results = self.run_model(prompts)
 
             for text, trues_sample, output in zip(batch_texts, batch_triples, results):
                 preds_sample = self.extract_triples(output)
@@ -291,11 +316,10 @@ class Runner:
             'outputs': outputs,
         }
     
-    def evaluate(self, df_test, df_train):
-        run = self.run_evaluation(df_test, df_train)
+    def evaluate(self, df_test, df_train, split = 'test'):
+        run = self.run_evaluation(df_test, df_train, split=split)
 
-        self.save_logs(run)
-
+        self.save_logs(run, split=split)
         results = self.evaluator.calculate_strict_micro_f1(run['trues'], run['preds'])
         rel_type_metrics = self.get_type_metrics(run['trues'], run['preds'])
         
@@ -307,19 +331,19 @@ class Runner:
         }
 
     def get_type_metrics(self, trues, preds):
-        all_true_rel_types = set([el['rel']['text'] for t_list in trues for el in t_list])
+        all_true_rel_types = set([el['rel']['type'] for t_list in trues for el in t_list])
         rel_trues = {k: [] for k in all_true_rel_types}
         rel_preds = {k: [] for k in all_true_rel_types}
         for trues_sample, preds_sample in zip(trues, preds):
             for rel_type in all_true_rel_types:
-                trues_type = [t for t in trues_sample if t['rel']['text'] == rel_type]
-                preds_type = [p for p in preds_sample if p['rel']['text'] == rel_type]
+                trues_type = [t for t in trues_sample if t['rel']['type'] == rel_type]
+                preds_type = [p for p in preds_sample if p['rel']['type'] == rel_type]
                 rel_trues[rel_type].append(trues_type)
                 rel_preds[rel_type].append(preds_type)
         return {k: self.evaluator.calculate_strict_micro_f1(rel_trues[k], rel_preds[k])
                             for k in all_true_rel_types}
         
-    def save_logs(self, run):
+    def save_logs(self, run, split = 'test'):
         records = dict_to_records(run)
         preds_log = [{
             'text': el['texts'],
@@ -327,9 +351,7 @@ class Runner:
             'pred': el['preds'],
             'output': el['outputs'],
             } for el in records]
-        preds_log = preds_log.lstrip()
-        with open(self.config['log_path'], 'w', encoding='utf8') as f:
-            f.write(preds_log)
+        save_json(preds_log, os.path.join(self.config['results_dir'], f"preds_{split}.json"))
 
     def make_samples(self, tokenizer, df: pd.DataFrame) -> List[str]:
         data = []
