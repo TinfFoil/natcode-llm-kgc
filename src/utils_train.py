@@ -7,22 +7,25 @@ from trl import SFTTrainer, SFTConfig
 import pandas as pd
 
 def prep_model(config, model):
-    if config['do_train'] and config['lora_modules']:
+    if config['do_train'] and config['lora_modules'] != 'ft':
         if config['load_in_4bit'] or config['load_in_8bit']:
             model = prepare_model_for_kbit_training(model)
+            quant_string = '4-bit' if config['load_in_4bit'] else '8-bit'
+            print(f'Model quantized! ({quant_string})')
         model = get_peft_model(model, LoraConfig(**config['lora_config']))
         print('Applied LoRA!')
     print('Trainable parameters:', sum(p.numel() for p in model.parameters() if p.requires_grad))
     return model
 
 def get_trainer(config, model, tokenizer, dataset_train, dataset_dev = None):
+    peft_config = LoraConfig(**config['lora_config']) if config['lora_config'] else None
     return SFTTrainer(
         model=model,
         processing_class=tokenizer,
         train_dataset=dataset_train,
         eval_dataset=dataset_dev,
         # compute_metrics=evaluator.compute_metrics,
-        peft_config=LoraConfig(**config['lora_config']),
+        peft_config=peft_config,
         args=SFTConfig(
             max_length=config['max_length'],
             dataset_num_proc=1,

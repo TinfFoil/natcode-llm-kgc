@@ -18,8 +18,10 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     
     config['dataset_path'] = f"./data/{config['dataset']}/rdf"
     config['schema_path'] = os.path.join(config['dataset_path'], config['prompt_filename'])
-
-    lora_modules = [el+'_proj' for el in config['lora_modules'].split('-') if el]
+    if config['lora_modules'] != 'ft':
+        lora_modules = [el+'_proj' for el in config['lora_modules'].split('-') if el]
+    else:
+        lora_modules = None
     config['lora_config'] = {
             'r': 16,
             'lora_alpha': 16,

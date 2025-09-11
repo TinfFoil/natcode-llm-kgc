@@ -14,13 +14,14 @@ def main(args):
     config = setup_config(args)
 
     tokenizer = AutoTokenizer.from_pretrained(config['model_name'])
+    print('tokenizer.padding_side', tokenizer.padding_side)
     model = AutoModelForCausalLM.from_pretrained(
         config['model_name'],
         quantization_config=get_quant_config(config),
         dtype=getattr(torch, config['dtype_str']),
         device_map='auto',
     )
-    model.gradient_checkpointing_enable()
+    # model.gradient_checkpointing_enable()
     evaluator = RelationExtractionEvaluator(mode = 'EE')
     runner = Runner(model=model,
                     tokenizer=tokenizer,
@@ -29,7 +30,6 @@ def main(args):
                     )
     
     if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
         tokenizer.pad_token = tokenizer.eos_token
         print('pad_token reassigned to eos_token')
     
@@ -81,21 +81,24 @@ def main(args):
                     'eval_f1': -1,
                 }
         save_json(val_results, os.path.join(config['results_dir'], 'val_results.json'))
+    
+    # if config['save_model'] and config['do_train']:
+    #     if config['lora_modules']:
+    #         model.save_pretrained(config['model_dir'])
+    #     else:
+    #         model.save_pretrained(config['model_dir'], safe_serialization=True)
+    #     tokenizer.save_pretrained(config['model_dir'])
+    #     print(f"Fine-tuned model saved to: {config['model_dir']}")
+    # else:
+    #     print(f"Model was not saved because of `save_model`=={config['save_model']}, `do_train`=={config['do_train']}")
+    
+    # model = AutoModelForCausalLM.from_pretrained(config['model_dir'], device_map='auto')
  
     test_results = runner.evaluate(df_test, df_train, split = 'test')
     print(f"Test results: {test_results}")
 
     save_json(test_results, os.path.join(config['results_dir'], 'test_results.json'))
 
-    if config['save_model'] and config['do_train']:
-        if config['lora_modules']:
-            model.save_pretrained(config['model_dir'])
-        else:
-            model.save_pretrained(config['model_dir'], safe_serialization=True)
-        tokenizer.save_pretrained(config['model_dir'])
-        print(f"Fine-tuned model saved to: {config['model_dir']}")
-    else:
-        print(f"Model was not saved because of `save_model`=={config['save_model']}, `do_train`=={config['do_train']}")
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")

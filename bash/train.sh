@@ -89,7 +89,7 @@ declare -a lora_modules=(
     # "k-v"
     "q-k-v"
     # "q-k-v-o-gate-up-down"
-    # "full_ft"
+    # "ft"
     )
 
 do_train=(
@@ -117,7 +117,7 @@ array_names=(
             )
 combinations=$(cartesian_product array_names)
 
-train_steps=100
+train_steps=1
 eval_steps=5
 load_in_4bit=0
 save_prompt=1
@@ -126,7 +126,8 @@ save_prompt=1
 verbose_preds=1
 verbose_metrics=1
 max_length=10000
-max_new_tokens=5000
+max_new_tokens=50
+dtype_str=float16
 # load_in_4bit=false
 # load_in_8bit=false
 # load_in_8bit=true
@@ -136,8 +137,6 @@ date=$(date '+%Y%m%d%H%M%S')
 batch_size_train=4
 batch_size_eval=4
 evaluate=0
-
-# lr=1e-5
 
 # Convert combinations to commands
 declare -a commands=()
@@ -179,6 +178,7 @@ while IFS= read -r combo; do
                 --batch_size_train $batch_size_train
                 --batch_size_eval $batch_size_eval
                 --evaluate $evaluate
+                --dtype_str $dtype_str
                 "
                 # --run_id ${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}
     # echo "$cmd"
