@@ -8,25 +8,16 @@ from calculate_metrics import RelationExtractionEvaluator
 import argparse
 import os
 import yaml
-import pandas as pd
+import pandas as pd 
 
 def main(args):
     config = setup_config(args)
 
     tokenizer = AutoTokenizer.from_pretrained(config['model_name'])
-
-    if tokenizer.pad_token is None:
-        tokenizer.pad_token = tokenizer.eos_token
-    
-    if tokenizer.chat_template is None and hasattr(model.config, 'model_type'):
-        chat_template_dict = yaml.safe_load(open('./model_info/chat_templates.yaml'))
-        tokenizer.chat_template = chat_template_dict.get(model.config.model_type)
-        print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
-
     model = AutoModelForCausalLM.from_pretrained(
         config['model_name'],
         quantization_config=get_quant_config(config),
-        torch_dtype=torch.bfloat16,
+        dtype=getattr(torch, config['dtype_str']),
         device_map='auto',
     )
     model.gradient_checkpointing_enable()
@@ -37,6 +28,17 @@ def main(args):
                     evaluator=evaluator,
                     )
     
+    if tokenizer.pad_token is None:
+        tokenizer.pad_token = tokenizer.eos_token
+        tokenizer.pad_token = tokenizer.eos_token
+        print('pad_token reassigned to eos_token')
+    
+    if tokenizer.chat_template is None and hasattr(model.config, 'model_type'):
+        chat_template_dict = yaml.safe_load(open('./model_info/chat_templates.yaml'))
+        tokenizer.chat_template = chat_template_dict.get(model.config.model_type)
+        tokenizer.chat_template = chat_template_dict.get(model.config.model_type)
+        print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
+
     df_train = pd.read_json(os.path.join(config['dataset_path'], 'train.json'))
     df_train_prompts = runner.make_dataset(df_train, tokenizer)
     dataset_train = Dataset.from_pandas(df_train_prompts, split="train")
@@ -79,7 +81,7 @@ def main(args):
                     'eval_f1': -1,
                 }
         save_json(val_results, os.path.join(config['results_dir'], 'val_results.json'))
-    
+ 
     test_results = runner.evaluate(df_test, df_train, split = 'test')
     print(f"Test results: {test_results}")
 
@@ -107,8 +109,9 @@ if __name__ == "__main__":
     parser.add_argument("--grad_acc_steps", type=int, help="Gradient accumulation steps", default=1)
     parser.add_argument("--lr", type=float, help="Learning ratre", default=2e-4)
     parser.add_argument("--max_length", type=int, help="Maximum sequence length", default=4096)
+    parser.add_argument("--max_new_tokens", type=int, help="Maximum generated tokens during inference", default=5000)
     parser.add_argument("--n_icl_samples", type=int, help="Number of ICL examples", default=3)
-    parser.add_argument("--dtype", type=str, help="Data type for training", default=None)
+    parser.add_argument("--dtype_str", type=str, help="Data type for training (most common are `float16`, `bfloat16`, `float32`)", default='float16')
     parser.add_argument("--rationale", type=int, help="Whether to include rationale in the prompt", default=0)
     parser.add_argument("--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
     parser.add_argument("--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')

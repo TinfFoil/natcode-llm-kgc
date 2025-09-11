@@ -260,14 +260,21 @@ class Runner:
                 num_return_sequences=1,
                 eos_token_id=self.tokenizer.eos_token_id,
                 pad_token_id=self.tokenizer.eos_token_id,
-                max_new_tokens=5000
+                max_new_tokens=self.config['max_new_tokens'],
             )
-
+        
+        print('CUDA GBs allocated:', torch.cuda.memory_allocated() / 1024**3)
+        print('CUDA GBs reserved:', torch.cuda.memory_allocated() / 1024**3)
+        
         decoded = []
         for i, seq in enumerate(outputs):
             in_len = tokenized["input_ids"].shape[-1]
             gen_tokens = seq[in_len:] # only get the generated tokens
             decoded_text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True)
+            think_token_string = "</think>"
+            if think_token_string in decoded_text:
+                think_token_string_pos = decoded_text.rfind(think_token_string) + len(think_token_string)
+                decoded_text = decoded_text[think_token_string_pos:]
             decoded.append(decoded_text)
         return decoded
 
@@ -289,7 +296,7 @@ class Runner:
                 save_prompt(prompts[0], txt_path = os.path.join(self.config['results_dir'], f'{split}_prompt.txt'))
                 prompt_saved = 1
             results = self.run_model(prompts)
-
+            
             for text, trues_sample, output in zip(batch_texts, batch_triples, results):
                 preds_sample = self.extract_triples(output)
                 trues.append(trues_sample)

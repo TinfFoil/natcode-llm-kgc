@@ -8,22 +8,6 @@ from peft import LoraConfig
 import pandas as pd
 from pathlib import Path
 
-def set_save_dir(save_dir, save_suffix = '', default_save_dir = './results'):
-    save_suffix = save_suffix.split('-')
-    if not save_dir:
-        save_dir = default_save_dir
-        if save_suffix:
-            save_dir = os.path.join(save_dir, *save_suffix, get_current_time_string())
-        else:
-            save_dir = os.path.join(save_dir, get_current_time_string())
-    if not os.path.exists(save_dir):
-        make_dir(save_dir)
-        print(f"Created dir: {save_dir}")
-    else:
-        print('results_dir already exists, is this a re-run?')
-        print('make sure you are not overwriting inadvertedly!')
-    return save_dir
-
 def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     args = vars(namespace)
     config = default_cfg
@@ -46,8 +30,7 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
             'use_rslora': False,
     } if lora_modules else None
     
-    config['lr'] = 2e-4 if lora_modules else 1e-5
-    
+    config['lr'] = 2e-4 if lora_modules else 1e-5    
     config['model_name_string'] = config['model_name'].replace('/', '-')
     config['results_dir'] = set_save_dir(config['results_dir'], config['run_id'], './results')
     config['model_dir'] = os.path.join(config['results_dir'], 'model')
@@ -93,6 +76,22 @@ def save_json_extend(info, json_path):
 
     with open(json_path, 'w', encoding='utf8') as f:
         json.dump(data, f, ensure_ascii = False)
+
+def set_save_dir(save_dir, save_suffix = '', default_save_dir = './results'):
+    save_suffix = save_suffix.split('-')
+    if not save_dir:
+        save_dir = default_save_dir
+        if save_suffix:
+            save_dir = os.path.join(save_dir, *save_suffix, get_current_time_string())
+        else:
+            save_dir = os.path.join(save_dir, get_current_time_string())
+    if not os.path.exists(save_dir):
+        make_dir(save_dir)
+        print(f"Created dir: {save_dir}")
+    else:
+        print('results_dir already exists, is this a re-run?')
+        print('make sure you are not overwriting inadvertedly!')
+    return save_dir
 
 def get_current_time_string():
     return datetime.now().strftime("%Y-%m-%d--%H:%M:%S")

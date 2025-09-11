@@ -1,16 +1,16 @@
 #!/bin/bash
-#SBATCH -J llm-pars-enewt
+#SBATCH -J infextr
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
-#SBATCH --time=12:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=./.slurm/%A/%a_output.log
 #SBATCH --error=./.slurm/%A/%a_error.log
 #SBATCH --mem=64g
 #SBATCH --array=0-N
 
 slurm_dir="./.slurm/$SLURM_ARRAY_JOB_ID"
-mkdir -p $slurm_dir
+mkdir -p $slurm_dirs
 echo "Creating directory: $slurm_dir"
 nvidia-smi
 module load rust gcc arrow
@@ -47,26 +47,27 @@ declare -a model=(
 # meta-llama/Llama-3.3-70B-Instruct
 # mistralai/Mistral-7B-v0.3
 mistralai/Mistral-7B-Instruct-v0.3
+# Qwen/Qwen3-30B-A3B-Thinking-2507
 )
 
 declare -a seed=(
-    # 0
+    0
     # 1
     # 2
     # 3
     # 4
-    5
-    6
-    7
+    # 5
+    # 6
+    # 7
 )
 
 declare -a dataset=(
-    # ade
+    ade
     # conll04
     # scierc
     # erfgc
     # scidtb
-    enewt
+    # enewt
     )
 
 declare -a natlang=(
@@ -92,12 +93,12 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    0
+    # 0
     1
 )
 
 declare -a n_icl_samples=(
-    0
+    # 0
     1
     # 2
     # 3
@@ -116,8 +117,8 @@ array_names=(
             )
 combinations=$(cartesian_product array_names)
 
-train_steps=0
-eval_steps=0
+train_steps=100
+eval_steps=5
 load_in_4bit=0
 save_prompt=1
 lr=2e-4
@@ -125,6 +126,7 @@ save_prompt=1
 verbose_preds=1
 verbose_metrics=1
 max_length=10000
+max_new_tokens=5000
 # load_in_4bit=false
 # load_in_8bit=false
 # load_in_8bit=true
@@ -143,16 +145,16 @@ declare -i count=0
 while IFS= read -r combo; do
     IFS=',' read -ra params <<< "$combo"
 
-    if [[ ${params[3]} == *"70B"* ]]; then
-        load_in_4bit=1
-    fi
+    # if [[ ${params[3]} == *"70B"* ]]; then
+    #     load_in_4bit=1
+    # fi
     # if [[ ${params[2]} == "ade" || ${params[2]} == "conll04" || ${params[2]} == "scierc" ]]; then
     #     n_icl_samples=3
     # else
     #     n_icl_samples=1
     # fi
     if [[ ${SLURM_ARRAY_JOB_ID} != '' ]]; then
-        run_id=${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}
+        run_id="icl_${params[7]}_${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}"
     else
         run_id=${date}-${count}
     fi
@@ -172,10 +174,11 @@ while IFS= read -r combo; do
                 --verbose_metrics $verbose_metrics
                 --eval_steps $eval_steps
                 --max_length $max_length
+                --max_new_tokens $max_new_tokens
                 --run_id ${run_id}
                 --batch_size_train $batch_size_train
                 --batch_size_eval $batch_size_eval
-                --evalute $evaluate
+                --evaluate $evaluate
                 "
                 # --run_id ${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}
     # echo "$cmd"
