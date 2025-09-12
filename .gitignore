@@ -24,7 +24,7 @@ results/old/
 results_sub_1/
 results_argo/
 scripts/
-model_info/
+# model_info/
 chat_templates/
 .env/
 unsloth/
