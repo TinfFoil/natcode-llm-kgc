@@ -14,16 +14,6 @@ import pandas as pd
 def main(args):
     config = setup_config(args)
 
-    # tokenizer = AutoTokenizer.from_pretrained(config['model_name'],
-    #                                                 padding_side = 'right',
-    #                                                 )
-    # model = AutoModelForCausalLM.from_pretrained(
-    #     config['model_name'],
-    #     quantization_config=get_quant_config(config),
-    #     dtype=getattr(torch, config['dtype_str']),
-    #     device_map='auto',
-    # )
-
     model, tokenizer = FastLanguageModel.from_pretrained(
         model_name = config['model_name'],
         max_seq_length = config['max_length'],   # Context length - can be longer, but uses more memory
@@ -114,15 +104,15 @@ def main(args):
 
     save_json(test_results, os.path.join(config['results_dir'], 'test_results.json'))
 
-    # if config['save_model'] and config['do_train']:
-    #     if config['lora_modules']:
-    #         model.save_pretrained(config['model_dir'])
-    #     else:
-    #         model.save_pretrained(config['model_dir'], safe_serialization=True)
-    #     tokenizer.save_pretrained(config['model_dir'])
-    #     print(f"Fine-tuned model saved to: {config['model_dir']}")
-    # else:
-    #     print(f"Model was not saved because of `save_model`=={config['save_model']}, `do_train`=={config['do_train']}")
+    if config['save_model'] and config['do_train']:
+        if config['lora_modules']:
+            model.save_pretrained(config['model_dir'])
+        else:
+            model.save_pretrained(config['model_dir'], safe_serialization=True)
+        tokenizer.save_pretrained(config['model_dir'])
+        print(f"Fine-tuned model saved to: {config['model_dir']}")
+    else:
+        print(f"Model was not saved because of `save_model`=={config['save_model']}, `do_train`=={config['do_train']}")
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train a language model")
@@ -130,7 +120,7 @@ if __name__ == "__main__":
     parser.add_argument("--dataset", type=str, help="Name of the dataset to use", default='ade')
     parser.add_argument("--train_steps", type=int, help="Number of training steps", default=0)
     parser.add_argument("--eval_steps", type=int, help="Number of validation samples", default=0)
-    parser.add_argument("--epochs", type=int, help="Number of training steps", default=1)
+    parser.add_argument("--epochs", type=int, help="Number of training epochs", default=1)
     parser.add_argument("--batch_size_train", type=int, help="Batch size for training", default=4)
     parser.add_argument("--batch_size_eval", type=int, help="Batch size for evaluation", default=4)
     parser.add_argument("--grad_acc_steps", type=int, help="Gradient accumulation steps", default=1)
@@ -150,7 +140,6 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str, help="Target dir in which to save the results", default='')
     parser.add_argument("--load_in_4bit", type=int, help="Use 4-bit quantization", default=0)
     parser.add_argument("--load_in_8bit", type=int, help="Use 8-bit quantization", default=0)
-    # parser.add_argument("--chat", type=int, help="Whether it's a chat model", default=0)
     parser.add_argument("--natlang", type=int, help="Use natural language prompts", default=1)
     parser.add_argument("--save_prompt", type=int, help="Verbose training", default=0)
     parser.add_argument("--verbose_preds", type=int, help="Whether to print predictions during testing", default=0)

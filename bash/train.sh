@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J infextr
+#SBATCH -J Llama-3.3-70B-Instruct
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
@@ -37,8 +37,9 @@ cartesian_product() {
 
 declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
-unsloth/Qwen3-32B
+# unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
+Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -47,7 +48,7 @@ unsloth/Qwen3-32B
 # meta-llama/Llama-3.2-3B-Instruct
 # meta-llama/Llama-3.1-8B
 # meta-llama/Llama-3.1-8B-Instruct
-meta-llama/Llama-3.3-70B-Instruct
+# meta-llama/Llama-3.3-70B-Instruct
 # mistralai/Mistral-7B-v0.3  # this
 # mistralai/Mistral-7B-Instruct-v0.3
 )
@@ -95,12 +96,12 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    0
+    # 0
     1
 )
 
 declare -a n_icl_samples=(
-    0
+    # 0
     1
     # 2
     # 3
@@ -148,11 +149,15 @@ while IFS= read -r combo; do
     IFS=',' read -ra params <<< "$combo"
 
     if [[ ${SLURM_ARRAY_JOB_ID} != '' ]]; then
-        run_id="icl_${params[7]}_${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}"
+        run_id="${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}"
     else
         run_id=${date}-${count}
     fi
-    cmd="python -m pdb ./src/train.py
+
+    if [[ ${params[2]} == 'scidtb' || ${params[2]} == 'enewt' ]]; then
+        eval_steps=100
+    fi
+    cmd="python ./src/train.py
                 --model ${params[0]}
                 --seed ${params[1]}
                 --dataset ${params[2]}
@@ -178,7 +183,7 @@ while IFS= read -r combo; do
                 --enable_thinking $enable_thinking
                 "
                 # --run_id ${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}
-    # echo "$cmd"
+    echo "$cmd"
     commands+=("$cmd")
     count+=1
 done <<< "$combinations"
