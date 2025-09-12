@@ -9,11 +9,14 @@ import pandas as pd
 def prep_model(config, model):
     if config['do_train'] and config['lora_modules'] != 'ft':
         if config['load_in_4bit'] or config['load_in_8bit']:
-            model = prepare_model_for_kbit_training(model)
+            model = prepare_model_for_kbit_training(
+                model,
+                use_gradient_checkpointing = False,
+                )
             quant_string = '4-bit' if config['load_in_4bit'] else '8-bit'
             print(f'Model quantized! ({quant_string})')
-        model = get_peft_model(model, LoraConfig(**config['lora_config']))
-        print('Applied LoRA!')
+        # model = get_peft_model(model, LoraConfig(**config['lora_config']))
+        # print('Applied LoRA!')
     print('Trainable parameters:', sum(p.numel() for p in model.parameters() if p.requires_grad))
     return model
 
@@ -25,16 +28,16 @@ def get_trainer(config, model, tokenizer, dataset_train, dataset_dev = None):
         train_dataset=dataset_train,
         eval_dataset=dataset_dev,
         # compute_metrics=evaluator.compute_metrics,
-        peft_config=peft_config,
-        args=SFTConfig(
+        # peft_config=peft_config,
+        args=SFTConfig( 
             max_length=config['max_length'],
             dataset_num_proc=1,
             packing=False,
             per_device_train_batch_size=config['batch_size_train'],
             per_device_eval_batch_size=config['batch_size_eval'],
             # eval_accumulation_steps=1,
-            gradient_checkpointing=True,
-            gradient_checkpointing_kwargs = {"use_reentrant": False},
+            # gradient_checkpointing=True,
+            # gradient_checkpointing_kwargs = {"use_reentrant": False},
             warmup_steps=5,
             max_steps=config['train_steps'],
             # num_train_epochs=1,
@@ -61,7 +64,7 @@ def get_quant_config(config):
     if config['load_in_4bit']:
             quantization_config = BitsAndBytesConfig(
                 load_in_4bit=True,
-                bnb_4bit_compute_dtype=torch.float16,
+                bnb_4bit_compute_dtype=getattr(torch, config['dtype_str']),
                 bnb_4bit_use_double_quant=True,
                 bnb_4bit_quant_type="nf4"
             )

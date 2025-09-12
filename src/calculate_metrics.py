@@ -55,12 +55,20 @@ class RelationExtractionEvaluator:
         merged_list = []
         for triple in triple_list:
             if triple is not None:
-                rel_text = (triple.get('rel', {}) or {'type': ''}).get('type', '')
-                head_text = (triple.get('head', {}) or {'text': ''}).get('text', '')
-                tail_text = (triple.get('tail', {}) or {'text': ''}).get('text', '')
+                rel_text = self.extract_triple_element(triple, 'rel', 'type')
+                head_text = self.extract_triple_element(triple, 'head', 'text')
+                tail_text = self.extract_triple_element(triple, 'tail', 'text')
                 merged_sample = f'{rel_text}_{head_text}_{tail_text}'
                 merged_list.append(merged_sample)
         return merged_list
+
+    @staticmethod
+    def extract_triple_element(triple: dict, triple_type: str = 'head', field_name: str = 'text'):
+        triple_type_value = triple.get(triple_type, {})
+        if isinstance(triple_type_value, dict):
+            return triple_type_value.get(field_name, '')
+        else:
+            return ''
 
     def get_results(self, results_dir_path: str):
         preds_test_list = []

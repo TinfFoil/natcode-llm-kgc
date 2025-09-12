@@ -19,20 +19,20 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     config['dataset_path'] = f"./data/{config['dataset']}/rdf"
     config['schema_path'] = os.path.join(config['dataset_path'], config['prompt_filename'])
     if config['lora_modules'] != 'ft':
-        lora_modules = [el+'_proj' for el in config['lora_modules'].split('-') if el]
+        config['lora_modules'] = [el+'_proj' for el in config['lora_modules'].split('-') if el]
     else:
-        lora_modules = None
+        config['lora_modules'] = None
     config['lora_config'] = {
             'r': 16,
             'lora_alpha': 16,
-            'target_modules': lora_modules,
+            'target_modules': config['lora_modules'],
             'lora_dropout': 0,
             'bias': "none",
             'task_type': "CAUSAL_LM",
             'use_rslora': False,
-    } if lora_modules else None
+    } if config['lora_modules'] else None
     
-    config['lr'] = 2e-4 if lora_modules else 1e-5    
+    config['lr'] = 2e-4 if config['lora_modules'] else 1e-5    
     config['model_name_string'] = config['model_name'].replace('/', '-')
     config['results_dir'] = set_save_dir(config['results_dir'], config['run_id'], './results')
     config['model_dir'] = os.path.join(config['results_dir'], 'model')

@@ -20,11 +20,13 @@ class Runner:
                  tokenizer,
                  config,
                  evaluator,
+                 think,
                  ) -> None:
         self.model = model
         self.tokenizer = tokenizer
         self.config = config
         self.evaluator = evaluator
+        self.think = think
         self.relations = open(config['relations_path'], 'r', encoding='utf8').read()
         self.ent_classes = open(config['ent_classes_path'], 'r', encoding='utf8').read()
         if self.config['natlang']:
@@ -119,9 +121,9 @@ class Runner:
         rationale_prompt = self.make_rationale_prompt(triples) if self.config['rationale'] else ''
         if self.config['chat']:
             text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, [], rationale_prompt)}"""
+            prompt +=  ICL_prompt + '\n' + text_instruct
             if triples: 
                 text_triples = self.make_natlang_triples(triples)
-                prompt +=  ICL_prompt + '\n' + text_instruct
                 if self.check_system_msg():
                     prompt = [
                     {"role": "system", "content": self.sys_prompt},
@@ -136,7 +138,6 @@ class Runner:
                     ]
                 add_generation_prompt = False
             else:
-                prompt +=  ICL_prompt + '\n' + text_instruct
                 if self.check_system_msg():
                     prompt = [
                     {"role": "system", "content": self.sys_prompt},
@@ -148,9 +149,18 @@ class Runner:
                     {"role": "user", "content": prompt},
                     ]
                 add_generation_prompt = True
+            apply_chat_template_kwargs = {
+                'tokenize': False,
+                'add_generation_prompt': add_generation_prompt,
+            }
+            '''
+                `enable_thinking` == True  --> `<|im_start|>assistant\n`
+                `enable_thinking` == False --> `<|im_start|>assistant\n<think>\n\n</think>\n\n`
+            '''
+            if 'qwen3' in self.config['model_name'].lower():
+                apply_chat_template_kwargs.update({'enable_thinking': bool(self.think)})
             prompt = self.tokenizer.apply_chat_template(prompt,
-                                                        tokenize=False,
-                                                        add_generation_prompt=add_generation_prompt
+                                                        **apply_chat_template_kwargs
                                                         )
         else:
             text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, triples, rationale_prompt)}"""
@@ -158,12 +168,11 @@ class Runner:
             prompt = self.sys_prompt + '\n\n' + prompt
         return prompt
 
-    def extract_triples(self, response: str) -> List[str]:
-        print('response:', response)
-
+    def extract_triples(self, model_output: str) -> List[str]:
+        print('model_output:', model_output)
         if self.config['natlang']:
             # Try to find a JSON array of dicts
-            json_match = re.search(r'\[\s*\{.*?\}\s*\]', response, re.DOTALL)
+            json_match = re.search(r'\[\s*\{.*?\}\s*\]', model_output, re.DOTALL)
             if not json_match:
                 print('No JSON-like triple found in response.')
                 return []
@@ -176,7 +185,7 @@ class Runner:
         else:
             raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
             pattern = re.compile(raw_pattern)
-            matches = pattern.findall(response)
+            matches = pattern.findall(model_output)
             return [[match[1], match[2], match[4]] for match in matches]
 
     def make_python_triples(self, triple_list: List[List[str]]) -> str:
@@ -253,7 +262,7 @@ class Runner:
             truncation=True,
             return_token_type_ids=False,
         ).to(self.model.device)
-        
+
         with torch.no_grad():
             outputs = self.model.generate(
                 **tokenized,
@@ -271,10 +280,6 @@ class Runner:
             in_len = tokenized["input_ids"].shape[-1]
             gen_tokens = seq[in_len:] # only get the generated tokens
             decoded_text = self.tokenizer.decode(gen_tokens, skip_special_tokens=True)
-            think_token_string = "</think>"
-            if think_token_string in decoded_text:
-                think_token_string_pos = decoded_text.rfind(think_token_string) + len(think_token_string)
-                decoded_text = decoded_text[think_token_string_pos:]
             decoded.append(decoded_text)
         return decoded
 
@@ -297,19 +302,21 @@ class Runner:
                 prompt_saved = 1
             results = self.run_model(prompts)
             
-            for text, trues_sample, output in zip(batch_texts, batch_triples, results):
-                preds_sample = self.extract_triples(output)
+            for text, trues_sample, full_output in zip(batch_texts, batch_triples, results):
+                filtered_output = filter_think(full_output)
+                preds_sample = self.extract_triples(filtered_output)
                 trues.append(trues_sample)
                 preds.append(preds_sample)
-                outputs.append(output)
+                outputs.append(filtered_output)
 
                 if self.config['verbose_preds']:
-                    output_dict = json.dumps({'text': text,
+                    print_dict = json.dumps({'text': text,
                                     'true': trues_sample,
                                     'pred': preds_sample,
-                                    'output': output,
+                                    'filtered': filtered_output,
+                                    'full_output': full_output,
                                     }, indent = 4)
-                    print(output_dict)
+                    print(print_dict, flush=True)
                 if self.config['verbose_metrics']:
                     metrics_sample = self.evaluator.calculate_strict_micro_f1([trues_sample], [preds_sample])
                     metrics_current = self.evaluator.calculate_strict_micro_f1(trues, preds)
@@ -388,3 +395,11 @@ class Runner:
             })
         print('max_prompt_len:', max_prompt_len)
         return data
+
+def filter_think(model_output: str, think_token_string:str = "</think>"):
+    if think_token_string in model_output:
+        think_token_string_pos = model_output.rfind(think_token_string) + len(think_token_string)
+        response = model_output[think_token_string_pos:]
+    else:
+        response = model_output
+    return response

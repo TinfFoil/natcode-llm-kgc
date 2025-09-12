@@ -33,3 +33,4 @@ results*
 notebooks/
 __pycache__
 data
+unsloth_compiled_cache
