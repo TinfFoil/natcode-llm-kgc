@@ -3,7 +3,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import Dataset
 from utils_io import setup_config, save_json, save_prompt
-from utils_train import get_quant_config, prep_model, get_trainer
+from utils_train import get_quant_config, prep_model, get_trainer, print_params
 from runner import Runner
 from calculate_metrics import RelationExtractionEvaluator
 import argparse
@@ -34,6 +34,8 @@ def main(args):
         use_rslora = False,   # We support rank stabilized LoRA
         loftq_config = None,  # And LoftQ
     )
+
+    print_params(model)
 
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token

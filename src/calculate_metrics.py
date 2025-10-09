@@ -122,7 +122,9 @@ class RelationExtractionEvaluator:
             results_list.append(
                 {
                     'seed': c['seed'],
+                    'model_name': c['model_name'],
                     'dataset': c['dataset'],
+                    'train_steps': c['train_steps'],
                     'n_icl_samples': c['n_icl_samples'],
                     'do_train': c['do_train'],
                     'results_dir': c['results_dir'],

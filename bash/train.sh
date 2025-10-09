@@ -39,7 +39,7 @@ declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
 # unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
-Qwen/Qwen3-14B-Base
+# Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -48,15 +48,15 @@ Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.2-3B-Instruct
 # meta-llama/Llama-3.1-8B
 # meta-llama/Llama-3.1-8B-Instruct
-# meta-llama/Llama-3.3-70B-Instruct
+meta-llama/Llama-3.3-70B-Instruct
 # mistralai/Mistral-7B-v0.3  # this
 # mistralai/Mistral-7B-Instruct-v0.3
 )
 
 declare -a seed=(
-    0
-    # 1
-    # 2
+    # 0
+    1
+    2
     # 3
     # 4
     # 5
@@ -96,7 +96,7 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    # 0
+    0
     1
 )
 
@@ -120,7 +120,7 @@ array_names=(
             )
 combinations=$(cartesian_product array_names)
 
-epochs=3
+epochs=1
 train_steps=0
 eval_steps=0
 load_in_4bit=1
@@ -155,7 +155,7 @@ while IFS= read -r combo; do
     fi
 
     if [[ ${params[2]} == 'scidtb' || ${params[2]} == 'enewt' ]]; then
-        eval_steps=100
+        eval_steps=100z
     fi
     cmd="python ./src/train.py
                 --model ${params[0]}

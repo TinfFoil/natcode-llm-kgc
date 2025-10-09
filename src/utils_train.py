@@ -6,6 +6,13 @@ from peft import get_peft_model, prepare_model_for_kbit_training, LoraConfig
 from trl import SFTTrainer, SFTConfig
 import pandas as pd
 
+def print_params(model):
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"Total parameters: {total_params}")
+    print(f"Trainable parameters: {trainable_params}")
+    return total_params, trainable_params
+
 def prep_model(config, model):
     if config['do_train'] and config['lora_modules'] != 'ft':
         if config['load_in_4bit'] or config['load_in_8bit']:
