@@ -54,7 +54,6 @@ def main(args):
                     tokenizer=tokenizer,
                     config=config,
                     evaluator=evaluator,
-                    think=config['enable_thinking'],
                     )
     
     df_train = pd.read_json(os.path.join(config['dataset_path'], 'train.json'))
@@ -142,7 +141,7 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str, help="Target dir in which to save the results", default='')
     parser.add_argument("--load_in_4bit", type=int, help="Use 4-bit quantization", default=0)
     parser.add_argument("--load_in_8bit", type=int, help="Use 8-bit quantization", default=0)
-    parser.add_argument("--natlang", type=int, help="Use natural language prompts", default=1)
+    # parser.add_argument("--natlang", type=int, help="Use natural language prompts", default=1)
     parser.add_argument("--save_prompt", type=int, help="Verbose training", default=0)
     parser.add_argument("--verbose_preds", type=int, help="Whether to print predictions during testing", default=0)
     parser.add_argument("--verbose_metrics", type=int, help="Whether to print partial metrics during testing", default=0)

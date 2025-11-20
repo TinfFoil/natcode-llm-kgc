@@ -1,6 +1,6 @@
 import os
 import textwrap
-from typing import List
+from typing import List, Dict
 from tqdm.auto import tqdm
 import pandas as pd
 import re
@@ -20,25 +20,25 @@ class Runner:
                  tokenizer,
                  config,
                  evaluator,
-                 think,
+                 prompt_config: Dict,
                  ) -> None:
         self.model = model
         self.tokenizer = tokenizer
         self.config = config
         self.evaluator = evaluator
-        self.think = think
+        self.think = config['enable_thinking']
         self.relations = open(config['relations_path'], 'r', encoding='utf8').read()
         self.ent_classes = open(config['ent_classes_path'], 'r', encoding='utf8').read()
-        if self.config['natlang']:
-            self.sys_prompt = 'You are an AI specialized in the task of extracting entity-relation-entity triples from texts.'
-            self.comment_symbol = ''
-            self.natlang_triple_layout = """{{"rel": {{"type": "{relation_type}"}}, "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}}, "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}"""
-            self.instruction = f"""Task: Extract a list of dictionaries in valid JSON format as follows: [{self.natlang_triple_layout}]\n\nONLY generate the valid JSON, nothing else.\n"""
-        else:
-            self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
-            self.code_schema_prompt = open(config['schema_path'], 'r', encoding='utf8').read()
-            self.comment_symbol = '# '
-            self.instruction = f'{self.comment_symbol}Task: Define an instance of Extract from the text below.'
+        # if self.config['natlang']:
+        self.sys_prompt = prompt_config['sys_prompt']
+        self.comment_symbol = prompt_config['comment_symbol']
+        self.natlang_triple_layout = prompt_config['natlang_triple_layout']
+        self.instruction = prompt_config['instruction']
+        # else:
+        #     self.sys_prompt = f'You are a programming AI specialized in the task of extracting entity-relation-entity triples from texts in the form of Python code.'
+        #     self.code_schema_prompt = open(config['schema_path'], 'r', encoding='utf8').read()
+        #     self.comment_symbol = '# '
+        #     self.instruction = f'{self.comment_symbol}Task: Define an instance of Extract from the text below.'
         
         self.relations_prompt = f"\nThe types of relations are: {self.relations}\n"
         self.ent_classes_prompt = f"\nThe types of entities are: {self.ent_classes}\n"
@@ -46,7 +46,7 @@ class Runner:
         self.instruction += self.ent_classes_prompt
         self.instruction += self.relations_prompt
 
-    def make_dataset(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):
+    def     make_dataset(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):
         data_train = self.make_samples(tokenizer, df)
         df = pd.DataFrame(data_train)
         if n_samples:
@@ -65,11 +65,11 @@ class Runner:
         if not triples:
             triple_prompt = ''
         else:
-            triple_prompt = self.make_natlang_triples(triples) if self.config['natlang'] else self.make_python_triples(triples)
-        if self.config['natlang']:
-            out = f"""text: \"{item_text}\"{rationale_prompt}\n{triple_prompt}"""
-        else:
-            out = f"""text = \"\"\" {item_text} \"\"\"{rationale_prompt}\n{triple_prompt}"""
+            triple_prompt = self.make_triples(triples) # if self.config['natlang'] else self.make_python_triples(triples)
+        # if self.config['natlang']:
+        out = f"""text: \"{item_text}\"{rationale_prompt}\n{triple_prompt}"""
+        # else:
+        #     out = f"""text = \"\"\" {item_text} \"\"\"{rationale_prompt}\n{triple_prompt}"""
         return out
 
     def make_code_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
@@ -116,14 +116,14 @@ class Runner:
             prompt = self.comment_symbol + self.sys_prompt + '\n\n' + prompt
         return prompt
     
-    def make_natlang_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
+    def make_prompt(self, ICL_prompt: str, sample_text: str, triples: List[List[str]]):
         prompt = ''
         rationale_prompt = self.make_rationale_prompt(triples) if self.config['rationale'] else ''
         if self.config['chat']:
             text_instruct = f"""{self.instruction}\n{self.format_sample(sample_text, [], rationale_prompt)}"""
             prompt +=  ICL_prompt + '\n' + text_instruct
             if triples: 
-                text_triples = self.make_natlang_triples(triples)
+                text_triples = self.make_triples(triples)
                 if self.check_system_msg():
                     prompt = [
                     {"role": "system", "content": self.sys_prompt},
@@ -170,23 +170,23 @@ class Runner:
 
     def extract_triples(self, model_output: str) -> List[str]:
         print('model_output:', model_output)
-        if self.config['natlang']:
-            # Try to find a JSON array of dicts
-            json_match = re.search(r'\[\s*\{.*?\}\s*\]', model_output, re.DOTALL)
-            if not json_match:
-                print('No JSON-like triple found in response.')
-                return []
-            try:
-                data = json.loads(json_match.group(0))
-            except json.JSONDecodeError as e:
-                print('JSON decode error:', e)
-                return []
-            return data
-        else:
-            raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
-            pattern = re.compile(raw_pattern)
-            matches = pattern.findall(model_output)
-            return [[match[1], match[2], match[4]] for match in matches]
+        # if self.config['natlang']:
+        # Try to find a JSON array of dicts
+        json_match = re.search(r'\[\s*\{.*?\}\s*\]', model_output, re.DOTALL)
+        if not json_match:
+            print('No JSON-like triple found in response.')
+            return []
+        try:
+            data = json.loads(json_match.group(0))
+        except json.JSONDecodeError as e:
+            print('JSON decode error:', e)
+            return []
+        return data
+        # else:
+        #     raw_pattern = re.compile(r'Triple\(\s*(\w+)\("([^"]+)"\),\s*Rel\("([^"]+)"\),\s*(\w+)\("([^"]+)"\)\)?')
+        #     pattern = re.compile(raw_pattern)
+        #     matches = pattern.findall(model_output)
+        #     return [[match[1], match[2], match[4]] for match in matches]
 
     def make_python_triples(self, triple_list: List[List[str]]) -> str:
         type_dict = self.config['type_dict']
@@ -203,7 +203,7 @@ class Runner:
         else:
             return ''
 
-    def make_natlang_triples(self, triple_list: List[List[str]]) -> str:
+    def make_triples(self, triple_list: List[List[str]]) -> str:
         natlang_triples = "triple_list: ["
         for i, triple in enumerate(triple_list):
             natlang_triples += self.natlang_triple_layout.format(
@@ -222,12 +222,12 @@ class Runner:
     
     def make_rationale_prompt(self, triple_list):
         if triple_list:
-            if self.config['natlang']:
-                rels = '\n'.join([triple['rel']['type'] for triple in triple_list])
-                ents = '\n'.join(['\n'.join([triple['head']['text'], triple['tail']['text']]) for triple in triple_list])
-            else:
-                rels = '\n'.join([f"{self.comment_symbol}Rel('{triple['rel']['type']}')" for triple in triple_list])
-                ents = '\n'.join([f"{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')\n{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')" for triple in triple_list])
+            # if self.config['natlang']:
+            rels = '\n'.join([triple['rel']['type'] for triple in triple_list])
+            ents = '\n'.join(['\n'.join([triple['head']['text'], triple['tail']['text']]) for triple in triple_list])
+            # else:
+            #     rels = '\n'.join([f"{self.comment_symbol}Rel('{triple['rel']['type']}')" for triple in triple_list])
+            #     ents = '\n'.join([f"{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')\n{self.comment_symbol}{triple['head']['type']}('{triple['head']['text']}')" for triple in triple_list])
             rationale_prompt = f'''\n{self.comment_symbol}The candidate relations for this text are:\n{rels}\n{self.comment_symbol}The candidate entities for this text are:\n{ents}\n'''
         else:
             rationale_prompt = ''
@@ -243,14 +243,14 @@ class Runner:
             prompt = f'\n{self.comment_symbol}Look at the examples below and then carry out the following indicated task.\n\n'
         else:
             prompt = '\n'
-        if self.config['natlang']:
-            for i, (text, triples) in enumerate(zip(text_list, triple_list)):
-                rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
-                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_natlang_triples(triple_list=triples)}\n"""
-        else:
-            for i, (text, triples) in enumerate(zip(text_list, triple_list)):
-                rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
-                prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.make_python_triples(triple_list=triples)}\n"""
+        # if self.config['natlang']:
+        for i, (text, triples) in enumerate(zip(text_list, triple_list)):
+            rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
+            prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_triples(triple_list=triples)}\n"""
+        # else:
+        #     for i, (text, triples) in enumerate(zip(text_list, triple_list)):
+        #         rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
+        #         prompt += f"""{self.comment_symbol}Example {i+1}:\ntext = \"\"\" {text} \"\"\"{rationale_prompt}\n{self.make_python_triples(triple_list=triples)}\n"""
         return prompt
     
     def run_model(self, prompts):
@@ -295,7 +295,7 @@ class Runner:
             icl_prompt_list = [self.make_icl_prompt(df_train) for _ in range(self.config['batch_size_eval'])]
             if isinstance(batch_texts, str):
                 batch_texts = [batch_texts]
-            prompt_func = self.make_natlang_prompt if self.config['natlang'] else self.make_code_prompt
+            prompt_func = self.make_prompt # if self.config['natlang'] else self.make_code_prompt
             prompts = [prompt_func(icl_prompt, txt, []) for txt, icl_prompt in zip(batch_texts, icl_prompt_list)]
             if self.config['save_prompt'] and not prompt_saved:
                 save_prompt(prompts[0], txt_path = os.path.join(self.config['results_dir'], f'{split}_prompt.txt'))
@@ -378,10 +378,10 @@ class Runner:
             icl_prompt = self.make_icl_prompt(df, index)
             prompt = ''
 
-            if self.config['natlang']:
-                prompt = self.make_natlang_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
-            else:
-                prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
+            # if self.config['natlang']:
+            prompt = self.make_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
+            # else:
+            #     prompt = self.make_code_prompt(icl_prompt, sample_text, sample_triples) + EOS_TOKEN
             
             prompt_token_len = len(tokenizer(prompt).input_ids)
             if prompt_token_len > self.config['max_length']:
