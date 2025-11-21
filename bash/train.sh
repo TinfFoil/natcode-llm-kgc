@@ -48,17 +48,17 @@ declare -a model=(
 # meta-llama/Llama-3.2-3B-Instruct
 # meta-llama/Llama-3.1-8B
 # meta-llama/Llama-3.1-8B-Instruct
-meta-llama/Llama-3.3-70B-Instruct
-# mistralai/Mistral-7B-v0.3  # this
-# mistralai/Mistral-7B-Instruct-v0.3
+# meta-llama/Llama-3.3-70B-Instruct
+mistralai/Mistral-7B-v0.3  # this
+mistralai/Mistral-7B-Instruct-v0.3
 )
 
 declare -a seed=(
-    # 0
+    0
     1
     2
-    # 3
-    # 4
+    3
+    4
     # 5
     # 6
     # 7
@@ -107,6 +107,11 @@ declare -a n_icl_samples=(
     # 3
     )
 
+declare -a desc_schema=(
+    0
+    1
+    )
+
 # Generate all combinations
 array_names=(
             model
@@ -117,13 +122,14 @@ array_names=(
             lora_modules
             do_train
             n_icl_samples
+            desc_schema
             )
 combinations=$(cartesian_product array_names)
 
 epochs=1
 train_steps=0
 eval_steps=0
-load_in_4bit=1
+load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
 lr=2e-4
@@ -134,7 +140,7 @@ max_length=15000
 max_new_tokens=5000
 dtype_str=bfloat16
 
-enable_thinking=1
+enable_thinking=0
 
 date=$(date '+%Y%m%d%H%M%S')
 
@@ -155,7 +161,7 @@ while IFS= read -r combo; do
     fi
 
     if [[ ${params[2]} == 'scidtb' || ${params[2]} == 'enewt' ]]; then
-        eval_steps=100z
+        eval_steps=100
     fi
     cmd="python ./src/train.py
                 --model ${params[0]}
@@ -166,6 +172,7 @@ while IFS= read -r combo; do
                 --lora_modules ${params[5]}
                 --do_train ${params[6]}
                 --n_icl_samples ${params[7]}
+                --desc_schema ${params[8]}
                 --train_steps $train_steps
                 --load_in_4bit $load_in_4bit
                 --load_in_8bit $load_in_8bit

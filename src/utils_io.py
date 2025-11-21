@@ -38,14 +38,24 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     config['model_dir'] = os.path.join(config['results_dir'], 'model')
     make_dir(config['model_dir'])
     model_chat_dict = yaml.safe_load(open('./model_info/model_chat_dict.yaml', 'r'))
-    config['relations_path'] = f"./data/{config['dataset']}/rdf/relations.json"
-    config['ent_classes_path'] = f"./data/{config['dataset']}/rdf/ent_classes.json"
+    
+    if config['desc_schema']:
+        config['relations_path'] = f"./data/{config['dataset']}/rdf/relations.json"
+        config['ent_classes_path'] = f"./data/{config['dataset']}/rdf/ent_classes.json"
+    else:
+        config['relations_path'] = f"./data/{config['dataset']}/rdf/relations_list.json"
+        config['ent_classes_path'] = f"./data/{config['dataset']}/rdf/ent_classes_list.json"
+    
     config['chat'] = model_chat_dict[config['model_name']]
 
     config_path = os.path.join(config['results_dir'], 'config.json')
     print(config)
     save_json(config, config_path)
     print(f'Config saved to: {config_path}')
+
+    prompt_config_path = os.path.join('prompts', config['prompt_filename'])
+    with open(prompt_config_path) as f:
+        config['prompt_config'] = yaml.safe_load(f)
 
     return config
 

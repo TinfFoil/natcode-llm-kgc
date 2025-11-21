@@ -1,9 +1,7 @@
 from unsloth import FastLanguageModel
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
 from datasets import Dataset
 from utils_io import setup_config, save_json, save_prompt
-from utils_train import get_quant_config, prep_model, get_trainer, print_params
+from utils_train import get_trainer, print_params
 from runner import Runner
 from calculate_metrics import RelationExtractionEvaluator
 import argparse
@@ -50,6 +48,7 @@ def main(args):
         print(f"Chat template not found, using the one for model type \"{model.config.model_type}\"")
 
     evaluator = RelationExtractionEvaluator(mode = 'EE')
+
     runner = Runner(model=model,
                     tokenizer=tokenizer,
                     config=config,
@@ -133,7 +132,8 @@ if __name__ == "__main__":
     parser.add_argument("--dtype", type=str, help="Data type for training", default=None)
     parser.add_argument("--rationale", type=int, help="Whether to include rationale in the prompt", default=0)
     parser.add_argument("--entitytypes", help="Filename of the entity2type json", default='entity2type.json')
-    parser.add_argument("--prompt_filename", help="Filename of the prompt to use (code_prompt/code_expl_prompt)", default='code_prompt')
+    parser.add_argument("--prompt_filename", help="Filename of the prompt yaml", default='default.yaml')
+    parser.add_argument("--desc_schema", type=int, help="Include descriptions of entities and relations in the instruction prompt (include a dict rather than a list of ents/rels)", default=1)
     parser.add_argument("--lora_modules", type=str, help="List of LoRA modules to use (as dash-separated string). Empty for full fine-tuning", default='q-k-v-o-gate-up-down')
     parser.add_argument("--evaluate", type=int, help="Evaluate on validation split", default=1)
     parser.add_argument("--save_model", type=int, help="Don't save the fine-tuned model", default=1)
@@ -141,8 +141,7 @@ if __name__ == "__main__":
     parser.add_argument("--results_dir", type=str, help="Target dir in which to save the results", default='')
     parser.add_argument("--load_in_4bit", type=int, help="Use 4-bit quantization", default=0)
     parser.add_argument("--load_in_8bit", type=int, help="Use 8-bit quantization", default=0)
-    # parser.add_argument("--natlang", type=int, help="Use natural language prompts", default=1)
-    parser.add_argument("--save_prompt", type=int, help="Verbose training", default=0)
+    parser.add_argument("--save_prompt", type=int, help="Save the prompts for manual inspection", default=1)
     parser.add_argument("--verbose_preds", type=int, help="Whether to print predictions during testing", default=0)
     parser.add_argument("--verbose_metrics", type=int, help="Whether to print partial metrics during testing", default=0)
     parser.add_argument("--seed", type=int, help="Seed to use for random processes", default=0)
