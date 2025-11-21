@@ -53,7 +53,9 @@ class Runner:
         prompt = ''
         rationale_prompt = self.make_rationale_prompt(triples) if self.config['rationale'] else ''
         instruction = self.config['prompt_config']['instruction'].format(
-            natlang_triple_layout=self.natlang_triple_layout,
+            natlang_triple_layout=self.natlang_triple_layout
+                                      .replace("{{", "{")
+                                      .replace("}}", "}"),
             ent_classes = open(self.config['ent_classes_path'], 'r', encoding='utf8').read(),
             relations = open(self.config['relations_path'], 'r', encoding='utf8').read(),
         )

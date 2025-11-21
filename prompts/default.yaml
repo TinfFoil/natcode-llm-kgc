@@ -4,7 +4,9 @@ sys_prompt: |
 comment_symbol: ""
 
 natlang_triple_layout: |
-  {{"rel": {{"type": "{relation_type}"}}, "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}}, "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}
+  {{"rel": {{"type": "{relation_type}"}},
+   "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}},
+   "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}
 
 instruction: |
   Task: Extract a list of dictionaries in valid JSON format as follows: [{natlang_triple_layout}]

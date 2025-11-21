@@ -128,7 +128,7 @@ combinations=$(cartesian_product array_names)
 
 epochs=1
 train_steps=0
-eval_steps=0
+eval_steps=100
 load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
