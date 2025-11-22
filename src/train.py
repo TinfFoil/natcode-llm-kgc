@@ -56,7 +56,7 @@ def main(args):
                     )
     
     df_train = pd.read_json(os.path.join(config['dataset_path'], 'train.json'))
-    df_train_prompts = runner.make_dataset(df_train, tokenizer)
+    df_train_prompts = runner.make_train_set(df_train, tokenizer)
     dataset_train = Dataset.from_pandas(df_train_prompts, split="train")
     
     if not config['train_steps']:
@@ -67,9 +67,9 @@ def main(args):
     
     df_val = pd.read_json(os.path.join(config['dataset_path'], 'val.json'))
     df_test = pd.read_json(os.path.join(config['dataset_path'], 'test.json'))
-    if config['eval_steps']:
-        df_val = df_val[:config['eval_steps'] * config['batch_size_eval']]
-        df_test = df_test[:config['eval_steps'] * config['batch_size_eval']]
+    if config['eval_samples']:
+        df_val = df_val[:config['eval_samples']]
+        df_test = df_test[:config['eval_samples']]
 
     if config['save_prompt']:
         txt_path = os.path.join(config['results_dir'], 'train_prompt.txt')
@@ -77,16 +77,17 @@ def main(args):
         save_prompt(text, txt_path)
 
     # model = prep_model(config, model)
+    
     trainer = get_trainer(config, model, tokenizer, dataset_train)
+    
     # model.gradient_checkpointing_enable()
+
     val_results = []
     if config['do_train']:
         for epoch in range(config['epochs']):
             trainer_stats = trainer.train()
-
             best_metric = trainer.state.best_metric
             print(f"Best F1 score: {best_metric}")
-
             if config['evaluate']:
                 val_results.append(runner.evaluate(df_val, df_train, split = 'val'))
                 print(f"Val @ epoch {epoch + 1}: {val_results}")
@@ -119,7 +120,7 @@ if __name__ == "__main__":
     parser.add_argument("--model_name", type=str, help="Name of the model to train", default='mistralai/Mistral-7B-Instruct-v0.3')
     parser.add_argument("--dataset", type=str, help="Name of the dataset to use", default='ade')
     parser.add_argument("--train_steps", type=int, help="Number of training steps", default=0)
-    parser.add_argument("--eval_steps", type=int, help="Number of validation samples", default=0)
+    parser.add_argument("--eval_samples", type=int, help="Number of evaluation samples", default=0)
     parser.add_argument("--epochs", type=int, help="Number of training epochs", default=1)
     parser.add_argument("--batch_size_train", type=int, help="Batch size for training", default=4)
     parser.add_argument("--batch_size_eval", type=int, help="Batch size for evaluation", default=4)
@@ -135,15 +136,15 @@ if __name__ == "__main__":
     parser.add_argument("--prompt_filename", help="Filename of the prompt yaml", default='default.yaml')
     parser.add_argument("--desc_schema", type=int, help="Include descriptions of entities and relations in the instruction prompt (include a dict rather than a list of ents/rels)", default=1)
     parser.add_argument("--lora_modules", type=str, help="List of LoRA modules to use (as dash-separated string). Empty for full fine-tuning", default='q-k-v-o-gate-up-down')
-    parser.add_argument("--evaluate", type=int, help="Evaluate on validation split", default=1)
+    parser.add_argument("--evaluate", type=int, help="Evaluate on validation split", default=0)
     parser.add_argument("--save_model", type=int, help="Don't save the fine-tuned model", default=1)
     parser.add_argument("--save_results", type=int, help="Save the training results", default=0)
     parser.add_argument("--results_dir", type=str, help="Target dir in which to save the results", default='')
     parser.add_argument("--load_in_4bit", type=int, help="Use 4-bit quantization", default=0)
     parser.add_argument("--load_in_8bit", type=int, help="Use 8-bit quantization", default=0)
     parser.add_argument("--save_prompt", type=int, help="Save the prompts for manual inspection", default=1)
-    parser.add_argument("--verbose_preds", type=int, help="Whether to print predictions during testing", default=0)
-    parser.add_argument("--verbose_metrics", type=int, help="Whether to print partial metrics during testing", default=0)
+    parser.add_argument("--verbose_preds", type=int, help="Whether to print predictions during testing", default=1)
+    parser.add_argument("--verbose_metrics", type=int, help="Whether to print partial metrics during testing", default=1)
     parser.add_argument("--seed", type=int, help="Seed to use for random processes", default=0)
     parser.add_argument("--enable_thinking", type=int, help="Whether to use thinking mode", default=0)
     parser.add_argument("--do_train", type=int, help="Whether to train the model or use the original weights", default=1)

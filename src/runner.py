@@ -23,14 +23,15 @@ class Runner:
         self.evaluator = evaluator
         self.think = config['enable_thinking']
         self.sys_prompt = config['prompt_config']['sys_prompt']
-        self.comment_symbol = config['prompt_config']['comment_symbol']
         self.natlang_triple_layout = config['prompt_config']['natlang_triple_layout']
+        self.icl_instruction = config['prompt_config']['natlang_triple_layout']
+        self.rationale_prompt = config['prompt_config']['rationale_prompt']
 
-    def make_dataset(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):
-        data_train = self.make_samples(tokenizer, df)
+    def make_train_set(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):
+        data_train = self.make_train_samples(tokenizer, df)
         df = pd.DataFrame(data_train)
         if n_samples:
-            df = df.sample(n=n_samples)
+            df = df.sample(n=n_samples, random_state=42)
         return df
 
     def check_system_msg(self):
@@ -71,7 +72,7 @@ class Runner:
                     {"role": "assistant", "content": text_triples},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + prompt
+                    prompt = self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     {"role": "assistant", "content": text_triples},
@@ -84,7 +85,7 @@ class Runner:
                     {"role": "user", "content": prompt},
                     ]
                 else:
-                    prompt = self.comment_symbol + self.sys_prompt + prompt
+                    prompt = self.sys_prompt + prompt
                     prompt = [
                     {"role": "user", "content": prompt},
                     ]
@@ -140,9 +141,10 @@ class Runner:
     
     def make_rationale_prompt(self, triple_list):
         if triple_list:
-            rels = '\n'.join([triple['rel']['type'] for triple in triple_list])
-            ents = '\n'.join(['\n'.join([triple['head']['text'], triple['tail']['text']]) for triple in triple_list])
-            rationale_prompt = f'''\n{self.comment_symbol}The candidate relations for this text are:\n{rels}\n{self.comment_symbol}The candidate entities for this text are:\n{ents}\n'''
+            rationale_prompt = f'''\n{self.rationale_prompt}\n'''.format(
+                rels = '\n'.join([triple['rel']['type'] for triple in triple_list]),
+                ents = '\n'.join(['\n'.join([triple['head']['text'], triple['tail']['text']]) for triple in triple_list])
+            )
         else:
             rationale_prompt = ''
         return rationale_prompt
@@ -150,26 +152,26 @@ class Runner:
     def make_icl_prompt(self, df: pd.DataFrame, index: int|None = None) -> str:
         df_filtered = df.drop(index) if index else df
         n = self.config['n_icl_samples']
-        icl_rows = df_filtered.sample(n=n)
+        icl_rows = df_filtered.sample(n=n, random_state=42)
         text_list = icl_rows['text'].to_list()
         triple_list = icl_rows['triple_list'].to_list()
         if n > 0:
-            prompt = f'\n{self.comment_symbol}Look at the examples below and then carry out the following indicated task.\n\n'
+            prompt = f'\n{self.icl_instruction}\n\n'
         else:
             prompt = '\n'
         for i, (text, triples) in enumerate(zip(text_list, triple_list)):
             rationale_prompt = '' if not self.config['rationale'] else self.make_rationale_prompt(triples)
-            prompt += f"""{self.comment_symbol}Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_triples(triple_list=triples)}\n"""
+            prompt += f"""Example {i+1}:\ntext: \"{text}\"{rationale_prompt}\n{self.make_triples(triple_list=triples)}\n"""
         return prompt
     
     def run_model(self, prompts):
-
         tokenized = self.tokenizer(
             prompts, 
             return_tensors="pt", 
-            padding=True, 
+            padding='longest', 
             truncation=True,
             return_token_type_ids=False,
+            add_special_tokens=False,
         ).to(self.model.device)
 
         with torch.no_grad():
@@ -180,7 +182,7 @@ class Runner:
                 pad_token_id=self.tokenizer.eos_token_id,
                 max_new_tokens=self.config['max_new_tokens'],
             )
-        
+
         print('CUDA GBs allocated:', torch.cuda.memory_allocated() / 1024**3)
         print('CUDA GBs reserved:', torch.cuda.memory_allocated() / 1024**3)
         
@@ -194,18 +196,18 @@ class Runner:
 
     def run_evaluation(self, df_test, df_train, split):
         trues, preds, outputs = [], [], []
-        pbar = tqdm(range(0, len(df_test), self.config['batch_size_eval']),
-                    desc=f"Model: {self.config['model_name_string']}")
+        pbar = tqdm(range(0, len(df_test), self.config['batch_size_eval']))
         prompt_saved = 0
         for start_idx in pbar:
             end_idx = min(start_idx + self.config['batch_size_eval'], len(df_test))
             batch_texts = df_test['text'][start_idx:end_idx]
             batch_triples = df_test['triple_list'][start_idx:end_idx]
-            icl_prompt_list = [self.make_icl_prompt(df_train) for _ in range(self.config['batch_size_eval'])]
+            # NOTE: we can use the whole train set to sample ICL examples during evalution
+            # so there's no need to pass `index` to `make_icl_prompt`
+            icl_prompt_list = [self.make_icl_prompt(df_train) for _ in range(len(batch_texts))]
             if isinstance(batch_texts, str):
                 batch_texts = [batch_texts]
-            prompt_func = self.make_prompt
-            prompts = [prompt_func(icl_prompt, txt, []) for txt, icl_prompt in zip(batch_texts, icl_prompt_list)]
+            prompts = [self.make_prompt(icl_prompt, txt, []) for txt, icl_prompt in zip(batch_texts, icl_prompt_list)]
             if self.config['save_prompt'] and not prompt_saved:
                 save_prompt(prompts[0], txt_path = os.path.join(self.config['results_dir'], f'{split}_prompt.txt'))
                 prompt_saved = 1
@@ -276,7 +278,7 @@ class Runner:
             } for el in records]
         save_json(preds_log, os.path.join(self.config['results_dir'], f"preds_{split}.json"))
 
-    def make_samples(self, tokenizer, df: pd.DataFrame) -> List[str]:
+    def make_train_samples(self, tokenizer, df: pd.DataFrame) -> List[str]:
         data = []
         max_prompt_len = 0
         EOS_TOKEN = tokenizer.eos_token if not self.config['chat'] else ''

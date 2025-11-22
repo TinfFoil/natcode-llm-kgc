@@ -39,7 +39,7 @@ declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
 # unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
-# Qwen/Qwen3-14B-Base
+Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -49,34 +49,29 @@ declare -a model=(
 # meta-llama/Llama-3.1-8B
 # meta-llama/Llama-3.1-8B-Instruct
 # meta-llama/Llama-3.3-70B-Instruct
-mistralai/Mistral-7B-v0.3  # this
-mistralai/Mistral-7B-Instruct-v0.3
+# mistralai/Mistral-7B-v0.3  # this
+# mistralai/Mistral-7B-Instruct-v0.3
 )
 
 declare -a seed=(
     0
-    1
-    2
-    3
-    4
+    # 1
+    # 2
+    # 3
+    # 4
     # 5
     # 6
     # 7
 )
 
 declare -a dataset=(
-    ade
-    conll04
-    scierc
-    erfgc
-    scidtb
+    # ade
+    # conll04
+    # scierc
+    # erfgc
+    # scidtb
     enewt
     )
-
-declare -a natlang=(
-    1
-    # 0
-)
 
 declare -a rationale=(
     # 1
@@ -96,12 +91,12 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    0
+    # 0
     1
 )
 
 declare -a n_icl_samples=(
-    # 0
+    0
     1
     # 2
     # 3
@@ -117,7 +112,6 @@ array_names=(
             model
             seed
             dataset
-            natlang
             rationale
             lora_modules
             do_train
@@ -127,8 +121,8 @@ array_names=(
 combinations=$(cartesian_product array_names)
 
 epochs=1
-train_steps=0
-eval_steps=100
+train_steps=100
+eval_samples=100
 load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
@@ -136,7 +130,7 @@ lr=2e-4
 save_prompt=1
 verbose_preds=1
 verbose_metrics=1
-max_length=15000
+max_length=20000
 max_new_tokens=5000
 dtype_str=bfloat16
 
@@ -144,7 +138,7 @@ enable_thinking=0
 
 date=$(date '+%Y%m%d%H%M%S')
 
-batch_size_train=1
+batch_size_train=4
 batch_size_eval=1
 evaluate=0
 
@@ -161,25 +155,24 @@ while IFS= read -r combo; do
     fi
 
     if [[ ${params[2]} == 'scidtb' || ${params[2]} == 'enewt' ]]; then
-        eval_steps=100
+        eval_samples=100
     fi
     cmd="python ./src/train.py
                 --model ${params[0]}
                 --seed ${params[1]}
                 --dataset ${params[2]}
-                --natlang ${params[3]}
-                --rationale ${params[4]}
-                --lora_modules ${params[5]}
-                --do_train ${params[6]}
-                --n_icl_samples ${params[7]}
-                --desc_schema ${params[8]}
+                --rationale ${params[3]}
+                --lora_modules ${params[4]}
+                --do_train ${params[5]}
+                --n_icl_samples ${params[6]}
+                --desc_schema ${params[7]}
                 --train_steps $train_steps
                 --load_in_4bit $load_in_4bit
                 --load_in_8bit $load_in_8bit
                 --save_prompt $save_prompt
                 --verbose_preds $verbose_preds
                 --verbose_metrics $verbose_metrics
-                --eval_steps $eval_steps
+                --eval_samples $eval_samples
                 --max_length $max_length
                 --max_new_tokens $max_new_tokens
                 --run_id ${run_id}
