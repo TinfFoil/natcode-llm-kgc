@@ -65,10 +65,10 @@ declare -a seed=(
 )
 
 declare -a dataset=(
-    # ade
+    ade
     # conll04
     # scierc
-    erfgc
+    # erfgc
     # scidtb
     # enewt
     )
@@ -96,8 +96,8 @@ do_train=(
 )
 
 declare -a n_icl_samples=(
-    # 0
-    1
+    0
+    # 1
     # 2
     # 3
     )
@@ -105,6 +105,11 @@ declare -a n_icl_samples=(
 declare -a desc_schema=(
     0
     # 1
+    )
+
+declare -a prompt_filename=(
+    # default.yaml
+    uuid.yaml
     )
 
 # Generate all combinations
@@ -117,6 +122,7 @@ array_names=(
             do_train
             n_icl_samples
             desc_schema
+            prompt_filename
             )
 combinations=$(cartesian_product array_names)
 
@@ -138,7 +144,7 @@ enable_thinking=0
 
 date=$(date '+%Y%m%d%H%M%S')
 
-batch_size_train=4
+batch_size_train=1
 batch_size_eval=1
 evaluate=0
 
@@ -166,6 +172,7 @@ while IFS= read -r combo; do
                 --do_train ${params[5]}
                 --n_icl_samples ${params[6]}
                 --desc_schema ${params[7]}
+                --prompt_filename ${params[8]}
                 --train_steps $train_steps
                 --load_in_4bit $load_in_4bit
                 --load_in_8bit $load_in_8bit

@@ -1,0 +1,16 @@
+sys_prompt: |
+  You are a helpful AI.
+
+comment_symbol: ""
+
+natlang_triple_layout: |
+  {{"rel": {{"type": "{relation_type}"}}, "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}}, "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}
+
+instruction: |
+  Task number: 782f62e6-c8ae-11f0-ab85-183d2d621cf9 
+
+icl_instruction: |
+  Look at the examples below and then carry out the following indicated task.
+
+rationale_prompt: |
+  The candidate relations for this text are:\n{rels}\nThe candidate entities for this text are:\n{ents}
