@@ -68,9 +68,9 @@ declare -a dataset=(
     # ade
     # conll04
     # scierc
-    # erfgc
+    erfgc
     # scidtb
-    enewt
+    # enewt
     )
 
 declare -a rationale=(
@@ -96,7 +96,7 @@ do_train=(
 )
 
 declare -a n_icl_samples=(
-    0
+    # 0
     1
     # 2
     # 3
@@ -104,7 +104,7 @@ declare -a n_icl_samples=(
 
 declare -a desc_schema=(
     0
-    1
+    # 1
     )
 
 # Generate all combinations
@@ -121,8 +121,8 @@ array_names=(
 combinations=$(cartesian_product array_names)
 
 epochs=1
-train_steps=100
-eval_samples=100
+train_steps=0
+eval_samples=0
 load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
