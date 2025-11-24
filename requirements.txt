@@ -84,8 +84,6 @@ tiktoken==0.9.0+computecanada
 tokenizers==0.22.0+computecanada
 torch==2.7.1+computecanada
 torchao==0.13.0
-torchaudio==2.6.0+computecanada
-torchvision==0.22.1+computecanada
 tornado==6.4.2+computecanada
 tqdm==4.67.1+computecanada
 traitlets==5.14.3+computecanada
