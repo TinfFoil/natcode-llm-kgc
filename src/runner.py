@@ -24,7 +24,7 @@ class Runner:
         self.think = config['enable_thinking']
         self.sys_prompt = config['prompt_config']['sys_prompt']
         self.natlang_triple_layout = config['prompt_config']['natlang_triple_layout']
-        self.icl_instruction = config['prompt_config']['natlang_triple_layout']
+        self.icl_instruction = config['prompt_config']['icl_instruction']
         self.rationale_prompt = config['prompt_config']['rationale_prompt']
 
     def make_train_set(self, df: pd.DataFrame, tokenizer, n_samples: int = 0):

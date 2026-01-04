@@ -196,7 +196,7 @@ while IFS= read -r combo; do
     commands+=("$cmd")
     count+=1
 done <<< "$combinations"
-
+# commands=("${commands[@]: -2}")
 total_combinations=${#commands[@]}
 
 if [[ -n "$SLURM_ARRAY_TASK_ID" ]]; then
