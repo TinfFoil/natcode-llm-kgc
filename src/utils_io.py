@@ -89,11 +89,10 @@ def save_json_extend(info, json_path):
         json.dump(data, f, ensure_ascii = False)
 
 def set_save_dir(save_dir, save_suffix = '', default_save_dir = './results'):
-    save_suffix = save_suffix.split('-')
     if not save_dir:
         save_dir = default_save_dir
         if save_suffix:
-            save_dir = os.path.join(save_dir, *save_suffix, get_current_time_string())
+            save_dir = os.path.join(save_dir, save_suffix, get_current_time_string())
         else:
             save_dir = os.path.join(save_dir, get_current_time_string())
     if not os.path.exists(save_dir):
