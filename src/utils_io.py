@@ -33,7 +33,9 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     
     config['lr'] = 2e-4 if config['lora_modules'] else 1e-5    
     config['model_name_string'] = config['model_name'].replace('/', '-')
-    config['results_dir'] = set_save_dir(config['results_dir'], f"{config['run_id']}_{config['model_name_string']}", './results')
+    run_id_list = config['run_id'].split('-')
+    run_id_list[0] = run_id_list[0] + '_' + config['model_name_string']
+    config['results_dir'] = set_save_dir(config['results_dir'], run_id_list, './results')
     config['model_dir'] = os.path.join(config['results_dir'], 'model')
     make_dir(config['model_dir'])
     model_chat_dict = yaml.safe_load(open('./model_info/model_chat_dict.yaml', 'r'))
@@ -88,11 +90,11 @@ def save_json_extend(info, json_path):
     with open(json_path, 'w', encoding='utf8') as f:
         json.dump(data, f, ensure_ascii = False)
 
-def set_save_dir(save_dir, save_suffix = '', default_save_dir = './results'):
+def set_save_dir(save_dir, save_suffix_list = [], default_save_dir = './results'):
     if not save_dir:
         save_dir = default_save_dir
-        if save_suffix:
-            save_dir = os.path.join(save_dir, save_suffix, get_current_time_string())
+        if save_suffix_list:
+            save_dir = os.path.join(save_dir, *save_suffix_list, get_current_time_string())
         else:
             save_dir = os.path.join(save_dir, get_current_time_string())
     if not os.path.exists(save_dir):
