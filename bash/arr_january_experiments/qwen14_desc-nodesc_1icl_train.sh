@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J ARR_january
+#SBATCH -J qwen14_desc-nodesc_1icl_train
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
@@ -37,9 +37,9 @@ cartesian_product() {
 
 declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
-unsloth/Qwen3-32B
+# unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
-# Qwen/Qwen3-14B-Base
+Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -57,8 +57,8 @@ declare -a seed=(
     0
     1
     2
-    # 3
-    # 4
+    3
+    4
     # 5
     # 6
     # 7
@@ -91,8 +91,8 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    0
-    # 1
+    # 0
+    1
 )
 
 declare -a n_icl_samples=(
@@ -140,7 +140,7 @@ max_length=20000
 max_new_tokens=5000
 dtype_str=bfloat16
 
-enable_thinking=1
+enable_thinking=0
 
 date=$(date '+%Y%m%d%H%M%S')
 
@@ -163,10 +163,6 @@ while IFS= read -r combo; do
     if [[ ${params[2]} == 'scidtb' || ${params[2]} == 'enewt' ]]; then
         eval_samples=100
     fi
-
-    # if [[ count -lt 109 ]]; then
-    #     continue
-    # fi
 
     cmd="python ./src/train.py
                 --model ${params[0]}
@@ -194,7 +190,6 @@ while IFS= read -r combo; do
                 --dtype_str $dtype_str
                 --enable_thinking $enable_thinking
                 "
-                # --run_id ${SLURM_ARRAY_JOB_ID}-${SLURM_ARRAY_TASK_ID}
     echo "$cmd" | sed -E 's/[[:space:]]+/ /g' | tr '\n' ' '
     echo
     echo
@@ -202,15 +197,10 @@ while IFS= read -r combo; do
     count+=1
 done <<< "$combinations"
 
-# for command in ${commands[@]}; do
-#     echo $command
-# done
-
 total_combinations=${#commands[@]}
 
 if [[ -n "$SLURM_ARRAY_TASK_ID" ]]; then
     command_to_run="${commands[$SLURM_ARRAY_TASK_ID]}"
-    # echo "$command_to_run"
     $command_to_run
 elif [[ $1 ]]; then
     for (( i=start; i<${#commands[@]}; i++ ))

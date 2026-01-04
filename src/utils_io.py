@@ -33,7 +33,7 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     
     config['lr'] = 2e-4 if config['lora_modules'] else 1e-5    
     config['model_name_string'] = config['model_name'].replace('/', '-')
-    config['results_dir'] = set_save_dir(config['results_dir'], config['run_id'], './results')
+    config['results_dir'] = set_save_dir(config['results_dir'], f"{config['run_id']}_{config['model_name_string']}", './results')
     config['model_dir'] = os.path.join(config['results_dir'], 'model')
     make_dir(config['model_dir'])
     model_chat_dict = yaml.safe_load(open('./model_info/model_chat_dict.yaml', 'r'))
