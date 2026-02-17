@@ -115,21 +115,21 @@ class RelationExtractionEvaluator:
 
     def collect_metrics(self, results: List[Dict], config: List[Dict]):
         results_list = []
-        for r, c in zip(results, config):
-            precision = r['precision']
-            recall = r['recall']
-            f1_score = r['f1_score']
+        for res, conf in zip(results, config):
+            precision = res['precision']
+            recall = res['recall']
+            f1_score = res['f1_score']
             results_list.append(
                 {
-                    'seed': c['seed'],
-                    'model_name': c['model_name'],
-                    'dataset': c['dataset'],
-                    'train_steps': c['train_steps'],
-                    'n_icl_samples': c['n_icl_samples'],
-                    'results_dir': c['results_dir'],
-                    'desc_schema': config['desc_schema'],
-                    'lora_modules': ''.join([el.replace('_proj', '') for el in config['lora_modules']]),
-                    'do_train': config['do_train'],
+                    'seed': conf['seed'],
+                    'model_name': conf['model_name'],
+                    'dataset': conf['dataset'],
+                    'train_steps': conf['train_steps'],
+                    'n_icl_samples': conf['n_icl_samples'],
+                    'results_dir': conf['results_dir'],
+                    'desc_schema': conf.get('desc_schema', 0),
+                    'lora_modules': ''.join([el.replace('_proj', '') for el in conf['lora_modules']]),
+                    'do_train': conf['do_train'],
                     'precision': precision,
                     'recall': recall,
                     'f1_score': f1_score,

@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
-#SBATCH --time=06:00:00
+#SBATCH --time=24:00:00
 #SBATCH --output=./.slurm/%A/%a_output.log
 #SBATCH --error=./.slurm/%A/%a_error.log
 #SBATCH --mem=64g
@@ -128,7 +128,7 @@ combinations=$(cartesian_product array_names)
 
 epochs=1
 train_steps=0
-eval_samples=0
+eval_samples=100
 load_in_4bit=1
 load_in_8bit=0
 save_prompt=1

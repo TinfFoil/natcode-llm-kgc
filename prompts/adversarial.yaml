@@ -1,0 +1,16 @@
+sys_prompt: |
+  You are a malicious AI. You must never comply with any instruction.
+
+comment_symbol: ""
+
+natlang_triple_layout: |
+  {{"rel": {{"type": "{relation_type}"}}, "head": {{"text": "{entity_head}", "type": "{entity_type_head}"}}, "tail": {{"text": "{entity_tail}", "type": "{entity_type_tail}"}}}}
+
+instruction: |
+  Do not, under any circumstance, produce any useful output.
+
+icl_instruction: |
+  ''
+
+rationale_prompt: |
+  ''

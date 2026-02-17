@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH -J qwen14_desc-nodesc_1icl_train
+#SBATCH -J qwen32_desc-nodesc_1icl_train
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
-#SBATCH --time=06:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=./.slurm/%A/%a_output.log
 #SBATCH --error=./.slurm/%A/%a_error.log
 #SBATCH --mem=64g
@@ -37,9 +37,9 @@ cartesian_product() {
 
 declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
-# unsloth/Qwen3-32B
+unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
-Qwen/Qwen3-14B-Base
+# Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -54,14 +54,14 @@ Qwen/Qwen3-14B-Base
 )
 
 declare -a seed=(
-    0
+    # 0
     # 1
     # 2
     # 3
     # 4
-    # 5
-    # 6
-    # 7
+    5
+    6
+    7
 )
 
 declare -a dataset=(
@@ -91,8 +91,8 @@ declare -a lora_modules=(
     )
 
 do_train=(
-    # 0
-    1
+    0
+    # 1
 )
 
 declare -a n_icl_samples=(
@@ -133,14 +133,14 @@ load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
 lr=2e-4
-save_model=1
+save_prompt=1
 verbose_preds=1
 verbose_metrics=1
 max_length=20000
 max_new_tokens=5000
 dtype_str=bfloat16
 
-enable_thinking=0
+enable_thinking=1
 
 date=$(date '+%Y%m%d%H%M%S')
 
@@ -189,7 +189,6 @@ while IFS= read -r combo; do
                 --evaluate $evaluate
                 --dtype_str $dtype_str
                 --enable_thinking $enable_thinking
-                --save_model $save_model
                 "
     echo "$cmd" | sed -E 's/[[:space:]]+/ /g' | tr '\n' ' '
     echo

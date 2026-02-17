@@ -54,23 +54,23 @@ Qwen/Qwen3-14B-Base
 )
 
 declare -a seed=(
-    0
-    1
-    2
+    # 0
+    # 1
+    # 2
     3
-    4
+    # 4
     # 5
     # 6
     # 7
 )
 
 declare -a dataset=(
-    ade
-    conll04
-    scierc
-    erfgc
+    # ade
+    # conll04
+    # scierc
+    # erfgc
     scidtb
-    enewt
+    # enewt
     )
 
 declare -a rationale=(

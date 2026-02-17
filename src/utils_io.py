@@ -4,34 +4,34 @@ from datetime import datetime
 import argparse
 import os
 from typing import Dict, List
-from peft import LoraConfig
-import pandas as pd
 from pathlib import Path
 
 def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     args = vars(namespace)
-    config = default_cfg
-    for k, v in args.items():
-        config[k] = v
+    model_dir = os.path.abspath(args.get('model_name', ''))
+    if os.path.exists(model_dir):
+        config_path = os.path.join(os.path.dirname(model_dir), 'config.json')
+        with open(config_path, 'r', encoding='utf8') as f:
+            config = json.load(f)
+    else:
+        config = default_cfg
+        for k, v in args.items():
+            config[k] = v
     if not config['run_id']:
         config['run_id'] = get_current_time_string()
-    
     config['dataset_path'] = f"./data/{config['dataset']}/rdf"
-    if config['lora_modules'] != 'ft':
-        config['lora_modules'] = [el+'_proj' for el in config['lora_modules'].split('-') if el]
-    else:
-        config['lora_modules'] = None
-    config['lora_config'] = {
-            'r': 16,
-            'lora_alpha': 16,
-            'target_modules': config['lora_modules'],
-            'lora_dropout': 0,
-            'bias': "none",
-            'task_type': "CAUSAL_LM",
-            'use_rslora': False,
-    } if config['lora_modules'] else None
-    
-    config['lr'] = 2e-4 if config['lora_modules'] else 1e-5    
+    if 'lora_config' not in config:
+        lora_modules = [el+'_proj' for el in args['lora_modules'].split('-') if el] if args['lora_modules'] != 'ft' else None
+        config['lora_config'] = {
+                'r': 16,
+                'lora_alpha': 16,
+                'target_modules': lora_modules,
+                'lora_dropout': 0,
+                'bias': "none",
+                'task_type': "CAUSAL_LM",
+                'use_rslora': False,
+        } if config['lora_modules'] else None
+    config['lr'] = 2e-4 if config['lora_config']['target_modules'] else 1e-5
     config['model_name_string'] = config['model_name'].replace('/', '-')
     run_id_list = config['run_id'].split('-')
     run_id_list[0] = run_id_list[0] + '_' + config['model_name_string']

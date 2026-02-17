@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J qwen14_desc-nodesc_1icl_train
+#SBATCH -J qwen14_uuid
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:h100:1
@@ -38,8 +38,8 @@ cartesian_product() {
 declare -a model=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
 # unsloth/Qwen3-32B
-# unsloth/Qwen3-0.6B
-Qwen/Qwen3-14B-Base
+unsloth/Qwen3-0.6B
+# Qwen/Qwen3-14B-Base
 # meta-llama/Llama-3.1-70B
 # meta-llama/Llama-3.1-70B-Instruct
 # meta-llama/Llama-3.2-1B
@@ -66,11 +66,11 @@ declare -a seed=(
 
 declare -a dataset=(
     ade
-    conll04
-    scierc
-    erfgc
-    scidtb
-    enewt
+    # conll04
+    # scierc
+    # erfgc
+    # scidtb
+    # enewt
     )
 
 declare -a rationale=(
@@ -96,7 +96,7 @@ do_train=(
 )
 
 declare -a n_icl_samples=(
-    # 0
+    0
     1
     # 2
     # 3
@@ -109,7 +109,7 @@ declare -a desc_schema=(
 
 declare -a prompt_filename=(
     default.yaml
-    # uuid.yaml
+    uuid.yaml
     )
 
 # Generate all combinations
@@ -127,13 +127,13 @@ array_names=(
 combinations=$(cartesian_product array_names)
 
 epochs=1
-train_steps=0
-eval_samples=0
+train_steps=10
+eval_samples=10
 load_in_4bit=0
 load_in_8bit=0
 save_prompt=1
 lr=2e-4
-save_model=1
+save_prompt=1
 verbose_preds=1
 verbose_metrics=1
 max_length=20000
@@ -189,7 +189,6 @@ while IFS= read -r combo; do
                 --evaluate $evaluate
                 --dtype_str $dtype_str
                 --enable_thinking $enable_thinking
-                --save_model $save_model
                 "
     echo "$cmd" | sed -E 's/[[:space:]]+/ /g' | tr '\n' ' '
     echo
@@ -197,7 +196,7 @@ while IFS= read -r combo; do
     commands+=("$cmd")
     count+=1
 done <<< "$combinations"
-
+# commands=("${commands[@]: -2}")
 total_combinations=${#commands[@]}
 
 if [[ -n "$SLURM_ARRAY_TASK_ID" ]]; then

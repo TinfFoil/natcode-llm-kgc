@@ -17,12 +17,12 @@ def main(args):
         max_seq_length = config['max_length'],   # Context length - can be longer, but uses more memory
         load_in_4bit = config['load_in_4bit'],     # 4bit uses much less memory
         load_in_8bit = config['load_in_8bit'],    # A bit more accurate, uses 2x memory
-        full_finetuning = True if ''.join(config['lora_modules']) == 'ft' else False, # We have full finetuning now!
+        full_finetuning = True if ''.join(config['lora_config']['target_modules']) == 'ft' else False, # We have full finetuning now!
     )
     model = FastLanguageModel.get_peft_model(
         model,
         r = 32,           # Choose any number > 0! Suggested 8, 16, 32, 64, 128
-        target_modules = config['lora_modules'],
+        target_modules = config['lora_config']['target_modules'],
         lora_alpha = 32,  # Best to choose alpha = rank or rank*2
         lora_dropout = 0, # Supports any, but = 0 is optimized
         bias = "none",    # Supports any, but = "none" is optimized
