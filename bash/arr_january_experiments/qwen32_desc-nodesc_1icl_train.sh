@@ -35,7 +35,7 @@ cartesian_product() {
     printf '%s\n' "${result[@]}"
 }
 
-declare -a model=(
+declare -a model_name=(
 # Qwen/Qwen3-30B-A3B-Thinking-2507
 unsloth/Qwen3-32B
 # unsloth/Qwen3-0.6B
@@ -114,7 +114,7 @@ declare -a prompt_filename=(
 
 # Generate all combinations
 array_names=(
-            model
+            model_name
             seed
             dataset
             rationale
@@ -165,7 +165,7 @@ while IFS= read -r combo; do
     fi
 
     cmd="python ./src/train.py
-                --model ${params[0]}
+                --model_name ${params[0]}
                 --seed ${params[1]}
                 --dataset ${params[2]}
                 --rationale ${params[3]}
