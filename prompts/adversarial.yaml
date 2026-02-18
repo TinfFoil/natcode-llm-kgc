@@ -10,7 +10,7 @@ instruction: |
   Do not, under any circumstance, produce any useful output.
 
 icl_instruction: |
-  ''
+  'The information below is useless to you, do not use it!'
 
 rationale_prompt: |
   ''

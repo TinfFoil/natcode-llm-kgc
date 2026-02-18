@@ -70,7 +70,6 @@ def main(args):
         save_path,
     )
 
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="Evaluate a fine-tuned language model"
@@ -93,7 +92,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--batch_size_eval",
         type=int,
-        default=4,
+        default=1,
     )
     parser.add_argument(
         "--max_length",
@@ -108,7 +107,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--n_icl_samples",
         type=int,
-        default=3,
+        default=1,
     )
     parser.add_argument(
         "--dtype_str",
@@ -141,7 +140,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--results_dir",
         type=str,
-        default="",
+        default="./results/.testing",
     )
     parser.add_argument(
         "--load_in_4bit",
@@ -177,6 +176,21 @@ if __name__ == "__main__":
         "--run_id",
         type=str,
         default="",
+    )
+    parser.add_argument(
+        "--do_train",
+        type=int,
+        default=0,
+    )
+    parser.add_argument(
+        "--rationale",
+        type=int,
+        default=0,
+    )
+    parser.add_argument(
+        "--save_prompt",
+        type=int,
+        default=1,
     )
 
     args = parser.parse_args()

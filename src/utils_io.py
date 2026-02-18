@@ -20,22 +20,26 @@ def setup_config(namespace: argparse.Namespace, default_cfg: dict = {}):
     if not config['run_id']:
         config['run_id'] = get_current_time_string()
     config['dataset_path'] = f"./data/{config['dataset']}/rdf"
-    if 'lora_config' not in config:
-        lora_modules = [el+'_proj' for el in args['lora_modules'].split('-') if el] if args['lora_modules'] != 'ft' else None
-        config['lora_config'] = {
-                'r': 16,
-                'lora_alpha': 16,
-                'target_modules': lora_modules,
-                'lora_dropout': 0,
-                'bias': "none",
-                'task_type': "CAUSAL_LM",
-                'use_rslora': False,
-        } if config['lora_modules'] else None
-    config['lr'] = 2e-4 if config['lora_config']['target_modules'] else 1e-5
+    if args['do_train']:
+        if 'lora_config' not in config:
+            lora_modules = [el+'_proj' for el in args['lora_modules'].split('-') if el] if args['lora_modules'] != 'ft' else None
+            config['lora_config'] = {
+                    'r': 16,
+                    'lora_alpha': 16,
+                    'target_modules': lora_modules,
+                    'lora_dropout': 0,
+                    'bias': "none",
+                    'task_type': "CAUSAL_LM",
+                    'use_rslora': False,
+            } if config['lora_modules'] else None
+        config['lr'] = 2e-4 if config['lora_config']['target_modules'] else 1e-5
     config['model_name_string'] = config['model_name'].replace('/', '-')
-    run_id_list = config['run_id'].split('-')
-    run_id_list[0] = run_id_list[0] + '_' + config['model_name_string']
-    config['results_dir'] = set_save_dir(config['results_dir'], run_id_list, './results')
+    if '.testing' in config['results_dir']:
+        config['results_dir'] = os.path.join(config['results_dir'], config['model_name_string'])
+    else:
+        run_id_list = config['run_id'].split('-')
+        run_id_list[0] = run_id_list[0] + '_' + config['model_name_string']
+        config['results_dir'] = set_save_dir(config['results_dir'], run_id_list, './results')
     config['model_dir'] = os.path.join(config['results_dir'], 'model')
     make_dir(config['model_dir'])
     model_chat_dict = yaml.safe_load(open('./model_info/model_chat_dict.yaml', 'r'))
